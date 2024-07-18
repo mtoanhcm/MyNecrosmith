@@ -14,6 +14,16 @@ public class MapGroundManager : MonoBehaviour
     [SerializeField]
     private int radius;
 
+    [Header("----- Component -----")]
+    [SerializeField]
+    private FogManager fogManage;
+
+    private void Start()
+    {
+        CreateTileMap();
+        Debug.Log("Done create tile map");
+    }
+
     [Button]
     private void CreateTileMap()
     {
@@ -35,5 +45,6 @@ public class MapGroundManager : MonoBehaviour
     private void SetTile(int x, int y) {
         Vector3Int tilePosition = new (x, y, 0);
         groundMap.SetTile(tilePosition, groundTile);
+        fogManage.SetFog(tilePosition);
     }
 }
