@@ -6,13 +6,25 @@ namespace Character.Component {
     public class ClearFogComponent
     {
         private readonly CharacterScanConfig config;
+        private float timeDelayCheckClearFog;
 
-        public ClearFogComponent() {
+        private float tempDelayTime;
+
+        public ClearFogComponent(float timeDelay = 0) {
             config = Resources.Load<CharacterScanConfig>("CharacterScanConfig");
+            timeDelayCheckClearFog = timeDelay;
         }
 
-        private void CheckClearFog(Vector3 charPosition)
+        public void CheckClearFog(Vector3 charPosition)
         {
+            if (timeDelayCheckClearFog > 0) {
+                if (tempDelayTime > Time.time) {
+                    return;
+                }
+
+                tempDelayTime = Time.time + timeDelayCheckClearFog;
+            }
+
             MapManager.Instance.OnCheckClearFog(charPosition, config.OpenFogOfWarRange);
         }
     }

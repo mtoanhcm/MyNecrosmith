@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +42,36 @@ namespace Map {
                     }
                 }
             }
+        }
+
+        public bool IsPositionClear(Vector3 position) {
+            Vector3Int cellPosition = fogMap.WorldToCell(position);
+            TileBase tile = fogMap.GetTile(cellPosition);
+            return tile == null;
+        }
+
+        public Bounds GetClearAreaBounds()
+        {
+            Bounds bounds = new Bounds();
+            foreach (var position in fogMap.cellBounds.allPositionsWithin)
+            {
+                if (fogMap.GetTile(position) == null)
+                {
+                    Vector3 worldPosition = fogMap.CellToWorld(position);
+                    bounds.Encapsulate(worldPosition);
+                }
+            }
+
+            // Thu hẹp bounds 3 ô từ mỗi cạnh
+            float tileWidth = fogMap.cellSize.x;
+            float tileHeight = fogMap.cellSize.y;
+
+            Vector3 min = bounds.min + new Vector3(tileWidth * 5, tileHeight * 5, 0);
+            Vector3 max = bounds.max - new Vector3(tileWidth * 5, tileHeight * 5, 0);
+
+            bounds.SetMinMax(min, max);
+
+            return bounds;
         }
 
         private void SetFog(Vector3Int pos, bool isVisibleFog = true)

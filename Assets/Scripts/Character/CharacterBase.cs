@@ -8,6 +8,7 @@ namespace Character {
         private void Awake()
         {
             OnAwake();
+            InitComponent();
         }
 
         private void Start()
@@ -20,8 +21,16 @@ namespace Character {
             Destroy();
         }
 
+        private void Update()
+        {
+            OnUpdateExcute();
+        }
+
         protected virtual void OnAwake() { }
         protected virtual void OnStart() { }
         protected virtual void Destroy() { }
+
+        public abstract void InitComponent();
+        public abstract void OnUpdateExcute();
     }
 }

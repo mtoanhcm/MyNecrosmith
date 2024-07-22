@@ -15,7 +15,7 @@ TagManager:
   - Enemy
   - RewardBuilding
   - EnemySpawner
-  - 
+  - Character
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: Fog
     uniqueID: 1045180257
+    locked: 0
+  - name: Character
+    uniqueID: 66226741
     locked: 0
