@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 namespace Map {
     public class MapGroundManager : MonoBehaviour
     {
+        public Tilemap GroundMap => groundMap;
+
         [SerializeField]
         private Tilemap groundMap;
         [SerializeField]
