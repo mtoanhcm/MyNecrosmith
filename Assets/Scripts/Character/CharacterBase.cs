@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Character {
     public abstract class CharacterBase : MonoBehaviour
@@ -29,6 +30,9 @@ namespace Character {
         protected virtual void OnAwake() { }
         protected virtual void OnStart() { }
         protected virtual void Destroy() { }
+
+        public virtual void MoveToTarget(Vector3 targetPos, UnityAction onEndPath) { }
+        public virtual void Attack(GameObject target) { }
 
         public abstract void InitComponent();
         public abstract void OnUpdateExcute();

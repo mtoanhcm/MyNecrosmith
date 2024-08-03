@@ -20,5 +20,13 @@ namespace Config {
         public LayerMask EnemyLayer;
         public LayerMask RewardBuildingLayer;
         public LayerMask EnemySpawnerLayer;
+
+        public float MinExploreRange
+        {
+            get
+            {
+                return 0;
+            }
+        }
     }
 }

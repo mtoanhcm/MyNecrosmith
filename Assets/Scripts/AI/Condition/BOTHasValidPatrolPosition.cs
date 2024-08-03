@@ -13,5 +13,17 @@ namespace AI {
         [Header("----- Output -----")]
         [SerializeField]
         private SharedVector3 targetPosition;
+
+        private BotBrain brain;
+
+        public override void OnAwake()
+        {
+            brain = GetComponent<BotBrain>();
+        }
+
+        public override TaskStatus OnUpdate()
+        {
+            return TaskStatus.Failure;
+        }
     }
 }

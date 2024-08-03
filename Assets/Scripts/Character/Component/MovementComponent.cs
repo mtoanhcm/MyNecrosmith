@@ -3,6 +3,7 @@ using Map;
 using Pathfinding;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 namespace Character.Component {
@@ -12,8 +13,10 @@ namespace Character.Component {
 
         private List<Vector3Int> path;
         private int currentPathIndex;
-        private Tilemap groundTileMap;
-        private Transform transform;
+        private readonly Tilemap groundTileMap;
+        private readonly Transform transform;
+
+        private UnityAction endBackCallBack;
 
         public MovementComponent(Transform transform, Tilemap tileMap, float speed)
         {
@@ -39,10 +42,12 @@ namespace Character.Component {
 
                 await UniTask.DelayFrame(1);
             }
+
+            endBackCallBack?.Invoke();
         }
 
         // Method to initiate pathfinding and set the path for the character
-        public void FindPath(Vector3 startWorldPos, Vector3 targetWorldPos)
+        public void FindPath(Vector3 startWorldPos, Vector3 targetWorldPos, UnityAction onEndPath)
         {
             var pathfinding = new PathCalculate(groundTileMap);
 
@@ -55,6 +60,8 @@ namespace Character.Component {
             if (path == null) {
                 return;
             }
+
+            endBackCallBack = onEndPath;
 
             RunToTarget();
         }

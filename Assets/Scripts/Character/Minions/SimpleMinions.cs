@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Character
 {
@@ -23,11 +24,9 @@ namespace Character
             clearFogComp.CheckClearFog(transform.position);
         }
 
-        [SerializeField]
-        private Transform testTarget;
-        [Button]
-        private void MoveTo() {
-            movementComp.FindPath(transform.position, testTarget.position);
+        public override void MoveToTarget(Vector3 targetPos, UnityAction onEndPath)
+        {
+            movementComp.FindPath(transform.position, targetPos, onEndPath);
         }
     }
 }
