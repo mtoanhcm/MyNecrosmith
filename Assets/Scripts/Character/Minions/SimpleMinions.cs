@@ -18,7 +18,7 @@ namespace Character
         public override void InitComponent()
         {
             clearFogComp = new(timeDelay: 0.2f);
-            movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, 3f);
+            movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, 1f);
 
             TryGetComponent(out brain);
             brain.Init(BrainType.Minion, this);
