@@ -37,9 +37,6 @@ namespace AI {
         {
             if (targetObject.Value != null) { 
                 brain.Character.MoveToTarget(targetObject.Value.transform.position, OnCompleteMove);
-            } else
-            {
-                status = TaskStatus.Success;
             }
 
             return status;

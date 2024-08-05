@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: MapConfig
   m_EditorClassIdentifier: 
   FirstArea:
-    Radius: 30
+    Radius: 50
     TotalRewards: 0
     RewardQuality: 0
     TotalEnemies: 0
     TotalBosses: 0
   MidArea:
-    Radius: 60
+    Radius: 100
     TotalRewards: 0
     RewardQuality: 0
     TotalEnemies: 0
     TotalBosses: 0
   LastArea:
-    Radius: 90
+    Radius: 150
     TotalRewards: 0
     RewardQuality: 0
     TotalEnemies: 0

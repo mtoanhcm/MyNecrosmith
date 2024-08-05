@@ -23,6 +23,11 @@ namespace Map {
             }
         }
 
+        public bool IsPositionOnTileMap(Vector3 pos) { 
+            var cellPos = groundMap.WorldToCell(pos);
+            return groundMap.HasTile(cellPos);
+        }
+
         private void SetTile(int x, int y)
         {
             Vector3Int tilePosition = new(x, y, 0);

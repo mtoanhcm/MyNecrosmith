@@ -1,3 +1,4 @@
+using AI;
 using Character.Component;
 using Map;
 using Sirenix.OdinInspector;
@@ -12,11 +13,15 @@ namespace Character
     {
         private ClearFogComponent clearFogComp;
         private MovementComponent movementComp;
+        private BotBrain brain;
 
         public override void InitComponent()
         {
             clearFogComp = new(timeDelay: 0.2f);
-            movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, 5f);
+            movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, 3f);
+
+            TryGetComponent(out brain);
+            brain.Init(BrainType.Minion, this);
         }
 
         public override void OnUpdateExcute()

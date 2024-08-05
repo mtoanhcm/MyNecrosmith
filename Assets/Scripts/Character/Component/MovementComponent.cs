@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Map;
 using Pathfinding;
+using Sirenix.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -29,6 +30,10 @@ namespace Character.Component {
         {
             while (path != null && currentPathIndex < path.Count)
             {
+                if (transform == null) {
+                    break;
+                }
+
                 // Use GetCellCenterWorld to get the center position of the current path tile in world coordinates
                 Vector3 targetPosition = groundTileMap.GetCellCenterWorld(path[currentPathIndex]);
                 // Move the character towards the target position

@@ -31,5 +31,9 @@ namespace Map {
         public void OnCheckClearFog(Vector3 basePosition, float clearRadius) {
             fogManager.OpenFog(basePosition, clearRadius);
         }
+
+        public bool IsValidPointOnMap(Vector3 point) {
+            return groundManager.IsPositionOnTileMap(point);
+        }
     }
 }
