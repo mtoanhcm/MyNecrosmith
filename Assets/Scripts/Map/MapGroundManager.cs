@@ -2,49 +2,37 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MapGroundManager : MonoBehaviour
-{
-    [SerializeField]
-    private Grid mapGrid;
-    [SerializeField]
-    private Tilemap groundMap;
-    [SerializeField]
-    private TileBase groundTile; // Assign the tile in the inspector
-
-    [SerializeField]
-    private int radius;
-
-    [Header("----- Component -----")]
-    [SerializeField]
-    private FogManager fogManage;
-
-    private void Start()
+namespace Map {
+    public class MapGroundManager : MonoBehaviour
     {
-        CreateTileMap();
-        Debug.Log("Done create tile map");
-    }
+        public Tilemap GroundMap => groundMap;
 
-    [Button]
-    private void CreateTileMap()
-    {
-        // Set the size and tiles
-        groundMap.ClearAllTiles();
-        CreateTilemap(radius); // Example size of 10x10
-    }
+        [SerializeField]
+        private Tilemap groundMap;
+        [SerializeField]
+        private TileBase groundTile; // Assign the tile in the inspector
 
-    private void CreateTilemap(int radius) {
-        for (int x = -radius; x <= radius; x++)
+        public void CreateTilemap(int radius)
         {
-            for (int y = -radius; y <= radius; y++)
+            for (int x = -radius; x <= radius; x++)
             {
-                SetTile(x, y);
+                for (int y = -radius; y <= radius; y++)
+                {
+                    SetTile(x, y);
+                }
             }
         }
-    }
 
-    private void SetTile(int x, int y) {
-        Vector3Int tilePosition = new (x, y, 0);
-        groundMap.SetTile(tilePosition, groundTile);
-        fogManage.SetFog(tilePosition);
+        public bool IsPositionOnTileMap(Vector3 pos) { 
+            var cellPos = groundMap.WorldToCell(pos);
+            return groundMap.HasTile(cellPos);
+        }
+
+        private void SetTile(int x, int y)
+        {
+            Vector3Int tilePosition = new(x, y, 0);
+            groundMap.SetTile(tilePosition, groundTile);
+        }
     }
 }
+
