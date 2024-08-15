@@ -12,21 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336a6d445d5a186489aacad48a9d9b19, type: 3}
   m_Name: MapConfig
   m_EditorClassIdentifier: 
-  FirstArea:
-    Radius: 50
+  Areas:
+  - Radius: 0
     TotalRewards: 0
     RewardQuality: 0
     TotalEnemies: 0
     TotalBosses: 0
-  MidArea:
-    Radius: 100
+    RewardRadiusGap: 0
+    EnemyBaseRadiusGap: 0
+  - Radius: 100
+    TotalRewards: 10
+    RewardQuality: 0
+    TotalEnemies: 0
+    TotalBosses: 0
+    RewardRadiusGap: 10
+    EnemyBaseRadiusGap: 0
+  - Radius: 300
     TotalRewards: 0
     RewardQuality: 0
     TotalEnemies: 0
     TotalBosses: 0
-  LastArea:
-    Radius: 150
+    RewardRadiusGap: 0
+    EnemyBaseRadiusGap: 0
+  - Radius: 500
     TotalRewards: 0
     RewardQuality: 0
     TotalEnemies: 0
     TotalBosses: 0
+    RewardRadiusGap: 0
+    EnemyBaseRadiusGap: 0

@@ -24,8 +24,9 @@ namespace Map {
 
         private void Start()
         {
-            groundManager.CreateTilemap(config.FirstArea.Radius);
-            fogManager.CreateFogMap(config.FirstArea.Radius);
+            var areaRadius = config.GetAreaByIndex(0).Radius;
+            groundManager.CreateTilemap(areaRadius);
+            fogManager.CreateFogMap(areaRadius);
         }
 
         public void OnCheckClearFog(Vector3 basePosition, float clearRadius) {
