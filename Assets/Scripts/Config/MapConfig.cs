@@ -30,7 +30,7 @@ namespace Config {
             return Areas[Mathf.Clamp(index, 0, Areas.Length - 1)];
         }
 
-        public float GetMinRadius(int index) {
+        public int GetMinRadius(int index) {
             index = Mathf.Clamp(index, 0, Areas.Length - 1);
             if (index == 0) {
                 return 0;

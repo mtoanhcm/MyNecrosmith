@@ -21,7 +21,7 @@ MonoBehaviour:
     RewardRadiusGap: 0
     EnemyBaseRadiusGap: 0
   - Radius: 100
-    TotalRewards: 10
+    TotalRewards: 25
     RewardQuality: 0
     TotalEnemies: 0
     TotalBosses: 0

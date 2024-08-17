@@ -10,6 +10,7 @@ namespace Map {
 
         public MapGroundManager groundManager;
         public FogManager fogManager;
+        public MapOnGroundManager onGroundManager;
 
         private MapConfig config;
 
@@ -24,9 +25,10 @@ namespace Map {
 
         private void Start()
         {
-            var areaRadius = config.GetAreaByIndex(0).Radius;
+            var areaRadius = config.GetAreaByIndex(1).Radius;
             groundManager.CreateTilemap(areaRadius);
             fogManager.CreateFogMap(areaRadius);
+            onGroundManager.SpawnObjectOnGround(1, UpdateClaimGround);
         }
 
         public void OnCheckClearFog(Vector3 basePosition, float clearRadius) {
@@ -35,6 +37,10 @@ namespace Map {
 
         public bool IsValidPointOnMap(Vector3 point) {
             return groundManager.IsPositionOnTileMap(point);
+        }
+
+        private void UpdateClaimGround(List<Vector3> claimedPosList) { 
+        
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Pathfinding {
                 if (tilemap.HasTile(position))
                 {
                     bool walkable = tilemap.GetTile(position).name != "Obstacle";
+                    
                     nodes[position] = new Node(position, walkable);
                 }
             }

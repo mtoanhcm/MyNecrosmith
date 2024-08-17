@@ -11,12 +11,14 @@ namespace Pathfinding {
         public int gCost;
         public int hCost;
         public int fCost => gCost + hCost;
+        public int penalty;
         public int HeapIndex { get; set; }
 
-        public Node(Vector3Int position, bool walkable)
+        public Node(Vector3Int position, bool walkable, int penalty = 0)
         {
             this.position = position;
             this.walkable = walkable;
+            this.penalty = penalty;
         }
 
         public int CompareTo(Node other)
