@@ -1,4 +1,4 @@
-using System.Collections;
+using Map;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -22,8 +22,8 @@ namespace Pathfinding {
             {
                 if (tilemap.HasTile(position))
                 {
-                    bool walkable = tilemap.GetTile(position).name != "Obstacle";
-                    
+                    bool walkable = tilemap.GetTile(position).name != EnviromentType.Obstacle.ToString();
+                    Debug.Log($"Node {position} is walkable: {walkable}");
                     nodes[position] = new Node(position, walkable);
                 }
             }

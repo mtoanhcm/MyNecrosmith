@@ -9,15 +9,14 @@ using UnityEngine.Events;
 namespace Building {
     public class RewardConstructSpawner
     {
-        [SerializeField]
-        private BuildingBase rewardBase;
-
-        private MapConfig mapConfig;
+        private readonly MapConfig mapConfig;
+        private readonly BuildingConfig buildingConfig;
         private Dictionary<int, Vector3> rewardBuildingDic;
 
         public RewardConstructSpawner()
         {
             mapConfig = Resources.Load<MapConfig>("MapConfig");
+            buildingConfig = Resources.Load<BuildingConfig>("BuildingConfig");
         }
 
         public async void SpawnRewardConstruct(int areaIndex, UnityAction<List<Vector3>> onCreateStructureSuccess) {
@@ -37,7 +36,7 @@ namespace Building {
 
                 if (HasValidPosition(buildingPos, config.RewardRadiusGap))
                 {
-                    Object.Instantiate(rewardBase, buildingPos, Quaternion.identity);
+                    Object.Instantiate(buildingConfig.GoldMine, buildingPos, Quaternion.identity);
 
                     rewardBuildingDic.Add(index, buildingPos);
 

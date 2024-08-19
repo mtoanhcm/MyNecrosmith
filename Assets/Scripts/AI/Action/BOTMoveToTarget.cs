@@ -28,14 +28,16 @@ namespace AI {
         {
             status = TaskStatus.Running;
 
-            if (targetObject.Value == null) {
+            if (targetObject.Value == null)
+            {
                 brain.Character.MoveToTarget(targetPosition.Value, OnCompleteMove);
             }
         }
 
         public override TaskStatus OnUpdate()
         {
-            if (targetObject.Value != null) { 
+            if (targetObject.Value != null)
+            {
                 brain.Character.MoveToTarget(targetObject.Value.transform.position, OnCompleteMove);
             }
 

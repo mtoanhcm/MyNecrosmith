@@ -1,9 +1,18 @@
 using Config;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Map {
+
+    public enum EnviromentType { 
+        Land,
+        Obstacle,
+        None
+    }
+
     public class MapManager : MonoBehaviour
     {
         public static MapManager Instance;
@@ -31,16 +40,27 @@ namespace Map {
             onGroundManager.SpawnObjectOnGround(1, UpdateClaimGround);
         }
 
+        [Button]
+        private void TestShowTileMap()
+        {
+            foreach (Vector3Int position in groundManager.GroundMap.cellBounds.allPositionsWithin) {
+                if (groundManager.GroundMap.HasTile(position)) {
+                    var tile = groundManager.GroundMap.GetTile(position);
+                    Debug.Log($"Tile at pos {position} name: {tile.name}");
+                }
+            }
+        }
+
         public void OnCheckClearFog(Vector3 basePosition, float clearRadius) {
             fogManager.OpenFog(basePosition, clearRadius);
         }
 
         public bool IsValidPointOnMap(Vector3 point) {
-            return groundManager.IsPositionOnTileMap(point);
+            return groundManager.IsPositionOnTileMap(point, out _);
         }
 
-        private void UpdateClaimGround(List<Vector3> claimedPosList) { 
-        
+        private void UpdateClaimGround(List<Vector3> claimedPosList) {
+            groundManager.SetTilesTypeName(claimedPosList, EnviromentType.Obstacle.ToString());
         }
     }
 }
