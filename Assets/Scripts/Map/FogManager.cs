@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Observer;
+using Config;
+using Tile;
 
 namespace Map {
     public class FogManager : MonoBehaviour
@@ -12,7 +15,19 @@ namespace Map {
         [SerializeField]
         private TileBase fogTile;
 
-        public void CreateFogMap(int radius)
+        private TileConfig tileConfig;
+
+        private void Awake()
+        {
+            tileConfig = Resources.Load<TileConfig>("TileConfig");
+        }
+
+        private void OnEnable()
+        {
+            EventManager.Instance.StartListening<EventData.OpenFogOfWarEvent>(OpenFog);
+        }
+
+        public void InitFogMap(int radius)
         {
             for (int x = -radius; x <= radius; x++)
             {
@@ -24,10 +39,10 @@ namespace Map {
             }
         }
 
-        public void OpenFog(Vector3 position, float radius)
+        private void OpenFog(EventData.OpenFogOfWarEvent data)
         {
-            Vector3Int characterPos = fogMap.WorldToCell(position);
-            int radiusInCells = Mathf.CeilToInt(radius);
+            Vector3Int characterPos = fogMap.WorldToCell(data.Pos);
+            int radiusInCells = Mathf.CeilToInt(data.Radius);
 
             for (int x = -radiusInCells; x <= radiusInCells; x++)
             {
@@ -36,7 +51,7 @@ namespace Map {
                     Vector3Int tilePosition = new Vector3Int(characterPos.x + x, characterPos.y + y, characterPos.z);
                     Vector3Int offset = tilePosition - characterPos;
 
-                    if (offset.x * offset.x + offset.y * offset.y <= radius * radius)
+                    if (offset.x * offset.x + offset.y * offset.y <= data.Radius * data.Radius)
                     {
                         SetFog(tilePosition, false);
                     }
@@ -76,7 +91,7 @@ namespace Map {
 
         private void SetFog(Vector3Int pos, bool isVisibleFog = true)
         {
-            fogMap.SetTile(pos, isVisibleFog ? fogTile : null);
+            fogMap.SetTile(pos, isVisibleFog ? tileConfig.GetTile(TileType.Fog) : null);
         }
     }
 }

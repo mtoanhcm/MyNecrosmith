@@ -7,6 +7,8 @@ namespace Config {
     {
         [Serializable]
         public struct AreaData {
+            [Tooltip("Index of Area")]
+            public int Index;
             [Tooltip("Radius of Area")]
             public int Radius;
             [Tooltip("Total rewards in Area")]
@@ -17,13 +19,26 @@ namespace Config {
             public int TotalEnemies;
             [Tooltip("Total bosses in Area")]
             public int TotalBosses;
+            [Tooltip("Distance between 2 reward building")]
+            public float RewardRadiusGap;
+            [Tooltip("Distance between 2 enemy base")]
+            public float EnemyBaseRadiusGap;
         }
 
-        [Tooltip("First Area data config")]
-        public AreaData FirstArea;
-        [Tooltip("Middle Area data config")]
-        public AreaData MidArea;
-        [Tooltip("Last area data config")]
-        public AreaData LastArea;
+        [SerializeField]
+        private AreaData[] Areas;
+
+        public AreaData GetAreaByIndex(int index) {
+            return Areas[Mathf.Clamp(index, 0, Areas.Length - 1)];
+        }
+
+        public int GetMinRadius(int index) {
+            index = Mathf.Clamp(index, 0, Areas.Length - 1);
+            if (index == 0) {
+                return 0;
+            }
+
+            return Areas[index].Radius - Areas[index - 1].Radius;
+        }
     }
 }

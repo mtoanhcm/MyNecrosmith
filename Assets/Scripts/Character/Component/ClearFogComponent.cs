@@ -1,6 +1,7 @@
 using Config;
 using Map;
 using UnityEngine;
+using Observer;
 
 namespace Character.Component {
     public class ClearFogComponent
@@ -25,7 +26,7 @@ namespace Character.Component {
                 tempDelayTime = Time.time + timeDelayCheckClearFog;
             }
 
-            MapManager.Instance.OnCheckClearFog(charPosition, config.OpenFogOfWarRange);
+            EventManager.Instance.TriggerEvent(new EventData.OpenFogOfWarEvent() { Pos = charPosition, Radius = config.OpenFogOfWarRange });
         }
     }
 }

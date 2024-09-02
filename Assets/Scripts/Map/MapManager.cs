@@ -1,15 +1,19 @@
 using Config;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Map {
+
     public class MapManager : MonoBehaviour
     {
         public static MapManager Instance;
 
         public MapGroundManager groundManager;
         public FogManager fogManager;
+        public MapOnGroundManager onGroundManager;
 
         private MapConfig config;
 
@@ -24,16 +28,25 @@ namespace Map {
 
         private void Start()
         {
-            groundManager.CreateTilemap(config.FirstArea.Radius);
-            fogManager.CreateFogMap(config.FirstArea.Radius);
+            var areaRadius = config.GetAreaByIndex(1).Radius;
+            groundManager.CreateTilemap(areaRadius);
+            fogManager.InitFogMap(areaRadius);
+            onGroundManager.SpawnObjectOnGround(1);
         }
 
-        public void OnCheckClearFog(Vector3 basePosition, float clearRadius) {
-            fogManager.OpenFog(basePosition, clearRadius);
+        [Button]
+        private void TestShowTileMap()
+        {
+            foreach (Vector3Int position in groundManager.GroundMap.cellBounds.allPositionsWithin) {
+                if (groundManager.GroundMap.HasTile(position)) {
+                    var tile = groundManager.GroundMap.GetTile(position);
+                    Debug.Log($"Tile at pos {position} name: {tile.name}");
+                }
+            }
         }
 
         public bool IsValidPointOnMap(Vector3 point) {
-            return groundManager.IsPositionOnTileMap(point);
+            return groundManager.IsPositionOnTileMap(point, out _);
         }
     }
 }

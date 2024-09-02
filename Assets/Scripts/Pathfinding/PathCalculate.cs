@@ -1,4 +1,5 @@
-using System.Collections;
+using Config;
+using Map;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,8 +11,10 @@ namespace Pathfinding {
         private Heap<Node> openList;
         private HashSet<Node> closedList;
 
-        public PathCalculate(Tilemap tilemap)
-        {
+        private TileConfig tileConfig;
+
+        public PathCalculate(Tilemap tilemap) {
+            tileConfig = Resources.Load<TileConfig>("TileConfig");
             InitializeNodes(tilemap);
         }
 
@@ -22,7 +25,8 @@ namespace Pathfinding {
             {
                 if (tilemap.HasTile(position))
                 {
-                    bool walkable = tilemap.GetTile(position).name != "Obstacle";
+                    var tileType = tileConfig.GetTileType(tilemap.GetTile(position));
+                    bool walkable = tileType != Tile.TileType.Blocker || tileType != Tile.TileType.None;
                     nodes[position] = new Node(position, walkable);
                 }
             }

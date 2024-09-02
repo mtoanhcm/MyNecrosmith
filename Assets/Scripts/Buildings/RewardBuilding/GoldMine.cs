@@ -10,6 +10,11 @@ namespace Building {
             
         }
 
+        public override void PlayActivation()
+        {
+            
+        }
+
         public override void Spawn()
         {
             

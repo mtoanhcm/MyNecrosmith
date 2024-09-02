@@ -18,12 +18,14 @@ namespace Character.Component {
         private readonly Transform transform;
 
         private UnityAction endBackCallBack;
+        private PathCalculate pathCalculate;
 
         public MovementComponent(Transform transform, Tilemap tileMap, float speed)
         {
             groundTileMap = tileMap;
             this.transform = transform;
             this.speed = speed;
+            pathCalculate = new(tileMap);
         }
 
         private async void RunToTarget()
@@ -54,12 +56,10 @@ namespace Character.Component {
         // Method to initiate pathfinding and set the path for the character
         public void FindPath(Vector3 startWorldPos, Vector3 targetWorldPos, UnityAction onEndPath)
         {
-            var pathfinding = new PathCalculate(groundTileMap);
-
             Vector3Int startPos = groundTileMap.WorldToCell(startWorldPos);
             Vector3Int targetPos = groundTileMap.WorldToCell(targetWorldPos);
 
-            path = pathfinding.FindPath(startPos, targetPos);
+            path = pathCalculate.FindPath(startPos, targetPos);
             currentPathIndex = 0;
 
             if (path == null) {
