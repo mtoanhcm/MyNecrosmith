@@ -24,6 +24,15 @@ namespace Building {
             buildingConfig = Resources.Load<BuildingConfig>("BuildingConfig");
         }
 
+        public void SpawnMainConstruct(BuildingType buildingType) {
+            if (buildingConfig.TryGetMainBuilding(buildingType, out var data) == false) {
+                return;
+            }
+
+            var building = UnityEngine.Object.Instantiate(data.BuildingObj, Vector3.zero, Quaternion.identity);
+            building.Init(0, Vector3.zero, data.BaseData);
+        }
+
         public void SpawnConstruct(int areaIndex)
         {
             var config = mapConfig.GetAreaByIndex(areaIndex);

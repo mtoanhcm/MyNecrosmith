@@ -6,20 +6,31 @@ using UnityEngine;
 namespace Observer {
     public class EventManager : MonoBehaviour
     {
-        public static EventManager Instance;
-
-        private Dictionary<Type, Delegate> eventDictionary = new Dictionary<Type, Delegate>();
-
-        private void Awake()
+        public static EventManager Instance
         {
-            if (Instance == null) { 
-                Instance = this;
+            get {
+                if (instance == null) {
+
+                    instance = FindObjectOfType<EventManager>();
+
+                    if (instance == null)
+                    {
+                        GameObject obj = new ("EventManager");
+                        instance = obj.AddComponent<EventManager>();
+                        DontDestroyOnLoad(obj); // Optional: Persist across scenes
+                    }
+                }
+
+                return instance;
             }
         }
 
+        private static EventManager instance;
+        private Dictionary<Type, Delegate> eventDictionary = new Dictionary<Type, Delegate>();
+
         private void OnDestroy()
         {
-            Instance = null;
+            instance = null;
         }
 
         public void StartListening<T>(Action<T> listener) where T : struct

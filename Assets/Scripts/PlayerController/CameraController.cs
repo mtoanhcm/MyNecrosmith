@@ -1,9 +1,6 @@
 ﻿using Map;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using Observer;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace PlayerController {
     public class CameraController : MonoBehaviour
@@ -19,12 +16,32 @@ namespace PlayerController {
         public float maxZoom = 20f;      // Giới hạn zoom out
 
         private Vector3 dragOrigin;
-        
+        private Bounds fogOfWarBound;
+
+        private bool isFogVisible;
+
+        private void OnEnable()
+        {
+            EventManager.Instance.StartListening<EventData.OpenFogWarSuccessEvent>(CheckExpandBounds);
+        }
 
         private void LateUpdate()
         {
+            if (!isFogVisible) {
+                return;
+            }
+
             PanCamera();
             ZoomCamera();
+        }
+
+        private void CheckExpandBounds(EventData.OpenFogWarSuccessEvent data) {
+            if (!data.IsOpenFogSuccess) {
+                return;
+            }
+
+            fogOfWarBound = fogOfWar.GetClearAreaBounds();
+            isFogVisible = true;
         }
 
         void PanCamera()
@@ -50,12 +67,9 @@ namespace PlayerController {
 
             Vector3 newPosition = Camera.main.transform.position + move;
 
-            // Lấy ranh giới thu hẹp từ FogOfWar
-            Bounds clearBounds = fogOfWar.GetClearAreaBounds();
-
             // Giới hạn di chuyển của camera trong ranh giới thu hẹp
-            newPosition.x = Mathf.Clamp(newPosition.x, clearBounds.min.x, clearBounds.max.x);
-            newPosition.y = Mathf.Clamp(newPosition.y, clearBounds.min.y, clearBounds.max.y);
+            newPosition.x = Mathf.Clamp(newPosition.x, fogOfWarBound.min.x, fogOfWarBound.max.x);
+            newPosition.y = Mathf.Clamp(newPosition.y, fogOfWarBound.min.y, fogOfWarBound.max.y);
 
             Camera.main.transform.position = newPosition;
         }

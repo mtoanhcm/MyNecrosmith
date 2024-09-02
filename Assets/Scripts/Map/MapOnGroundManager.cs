@@ -19,6 +19,7 @@ namespace Map {
         }
 
         public void SpawnObjectOnGround(int areaIndex) {
+            constructSpawner.SpawnMainConstruct(BuildingType.MainBase);
             constructSpawner.SpawnConstruct(areaIndex);
         }
     }

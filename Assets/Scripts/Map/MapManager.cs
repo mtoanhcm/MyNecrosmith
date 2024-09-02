@@ -34,17 +34,6 @@ namespace Map {
             onGroundManager.SpawnObjectOnGround(1);
         }
 
-        [Button]
-        private void TestShowTileMap()
-        {
-            foreach (Vector3Int position in groundManager.GroundMap.cellBounds.allPositionsWithin) {
-                if (groundManager.GroundMap.HasTile(position)) {
-                    var tile = groundManager.GroundMap.GetTile(position);
-                    Debug.Log($"Tile at pos {position} name: {tile.name}");
-                }
-            }
-        }
-
         public bool IsValidPointOnMap(Vector3 point) {
             return groundManager.IsPositionOnTileMap(point, out _);
         }

@@ -13,6 +13,13 @@ namespace Observer {
             public Vector3 Pos;
             public float Radius;
         }
+        
+        /// <summary>
+        /// Report the open fog action success or not
+        /// </summary>
+        public struct OpenFogWarSuccessEvent {
+            public bool IsOpenFogSuccess;
+        }
 
         /// <summary>
         /// Set all ground tile in list by the target Tile Type
