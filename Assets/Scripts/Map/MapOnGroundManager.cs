@@ -11,15 +11,15 @@ namespace Map {
         [SerializeField]
         private Tilemap onGroundTileMap;
 
-        private RewardConstructSpawner rewardConstructSpawner;
+        private ConstructSpawner constructSpawner;
 
         private void Awake()
         {
-            rewardConstructSpawner = new();
+            constructSpawner = new();
         }
 
-        public void SpawnObjectOnGround(int areaIndex, UnityAction<List<Vector3>> onCreateConstructSuccess) {
-            rewardConstructSpawner.SpawnRewardConstruct(areaIndex, onCreateConstructSuccess);
+        public void SpawnObjectOnGround(int areaIndex) {
+            constructSpawner.SpawnConstruct(areaIndex);
         }
     }
 }

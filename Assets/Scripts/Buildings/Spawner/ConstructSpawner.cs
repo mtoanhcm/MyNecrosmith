@@ -1,15 +1,16 @@
-using Config;
-using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using Config;
 using Observer;
+using Cysharp.Threading.Tasks;
+using System.Linq;
 using Tile;
 using System;
+using UnityEngine.Events;
 
 namespace Building {
-    public class RewardConstructSpawner
+    public class ConstructSpawner
     {
         private readonly MapConfig mapConfig;
         private readonly BuildingConfig buildingConfig;
@@ -17,7 +18,7 @@ namespace Building {
         private Dictionary<int, BuildingBase> rewardBuildingDic = new();
         private Dictionary<int, BuildingBase> enemyBuildingDic = new();
 
-        public RewardConstructSpawner()
+        public ConstructSpawner()
         {
             mapConfig = Resources.Load<MapConfig>("MapConfig");
             buildingConfig = Resources.Load<BuildingConfig>("BuildingConfig");
@@ -28,10 +29,10 @@ namespace Building {
             var config = mapConfig.GetAreaByIndex(areaIndex);
 
             SpawnBuildings(config, rewardBuildingDic, config.TotalRewards,
-                config.RewardRadiusGap,buildingConfig.GetRandomRewardBuilding);
+                config.RewardRadiusGap, buildingConfig.GetRandomRewardBuilding);
 
             SpawnBuildings(config, enemyBuildingDic, config.TotalEnemies, config.EnemyBaseRadiusGap,
-                buildingConfig.GetRandomEnemyBuilding, rewardBuildingDic, config.EnemyBaseRadiusGap);
+                buildingConfig.GetRandomEnemyBuilding, rewardBuildingDic, 3f);
         }
 
         private async void SpawnBuildings(MapConfig.AreaData config, Dictionary<int, BuildingBase> buildingDic,
@@ -54,7 +55,7 @@ namespace Building {
                     var buildingConfig = getBuildingFunc();
                     var building = UnityEngine.Object.Instantiate(buildingConfig.BuildingObj, buildingPos, Quaternion.identity);
 
-                    building.Init(index, buildingPos ,buildingConfig.BaseData);
+                    building.Init(index, buildingPos, buildingConfig.BaseData);
 
                     buildingDic.Add(index, building);
                     index++;

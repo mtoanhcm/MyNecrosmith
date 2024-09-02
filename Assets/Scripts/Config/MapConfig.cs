@@ -7,6 +7,8 @@ namespace Config {
     {
         [Serializable]
         public struct AreaData {
+            [Tooltip("Index of Area")]
+            public int Index;
             [Tooltip("Radius of Area")]
             public int Radius;
             [Tooltip("Total rewards in Area")]

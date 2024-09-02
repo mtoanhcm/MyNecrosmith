@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Building {
-    public class GoldMine : BuildingBase
+    public class Fortress : BuildingBase
     {
         public override void Claimp()
         {

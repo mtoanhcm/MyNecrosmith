@@ -2,6 +2,10 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Observer;
+using static Observer.EventData;
+using Config;
+using Tile;
 
 namespace Map {
     public class MapGroundManager : MonoBehaviour
@@ -10,8 +14,18 @@ namespace Map {
 
         [SerializeField]
         private Tilemap groundMap;
-        [SerializeField]
-        private TileBase groundTile; // Assign the tile in the inspector
+
+        private TileConfig tileConfig;
+
+        private void Awake()
+        {
+            tileConfig = Resources.Load<TileConfig>("TileConfig");
+        }
+
+        private void OnEnable()
+        {
+            EventManager.Instance.StartListening<CLaimGroundTile>(SetClaimType);
+        }
 
         public void CreateTilemap(int radius)
         {
@@ -29,21 +43,20 @@ namespace Map {
             return groundMap.HasTile(cellPos);
         }
 
-        public void SetTilesTypeName(List<Vector3> posLst, string nameType) {
-            for (var i = 0; i < posLst.Count; i++) {
-                if (IsPositionOnTileMap(posLst[i], out var cellPos) == false) {
+        private void SetClaimType(CLaimGroundTile data) {
+            for (var i = 0; i < data.ClaimPos.Count; i++) {
+                if (IsPositionOnTileMap(data.ClaimPos[i], out var cellPos) == false) {
                     continue;
                 }
 
-                groundMap.GetTile(cellPos).name = nameType;
+                groundMap.SetTile(cellPos, tileConfig.GetTile(TileType.Blocker));
             }
         }
 
         private void SetTile(int x, int y)
         {
             Vector3Int tilePosition = new(x, y, 0);
-            groundTile.name = EnviromentType.Land.ToString();
-            groundMap.SetTile(tilePosition, groundTile);
+            groundMap.SetTile(tilePosition, tileConfig.GetTile(TileType.GrassGround));
         }
     }
 }

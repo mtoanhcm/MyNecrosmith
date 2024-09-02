@@ -7,12 +7,6 @@ using UnityEngine.Tilemaps;
 
 namespace Map {
 
-    public enum EnviromentType { 
-        Land,
-        Obstacle,
-        None
-    }
-
     public class MapManager : MonoBehaviour
     {
         public static MapManager Instance;
@@ -36,8 +30,8 @@ namespace Map {
         {
             var areaRadius = config.GetAreaByIndex(1).Radius;
             groundManager.CreateTilemap(areaRadius);
-            fogManager.CreateFogMap(areaRadius);
-            onGroundManager.SpawnObjectOnGround(1, UpdateClaimGround);
+            fogManager.InitFogMap(areaRadius);
+            onGroundManager.SpawnObjectOnGround(1);
         }
 
         [Button]
@@ -51,16 +45,8 @@ namespace Map {
             }
         }
 
-        public void OnCheckClearFog(Vector3 basePosition, float clearRadius) {
-            fogManager.OpenFog(basePosition, clearRadius);
-        }
-
         public bool IsValidPointOnMap(Vector3 point) {
             return groundManager.IsPositionOnTileMap(point, out _);
-        }
-
-        private void UpdateClaimGround(List<Vector3> claimedPosList) {
-            groundManager.SetTilesTypeName(claimedPosList, EnviromentType.Obstacle.ToString());
         }
     }
 }
