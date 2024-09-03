@@ -44,8 +44,8 @@ namespace Map {
         private void OpenFog(EventData.OpenFogOfWarEvent data)
         {
             Vector3Int characterPos = fogMap.WorldToCell(data.Pos);
+            List<Vector3Int> openFogCells = new();
             int radiusInCells = Mathf.CeilToInt(data.Radius);
-            bool isClearFogSuccess = false;
 
             for (int x = -radiusInCells; x <= radiusInCells; x++)
             {
@@ -61,13 +61,14 @@ namespace Map {
                     if (offset.x * offset.x + offset.y * offset.y <= data.Radius * data.Radius)
                     {
                         SetFog(tilePosition, false);
-                        isClearFogSuccess = true;
+                        openFogCells.Add(tilePosition);
                     }
                 }
             }
 
-            if (isClearFogSuccess) {
-                EventManager.Instance.TriggerEvent(new EventData.OpenFogWarSuccessEvent() { IsOpenFogSuccess = isClearFogSuccess });
+            bool isOpenFogSuccess = openFogCells.Count > 0;
+            if (isOpenFogSuccess) {
+                EventManager.Instance.TriggerEvent(new EventData.OpenFogWarSuccessEvent() { IsOpenFogSuccess = isOpenFogSuccess, OpenFogCells = openFogCells }); 
             }
         }
 

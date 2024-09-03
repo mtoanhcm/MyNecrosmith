@@ -6,10 +6,11 @@ using UnityEngine.Events;
 namespace Character {
     public abstract class CharacterBase : MonoBehaviour
     {
+        
+
         private void Awake()
         {
             OnAwake();
-            InitComponent();
         }
 
         private void Start()
@@ -34,7 +35,18 @@ namespace Character {
         public virtual void MoveToTarget(Vector3 targetPos, UnityAction onEndPath) { }
         public virtual void Attack(GameObject target) { }
 
-        public abstract void InitComponent();
+        /// <summary>
+        /// Init character component, need to call when first spawn character
+        /// </summary>
+        /// <param name="ID">ID of character</param>
+        public abstract void InitComponent(CharacterID ID, StatData baseStat);
+        /// <summary>
+        /// Add character stats
+        /// </summary>
+        public abstract void UpdateStatData();
+        /// <summary>
+        /// This function runs in update
+        /// </summary>
         public abstract void OnUpdateExcute();
     }
 }

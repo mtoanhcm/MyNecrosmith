@@ -15,7 +15,7 @@ namespace Building {
             
         }
 
-        public override void Spawn()
+        public override void OnAwake()
         {
             
         }

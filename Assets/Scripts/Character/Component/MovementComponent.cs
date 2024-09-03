@@ -28,6 +28,10 @@ namespace Character.Component {
             pathCalculate = new(tileMap);
         }
 
+        public void UpdateSpeed(float newSpeed) { 
+            speed = newSpeed;
+        }
+
         private async void RunToTarget()
         {
             while (path != null && currentPathIndex < path.Count)

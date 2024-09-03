@@ -1,7 +1,6 @@
 using AI;
 using Character.Component;
 using Map;
-using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +8,8 @@ using UnityEngine.Events;
 
 namespace Character
 {
-    public class SimpleMinions : CharacterBase
+    public class SimpleEnemy : CharacterBase
     {
-        private ClearFogComponent clearFogComp;
         private MovementComponent movementComp;
         private StatComponent statComp;
         private BotBrain brain;
@@ -19,17 +17,15 @@ namespace Character
         public override void InitComponent(CharacterID ID, StatData baseStat)
         {
             statComp = new(1, ID, baseStat);
-            clearFogComp = new(statComp.ScanRange ,timeDelay: 0.25f);
             movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);
-
-            if (TryGetComponent(out brain)) {
-                brain.Init(BrainType.Minion, this);
+            if (TryGetComponent(out brain)){
+                brain.Init(BrainType.Enemy, this);
             }
         }
 
         public override void OnUpdateExcute()
         {
-            clearFogComp.CheckClearFog(transform.position);
+            
         }
 
         public override void MoveToTarget(Vector3 targetPos, UnityAction onEndPath)

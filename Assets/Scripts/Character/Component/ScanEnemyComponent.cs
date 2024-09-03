@@ -7,13 +7,17 @@ namespace Character.Component {
     {
         public List<GameObject> Enemies { get; private set; }
 
-        private readonly CharacterScanConfig config;
+        private float scanRadius;
+        private float scanDelayTime;
         private float scanEnemyTime;
+        private int enemyLayer;
 
-        private ScanEnemyComponent()
+        private ScanEnemyComponent(float radius, int enemyLayer, float delay = 1f)
         {
-            config = Resources.Load<CharacterScanConfig>("CharacterScanConfig");
             Enemies = new();
+            scanRadius = radius;
+            scanDelayTime = delay;
+            this.enemyLayer = enemyLayer;
         }
 
         public void ScanEnemy(Vector3 characterPos)
@@ -23,9 +27,9 @@ namespace Character.Component {
                 return;
             }
 
-            scanEnemyTime = Time.time + config.ScanEnemyDelay;
+            scanEnemyTime = Time.time + scanDelayTime;
 
-            var enemiesAround = Physics2D.OverlapCircleAll(characterPos, config.AttackRange, config.EnemyLayer);
+            var enemiesAround = Physics2D.OverlapCircleAll(characterPos, scanRadius, enemyLayer);
 
             Enemies.Clear();
             for (var i = 0; i < enemiesAround.Length; i++)

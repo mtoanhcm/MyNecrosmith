@@ -6,7 +6,6 @@ namespace PlayerController {
     public class CameraController : MonoBehaviour
     {
         [Header("----- Move Camera -----")]
-        public FogManager fogOfWar;
         public float panSpeed = 5f;
         public float edgeBoundary = 10f; // Khoảng cách từ cạnh màn hình để bắt đầu di chuyển
 
@@ -15,10 +14,14 @@ namespace PlayerController {
         public float minZoom = 5f;       // Giới hạn zoom in
         public float maxZoom = 20f;      // Giới hạn zoom out
 
-        private Vector3 dragOrigin;
+        private FogManager fogOfWar;
         private Bounds fogOfWarBound;
-
         private bool isFogVisible;
+
+        private void Start()
+        {
+            fogOfWar = MapManager.Instance.fogManager;
+        }
 
         private void OnEnable()
         {

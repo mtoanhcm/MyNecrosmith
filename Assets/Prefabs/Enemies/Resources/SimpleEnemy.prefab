@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8648086771045807875}
-  - component: {fileID: 5394232609686956282}
+  - component: {fileID: -1604147431523442166}
   - component: {fileID: 5840517810421648780}
   m_Layer: 10
-  m_Name: Minion
+  m_Name: SimpleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 5492595230835425380}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5394232609686956282
+--- !u!114 &-1604147431523442166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 671245328159184613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f25217eb768384980538a400980f2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 57cab4853def76c4e86dc00b3f3742ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5840517810421648780
@@ -131,8 +131,8 @@ SpriteRenderer:
   m_SortingLayerID: 66226741
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.23254535, g: 0.30210721, b: 0.7207546, a: 1}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Color: {r: 0.79622644, g: 0.14872903, b: 0.14872903, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

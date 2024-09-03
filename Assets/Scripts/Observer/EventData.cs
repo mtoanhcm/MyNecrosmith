@@ -1,6 +1,7 @@
 using Tile;
 using System.Collections.Generic;
 using UnityEngine;
+using Building;
 
 namespace Observer {
     public class EventData
@@ -19,6 +20,7 @@ namespace Observer {
         /// </summary>
         public struct OpenFogWarSuccessEvent {
             public bool IsOpenFogSuccess;
+            public List<Vector3Int> OpenFogCells;
         }
 
         /// <summary>
@@ -27,6 +29,15 @@ namespace Observer {
         public struct CLaimGroundTile {
             public List<Vector3> ClaimPos;
             public TileType TileType;
+        }
+
+        /// <summary>
+        /// Building visible when open fog
+        /// </summary>
+        public struct BuildingVisibleOnMap {
+            public int Index;
+            public BuildingType BuildingType;
+            public bool IsVisible;
         }
     }
 }

@@ -10,9 +10,7 @@ namespace Manager {
     {
         public static MinionManager Instance;
 
-        public CharacterScanConfig Config { get; private set; }
-
-        private SimpleMinions minion;
+        private CharacterConfig config;
 
         private void Awake()
         {
@@ -20,21 +18,20 @@ namespace Manager {
                 Instance = this;
             }
 
-            Config = Resources.Load<CharacterScanConfig>("CharacterScanConfig");
+            config = Resources.Load<CharacterConfig>("CharacterConfig");
         }
 
         [Button]
         private void CreateMinion() {
-            var minionPrefab = Resources.Load<GameObject>("Minion");
+            var minionPrefab = Resources.Load<SimpleMinions>("Minion");
             if (minionPrefab == null) {
                 return;
             }
 
-            if (minionPrefab.TryGetComponent(out minion) == false) {
-                return;
-            }
+            var minion = Instantiate(minionPrefab, Vector3.zero, Quaternion.identity);
 
-            Instantiate(minionPrefab, Vector3.zero, Quaternion.identity);
+            config.TryGetCharacterData(CharacterID.SimpleMinion, out var statData);
+            minion.InitComponent(CharacterID.SimpleMinion, statData);
         }
     }
 }

@@ -35,8 +35,14 @@ namespace AI {
             behaviorTree.RestartWhenComplete = true;
             //behaviorTree.ResetValuesOnRestart = true;
 
-            behaviorTree.EnableBehavior();
-            behaviorTree.Start();
+            if (behaviorTree.ExternalBehavior != null)
+            {
+                behaviorTree.EnableBehavior();
+                behaviorTree.Start();
+            }
+            else {
+                Debug.LogError($"Cannot get {brainType} brain");
+            }
         }
     }
 }

@@ -6,14 +6,13 @@ using Observer;
 namespace Character.Component {
     public class ClearFogComponent
     {
-        private readonly CharacterScanConfig config;
         private float timeDelayCheckClearFog;
-
+        private float clearRadius;
         private float tempDelayTime;
 
-        public ClearFogComponent(float timeDelay = 0) {
-            config = Resources.Load<CharacterScanConfig>("CharacterScanConfig");
+        public ClearFogComponent(float radius, float timeDelay = 0) {
             timeDelayCheckClearFog = timeDelay;
+            clearRadius = radius;
         }
 
         public void CheckClearFog(Vector3 charPosition)
@@ -26,7 +25,7 @@ namespace Character.Component {
                 tempDelayTime = Time.time + timeDelayCheckClearFog;
             }
 
-            EventManager.Instance.TriggerEvent(new EventData.OpenFogOfWarEvent() { Pos = charPosition, Radius = config.OpenFogOfWarRange });
+            EventManager.Instance.TriggerEvent(new EventData.OpenFogOfWarEvent() { Pos = charPosition, Radius = clearRadius });
         }
     }
 }
