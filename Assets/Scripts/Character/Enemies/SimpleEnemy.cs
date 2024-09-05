@@ -11,10 +11,9 @@ namespace Character
     public class SimpleEnemy : CharacterBase
     {
         private MovementComponent movementComp;
-        private StatComponent statComp;
         private BotBrain brain;
 
-        public override void InitComponent(CharacterID ID, StatData baseStat)
+        public override void Spawn(CharacterID ID, StatData baseStat)
         {
             statComp = new(1, ID, baseStat);
             movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);
@@ -34,6 +33,11 @@ namespace Character
         }
 
         public override void UpdateStatData()
+        {
+            
+        }
+
+        public override void Death()
         {
             
         }

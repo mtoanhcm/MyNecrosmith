@@ -19,7 +19,7 @@ namespace Building {
         {
             var enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity, transform);
             config.TryGetCharacterData(CharacterID.SimpleEnemy, out var data);
-            enemy.InitComponent(CharacterID.SimpleEnemy, data);
+            enemy.Spawn(CharacterID.SimpleEnemy, data);
         }
 
         public override void OnAwake()
@@ -32,6 +32,11 @@ namespace Building {
         public override void TakeDamage(float damage)
         {
             
+        }
+
+        public override void Explose()
+        {
+           
         }
     }
 }

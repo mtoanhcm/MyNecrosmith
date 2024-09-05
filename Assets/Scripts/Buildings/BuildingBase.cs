@@ -29,8 +29,24 @@ namespace Building {
         }
 
         public abstract void OnAwake();
+        /// <summary>
+        /// Call this action to claim this building
+        /// </summary>
         public abstract void Claimp();
-        public abstract void TakeDamage(float damage);
+        /// <summary>
+        /// Apply damage to building
+        /// </summary>
+        /// <param name="damage">Damage amount</param>
+        public virtual void TakeDamage(float damage) {
+            data.HP -= Mathf.Max(0, damage);
+            if (data.HP <= 0) {
+                Explose();
+            }
+        }
+        /// <summary>
+        /// Call to destroy this building
+        /// </summary>
+        public abstract void Explose();
         /// <summary>
         /// Building activity in <paramref name="delayActiveTime"/> period
         /// </summary>

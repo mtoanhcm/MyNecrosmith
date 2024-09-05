@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3513538935992813696}
   - component: {fileID: 5019008417968930845}
   - component: {fileID: 7018213379947064447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gold_Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -31,7 +31,7 @@ namespace Manager {
             var minion = Instantiate(minionPrefab, Vector3.zero, Quaternion.identity);
 
             config.TryGetCharacterData(CharacterID.SimpleMinion, out var statData);
-            minion.InitComponent(CharacterID.SimpleMinion, statData);
+            minion.Spawn(CharacterID.SimpleMinion, statData);
         }
     }
 }

@@ -1,18 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Config;
+using Cysharp.Threading.Tasks;
+using System;
 
 namespace Character.Component {
     public class ScanEnemyComponent
     {
-        public List<GameObject> Enemies { get; private set; }
+        public List<CharacterBase> Enemies { get; private set; }
 
         private float scanRadius;
         private float scanDelayTime;
         private float scanEnemyTime;
         private int enemyLayer;
 
-        private ScanEnemyComponent(float radius, int enemyLayer, float delay = 1f)
+        private bool canScan;
+
+        public ScanEnemyComponent(float radius, int enemyLayer, float delay = 1f)
         {
             Enemies = new();
             scanRadius = radius;
@@ -20,21 +24,31 @@ namespace Character.Component {
             this.enemyLayer = enemyLayer;
         }
 
-        public void ScanEnemy(Vector3 characterPos)
+        public void StartScan(Transform characterTrans) { 
+            canScan = true;
+            ScanProgress(characterTrans);
+        }
+
+        public void StopScan() {
+            canScan = false;
+        }
+
+        private async void ScanProgress(Transform characterScan)
         {
-            if (scanEnemyTime > Time.time)
-            {
-                return;
-            }
+            int delayTime = (int)(scanDelayTime * 1000);
+            while (canScan) {
 
-            scanEnemyTime = Time.time + scanDelayTime;
+                await UniTask.Delay(delayTime);
+                var enemiesAround = Physics2D.OverlapCircleAll(characterScan.position, scanRadius, enemyLayer);
 
-            var enemiesAround = Physics2D.OverlapCircleAll(characterPos, scanRadius, enemyLayer);
-
-            Enemies.Clear();
-            for (var i = 0; i < enemiesAround.Length; i++)
-            {
-                Enemies.Add(enemiesAround[i].gameObject);
+                Enemies.Clear();
+                for (var i = 0; i < enemiesAround.Length; i++)
+                {
+                    if (enemiesAround[i].gameObject.TryGetComponent<CharacterBase>(out var enemy))
+                    {
+                        Enemies.Add(enemy);
+                    }
+                }
             }
         }
     }

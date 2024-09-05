@@ -6,7 +6,7 @@ namespace Building {
     public struct BuildingData
     {
         public BuildingType Type;
-        public int HP;
+        public float HP;
         public int Level;
     }
 

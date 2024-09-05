@@ -24,5 +24,10 @@ namespace Building {
         {
             
         }
+
+        public override void Explose()
+        {
+
+        }
     }
 }

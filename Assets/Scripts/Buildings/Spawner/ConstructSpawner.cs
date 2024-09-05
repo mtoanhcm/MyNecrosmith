@@ -22,8 +22,6 @@ namespace Building {
         {
             mapConfig = Resources.Load<MapConfig>("MapConfig");
             buildingConfig = Resources.Load<BuildingConfig>("BuildingConfig");
-
-            EventManager.Instance.StartListening<EventData.BuildingVisibleOnMap>(OnBuildingVisibleOnMap);
         }
 
         public void SpawnMainConstruct(BuildingType buildingType) {
@@ -44,18 +42,6 @@ namespace Building {
 
             SpawnBuildings(config, enemyBuildingDic, config.TotalEnemies, config.EnemyBaseRadiusGap,
                 buildingConfig.GetRandomEnemyBuilding, rewardBuildingDic, 3f);
-        }
-
-        private void OnBuildingVisibleOnMap(EventData.BuildingVisibleOnMap data) {
-            var buildingDic = data.BuildingType == BuildingType.EnemyBase ?
-                enemyBuildingDic : rewardBuildingDic;
-
-            foreach (var building in buildingDic) {
-                if (building.Key == data.Index) {
-                    building.Value.ChangeVisibleOnMap(data.IsVisible);
-                    break;
-                }
-            }
         }
 
         private async void SpawnBuildings(MapConfig.AreaData config, Dictionary<int, BuildingBase> buildingDic,

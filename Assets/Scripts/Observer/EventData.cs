@@ -30,14 +30,5 @@ namespace Observer {
             public List<Vector3> ClaimPos;
             public TileType TileType;
         }
-
-        /// <summary>
-        /// Building visible when open fog
-        /// </summary>
-        public struct BuildingVisibleOnMap {
-            public int Index;
-            public BuildingType BuildingType;
-            public bool IsVisible;
-        }
     }
 }
