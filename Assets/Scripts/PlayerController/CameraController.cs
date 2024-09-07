@@ -43,7 +43,7 @@ namespace PlayerController {
                 return;
             }
 
-            fogOfWarBound = fogOfWar.GetClearAreaBounds();
+            fogOfWar.GetClearAreaBounds(ref fogOfWarBound);
             isFogVisible = true;
         }
 

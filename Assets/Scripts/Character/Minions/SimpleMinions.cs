@@ -17,8 +17,10 @@ namespace Character
         private ScanBuildingComponent scanBuildingComp;
         private BotBrain brain;
 
-        public override void Spawn(CharacterID ID, StatData baseStat)
+        public override void Spawn(CharacterID ID, Vector3 spawnPos, StatData baseStat)
         {
+            transform.position = spawnPos;
+
             statComp = new(1, ID, baseStat);
             clearFogComp = new(statComp.ScanRange ,timeDelay: 0.25f);
             movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);

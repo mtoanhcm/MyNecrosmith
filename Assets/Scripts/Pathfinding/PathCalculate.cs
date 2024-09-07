@@ -12,35 +12,42 @@ namespace Pathfinding {
         private HashSet<Node> closedList;
 
         private TileConfig tileConfig;
+        private Tilemap tilemap;
 
-        public PathCalculate(Tilemap tilemap) {
+        public PathCalculate(Tilemap tilemap)
+        {
+            this.tilemap = tilemap;
             tileConfig = Resources.Load<TileConfig>("TileConfig");
-            InitializeNodes(tilemap);
+            nodes = new Dictionary<Vector3Int, Node>();
         }
 
-        private void InitializeNodes(Tilemap tilemap)
+        private Node GetNode(Vector3Int position)
         {
-            nodes = new Dictionary<Vector3Int, Node>();
-            foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin)
+            if (!nodes.ContainsKey(position))
             {
                 if (tilemap.HasTile(position))
                 {
                     var tileType = tileConfig.GetTileType(tilemap.GetTile(position));
-                    bool walkable = tileType != Tile.TileType.Blocker || tileType != Tile.TileType.None;
+                    bool walkable = tileType != Tile.TileType.Blocker && tileType != Tile.TileType.None;
                     nodes[position] = new Node(position, walkable);
                 }
+                else
+                {
+                    return null; // No tile at this position
+                }
             }
+            return nodes[position];
         }
 
         public List<Vector3Int> FindPath(Vector3Int startPos, Vector3Int targetPos)
         {
-            if (!nodes.ContainsKey(startPos) || !nodes.ContainsKey(targetPos))
-            {
-                return null; // If the start or target position is not on the tilemap, return null
-            }
+            Node startNode = GetNode(startPos);
+            Node targetNode = GetNode(targetPos);
 
-            Node startNode = nodes[startPos];
-            Node targetNode = nodes[targetPos];
+            if (startNode == null || targetNode == null)
+            {
+                return null; // If the start or target position is not valid
+            }
 
             openList = new Heap<Node>(nodes.Count);
             closedList = new HashSet<Node>();
@@ -58,7 +65,7 @@ namespace Pathfinding {
 
                 foreach (Node neighbor in GetNeighbors(currentNode))
                 {
-                    if (!neighbor.walkable || closedList.Contains(neighbor)) continue;
+                    if (neighbor == null || !neighbor.walkable || closedList.Contains(neighbor)) continue;
 
                     int newCostToNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor);
                     if (newCostToNeighbor < neighbor.gCost || !openList.Contains(neighbor))
@@ -92,10 +99,10 @@ namespace Pathfinding {
         };
             foreach (Vector3Int direction in directions)
             {
-                Vector3Int neighborPos = node.position + direction;
-                if (nodes.ContainsKey(neighborPos))
+                Node neighbor = GetNode(node.position + direction);
+                if (neighbor != null)
                 {
-                    neighbors.Add(nodes[neighborPos]);
+                    neighbors.Add(neighbor);
                 }
             }
             return neighbors;

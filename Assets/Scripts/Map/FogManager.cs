@@ -18,6 +18,7 @@ namespace Map {
         private TileBase fogTile;
 
         private TileConfig tileConfig;
+        private List<Vector3Int> openFogLst;
 
         private void Awake()
         {
@@ -39,12 +40,14 @@ namespace Map {
                     SetFog(tilePosition);
                 }
             }
+
+            openFogLst = new();
         }
 
         private void OpenFog(EventData.OpenFogOfWarEvent data)
         {
             Vector3Int characterPos = fogMap.WorldToCell(data.Pos);
-            List<Vector3Int> openFogCells = new();
+            openFogLst.Clear();
             int radiusInCells = Mathf.CeilToInt(data.Radius);
 
             for (int x = -radiusInCells; x <= radiusInCells; x++)
@@ -61,14 +64,15 @@ namespace Map {
                     if (offset.x * offset.x + offset.y * offset.y <= data.Radius * data.Radius)
                     {
                         SetFog(tilePosition, false);
-                        openFogCells.Add(tilePosition);
+                        openFogLst.Add(tilePosition);
                     }
                 }
             }
 
-            bool isOpenFogSuccess = openFogCells.Count > 0;
-            if (isOpenFogSuccess) {
-                EventManager.Instance.TriggerEvent(new EventData.OpenFogWarSuccessEvent() { IsOpenFogSuccess = isOpenFogSuccess, OpenFogCells = openFogCells }); 
+            bool isOpenFogSuccess = openFogLst.Count > 0;
+            if (isOpenFogSuccess)
+            {
+                EventManager.Instance.TriggerEvent(new EventData.OpenFogWarSuccessEvent() { IsOpenFogSuccess = isOpenFogSuccess, OpenFogCells = openFogLst.ToArray() });
             }
         }
 
@@ -78,9 +82,8 @@ namespace Map {
             return tile == null;
         }
 
-        public Bounds GetClearAreaBounds()
+        public void GetClearAreaBounds(ref Bounds bounds)
         {
-            Bounds bounds = new Bounds();
             foreach (var position in fogMap.cellBounds.allPositionsWithin)
             {
                 if (fogMap.GetTile(position) == null)
@@ -91,7 +94,7 @@ namespace Map {
             }
 
             if (bounds.min == Vector3.zero && bounds.max == Vector3.zero) {
-                return bounds;
+                return;
             }
 
             float tileWidth = fogMap.cellSize.x;
@@ -102,8 +105,6 @@ namespace Map {
             Vector3 max = bounds.max - new Vector3(tileWidth * 5, tileHeight * 5, 0);
 
             bounds.SetMinMax(min, max);
-
-            return bounds;
         }
 
         private void SetFog(Vector3Int pos, bool isVisibleFog = true)

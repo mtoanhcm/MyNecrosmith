@@ -16,19 +16,27 @@ namespace Building {
         protected bool isVisibleOnMap;
 
         private float tempDelayAcTiveTime;
+        private bool isInit;
 
         public void Init(int id, Vector3 pos ,BuildingData initData) { 
             data = initData;
             ID = id;
             postition = pos;
+
+            OnSubInit();
+
+            isInit = true;
         }
 
         public void ChangeVisibleOnMap(bool isVisible)
         {
             isVisibleOnMap = isVisible;
         }
-
-        public abstract void OnAwake();
+        /// <summary>
+        /// Call for addition Init
+        /// </summary>
+        public virtual void OnSubInit() { }
+        public virtual void OnAwake() { }
         /// <summary>
         /// Call this action to claim this building
         /// </summary>
@@ -51,29 +59,48 @@ namespace Building {
         /// Building activity in <paramref name="delayActiveTime"/> period
         /// </summary>
         public abstract void PlayActivation();
+        /// <summary>
+        /// Condition for the activition of the building
+        /// </summary>
+        /// <returns>True: can active, False: Nope</returns>
+        public virtual bool CanActive() {
+            return false;
+        }
 
         private void Awake()
         {
+            isInit = false;
+
             OnAwake();
         }
 
-        private void Update()
-        {
-            //Building only works when visible on map
-            if (!isVisibleOnMap) {
-                return;
-            }
+        protected IEnumerator ProgressActivation() {
+            while (true) {
 
-            if (delayActiveTime <= 0) {
-                return;
-            }
+                if (CanActive()) {
+                    PlayActivation();
+                }
 
-            if (tempDelayAcTiveTime > Time.time) {
-                return;
+                yield return new WaitForSeconds(delayActiveTime);
             }
-
-            tempDelayAcTiveTime = Time.deltaTime + delayActiveTime;
-            PlayActivation();
         }
+
+        //private void Update()
+        //{
+        //    if (!isInit) {
+        //        return;
+        //    }
+
+        //    if (!CanActive()) {
+        //        return;
+        //    }
+
+        //    if (tempDelayAcTiveTime > Time.time) {
+        //        return;
+        //    }
+
+        //    tempDelayAcTiveTime = Time.time + delayActiveTime;
+        //    PlayActivation();
+        //}
     }
 }

@@ -8,7 +8,7 @@ namespace Character.Component
 {
     public class ScanBuildingComponent
     {
-        public List<Building.BuildingBase> Buildings { get; private set; }
+        public List<BuildingBase> Buildings { get; private set; }
 
         private float scanRadius;
         private float scanDelayTime;

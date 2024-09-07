@@ -17,16 +17,19 @@ MonoBehaviour:
       Type: 0
       HP: 100
       Level: 1
+      TimeToStartActivation: 0
     BuildingObj: {fileID: 5019008417968930845, guid: 4e65265849c8af64a99e476a956e6561, type: 3}
   enemyBuilding:
   - BaseData:
       Type: 1
       HP: 100
       Level: 1
+      TimeToStartActivation: 5
     BuildingObj: {fileID: 1456847369859862461, guid: 1e34a5243c9636041bf3980f40554646, type: 3}
   mainBuilding:
   - BaseData:
       Type: 2
       HP: 200
       Level: 1
+      TimeToStartActivation: 0
     BuildingObj: {fileID: 4712228214737143753, guid: 1a944eec5ee308f48ab445fbb23fb93a, type: 3}

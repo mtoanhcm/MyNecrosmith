@@ -8,6 +8,7 @@ namespace Building {
         public BuildingType Type;
         public float HP;
         public int Level;
+        public float TimeToStartActivation;
     }
 
     public enum BuildingType { 

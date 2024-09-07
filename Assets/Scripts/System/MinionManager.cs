@@ -1,5 +1,6 @@
 using Character;
 using Config;
+using Pool;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,16 +23,16 @@ namespace Manager {
         }
 
         [Button]
-        private void CreateMinion() {
+        public void CreateMinion() {
             var minionPrefab = Resources.Load<SimpleMinions>("Minion");
             if (minionPrefab == null) {
                 return;
             }
 
-            var minion = Instantiate(minionPrefab, Vector3.zero, Quaternion.identity);
+            var minion = CharacterPoolManager.Instance.SpawnMinion();
 
             config.TryGetCharacterData(CharacterID.SimpleMinion, out var statData);
-            minion.Spawn(CharacterID.SimpleMinion, statData);
+            minion.Spawn(CharacterID.SimpleMinion, Vector3.zero, statData);
         }
     }
 }

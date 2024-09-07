@@ -58,7 +58,7 @@ namespace Character {
         /// Init character component, need to call when first spawn character
         /// </summary>
         /// <param name="ID">ID of character</param>
-        public abstract void Spawn(CharacterID ID, StatData baseStat);
+        public abstract void Spawn(CharacterID ID, Vector3 spawnPos, StatData baseStat);
         /// <summary>
         /// Add character stats
         /// </summary>

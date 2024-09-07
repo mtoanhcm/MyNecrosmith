@@ -1,3 +1,4 @@
+using Observer;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,9 @@ namespace Building {
             
         }
 
-        public override void OnAwake()
+        public override void OnSubInit()
         {
-            
+            EventManager.Instance.TriggerEvent(new EventData.OpenFogOfWarEvent() { Pos = transform.position, Radius = 10 });
         }
 
         public override void TakeDamage(float damage)

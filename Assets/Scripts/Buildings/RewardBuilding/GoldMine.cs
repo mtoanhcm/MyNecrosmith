@@ -29,5 +29,10 @@ namespace Building {
         {
 
         }
+
+        public override bool CanActive()
+        {
+            return false;
+        }
     }
 }

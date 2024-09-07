@@ -22,6 +22,11 @@ namespace Pathfinding {
 
         public void Add(T item)
         {
+            if (currentItemCount == items.Length)
+            {
+                ResizeArray();
+            }
+
             item.HeapIndex = currentItemCount;
             items[currentItemCount] = item;
             SortUp(item);
@@ -41,6 +46,14 @@ namespace Pathfinding {
         public int Count
         {
             get { return currentItemCount; }
+        }
+
+        private void ResizeArray()
+        {
+            int newSize = items.Length * 2; // Double the array size
+            T[] newItems = new T[newSize];
+            Array.Copy(items, newItems, items.Length);
+            items = newItems;
         }
 
         public void UpdateItem(T item)

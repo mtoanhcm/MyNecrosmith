@@ -13,11 +13,14 @@ namespace Character
         private MovementComponent movementComp;
         private BotBrain brain;
 
-        public override void Spawn(CharacterID ID, StatData baseStat)
+        public override void Spawn(CharacterID ID, Vector3 spawnPos, StatData baseStat)
         {
+            transform.position = spawnPos;
+
             statComp = new(1, ID, baseStat);
             movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);
-            if (TryGetComponent(out brain)){
+            if (TryGetComponent(out brain))
+            {
                 brain.Init(BrainType.Enemy, this);
             }
         }
