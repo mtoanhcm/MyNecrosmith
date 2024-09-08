@@ -12,6 +12,36 @@ namespace AI {
     {
         [Header("----- Input -----")]
         [SerializeField]
-        private SharedGameObject targetEnemy;
+        private SharedCharacterBase targetEnemy;
+
+        private BotBrain brain;
+        private TaskStatus status;
+
+        public override void OnAwake()
+        {
+            brain = GetComponent<BotBrain>();
+        }
+
+        public override void OnStart()
+        {
+            status = TaskStatus.Running;
+            StartCoroutine(ProgressAttack());
+        }
+
+        public override TaskStatus OnUpdate()
+        {
+            return status;
+        }
+
+        private IEnumerator ProgressAttack() {
+            var enemyCharacter = targetEnemy.Value;
+            var delayAttack = new WaitForSeconds(brain.Character.Stat.DelayAttackInSecond);
+            while (enemyCharacter.IsAlive) {
+                enemyCharacter.TakeDamage(brain.Character.Stat.Damage);
+                yield return delayAttack;
+            }
+
+            status = TaskStatus.Failure;
+        }
     }
 }

@@ -20,7 +20,6 @@ namespace Observer {
         /// </summary>
         public struct OpenFogWarSuccessEvent {
             public bool IsOpenFogSuccess;
-            public Vector3Int[] OpenFogCells;
         }
 
         /// <summary>

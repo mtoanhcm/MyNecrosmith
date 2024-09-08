@@ -1,8 +1,7 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Ultility;
 
 namespace AI {
 
@@ -12,6 +11,25 @@ namespace AI {
     {
         [Header("----- Output -----")]
         [SerializeField]
-        private SharedGameObject targetEnemy;
+        private SharedCharacterBase targetEnemy;
+
+        private BotBrain brain;
+
+        public override void OnAwake()
+        {
+            brain = GetComponent<BotBrain>();
+        }
+
+        public override TaskStatus OnUpdate()
+        {
+            var enemies = brain.Character.GetEnemyAround();
+            if (enemies.Length == 0) { 
+                return TaskStatus.Failure;
+            }
+
+            targetEnemy.Value = enemies.FindNearest(transform);
+
+            return TaskStatus.Success;
+        }
     }
 }

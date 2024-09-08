@@ -9,6 +9,9 @@ namespace Character {
     {
         protected StatComponent statComp;
 
+        public bool IsAlive => statComp.CurHP > 0;
+        public StatComponent Stat => statComp;
+
         private void Awake()
         {
             OnAwake();
@@ -39,7 +42,7 @@ namespace Character {
         /// </summary>
         /// <param name="damage">Damage amount</param>
         public virtual void TakeDamage(float damage) {
-            statComp.CurHP -= Mathf.Max(0, damage);
+            statComp.DecreaseHP(damage);
             if (statComp.CurHP <= 0)
             {
                 Death();
@@ -50,9 +53,10 @@ namespace Character {
         /// </summary>
         /// <param name="amount">Hp restore amount</param>
         public virtual void RestoreHP(float amount){
-            statComp.CurHP += Mathf.Max(0, amount);
-            statComp.CurHP = Mathf.Min(statComp.CurHP, statComp.MaxHP);
+            statComp.IncreaseHP(amount);
         }
+
+        public virtual CharacterBase[] GetEnemyAround() { return new CharacterBase[0]; }
 
         /// <summary>
         /// Init character component, need to call when first spawn character

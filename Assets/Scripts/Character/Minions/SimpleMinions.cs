@@ -35,6 +35,11 @@ namespace Character
             scanBuildingComp.StartScan(transform);
         }
 
+        public override CharacterBase[] GetEnemyAround()
+        {
+            return scanEnemyComp.Enemies.ToArray();
+        }
+
         public override void OnUpdateExcute()
         {
             clearFogComp.CheckClearFog(transform.position);

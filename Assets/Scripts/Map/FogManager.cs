@@ -6,11 +6,14 @@ using UnityEngine.Tilemaps;
 using Observer;
 using Config;
 using Tile;
+using Unity.VisualScripting;
+using UnityEngine.Profiling;
 
 namespace Map {
     public class FogManager : MonoBehaviour
     {
         public bool IsInit { get; private set; }
+        public Tilemap FogMap => fogMap;
 
         [SerializeField]
         private Tilemap fogMap;
@@ -18,7 +21,8 @@ namespace Map {
         private TileBase fogTile;
 
         private TileConfig tileConfig;
-        private List<Vector3Int> openFogLst;
+
+        private const float DELAY_CHECK_VISIBLE_BOUND = 1f;
 
         private void Awake()
         {
@@ -40,14 +44,12 @@ namespace Map {
                     SetFog(tilePosition);
                 }
             }
-
-            openFogLst = new();
         }
 
         private void OpenFog(EventData.OpenFogOfWarEvent data)
         {
             Vector3Int characterPos = fogMap.WorldToCell(data.Pos);
-            openFogLst.Clear();
+            bool isOpenNewFogCell = false;
             int radiusInCells = Mathf.CeilToInt(data.Radius);
 
             for (int x = -radiusInCells; x <= radiusInCells; x++)
@@ -64,15 +66,14 @@ namespace Map {
                     if (offset.x * offset.x + offset.y * offset.y <= data.Radius * data.Radius)
                     {
                         SetFog(tilePosition, false);
-                        openFogLst.Add(tilePosition);
+                        isOpenNewFogCell = true;
                     }
                 }
             }
 
-            bool isOpenFogSuccess = openFogLst.Count > 0;
-            if (isOpenFogSuccess)
+            if (isOpenNewFogCell)
             {
-                EventManager.Instance.TriggerEvent(new EventData.OpenFogWarSuccessEvent() { IsOpenFogSuccess = isOpenFogSuccess, OpenFogCells = openFogLst.ToArray() });
+                EventManager.Instance.TriggerEvent(new EventData.OpenFogWarSuccessEvent() { IsOpenFogSuccess = true });
             }
         }
 
@@ -80,31 +81,6 @@ namespace Map {
             Vector3Int cellPosition = fogMap.WorldToCell(position);
             TileBase tile = fogMap.GetTile(cellPosition);
             return tile == null;
-        }
-
-        public void GetClearAreaBounds(ref Bounds bounds)
-        {
-            foreach (var position in fogMap.cellBounds.allPositionsWithin)
-            {
-                if (fogMap.GetTile(position) == null)
-                {
-                    Vector3 worldPosition = fogMap.CellToWorld(position);
-                    bounds.Encapsulate(worldPosition);
-                }
-            }
-
-            if (bounds.min == Vector3.zero && bounds.max == Vector3.zero) {
-                return;
-            }
-
-            float tileWidth = fogMap.cellSize.x;
-            float tileHeight = fogMap.cellSize.y;
-
-            // Thu hẹp bounds 5 ô từ mỗi cạnh
-            Vector3 min = bounds.min + new Vector3(tileWidth * 5, tileHeight * 5, 0);
-            Vector3 max = bounds.max - new Vector3(tileWidth * 5, tileHeight * 5, 0);
-
-            bounds.SetMinMax(min, max);
         }
 
         private void SetFog(Vector3Int pos, bool isVisibleFog = true)

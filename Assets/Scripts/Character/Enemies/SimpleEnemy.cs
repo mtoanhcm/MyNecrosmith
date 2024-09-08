@@ -11,6 +11,7 @@ namespace Character
     public class SimpleEnemy : CharacterBase
     {
         private MovementComponent movementComp;
+        private ScanEnemyComponent scanEnemyComp;
         private BotBrain brain;
 
         public override void Spawn(CharacterID ID, Vector3 spawnPos, StatData baseStat)
@@ -18,6 +19,7 @@ namespace Character
             transform.position = spawnPos;
 
             statComp = new(1, ID, baseStat);
+            scanEnemyComp = new(statComp.ScanRange, 1 << LayerMask.GetMask("Minion"), 1f);
             movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);
             if (TryGetComponent(out brain))
             {
@@ -28,6 +30,11 @@ namespace Character
         public override void OnUpdateExcute()
         {
             
+        }
+
+        public override CharacterBase[] GetEnemyAround()
+        {
+            return scanEnemyComp.Enemies.ToArray();
         }
 
         public override void MoveToTarget(Vector3 targetPos, UnityAction onEndPath)

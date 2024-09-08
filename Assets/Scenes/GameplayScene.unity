@@ -419,6 +419,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 15
   edgeBoundary: 10
+  cameraMovementThreshold: 1
+  panSmoothing: 0
+  boundsPadding: 1
   zoomSpeed: 10
   minZoom: 7
   maxZoom: 15

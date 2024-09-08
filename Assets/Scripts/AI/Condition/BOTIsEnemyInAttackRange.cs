@@ -1,7 +1,5 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AI {
@@ -12,6 +10,16 @@ namespace AI {
     {
         [Header("----- Input -----")]
         [SerializeField]
-        private SharedGameObject targetEnemy;
+        private SharedCharacterBase targetEnemy;
+
+        public override TaskStatus OnUpdate()
+        {
+            if (targetEnemy == null) { 
+                return TaskStatus.Failure;
+            }
+
+            return (targetEnemy.Value.transform.position - transform.position).sqrMagnitude > 1.5f * 1.5f ?
+                TaskStatus.Failure : TaskStatus.Success;
+        }
     }
 }
