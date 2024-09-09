@@ -37,7 +37,6 @@ namespace Character.Component {
         {
             int delayTime = (int)(scanDelayTime * 1000);
             while (canScan) {
-
                 await UniTask.Delay(delayTime);
                 var enemiesAround = Physics2D.OverlapCircleAll(characterScan.position, scanRadius, enemyLayer);
 

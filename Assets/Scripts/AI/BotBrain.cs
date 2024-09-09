@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace AI {
 
-    public enum BrainType { 
-        Minion,
-        Enemy
+    public enum BrainType {
+        MinionBehaviour,
+        EnemyBehaviour
     }
 
     public class BotBrain : MonoBehaviour

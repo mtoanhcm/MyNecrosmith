@@ -45,7 +45,7 @@ namespace Character.Component {
         }
 
         public void DecreaseHP(float amount) { 
-            CurHP -= Mathf.Min(0, amount);
+            CurHP -= Mathf.Max(0, amount);
         }
     }
 }

@@ -24,11 +24,11 @@ namespace Character
             statComp = new(1, ID, baseStat);
             clearFogComp = new(statComp.ScanRange ,timeDelay: 0.25f);
             movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);
-            scanEnemyComp = new(statComp.ScanRange, 1 << LayerMask.GetMask("Enemy"), 0.5f);
-            scanBuildingComp = new(statComp.ScanRange, 1 << LayerMask.GetMask("Building"), 1f);
+            scanEnemyComp = new(statComp.ScanRange, LayerMask.GetMask("Enemy"), 0.5f);
+            scanBuildingComp = new(statComp.ScanRange, LayerMask.GetMask("Building"), 1f);
 
             if (TryGetComponent(out brain)) {
-                brain.Init(BrainType.Minion, this);
+                brain.Init(BrainType.MinionBehaviour, this);
             }
 
             scanEnemyComp.StartScan(transform);

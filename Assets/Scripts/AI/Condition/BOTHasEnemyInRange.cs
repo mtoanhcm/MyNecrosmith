@@ -23,7 +23,8 @@ namespace AI {
         public override TaskStatus OnUpdate()
         {
             var enemies = brain.Character.GetEnemyAround();
-            if (enemies.Length == 0) { 
+            if (enemies.Length == 0) {
+                targetEnemy.Value = null;
                 return TaskStatus.Failure;
             }
 

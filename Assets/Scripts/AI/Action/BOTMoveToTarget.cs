@@ -2,6 +2,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using Ultility;
 using UnityEngine;
 
 namespace AI {
@@ -28,20 +29,29 @@ namespace AI {
         {
             status = TaskStatus.Running;
 
-            if (targetObject.Value == null)
-            {
-                brain.Character.MoveToTarget(targetPosition.Value, OnCompleteMove);
+            Vector3 targetMovePos = targetObject.Value == null ?
+                targetPosition.Value :
+                targetObject.Value.transform.position.GetRandomPositionAround(1f);
+
+            brain.Character.MoveToTarget(targetMovePos, OnCompleteMove);
+
+            if (targetObject.Value != null) {
+                StartCoroutine(DelayChaseTargetObject());
             }
         }
 
         public override TaskStatus OnUpdate()
         {
-            if (targetObject.Value != null)
-            {
-                brain.Character.MoveToTarget(targetObject.Value.transform.position, OnCompleteMove);
-            }
-
             return status;
+        }
+
+        private IEnumerator DelayChaseTargetObject() {
+            var waitForSecond = new WaitForSeconds(2f);
+            while (targetObject.Value != null) {
+                yield return waitForSecond;
+
+                brain.Character.MoveToTarget(targetObject.Value.transform.position.GetRandomPositionAround(1f), OnCompleteMove);
+            }
         }
 
         private void OnCompleteMove() {

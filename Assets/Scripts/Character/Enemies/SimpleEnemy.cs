@@ -19,12 +19,14 @@ namespace Character
             transform.position = spawnPos;
 
             statComp = new(1, ID, baseStat);
-            scanEnemyComp = new(statComp.ScanRange, 1 << LayerMask.GetMask("Minion"), 1f);
+            scanEnemyComp = new(statComp.ScanRange, LayerMask.GetMask("Minion"), 1f);
             movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);
             if (TryGetComponent(out brain))
             {
-                brain.Init(BrainType.Enemy, this);
+                brain.Init(BrainType.EnemyBehaviour, this);
             }
+
+            scanEnemyComp.StartScan(transform);
         }
 
         public override void OnUpdateExcute()
