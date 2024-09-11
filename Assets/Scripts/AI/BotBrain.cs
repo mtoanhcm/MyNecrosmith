@@ -24,11 +24,6 @@ namespace AI {
 
         private void InitBehaviourTree(BrainType brainType)
         {
-            if (behaviorTree != null)
-            {
-                return;
-            }
-
             behaviorTree = gameObject.AddComponent<BehaviorTree>();
             behaviorTree.StartWhenEnabled = false;
             behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>(brainType.ToString());

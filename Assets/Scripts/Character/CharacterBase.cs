@@ -37,6 +37,9 @@ namespace Character {
         protected virtual void Destroy() { }
 
         public virtual void MoveToTarget(Vector3 targetPos, UnityAction onEndPath) { }
+
+        public virtual void StopMoving() { }
+
         /// <summary>
         /// Deal damage to character
         /// </summary>
@@ -71,6 +74,6 @@ namespace Character {
         /// This function runs in update
         /// </summary>
         public abstract void OnUpdateExcute();
-        public abstract void Death();
+        public virtual void Death(){}
     }
 }

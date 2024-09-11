@@ -3,6 +3,7 @@ using BehaviorDesigner.Runtime.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using Ultility;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AI {
@@ -45,11 +46,15 @@ namespace AI {
             return status;
         }
 
+        public override void OnEnd()
+        {
+            brain.Character.StopMoving();
+        }
+
         private IEnumerator DelayChaseTargetObject() {
             var waitForSecond = new WaitForSeconds(2f);
             while (targetObject.Value != null) {
                 yield return waitForSecond;
-
                 brain.Character.MoveToTarget(targetObject.Value.transform.position.GetRandomPositionAround(1f), OnCompleteMove);
             }
         }

@@ -1,9 +1,6 @@
 using Character;
 using Config;
-using Cysharp.Threading.Tasks.Triggers;
 using Pool;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Building {
@@ -28,7 +25,7 @@ namespace Building {
 
         public override void OnSubInit()
         {
-            delayActiveTime = 2f;
+            delayActiveTime = 5;
             //enemyPrefab = Resources.Load<CharacterBase>("SimpleEnemy");
             config = Resources.Load<CharacterConfig>("CharacterConfig");
             config.TryGetCharacterData(CharacterID.SimpleEnemy, out characterSpawnData);

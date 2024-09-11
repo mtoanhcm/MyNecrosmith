@@ -13,6 +13,8 @@ namespace AI {
         [SerializeField]
         private SharedCharacterBase targetEnemy;
 
+        [SerializeField] private SharedGameObject targetObject;
+
         private BotBrain brain;
 
         public override void OnAwake()
@@ -28,7 +30,10 @@ namespace AI {
                 return TaskStatus.Failure;
             }
 
-            targetEnemy.Value = enemies.FindNearest(transform);
+            var enemy = enemies.FindNearest(transform);
+            targetEnemy.Value = enemy;
+            targetObject.Value = enemy != null ? enemy.gameObject : null;
+            
 
             return TaskStatus.Success;
         }

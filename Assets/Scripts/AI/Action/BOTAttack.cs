@@ -25,6 +25,7 @@ namespace AI {
         public override void OnStart()
         {
             status = TaskStatus.Running;
+            
             StartCoroutine(ProgressAttack());
         }
 

@@ -3,6 +3,7 @@ using Character.Component;
 using Map;
 using System.Collections;
 using System.Collections.Generic;
+using Pool;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -44,6 +45,11 @@ namespace Character
             movementComp.FindPath(transform.position, targetPos, onEndPath);
         }
 
+        public override void StopMoving()
+        {
+            movementComp.StopMoving();
+        }
+
         public override void UpdateStatData()
         {
             
@@ -51,7 +57,7 @@ namespace Character
 
         public override void Death()
         {
-            
+            CharacterPoolManager.Instance.ReturnEnemyToPool(this);
         }
     }
 }

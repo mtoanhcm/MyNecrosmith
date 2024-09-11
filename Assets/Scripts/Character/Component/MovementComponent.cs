@@ -46,7 +46,7 @@ namespace Character.Component {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
                 // Check if the character has reached the target position
-                if ((targetPosition - transform.position).magnitude < 0.1f * 0.1f)
+                if ((targetPosition - transform.position).magnitude < 0.2f * 0.2f)
                 {
                     currentPathIndex++;
                 }
@@ -60,8 +60,8 @@ namespace Character.Component {
         // Method to initiate pathfinding and set the path for the character
         public void FindPath(Vector3 startWorldPos, Vector3 targetWorldPos, UnityAction onEndPath)
         {
-            Vector3Int startPos = groundTileMap.WorldToCell(startWorldPos);
-            Vector3Int targetPos = groundTileMap.WorldToCell(targetWorldPos);
+            var startPos = groundTileMap.WorldToCell(startWorldPos);
+            var targetPos = groundTileMap.WorldToCell(targetWorldPos);
 
             path = pathCalculate.FindPath(startPos, targetPos);
             currentPathIndex = 0;
@@ -73,6 +73,11 @@ namespace Character.Component {
             endBackCallBack = onEndPath;
 
             RunToTarget();
+        }
+
+        public void StopMoving()
+        {
+            path = null;
         }
     }
 }

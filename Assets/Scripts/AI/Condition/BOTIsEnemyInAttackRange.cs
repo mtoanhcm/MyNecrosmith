@@ -12,13 +12,20 @@ namespace AI {
         [SerializeField]
         private SharedCharacterBase targetEnemy;
 
+        private BotBrain brain;
+
+        public override void OnAwake()
+        {
+            brain = GetComponent<BotBrain>();
+        }
+
         public override TaskStatus OnUpdate()
         {
             if (targetEnemy == null) { 
                 return TaskStatus.Failure;
             }
 
-            return (targetEnemy.Value.transform.position - transform.position).sqrMagnitude > 1.5f * 1.5f ?
+            return (targetEnemy.Value.transform.position - transform.position).sqrMagnitude > brain.Character.Stat.AttackRange * brain.Character.Stat.AttackRange ?
                 TaskStatus.Failure : TaskStatus.Success;
         }
     }

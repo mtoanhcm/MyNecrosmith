@@ -77,10 +77,12 @@ namespace Building {
         protected IEnumerator ProgressActivation() {
             while (true) {
 
-                if (CanActive()) {
-                    PlayActivation();
+                if (CanActive() == false) {
+                    yield return new WaitForSeconds(1f);
+                    continue;
                 }
-
+                
+                PlayActivation();
                 yield return new WaitForSeconds(delayActiveTime);
             }
         }
