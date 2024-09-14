@@ -1,24 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Config;
 using Cysharp.Threading.Tasks;
-using System;
 
 namespace Character.Component {
     public class ScanEnemyComponent
     {
         public List<CharacterBase> Enemies { get; private set; }
 
-        private float scanRadius;
-        private float scanDelayTime;
-        private float scanEnemyTime;
-        private int enemyLayer;
+        private readonly float scanRadius;
+        private readonly float scanDelayTime;
+        private readonly float scanEnemyTime;
+        private readonly int enemyLayer;
 
         private bool canScan;
 
         public ScanEnemyComponent(float radius, int enemyLayer, float delay = 1f)
         {
-            Enemies = new();
+            Enemies = new List<CharacterBase>();
             scanRadius = radius;
             scanDelayTime = delay;
             this.enemyLayer = enemyLayer;
@@ -33,21 +31,29 @@ namespace Character.Component {
             canScan = false;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private async void ScanProgress(Transform characterScan)
         {
-            int delayTime = (int)(scanDelayTime * 1000);
+            var delayTime = (int)(scanDelayTime * 1000);
+            var enemiesAround = new Collider2D[100];
             while (canScan) {
-                await UniTask.Delay(delayTime);
-                var enemiesAround = Physics2D.OverlapCircleAll(characterScan.position, scanRadius, enemyLayer);
+                _ = Physics2D.OverlapCircleNonAlloc(characterScan.position, scanRadius, enemiesAround, enemyLayer);
 
                 Enemies.Clear();
                 for (var i = 0; i < enemiesAround.Length; i++)
                 {
-                    if (enemiesAround[i].gameObject.TryGetComponent<CharacterBase>(out var enemy))
+                    if (enemiesAround[i] == null)
+                    {
+                        continue;
+                    }
+                    
+                    if (enemiesAround[i].gameObject.TryGetComponent<CharacterBase>(out var enemy) && enemy.IsAlive)
                     {
                         Enemies.Add(enemy);
                     }
                 }
+                
+                await UniTask.Delay(delayTime);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Map;
+﻿using System;
+using Map;
 using Observer;
 using System.Collections;
 using UnityEngine;
@@ -29,9 +30,12 @@ namespace PlayerController {
         private Vector3 worldMin, worldMax;
 
         private bool boundsNeedRecalculation = true;
+        private bool canMoveCamera;
+        private Camera mainCamera;
 
         private void Start()
         {
+            mainCamera = Camera.main;
             fogOfWar = MapManager.Instance.fogManager;
 
             // Initialize the tile bounds to extreme values
@@ -39,7 +43,7 @@ namespace PlayerController {
             maxNullTile = new Vector3Int(int.MinValue, int.MinValue, 0);
 
             lastCameraPosition = transform.position;
-
+            
             CalculateNullTileBounds();  // Calculate initial bounds
 
             EventManager.Instance.StartListening<EventData.OpenFogWarSuccessEvent>(OnFogCleared);
@@ -64,6 +68,11 @@ namespace PlayerController {
 
         private void LateUpdate()
         {
+            if (!canMoveCamera)
+            {
+                return;
+            }
+            
             if (boundsNeedRecalculation)
             {
                 CalculateNullTileBounds();
@@ -72,6 +81,11 @@ namespace PlayerController {
 
             PanCameraWithEdgeMovement();
             ZoomCamera();
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            canMoveCamera = hasFocus;
         }
 
         void PanCameraWithEdgeMovement()
@@ -103,35 +117,35 @@ namespace PlayerController {
             if (move != Vector3.zero)
             {
                 // Smooth the camera movement
-                Vector3 targetPosition = Camera.main.transform.position + move;
-                Vector3 smoothedPosition = Vector3.SmoothDamp(Camera.main.transform.position, targetPosition, ref currentVelocity, panSmoothing);
+                Vector3 targetPosition = mainCamera.transform.position + move;
+                Vector3 smoothedPosition = Vector3.SmoothDamp(mainCamera.transform.position, targetPosition, ref currentVelocity, panSmoothing);
 
                 // Clamp the smoothed camera position within the tightened null tile bounds
                 smoothedPosition.x = Mathf.Clamp(smoothedPosition.x, worldMin.x + boundsPadding, worldMax.x - boundsPadding);
                 smoothedPosition.y = Mathf.Clamp(smoothedPosition.y, worldMin.y + boundsPadding, worldMax.y - boundsPadding);
 
                 // Apply the position to the camera
-                Camera.main.transform.position = smoothedPosition;
+                mainCamera.transform.position = smoothedPosition;
             }
         }
 
         void ZoomCamera()
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            float newSize = Camera.main.orthographicSize - scroll * zoomSpeed;
+            float newSize = mainCamera.orthographicSize - scroll * zoomSpeed;
 
             // Clamp zoom in/out
             newSize = Mathf.Clamp(newSize, minZoom, maxZoom);
 
-            Camera.main.orthographicSize = newSize;
+            mainCamera.orthographicSize = newSize;
         }
 
         // Use a coroutine to spread the work of recalculating tile bounds over several frames
         IEnumerator CalculateNullTileBoundsCoroutine()
         {
             // Get the frustum corners in world space (for 2D, we need just 4 corners)
-            Vector3 bottomLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
-            Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.farClipPlane));
+            Vector3 bottomLeft = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
+            Vector3 topRight = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.farClipPlane));
 
             // Convert world space positions to tilemap cells
             Vector3Int minCellPos = fogOfWar.FogMap.WorldToCell(bottomLeft);
@@ -172,11 +186,10 @@ namespace PlayerController {
         }
 
         // Start the coroutine to calculate tile bounds
-        void CalculateNullTileBounds()
+        private void CalculateNullTileBounds()
         {
             StopAllCoroutines();  // Ensure only one coroutine is running at a time
             StartCoroutine(CalculateNullTileBoundsCoroutine());
         }
     }
-
 }

@@ -1,4 +1,5 @@
 using Config;
+using Pathfinding;
 using UnityEngine;
 
 namespace Map {

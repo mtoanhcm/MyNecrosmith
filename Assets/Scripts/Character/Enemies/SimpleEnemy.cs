@@ -1,8 +1,5 @@
 using AI;
 using Character.Component;
-using Map;
-using System.Collections;
-using System.Collections.Generic;
 using Pool;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,13 +12,13 @@ namespace Character
         private ScanEnemyComponent scanEnemyComp;
         private BotBrain brain;
 
-        public override void Spawn(CharacterID ID, Vector3 spawnPos, StatData baseStat)
+        public override void Spawn(CharacterID id, Vector3 spawnPos, StatData baseStat)
         {
             transform.position = spawnPos;
 
-            statComp = new(1, ID, baseStat);
-            scanEnemyComp = new(statComp.ScanRange, LayerMask.GetMask("Minion"), 1f);
-            movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);
+            statComp = new StatComponent(1, id, baseStat);
+            scanEnemyComp = new ScanEnemyComponent(statComp.ScanRange, LayerMask.GetMask("Minion"), 1f);
+            movementComp = new MovementComponent(transform, statComp.Speed);
             if (TryGetComponent(out brain))
             {
                 brain.Init(BrainType.EnemyBehaviour, this);
@@ -57,6 +54,8 @@ namespace Character
 
         public override void Death()
         {
+            scanEnemyComp.StopScan();
+            movementComp.StopMoving();
             CharacterPoolManager.Instance.ReturnEnemyToPool(this);
         }
     }

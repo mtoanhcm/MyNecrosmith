@@ -1,7 +1,5 @@
 using BehaviorDesigner.Runtime;
 using Character;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AI {
@@ -17,6 +15,7 @@ namespace AI {
 
         private BehaviorTree behaviorTree;
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public void Init(BrainType brainType, CharacterBase myChar) {
             Character = myChar;
             InitBehaviourTree(brainType);
@@ -24,19 +23,18 @@ namespace AI {
 
         private void InitBehaviourTree(BrainType brainType)
         {
-            behaviorTree = gameObject.AddComponent<BehaviorTree>();
-            behaviorTree.StartWhenEnabled = false;
-            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>(brainType.ToString());
-            behaviorTree.RestartWhenComplete = true;
-            //behaviorTree.ResetValuesOnRestart = true;
+            if (behaviorTree == null || behaviorTree.ExternalBehavior == null)
+            {
+                behaviorTree = gameObject.AddComponent<BehaviorTree>();
+                behaviorTree.StartWhenEnabled = false;
+                behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>(brainType.ToString());
+                behaviorTree.RestartWhenComplete = true;
+            }
 
             if (behaviorTree.ExternalBehavior != null)
             {
                 behaviorTree.EnableBehavior();
                 behaviorTree.Start();
-            }
-            else {
-                Debug.LogError($"Cannot get {brainType} brain");
             }
         }
     }

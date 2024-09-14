@@ -20,7 +20,7 @@ namespace AI {
 
         private TaskStatus status;
         private BotBrain brain;
-
+        
         public override void OnAwake()
         {
             brain = GetComponent<BotBrain>();
@@ -49,6 +49,7 @@ namespace AI {
         public override void OnEnd()
         {
             brain.Character.StopMoving();
+            StopAllCoroutines();
         }
 
         private IEnumerator DelayChaseTargetObject() {
@@ -60,7 +61,7 @@ namespace AI {
         }
 
         private void OnCompleteMove() {
-            status = TaskStatus.Success;
+            status = TaskStatus.Failure;
         }
     }
 }

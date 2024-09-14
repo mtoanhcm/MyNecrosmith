@@ -63,6 +63,11 @@ namespace Pathfinding {
 
         public bool Contains(T item)
         {
+            if (item.HeapIndex > items.Length - 1)
+            {
+                return false;
+            }
+            
             return Equals(items[item.HeapIndex], item);
         }
 

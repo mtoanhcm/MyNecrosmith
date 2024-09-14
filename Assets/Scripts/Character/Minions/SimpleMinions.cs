@@ -1,9 +1,5 @@
 using AI;
 using Character.Component;
-using Map;
-using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using Pool;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,15 +14,15 @@ namespace Character
         private ScanBuildingComponent scanBuildingComp;
         private BotBrain brain;
 
-        public override void Spawn(CharacterID ID, Vector3 spawnPos, StatData baseStat)
+        public override void Spawn(CharacterID id, Vector3 spawnPos, StatData baseStat)
         {
             transform.position = spawnPos;
 
-            statComp = new(1, ID, baseStat);
-            clearFogComp = new(statComp.ScanRange ,timeDelay: 0.25f);
-            movementComp = new(transform, MapManager.Instance.groundManager.GroundMap, statComp.Speed);
-            scanEnemyComp = new(statComp.ScanRange, LayerMask.GetMask("Enemy"), 0.5f);
-            scanBuildingComp = new(statComp.ScanRange, LayerMask.GetMask("Building"), 1f);
+            statComp = new StatComponent(1, id, baseStat);
+            clearFogComp = new ClearFogComponent(statComp.ScanRange ,timeDelay: 0.25f);
+            movementComp = new MovementComponent(transform, statComp.Speed);
+            scanEnemyComp = new ScanEnemyComponent(statComp.ScanRange, LayerMask.GetMask("Enemy"), 0.5f);
+            scanBuildingComp = new ScanBuildingComponent(statComp.ScanRange, LayerMask.GetMask("Building"));
 
             if (TryGetComponent(out brain)) {
                 brain.Init(BrainType.MinionBehaviour, this);
@@ -41,6 +37,7 @@ namespace Character
             return scanEnemyComp.Enemies.ToArray();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public override void OnUpdateExcute()
         {
             clearFogComp.CheckClearFog(transform.position);
@@ -63,6 +60,9 @@ namespace Character
 
         public override void Death()
         {
+            movementComp.StopMoving();
+            scanBuildingComp.StopScan();
+            scanBuildingComp.StopScan();
             CharacterPoolManager.Instance.ReturnMinionToPool(this);
         }
     }

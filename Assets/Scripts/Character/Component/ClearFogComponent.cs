@@ -6,8 +6,8 @@ using Observer;
 namespace Character.Component {
     public class ClearFogComponent
     {
-        private float timeDelayCheckClearFog;
-        private float clearRadius;
+        private readonly float timeDelayCheckClearFog;
+        private readonly float clearRadius;
         private float tempDelayTime;
 
         public ClearFogComponent(float radius, float timeDelay = 0) {

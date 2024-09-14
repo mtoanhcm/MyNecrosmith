@@ -1,83 +1,66 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
-using Map;
-using Pathfinding;
-using Sirenix.Serialization;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Tilemaps;
 
 namespace Character.Component {
     public class MovementComponent
     {
         private float speed;
-
-        private List<Vector3Int> path;
-        private int currentPathIndex;
-        private readonly Tilemap groundTileMap;
         private readonly Transform transform;
 
         private UnityAction endBackCallBack;
-        private PathCalculate pathCalculate;
-
-        public MovementComponent(Transform transform, Tilemap tileMap, float speed)
+        private CancellationTokenSource moveCancellationTokenSource;
+        
+        public MovementComponent(Transform transform, float speed)
         {
-            groundTileMap = tileMap;
             this.transform = transform;
             this.speed = speed;
-            pathCalculate = new(tileMap);
         }
 
         public void UpdateSpeed(float newSpeed) { 
             speed = newSpeed;
         }
 
-        private async void RunToTarget()
-        {
-            while (path != null && currentPathIndex < path.Count)
-            {
-                if (transform == null) {
-                    break;
-                }
 
-                // Use GetCellCenterWorld to get the center position of the current path tile in world coordinates
-                Vector3 targetPosition = groundTileMap.GetCellCenterWorld(path[currentPathIndex]);
+        private async void RunToTarget(Vector3 targetPos, CancellationToken cancelToken)
+        {
+            const float distanceThreshold = 0.2f * 0.2f;
+            var isFinisMove = false;
+            
+            while (!cancelToken.IsCancellationRequested)
+            {
                 // Move the character towards the target position
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
                 // Check if the character has reached the target position
-                if ((targetPosition - transform.position).magnitude < 0.2f * 0.2f)
+                if ((targetPos - transform.position).magnitude < distanceThreshold)
                 {
-                    currentPathIndex++;
+                    isFinisMove = true;
+                    break;
                 }
 
                 await UniTask.DelayFrame(1);
             }
 
-            endBackCallBack?.Invoke();
+            if (isFinisMove)
+            {
+                endBackCallBack?.Invoke();   
+            }
         }
 
         // Method to initiate pathfinding and set the path for the character
         public void FindPath(Vector3 startWorldPos, Vector3 targetWorldPos, UnityAction onEndPath)
         {
-            var startPos = groundTileMap.WorldToCell(startWorldPos);
-            var targetPos = groundTileMap.WorldToCell(targetWorldPos);
-
-            path = pathCalculate.FindPath(startPos, targetPos);
-            currentPathIndex = 0;
-
-            if (path == null) {
-                return;
-            }
-
+            StopMoving();
+            moveCancellationTokenSource = new CancellationTokenSource();
             endBackCallBack = onEndPath;
-
-            RunToTarget();
+            RunToTarget(targetWorldPos, moveCancellationTokenSource.Token);
         }
 
         public void StopMoving()
         {
-            path = null;
+            moveCancellationTokenSource?.Cancel();
         }
     }
 }
