@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Building {
 
@@ -9,6 +10,7 @@ namespace Building {
         public float HP;
         public int Level;
         public float TimeToStartActivation;
+        public float TimeToDelayActivation;
     }
 
     public enum BuildingType { 

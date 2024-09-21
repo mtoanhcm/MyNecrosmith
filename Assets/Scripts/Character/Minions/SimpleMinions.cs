@@ -30,6 +30,8 @@ namespace Character
 
             scanEnemyComp.StartScan(transform);
             scanBuildingComp.StartScan(transform);
+            
+            base.Spawn(id, spawnPos, baseStat);
         }
 
         public override CharacterBase[] GetEnemyAround()

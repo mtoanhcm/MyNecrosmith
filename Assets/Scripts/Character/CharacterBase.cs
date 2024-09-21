@@ -12,6 +12,11 @@ namespace Character {
         public bool IsAlive => statComp.CurHP > 0;
         public StatComponent Stat => statComp;
 
+        [HideInInspector]
+        public UnityEvent<float> OnHPChange;
+        [HideInInspector]
+        public UnityEvent OnSpawnSuccess;
+        
         private void Awake()
         {
             OnAwake();
@@ -50,6 +55,10 @@ namespace Character {
             {
                 Death();
             }
+            else
+            {
+                OnHPChange?.Invoke(statComp.CurHP / statComp.MaxHP);
+            }
         }
         /// <summary>
         /// Restore character HP
@@ -65,7 +74,11 @@ namespace Character {
         /// Init character component, need to call when first spawn character
         /// </summary>
         /// <param name="ID">ID of character</param>
-        public abstract void Spawn(CharacterID ID, Vector3 spawnPos, StatData baseStat);
+        public virtual void Spawn(CharacterID ID, Vector3 spawnPos, StatData baseStat)
+        {
+            OnSpawnSuccess?.Invoke();
+        }
+
         /// <summary>
         /// Add character stats
         /// </summary>

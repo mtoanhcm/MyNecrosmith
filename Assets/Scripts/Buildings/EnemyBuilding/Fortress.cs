@@ -25,12 +25,12 @@ namespace Building {
 
         public override void OnSubInit()
         {
-            delayActiveTime = 5;
             //enemyPrefab = Resources.Load<CharacterBase>("SimpleEnemy");
             config = Resources.Load<CharacterConfig>("CharacterConfig");
             config.TryGetCharacterData(CharacterID.SimpleEnemy, out characterSpawnData);
 
             delayStartActiveTime = Time.time + data.TimeToStartActivation;
+            delayActiveTime = data.TimeToDelayActivation;
 
             StartCoroutine(ProgressActivation());
         }

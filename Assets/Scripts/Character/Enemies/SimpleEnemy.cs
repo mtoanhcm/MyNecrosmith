@@ -25,6 +25,8 @@ namespace Character
             }
 
             scanEnemyComp.StartScan(transform);
+            
+            base.Spawn(id, spawnPos, baseStat);
         }
 
         public override void OnUpdateExcute()

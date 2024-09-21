@@ -131,9 +131,7 @@ namespace Pathfinding {
         {
             items[itemA.HeapIndex] = itemB;
             items[itemB.HeapIndex] = itemA;
-            int itemAIndex = itemA.HeapIndex;
-            itemA.HeapIndex = itemB.HeapIndex;
-            itemB.HeapIndex = itemAIndex;
+            (itemA.HeapIndex, itemB.HeapIndex) = (itemB.HeapIndex, itemA.HeapIndex);
         }
     }
 }

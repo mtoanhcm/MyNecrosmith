@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Areas:
   - Index: 0
-    Radius: 20
+    Radius: 50
     TotalRewards: 0
     RewardQuality: 0
     TotalEnemies: 0
@@ -22,10 +22,10 @@ MonoBehaviour:
     RewardRadiusGap: 0
     EnemyBaseRadiusGap: 0
   - Index: 0
-    Radius: 40
+    Radius: 200
     TotalRewards: 0
     RewardQuality: 0
-    TotalEnemies: 1
+    TotalEnemies: 20
     TotalBosses: 0
     RewardRadiusGap: 20
     EnemyBaseRadiusGap: 15
