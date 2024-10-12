@@ -22,18 +22,19 @@ namespace Ultility {
         public static T FindNearest<T>(this IEnumerable<T> objects, Transform referencePoint) where T : MonoBehaviour
         {
             T nearestObject = null;
-            float minDistanceSqr = Mathf.Infinity;
+            var minDistanceSqr = Mathf.Infinity;
 
             // Cache the position of the reference point (e.g., the player's position)
-            Vector3 referencePosition = referencePoint.position;
+            var referencePosition = referencePoint.position;
 
-            foreach (T obj in objects)
+            foreach (var obj in objects)
             {
                 // Avoid null references, make sure the object exists
-                if (obj == null) continue;
+                if (ReferenceEquals(obj,null) || !obj.isActiveAndEnabled) continue;
 
+                var tempPos = obj.transform.position;
                 // Calculate the squared distance between the reference point and the current object
-                float distanceSqr = (referencePosition - obj.transform.position).sqrMagnitude;
+                var distanceSqr = (referencePosition - tempPos).sqrMagnitude;
 
                 // Update the nearest object if a closer one is found
                 if (distanceSqr < minDistanceSqr)

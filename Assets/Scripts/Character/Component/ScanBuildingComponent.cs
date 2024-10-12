@@ -23,10 +23,10 @@ namespace Character.Component
             this.buildingLayer = buildingLayer;
         }
 
-        public void StartScan(Transform characterTrans)
+        public void StartScan(Transform characterTrans, BuildingType buildingType = BuildingType.None)
         {
             canScan = true;
-            ScanProgress(characterTrans);
+            ScanProgress(characterTrans, buildingType);
         }
 
         public void StopScan()
@@ -35,7 +35,7 @@ namespace Character.Component
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        private async void ScanProgress(Transform characterScan)
+        private async void ScanProgress(Transform characterScan, BuildingType buildingType)
         {
             var delayTime = (int)(scanDelayTime * 1000);
             var buildingAround = new Collider2D[8];
@@ -51,7 +51,12 @@ namespace Character.Component
                         continue;
                     }
                     
-                    if (buildingAround[i].gameObject.TryGetComponent<BuildingBase>(out var building))
+                    if (!buildingAround[i].gameObject.TryGetComponent<BuildingBase>(out var building))
+                    {
+                        continue;
+                    }
+                    
+                    if (buildingType == BuildingType.None || buildingType == building.Data.Type)
                     {
                         Buildings.Add(building);
                     }

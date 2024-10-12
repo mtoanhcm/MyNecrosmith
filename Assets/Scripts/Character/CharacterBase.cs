@@ -1,6 +1,7 @@
 using Character.Component;
 using System.Collections;
 using System.Collections.Generic;
+using Building;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -69,6 +70,7 @@ namespace Character {
         }
 
         public virtual CharacterBase[] GetEnemyAround() { return new CharacterBase[0]; }
+        public virtual BuildingBase[] GetBuildingAround() { return new BuildingBase[0]; }
 
         /// <summary>
         /// Init character component, need to call when first spawn character

@@ -7,7 +7,10 @@ namespace Building {
     public abstract class BuildingBase : MonoBehaviour
     {
         public Vector3 Position => postition;
+        public BuildingData Data => data;
 
+        public bool IsAlive => data.HP > 0;
+        
         protected int ID;
         protected Vector3 postition;
         protected BuildingData data;
@@ -51,10 +54,15 @@ namespace Building {
                 Explose();
             }
         }
+
         /// <summary>
         /// Call to destroy this building
         /// </summary>
-        public abstract void Explose();
+        public virtual void Explose()
+        {
+            gameObject.SetActive(false);
+        }
+
         /// <summary>
         /// Building activity in <paramref name="delayActiveTime"/> period
         /// </summary>

@@ -14,6 +14,7 @@ namespace Building {
     }
 
     public enum BuildingType { 
+        None,
         Treasure,
         EnemyBase,
         MainBase

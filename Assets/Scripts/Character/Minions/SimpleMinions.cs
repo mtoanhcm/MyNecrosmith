@@ -1,4 +1,5 @@
 using AI;
+using Building;
 using Character.Component;
 using Pool;
 using UnityEngine;
@@ -29,7 +30,7 @@ namespace Character
             }
 
             scanEnemyComp.StartScan(transform);
-            scanBuildingComp.StartScan(transform);
+            scanBuildingComp.StartScan(transform, BuildingType.EnemyBase);
             
             base.Spawn(id, spawnPos, baseStat);
         }
@@ -37,6 +38,11 @@ namespace Character
         public override CharacterBase[] GetEnemyAround()
         {
             return scanEnemyComp.Enemies.ToArray();
+        }
+
+        public override BuildingBase[] GetBuildingAround()
+        {
+            return scanBuildingComp.Buildings.ToArray();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
