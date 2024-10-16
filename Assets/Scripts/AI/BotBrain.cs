@@ -1,7 +1,4 @@
 using BehaviorDesigner.Runtime;
-using Character;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AI {
@@ -13,12 +10,10 @@ namespace AI {
 
     public class BotBrain : MonoBehaviour
     {
-        public CharacterBase Character { get; private set; }
 
         private BehaviorTree behaviorTree;
 
-        public void Init(BrainType brainType, CharacterBase myChar) {
-            Character = myChar;
+        public void Init(BrainType brainType) {
             InitBehaviourTree(brainType);
         }
 

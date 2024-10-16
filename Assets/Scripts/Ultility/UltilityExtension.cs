@@ -5,6 +5,11 @@ using UnityEngine;
 namespace Ultility {
     public static class UltilityExtension
     {
+        public static bool IsNulOrEmpty(this string input)
+        {
+            return string.IsNullOrEmpty(input);
+        }
+        
         public static bool IsZero(this Vector2 vector) { 
             return vector.x == 0 && vector.y == 0;
         }
