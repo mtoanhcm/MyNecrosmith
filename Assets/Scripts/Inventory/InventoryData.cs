@@ -10,6 +10,7 @@ namespace Character
         public static int MIN_COLUMN = 2;
         public static int MAX_ROW = 9;
         public static int MAX_COLUMN = 9;
+        public static int CELL_SIZE = 75;
     }
 
     public class InventoryItem
