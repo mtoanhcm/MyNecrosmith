@@ -11,6 +11,8 @@ namespace UI
     {
         [SerializeField]
         private UIInventoryPanel inventoryPanel;
+        [SerializeField]
+        private UIItemDragAndDrop itemDragAndDrop;
 
         private void OnEnable()
         {

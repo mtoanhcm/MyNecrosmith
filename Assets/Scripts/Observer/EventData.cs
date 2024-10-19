@@ -1,5 +1,6 @@
 using Character;
 using Equipment;
+using UI;
 using UnityEngine;
 
 namespace Observer {
@@ -15,8 +16,7 @@ namespace Observer {
 
         public struct DraggingEquipment
         {
-            public EquipmentData Data;
-            public RectTransform ItemDragRec;
+            public UIItemDragAndDrop DragItem;
         }
     }
 }

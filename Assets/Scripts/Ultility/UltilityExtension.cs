@@ -5,6 +5,21 @@ using UnityEngine;
 namespace Ultility {
     public static class UltilityExtension
     {
+        public static void SetActive(this Component component, bool active)
+        {
+            if (component == null)
+            {
+                return;
+            }
+
+            if (component.gameObject.activeSelf == active)
+            {
+                return;
+            }
+            
+            component.gameObject.SetActive(active);
+        }
+        
         public static bool IsWorldOverlap(this RectTransform originRect, RectTransform targetRect)
         {
             var currentRect1 = GetWorldRect(originRect);
