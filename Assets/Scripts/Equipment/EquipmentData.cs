@@ -8,5 +8,6 @@ namespace Equipment
     {
         public int Width;
         public int Height;
+        public Sprite IconSpr;
     }   
 }

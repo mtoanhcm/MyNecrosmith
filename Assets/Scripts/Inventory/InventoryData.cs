@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Character
@@ -21,10 +22,20 @@ namespace Character
         public int PosX;
         public int PosY;
 
+        public HashSet<(int, int)> PosClaimInventory;
+        
         public InventoryItem(int posX, int posY)
         {
             PosX = posX;
             PosY = posY;
+            
+            PosClaimInventory = new HashSet<(int, int)>();
+        }
+
+        public void UpdatePosInInventory(HashSet<(int, int)> posClaimInventory)
+        {
+            PosClaimInventory.Clear();
+            posClaimInventory.AddRange(posClaimInventory);
         }
     }
 }

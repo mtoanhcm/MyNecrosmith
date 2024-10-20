@@ -38,7 +38,7 @@ namespace  UI
 
         private void Start()
         {
-            SetItemDragData(new EquipmentData(){ Width = 1, Height = 2 });
+            SetItemDragData(new EquipmentData(){ Width = 1, Height = 2, IconSpr = iconImg.sprite });
         }
 
         public void SetItemDragData(EquipmentData data)
@@ -85,7 +85,11 @@ namespace  UI
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            
+            EventManager.Instance.TriggerEvent(new EventData.OnPlacingEquipment()
+            {
+                Equipment = equipment,
+                EquipementRect = myRect,
+            });
         }
 
         private void Init()

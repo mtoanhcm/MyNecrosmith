@@ -19,7 +19,7 @@ namespace UI
             {
                 EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory()
                 {
-                    InventoryData = new Character.Inventory(Mathf.Clamp(width ,InventoryParam.MIN_ROW, InventoryParam.MAX_ROW), Mathf.Clamp(height, InventoryParam.MIN_COLUMN, InventoryParam.MAX_COLUMN))
+                    InventoryData = new Inventory(Mathf.Clamp(width ,InventoryParam.MIN_ROW, InventoryParam.MAX_ROW), Mathf.Clamp(height, InventoryParam.MIN_COLUMN, InventoryParam.MAX_COLUMN))
                 });
             });
         }

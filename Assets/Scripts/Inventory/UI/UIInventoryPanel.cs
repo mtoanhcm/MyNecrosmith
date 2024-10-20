@@ -1,9 +1,7 @@
-using System;
 using Observer;
 using UnityEngine;
 using Character;
 using Ultility;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 
 namespace UI
@@ -13,14 +11,18 @@ namespace UI
         [SerializeField] private GridLayoutGroup cellGridContainer;
         [SerializeField] private UIInventoryCell cellPrefab;
         
-        private UIInventoryCell[,] cells;
         private RectTransform inventoryRect;
+        
+        private UIInventoryPanelCellHandle cellHandle;
+        private UIInventoryPanelEquipmentHandle equipmentHandle;
 
         private void Awake()
         {
             InitInventorySize();
             InitInventoryEmptyCell();
 
+            equipmentHandle = new UIInventoryPanelEquipmentHandle();   
+            
             return;
 
             void InitInventorySize()
@@ -39,16 +41,14 @@ namespace UI
 
             void InitInventoryEmptyCell()
             {
-                cells = new UIInventoryCell[InventoryParam.MAX_ROW, InventoryParam.MAX_COLUMN];
-                for (var i = 0; i < InventoryParam.MAX_ROW; i++)
+                cellHandle = new UIInventoryPanelCellHandle(InventoryParam.MAX_ROW, InventoryParam.MAX_COLUMN);
+                
+                foreach (var pos in cellHandle.InventoryCellHash)
                 {
-                    for (var j = 0; j < InventoryParam.MAX_COLUMN; j++)
-                    {
-                        var cell = Instantiate(cellPrefab, cellGridContainer.transform).GetComponent<UIInventoryCell>();
-                        cell.Init(i,j);
+                    var cell = Instantiate(cellPrefab, cellGridContainer.transform).GetComponent<UIInventoryCell>();
+                    cell.Init(pos.Item1, pos.Item2);
                     
-                        cells[i,j] = cell;
-                    }
+                    cellHandle.SetUIInventoryCell(pos.Item1, pos.Item2, cell);
                 }
             }
         }
@@ -56,26 +56,37 @@ namespace UI
         private void OnEnable()
         {
             EventManager.Instance?.StartListening<EventData.DraggingEquipment>(OnCheckDraggingEquipmentHoverInventory);
+            EventManager.Instance?.StartListening<EventData.OnPlacingEquipment>(OnPlaceEquipmentToInventory);
         }
 
         private void OnDisable()
         {
-            LockAllCells();
+            cellHandle.LockAllCells();
             EventManager.Instance?.StopListening<EventData.DraggingEquipment>(OnCheckDraggingEquipmentHoverInventory);
+            EventManager.Instance?.StopListening<EventData.OnPlacingEquipment>(OnPlaceEquipmentToInventory);
         }
 
         public void OpenInventory(Inventory characterInventory)
         {
-            LockAllCells();
+            cellHandle.LockAllCells();
+            cellHandle.ResetAllCellHoverState();
+
+            SetVisibleInventoryCell();
             
-            for (var i = 0; i < characterInventory.Row; i++)
+            equipmentHandle.SetInventoryItems(characterInventory.Items);
+            
+            return;
+            
+            void SetVisibleInventoryCell()
             {
-                for (var j = 0; j < characterInventory.Column; j++)
+                for (var i = 0; i < characterInventory.Row; i++)
                 {
-                    var posX = InventoryParam.MAX_ROW / 2 +  (i - characterInventory.Row / 2);
-                    var posY = InventoryParam.MAX_COLUMN / 2 + (j - characterInventory.Column / 2);
-                    
-                    cells[posX, posY].SetLockCell(false);
+                    for (var j = 0; j < characterInventory.Column; j++)
+                    {
+                        var posX = InventoryParam.MAX_ROW / 2 +  (i - characterInventory.Row / 2);
+                        var posY = InventoryParam.MAX_COLUMN / 2 + (j - characterInventory.Column / 2);
+                        cellHandle.SetLockCell(posX, posY, false);
+                    }
                 }
             }
         }
@@ -87,54 +98,13 @@ namespace UI
                 return;
             }
 
-            for (var i = 0; i < data.DragItem.Cells.GetLength(0); i++)
-            {
-                for (var j = 0; j < data.DragItem.Cells.GetLength(1); j++)
-                {
-                    var cellDrag = data.DragItem.Cells[i, j];
-                    if (!cellDrag.gameObject.activeSelf)
-                    {
-                        continue;
-                    }
-                    DetectHoverOnCell(data.DragItem.Cells[i, j].transform.position);
-                }
-            }
+            cellHandle.ResetAllCellHoverState();
+            cellHandle.CheckHoverCell(data.DragItem, inventoryRect);
         }
-
-        private void LockAllCells()
+        
+        private void OnPlaceEquipmentToInventory(EventData.OnPlacingEquipment data)
         {
-            for (var i = 0; i < InventoryParam.MAX_ROW; i++)
-            {
-                for (var j = 0; j < InventoryParam.MAX_COLUMN; j++)
-                {
-                    cells[i,j].SetLockCell(true);
-                }
-            }
-        }
-
-        private void DetectHoverOnCell(Vector2 worldPos)
-        {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(inventoryRect, worldPos, null, out var localPosition);
-            if (!inventoryRect.rect.Contains(localPosition))
-            {
-                return;
-            }
-    
-            // Chuyển đổi hệ tọa độ từ local sang tọa độ của RectTransform
-            var adjustedX = localPosition.x + inventoryRect.rect.width * 0.5f;
-            var adjustedY = inventoryRect.rect.height * 0.5f - localPosition.y;
-
-            var column = Mathf.FloorToInt(adjustedX / (InventoryParam.CELL_SIZE + InventoryParam.CELL_SPACING));
-            var row = Mathf.FloorToInt(adjustedY / (InventoryParam.CELL_SIZE + InventoryParam.CELL_SPACING));
-
-            // Kiểm tra giá trị row và column có nằm trong giới hạn của mảng cells hay không
-            if (row < 0 || row >= InventoryParam.MAX_ROW || column < 0 || column >= InventoryParam.MAX_COLUMN)
-            {
-                return;
-            }
-
-            // Nếu cell không bị khóa, thực hiện hành động khác
-            Debug.Log($"Hovered on cell at row: {row}, column: {column}");
+            
         }
     }   
 }

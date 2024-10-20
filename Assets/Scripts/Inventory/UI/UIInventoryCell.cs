@@ -1,3 +1,4 @@
+using Ultility;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace UI
         public int PosY {get; private set;}
         public string ItemClaimID {get; private set;}
         public bool IsLocked {get; private set;}
+        public bool IsClaimed => !ItemClaimID.IsNulOrEmpty();
 
         [SerializeField] private Image bg;
         
@@ -46,8 +48,8 @@ namespace UI
             {
                 return;
             }
-            
-            bg.color = Color.green;
+
+            bg.color = IsClaimed ? Color.red : Color.green;
         }
 
         public void OnExitHoverOnCell()
