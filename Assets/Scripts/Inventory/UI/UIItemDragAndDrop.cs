@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using Character;
+using Config;
 using Equipment;
 using Observer;
 using Ultility;
@@ -21,8 +22,7 @@ namespace  UI
 
         [SerializeField] private GridLayoutGroup layoutGroup;
         [SerializeField] private UIItemDragCell dragCellPrefab;
-        [SerializeField] private Image iconImg;
-        private EquipmentData equipment;
+        [SerializeField] private UIInventoryItem inventoryItem;
         private RectTransform myRect;
 
         private int delayFrameToUpdateHoverEvent;
@@ -34,11 +34,18 @@ namespace  UI
         {   
             //Set size UI
             myRect = GetComponent<RectTransform>();
+
+            layoutGroup.spacing = new Vector2(InventoryParam.CELL_SPACING, InventoryParam.CELL_SPACING);
         }
 
         private void Start()
         {
-            SetItemDragData(new EquipmentData(){ Width = 1, Height = 2, IconSpr = iconImg.sprite });
+            var config = Resources.Load<EquipmentConfig>($"Equipment/{GroupItemID.Sword}/{ItemID.IronSword}");
+            if (config != null)
+            {
+                inventoryItem.Init(new EquipmentData(config));
+                SetItemDragData(inventoryItem.Item.Equipment);
+            }
         }
 
         public void SetItemDragData(EquipmentData data)
@@ -48,18 +55,17 @@ namespace  UI
                 Init();
             }
             
-            equipment = data;
             var scaleSize = new Vector2(
-                InventoryParam.CELL_SIZE * equipment.Width + (layoutGroup.spacing.x * (equipment.Width - 1)), 
-                InventoryParam.CELL_SIZE * equipment.Height + (layoutGroup.spacing.y * (equipment.Height - 1)));
+                InventoryParam.CELL_SIZE * data.Width + (InventoryParam.CELL_SPACING * (data.Width - 1)), 
+                InventoryParam.CELL_SIZE * data.Height + (InventoryParam.CELL_SPACING * (data.Height - 1)));
             
             myRect.sizeDelta = scaleSize;
             
             layoutGroup.cellSize = new Vector2(InventoryParam.CELL_SIZE, InventoryParam.CELL_SIZE);
-
-            for (var i = 0; i < equipment.Width; i++)
+            
+            for (var i = 0; i < data.Width; i++)
             {
-                for (var j = 0; j < equipment.Height; j++)
+                for (var j = 0; j < data.Height; j++)
                 {
                     cells[i, j].SetActive(true);
                 }
@@ -87,8 +93,8 @@ namespace  UI
         {
             EventManager.Instance.TriggerEvent(new EventData.OnPlacingEquipment()
             {
-                Equipment = equipment,
-                EquipementRect = myRect,
+                Item = inventoryItem.Item,
+                ItemDrag = this,
             });
         }
 

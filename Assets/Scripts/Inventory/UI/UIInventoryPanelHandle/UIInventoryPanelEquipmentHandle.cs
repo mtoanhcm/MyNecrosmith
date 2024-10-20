@@ -7,17 +7,26 @@ namespace UI
 {
     public class UIInventoryPanelEquipmentHandle
     {
-        private List<InventoryItem> inventoryItems;
+        private List<UIInventoryItem> inventoryItems;
 
         public UIInventoryPanelEquipmentHandle()
         {
-            inventoryItems = new List<InventoryItem>();
+            inventoryItems = new List<UIInventoryItem>();
         }
 
-        public void SetInventoryItems(List<InventoryItem> inventoryItems)
+        public void SetInventoryItems(List<UIInventoryItem> inventoryItems)
         {
-            inventoryItems.Clear();
-            inventoryItems.AddRange(inventoryItems);
+            this.inventoryItems.Clear();
+
+            if (inventoryItems != null)
+            {
+                this.inventoryItems = inventoryItems;   
+            }
+        }
+
+        public void AddItemToInventory(UIInventoryItem item)
+        {
+            inventoryItems.Add(item);
         }
     }   
 }

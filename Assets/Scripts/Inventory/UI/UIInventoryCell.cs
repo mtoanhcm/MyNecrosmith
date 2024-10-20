@@ -29,11 +29,6 @@ namespace UI
             ItemClaimID = itemClaimID;
         }
 
-        public void RemoveItemClaim()
-        {
-            ItemClaimID = string.Empty;
-        }
-
         public void SetLockCell(bool isLocked)
         {
             IsLocked = isLocked;

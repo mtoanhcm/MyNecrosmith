@@ -7,5 +7,12 @@ namespace Config
     public enum ItemID
     {
         None,
+        IronSword
+    }
+
+    public enum GroupItemID
+    {
+        None,
+        Sword
     }
 }

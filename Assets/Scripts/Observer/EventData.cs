@@ -21,8 +21,8 @@ namespace Observer {
 
         public struct OnPlacingEquipment
         {
-            public EquipmentData Equipment;
-            public RectTransform EquipementRect;
+            public InventoryItem Item;
+            public UIItemDragAndDrop ItemDrag;
         }
     }
 }
