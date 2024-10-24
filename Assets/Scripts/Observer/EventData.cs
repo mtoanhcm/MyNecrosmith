@@ -1,5 +1,6 @@
-using Tile;
-using System.Collections.Generic;
+using Character;
+using Equipment;
+using UI;
 using UnityEngine;
 
 namespace Observer {
@@ -8,18 +9,24 @@ namespace Observer {
         /// <summary>
         /// Open fog of war by radius
         /// </summary>
-        public struct OpenFogOfWarEvent
+        public struct OpenCharacterInventory
         {
-            public Vector3 Pos;
-            public float Radius;
+            public Inventory InventoryData;
         }
 
-        /// <summary>
-        /// Set all ground tile in list by the target Tile Type
-        /// </summary>
-        public struct CLaimGroundTile {
-            public List<Vector3> ClaimPos;
-            public TileType TileType;
+        public struct DraggingEquipment
+        {
+            public UIInventoryItem UIItem;
+        }
+
+        public struct OnPlacingEquipment
+        {
+            public UIInventoryItem UIItem;
+        }
+
+        public struct OnPickingEquipmentFromInventory
+        {
+            public UIInventoryItem UIItemPick;
         }
     }
 }

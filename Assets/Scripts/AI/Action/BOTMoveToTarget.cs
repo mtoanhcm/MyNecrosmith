@@ -30,7 +30,7 @@ namespace AI {
 
             if (targetObject.Value == null)
             {
-                brain.Character.MoveToTarget(targetPosition.Value, OnCompleteMove);
+                //brain.Character.MoveToTarget(targetPosition.Value, OnCompleteMove);
             }
         }
 
@@ -38,7 +38,7 @@ namespace AI {
         {
             if (targetObject.Value != null)
             {
-                brain.Character.MoveToTarget(targetObject.Value.transform.position, OnCompleteMove);
+                //brain.Character.MoveToTarget(targetObject.Value.transform.position, OnCompleteMove);
             }
 
             return status;

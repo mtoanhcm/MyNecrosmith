@@ -1,8 +1,5 @@
 ﻿using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
-using Map;
-using System.Collections;
-using System.Collections.Generic;
 using Ultility;
 using UnityEngine;
 
@@ -31,10 +28,6 @@ namespace AI {
 
             if (randomPos.IsZero()) {
                 targetPosition.Value = Vector3.zero;
-                return TaskStatus.Failure;
-            }
-
-            if (MapManager.Instance.IsValidPointOnMap(randomPos) == false) {
                 return TaskStatus.Failure;
             }
 
