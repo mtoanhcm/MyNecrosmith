@@ -16,13 +16,17 @@ namespace Observer {
 
         public struct DraggingEquipment
         {
-            public UIItemDragAndDrop DragItem;
+            public UIInventoryItem UIItem;
         }
 
         public struct OnPlacingEquipment
         {
-            public InventoryItem Item;
-            public UIItemDragAndDrop ItemDrag;
+            public UIInventoryItem UIItem;
+        }
+
+        public struct OnPickingEquipmentFromInventory
+        {
+            public UIInventoryItem UIItemPick;
         }
     }
 }

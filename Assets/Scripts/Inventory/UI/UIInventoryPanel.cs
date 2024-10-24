@@ -12,7 +12,6 @@ namespace UI
         [SerializeField] private GridLayoutGroup cellGridContainer;
         [SerializeField] private Transform itemContainer;
         [SerializeField] private UIInventoryCell cellPrefab;
-        [SerializeField] private UIInventoryItem itemPrefab;
         
         private RectTransform inventoryRect;
         
@@ -58,8 +57,9 @@ namespace UI
 
         private void OnEnable()
         {
-            EventManager.Instance?.StartListening<EventData.DraggingEquipment>(OnCheckDraggingEquipmentHoverInventory);
-            EventManager.Instance?.StartListening<EventData.OnPlacingEquipment>(OnPlaceEquipmentToInventory);
+            EventManager.Instance.StartListening<EventData.DraggingEquipment>(OnCheckDraggingEquipmentHoverInventory);
+            EventManager.Instance.StartListening<EventData.OnPlacingEquipment>(OnPlaceEquipmentToInventory);
+            EventManager.Instance.StartListening<EventData.OnPickingEquipmentFromInventory>(OnPickingEquipmentFromInventory);
         }
 
         private void OnDisable()
@@ -67,6 +67,7 @@ namespace UI
             cellHandle.LockAllCells();
             EventManager.Instance?.StopListening<EventData.DraggingEquipment>(OnCheckDraggingEquipmentHoverInventory);
             EventManager.Instance?.StopListening<EventData.OnPlacingEquipment>(OnPlaceEquipmentToInventory);
+            EventManager.Instance?.StopListening<EventData.OnPickingEquipmentFromInventory>(OnPickingEquipmentFromInventory);
         }
 
         public void OpenInventory(Inventory characterInventory)
@@ -96,32 +97,38 @@ namespace UI
 
         private void OnCheckDraggingEquipmentHoverInventory(EventData.DraggingEquipment data)
         {
-            if (!data.DragItem.MyRect.IsWorldOverlap(inventoryRect))
+            if (!data.UIItem.MyRect.IsWorldOverlap(inventoryRect))
             {
                 return;
             }
 
             cellHandle.ResetAllCellHoverState();
-            cellHandle.CheckHoverCell(data.DragItem, inventoryRect);
+            cellHandle.CheckHoverCell(data.UIItem, inventoryRect);
         }
         
         private void OnPlaceEquipmentToInventory(EventData.OnPlacingEquipment data)
         {
-            if (!cellHandle.CanPlaceEquipmentOnCells(data.ItemDrag, inventoryRect, out var claimPos))
+            if (!cellHandle.CanPlaceEquipmentOnCells(data.UIItem, inventoryRect, out var claimPos))
             {
                 return;
             }
             
-            var uiItem = Instantiate(itemPrefab, itemContainer);
-            uiItem.Init(data.Item.Equipment);
-            uiItem.Item.UpdatePosInInventory(claimPos);
-
-            var uiItemClaimPos = uiItem.Item.PosClaimInventory.First();
-            uiItem.transform.position = cellHandle.GetCenterPositionOfCellArea(uiItemClaimPos.Item1,
-                uiItemClaimPos.Item2, uiItem.Item.Equipment.Width, uiItem.Item.Equipment.Height);
+            data.UIItem.Item.UpdatePosInInventory(claimPos);
+            data.UIItem.MarkItemInInventory(true);
+            data.UIItem.transform.SetParent(itemContainer);
             
-            cellHandle.SetItemForCell(claimPos, uiItem.GetInstanceID().ToString());
-            equipmentHandle.AddItemToInventory(uiItem);
+            var uiItemClaimPos = data.UIItem.Item.PosClaimInventory.First();
+            data.UIItem.transform.position = cellHandle.GetCenterPositionOfCellArea(uiItemClaimPos.Item1,
+                uiItemClaimPos.Item2, data.UIItem.Item.Equipment.Width, data.UIItem.Item.Equipment.Height);
+            
+            cellHandle.SetItemForCell(claimPos, data.UIItem.GetInstanceID().ToString());
+            cellHandle.ResetAllCellHoverState();
+            equipmentHandle.AddItemToInventory(data.UIItem);
+        }
+
+        private void OnPickingEquipmentFromInventory(EventData.OnPickingEquipmentFromInventory data)
+        {
+            cellHandle.RemoveItemForcell(data.UIItemPick.GetInstanceID().ToString());
         }
     }   
 }

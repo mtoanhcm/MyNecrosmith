@@ -38,6 +38,20 @@ namespace UI
             }
         }
 
+        public void RemoveItemForcell(string itemClaimID)
+        {
+            Debug.Log($"Check remove item with id {itemClaimID}");
+            
+            foreach (var pos in InventoryCellHash)
+            {
+                var cell = cells[pos.Item1, pos.Item2];
+                if (cell.IsClaimed && itemClaimID == cell.ItemClaimID)
+                {
+                    cell.SetItemClaim(string.Empty);
+                }
+            }
+        }
+
         public void SetLockCell(int x, int y, bool isLocked)
         {
             cells[x, y].SetLockCell(isLocked);
@@ -50,7 +64,7 @@ namespace UI
                 SetLockCell(pos.Item1, pos.Item2, isLocked);
             }
         }
-
+        
         public void ResetAllCellHoverState()
         {
             foreach (var pos in InventoryCellHash)
@@ -70,7 +84,7 @@ namespace UI
             return (topLeftPosition + bottomRightPosition) / 2f;
         }
         
-        public bool CanPlaceEquipmentOnCells(UIItemDragAndDrop dragItem, RectTransform inventoryRect, out HashSet<(int, int)> claimPos)
+        public bool CanPlaceEquipmentOnCells(UIInventoryItem dragItem, RectTransform inventoryRect, out HashSet<(int, int)> claimPos)
         {
             claimPos = new HashSet<(int, int)>();
             
@@ -103,7 +117,7 @@ namespace UI
             return true;
         }
         
-        public void CheckHoverCell(UIItemDragAndDrop dragItem, RectTransform inventoryRect)
+        public void CheckHoverCell(UIInventoryItem dragItem, RectTransform inventoryRect)
         {
             for (var i = 0; i < dragItem.Cells.GetLength(0); i++)
             {
