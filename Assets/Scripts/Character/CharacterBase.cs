@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
+using Config;
+using Equipment;
 using UnityEngine;
 
-namespace  Character
+namespace Character
 {
-    public class CharacterBase : MonoBehaviour
+    public abstract class CharacterBase : MonoBehaviour
     {
-        [SerializeField]
-        private int inventoryWidth;
-        [SerializeField]
-        private int inventoryHeight;
+        [SerializeField] protected Transform equipmentContainer;
         
-        private void Start()
-        {
-            
-        }
+        protected CharacterStats characterStats;
+        protected List<EquipmentBase> equipments;
+        
+        public abstract void Attack();
+        public abstract void AbilityActive();
+        public abstract void Move();
+        public abstract void Death();
 
-        [Button]
-        private void OpenInventory()
+        public virtual void Spawn(CharacterConfig data, List<EquipmentConfig> equipmentsInit)
         {
+            characterStats = new CharacterStats(data);
             
+            equipments = new List<EquipmentBase>();
+            for (var i = 0; i < equipmentsInit.Count; i++)
+            {
+                var equipmentInit = equipmentsInit[i];
+                var equipment = Instantiate(equipmentInit.EquipmentPrefab, equipmentContainer);
+                equipment.Spawn(equipmentInit);
+                
+                equipments.Add(equipment);
+            }
         }
     }   
 }

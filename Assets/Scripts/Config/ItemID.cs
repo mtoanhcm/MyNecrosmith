@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Config
 {
-    public enum ItemID
+    public enum EquipmentID
     {
         None,
         IronSword
     }
 
-    public enum GroupItemID
+    public enum EquipmentCategoryID
     {
         None,
         Sword

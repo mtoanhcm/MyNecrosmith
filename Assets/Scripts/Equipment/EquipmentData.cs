@@ -9,7 +9,8 @@ namespace Equipment
     {
         private readonly EquipmentConfig baseData;
         
-        public ItemID ID => baseData.ID;
+        public EquipmentID ID => baseData.ID;
+        public EquipmentCategoryID Category => baseData.CategoryID;
         public string Name => baseData.EquipmentName;
         public int EffectValue => baseData.EffectValue;
         public Sprite IconSpr => baseData.Icon;
@@ -20,5 +21,15 @@ namespace Equipment
         {
             this.baseData = baseData;
         }
-    }   
+    }
+
+    public class EquipmentStats
+    {
+        public int EffectValue { get; set; }
+
+        public EquipmentStats(EquipmentConfig baseData)
+        {
+            EffectValue = baseData.EffectValue;
+        }
+    }
 }
