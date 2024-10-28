@@ -8,29 +8,22 @@ namespace Character
 {
     public abstract class CharacterBase : MonoBehaviour
     {
-        [SerializeField] protected Transform equipmentContainer;
-        
-        protected CharacterStats characterStats;
-        protected List<EquipmentBase> equipments;
-        
-        public abstract void Attack();
-        public abstract void AbilityActive();
-        public abstract void Move();
-        public abstract void Death();
+        public float HP { get; protected set; }
+        public float CurrentHP { get; protected set; }
+        public float MoveSpeed { get; protected set; }
 
-        public virtual void Spawn(CharacterConfig data, List<EquipmentConfig> equipmentsInit)
+        public virtual void TakeDamage(float damage)
         {
-            characterStats = new CharacterStats(data);
-            
-            equipments = new List<EquipmentBase>();
-            for (var i = 0; i < equipmentsInit.Count; i++)
+            CurrentHP -= damage;
+            if (CurrentHP <= 0)
             {
-                var equipmentInit = equipmentsInit[i];
-                var equipment = Instantiate(equipmentInit.EquipmentPrefab, equipmentContainer);
-                equipment.Spawn(equipmentInit);
-                
-                equipments.Add(equipment);
+                Die();
             }
+        }
+
+        protected virtual void Die()
+        {
+            // Implement death logic.
         }
     }   
 }

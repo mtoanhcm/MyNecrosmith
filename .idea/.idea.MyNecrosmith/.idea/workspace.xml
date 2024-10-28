@@ -6,211 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_BurntBody_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_BurntBody_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_BurntBody_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_BurntBody_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_DeadBody_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_DeadBody_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_DeadBody_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_DeadBody_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_DeadBody_03.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_DeadBody_03.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_DeadBody_04.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Bodies/SA_DeadBody_04.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Biohazard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Biohazard.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_BusinessSurvivor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_BusinessSurvivor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Doctor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Doctor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FarmerSurvivor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FarmerSurvivor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FemaleHero.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FemaleHero.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FemalePyro.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FemalePyro.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FemaleSoldier.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FemaleSoldier.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FemaleTrenchcoat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_FemaleTrenchcoat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Hazard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Hazard.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_InjuredSurvivor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_InjuredSurvivor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleSurvivor01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleSurvivor01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleSurvivor02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleSurvivor02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleSurvivor03.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleSurvivor03.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleSurvivorHunter.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleSurvivorHunter.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleTrenchcoat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_MaleTrenchcoat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_OldMaleSurvivor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_OldMaleSurvivor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_PrisonerSurvivor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_PrisonerSurvivor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_RoadWorkerSurvivor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_RoadWorkerSurvivor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Scout.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Scout.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Survivor_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Survivor_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Survivor_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Survivor_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Survivor_Sheriff.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Characters/SA_Character_Survivor_Sheriff.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/FX_Glow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/FX_Glow.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/FX_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/FX_Material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Lightray.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Lightray.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/SA_DeadBody_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/SA_DeadBody_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/SimpleApocalypse.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/SimpleApocalypse.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_AirportSecurity.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_AirportSecurity.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_AirportWorker.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_AirportWorker.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Bellhop.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Bellhop.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Businessman.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Businessman.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Cheerleader.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Cheerleader.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Clown.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Clown.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Farmer.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Farmer.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_FarmersDaughter.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_FarmersDaughter.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Firefighter.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Firefighter.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_FootballPlayer.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_FootballPlayer.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Grandma.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Grandma.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Hobo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Hobo.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Industrial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Industrial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Mechanic.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Mechanic.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Mountie.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Mountie.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Pilot.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Pilot.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Pimp.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Pimp.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Prisoner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Prisoner.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Prostitute.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Prostitute.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_RoadWorker.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_RoadWorker.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Robber.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Robber.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Runner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Runner.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Santa.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Santa.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Shopkeeper.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Shopkeeper.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Soldier.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Soldier.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Streetman.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Streetman.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Tourist.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Tourist.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Trucker.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Materials/Zombies/SA_Zombie_Trucker.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Scenes/Characters.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleApocalypse/Scenes/Characters.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Glow_FX 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Glow_FX 1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Glow_FX.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Glow_FX.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Material 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Material 1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Material 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Material 2.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/Medieval_Material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Bard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Bard.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Bartender.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Bartender.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Doctor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Doctor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf_Assassin.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf_Assassin.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf_Female.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf_Female.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf_King.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf_King.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf_Knight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Elf_Knight.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Executioner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Executioner.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinFemale.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinFemale.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinHunter.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinHunter.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinKing.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinKing.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinWarrior.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinWarrior.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinWitchDoctor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_GoblinWitchDoctor.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Goblin_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Goblin_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Jester.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Jester.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_King.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_King.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_03.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_03.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Dark.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Dark.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Gladiator_Closed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Gladiator_Closed.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Gladiator_Open.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Gladiator_Open.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Heavy_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Heavy_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Heavy_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Heavy_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Hood.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Hood.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_ShieldMaiden.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_ShieldMaiden.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Templar.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_Templar.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_TinMan.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Knight_TinMan.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_PeasantMan_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_PeasantMan_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_PeasantWoman_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_PeasantWoman_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Princess.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Princess.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Footman_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Footman_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Footman_02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Footman_02.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Heavy.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Heavy.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_King.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_King.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Rogue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Rogue.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Skeleton.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Undead_Skeleton.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Wizard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Materials/SF_Character_Wizard.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Scenes/Demo_Characters.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Scenes/Demo_Characters.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Bard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Bard.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Bartender.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Bartender.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/BlankWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/BlankWhite.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Doctor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Doctor.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Elf_Assassin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Elf_Assassin.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Elf_Female.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Elf_Female.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Elf_King.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Elf_King.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Elf_Knight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Elf_Knight.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Executioner_White.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Executioner_White.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Globlin01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Globlin01.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/GoblinHunter_Green.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/GoblinHunter_Green.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/GoblinKing_Green.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/GoblinKing_Green.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/GoblinWitchDoctor_Green.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/GoblinWitchDoctor_Green.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Goblin_Female.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Goblin_Female.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Goblin_King.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Goblin_King.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Jester.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Jester.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/King.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/King.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight01_White.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight01_White.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight02.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight03_White.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight03_White.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Dark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Dark.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Gladiator.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Gladiator.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Heavy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Heavy.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Heavy_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Heavy_02.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Hood.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Hood.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Red.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Red.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_ShieldMaiden.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_ShieldMaiden.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Templar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Knight_Templar.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Medieval_Texture.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Medieval_Texture.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/PeasantMan_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/PeasantMan_02.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Princess.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Princess.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/SimpleFantasy_Elf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/SimpleFantasy_Elf.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/TownsMan_White.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/TownsMan_White.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/TownsWoman_White.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/TownsWoman_White.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Footman_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Footman_01.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Footman_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Footman_02.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Heavy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Heavy.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_King.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_King.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Rogue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Rogue.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Skeleton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Undead_Skeleton.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Wizard_White.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Package/SimpleFantasy/Textures/Wizard_White.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/CharacterBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/CharacterBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/EquipmentConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/EquipmentConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/ItemID.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/ItemID.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentBase.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tiles/TestPallet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tiles/TestPallet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +33,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Config/EquipmentConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Config/ItemID.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Equipment/Action/ActionBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle/UIInventoryPanelEquipmentHandle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryView.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -245,23 +45,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.39003646",
-    "git-widget-placeholder": "feature/Core-Gameplay",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.39003646&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/Core-Gameplay&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../Game Build/PC/Necrosmith\MyNecrosmith.exe" />
@@ -346,6 +146,9 @@
       <workItem from="1729910371216" duration="2812000" />
       <workItem from="1729932332152" duration="10802000" />
       <workItem from="1729961161652" duration="3613000" />
+      <workItem from="1730020937232" duration="3408000" />
+      <workItem from="1730049634410" duration="1126000" />
+      <workItem from="1730134851079" duration="3071000" />
     </task>
     <servers />
   </component>

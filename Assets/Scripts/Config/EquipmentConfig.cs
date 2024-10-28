@@ -12,6 +12,8 @@ namespace Config
         public EquipmentCategoryID CategoryID;
         public string EquipmentName;
         public int EffectValue;
+        public float AttackRadius;
+        public float AttackSpeed;
         public Sprite Icon; // Sprite representing the weapon
         public EquipmentBase EquipmentPrefab;
         public int Width;
