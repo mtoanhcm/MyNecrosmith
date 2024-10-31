@@ -1,27 +1,32 @@
 using Config;
 using UnityEngine;
+using System;
 
 namespace Character
 {
     public class CharacterStats
     {
-        public int HP { get; private set; }
+        protected CharacterConfig baseConfig;
+        
+        public int HP => baseConfig.HP;
         public int CurrentHP { get; private set; }
-        public float MoveSpeed { get; private set; }
-        public float AttackSpeed { get; private set; }
-
+        public float MoveSpeed => baseConfig.MoveSpeed;
+        public float AttackSpeed => baseConfig.AttacSpeed;
+        
         public CharacterStats(CharacterConfig config)
         {
-            HP = config.HP;
-            CurrentHP = HP;
-            MoveSpeed = config.MoveSpeed;
-            AttackSpeed = config.AttacSpeed;
+            baseConfig = config;
+            CurrentHP = baseConfig.HP;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, Action OnDeathCallback)
         {
             CurrentHP -= damage;
             CurrentHP = Mathf.Clamp(CurrentHP, 0, HP);
+            if (CurrentHP <= 0)
+            {
+                OnDeathCallback?.Invoke();
+            }
         }
     }
 

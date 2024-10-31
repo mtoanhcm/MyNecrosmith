@@ -13,9 +13,9 @@ namespace Equipment
         public abstract void PerformAction(Transform target);
         public abstract void DeSpawn();
         
-        public virtual void Spawn(CharacterBase owner ,EquipmentConfig equipmentConfig)
+        public virtual void Spawn(CharacterBase owner ,EquipmentData data)
         {
-            Data = new EquipmentData(equipmentConfig);   
+            Data = data;   
             Owner = owner;
         }
     }   

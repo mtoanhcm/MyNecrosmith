@@ -8,9 +8,9 @@ namespace Equipment
     {
         private FlyFowardAction flyTowardAction;
 
-        public override void Spawn(CharacterBase owner ,EquipmentConfig equipmentConfig)
+        public override void Spawn(CharacterBase owner ,EquipmentData data)
         {
-            base.Spawn(owner ,equipmentConfig);
+            base.Spawn(owner ,data);
             
             flyTowardAction = new FlyFowardAction();
         }

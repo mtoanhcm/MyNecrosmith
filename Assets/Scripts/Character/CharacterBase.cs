@@ -8,22 +8,18 @@ namespace Character
 {
     public abstract class CharacterBase : MonoBehaviour
     {
-        public float HP { get; protected set; }
-        public float CurrentHP { get; protected set; }
-        public float MoveSpeed { get; protected set; }
+        public CharacterStats Stats;
 
-        public virtual void TakeDamage(float damage)
+        public virtual void Spawn(CharacterConfig config)
         {
-            CurrentHP -= damage;
-            if (CurrentHP <= 0)
-            {
-                Die();
-            }
+            Stats = new CharacterStats(config);
+        }
+        
+        public virtual void TakeDamage(int damage)
+        {
+            Stats.TakeDamage(damage, Die);
         }
 
-        protected virtual void Die()
-        {
-            // Implement death logic.
-        }
+        protected abstract void Die();
     }   
 }
