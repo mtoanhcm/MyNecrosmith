@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Character;
+using Config;
 using Equipment;
 using UI;
 using UnityEngine;
@@ -27,6 +29,29 @@ namespace Observer {
         public struct OnPickingEquipmentFromInventory
         {
             public UIInventoryItem UIItemPick;
+        }
+
+        public struct OnStartGame
+        {
+            public bool IsStart;
+        }
+
+        public struct OnPauseGame
+        {
+            public bool IsPause;
+        }
+
+        public struct OnSpawnMinion
+        {
+            public CharacterConfig Config;
+            public List<EquipmentData> Equipments;
+            public Vector3 SpawnPosition;
+        }
+
+        public struct OnSpawnEnemy
+        {
+            public C_Class Class;
+            public Vector3 Position;
         }
     }
 }

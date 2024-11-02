@@ -730,7 +730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef40f1582f1dd0c49b08d422aca632f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 411053653}
   distance: 80
   rotationX: 45
   rotationY: 45

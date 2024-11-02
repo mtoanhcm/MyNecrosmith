@@ -6,7 +6,7 @@ namespace Character
 {
     public class CharacterStats
     {
-        protected CharacterConfig baseConfig;
+        private CharacterConfig baseConfig;
         
         public int HP => baseConfig.HP;
         public int CurrentHP { get; private set; }

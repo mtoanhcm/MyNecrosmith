@@ -2,7 +2,7 @@ using System.Linq;
 using Observer;
 using UnityEngine;
 using Character;
-using Ultility;
+using GameUtility;
 using UnityEngine.UI;
 
 namespace UI

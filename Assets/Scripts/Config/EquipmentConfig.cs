@@ -15,7 +15,6 @@ namespace Config
         public float AttackRadius;
         public float AttackSpeed;
         public Sprite Icon; // Sprite representing the weapon
-        public EquipmentBase EquipmentPrefab;
         public int Width;
         public int Height;
     }

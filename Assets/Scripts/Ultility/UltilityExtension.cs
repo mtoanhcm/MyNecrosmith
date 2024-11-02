@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ultility {
+namespace GameUtility {
     public static class UltilityExtension
     {
         public static void SetActive(this Component component, bool active)

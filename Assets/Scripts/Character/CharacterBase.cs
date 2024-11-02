@@ -8,11 +8,13 @@ namespace Character
 {
     public abstract class CharacterBase : MonoBehaviour
     {
-        public CharacterStats Stats;
+        public CharacterStats Stats { get;private set; }
 
-        public virtual void Spawn(CharacterConfig config)
+        private Transform modelContainer;
+        
+        public virtual void Spawn(CharacterStats stat)
         {
-            Stats = new CharacterStats(config);
+            Stats = stat;
         }
         
         public virtual void TakeDamage(int damage)

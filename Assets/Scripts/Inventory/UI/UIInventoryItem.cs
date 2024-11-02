@@ -1,7 +1,7 @@
 using Character;
 using Equipment;
 using Observer;
-using Ultility;
+using GameUtility;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
