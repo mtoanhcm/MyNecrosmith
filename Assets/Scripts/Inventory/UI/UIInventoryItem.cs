@@ -4,6 +4,7 @@ using Observer;
 using GameUtility;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace UI
@@ -88,7 +89,6 @@ namespace UI
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log($"In inventory {isInInventory}");
             if (isInInventory)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnPickingEquipmentFromInventory()
@@ -99,7 +99,7 @@ namespace UI
                 MarkItemInInventory(false);
             }
             
-            transform.position = Input.mousePosition;
+            transform.position = Mouse.current.position.ReadValue();
             
             EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
             isHoldingItem = true;
@@ -118,12 +118,12 @@ namespace UI
         public void OnBeginDrag(PointerEventData eventData)
         {
             delayFrameToUpdateHoverEvent = 0;
-            transform.position = Input.mousePosition;
+            transform.position = Mouse.current.position.ReadValue();
         }
         
         public void OnDrag(PointerEventData eventData)
         {
-            transform.position = Input.mousePosition;
+            transform.position = Mouse.current.position.ReadValue();
             delayFrameToUpdateHoverEvent++;
             if (delayFrameToUpdateHoverEvent % 10 == 0)
             {

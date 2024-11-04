@@ -2,6 +2,7 @@ using System.Linq;
 using Observer;
 using UnityEngine;
 using Character;
+using Config;
 using GameUtility;
 using UnityEngine.UI;
 
@@ -12,9 +13,11 @@ namespace UI
         [SerializeField] private GridLayoutGroup cellGridContainer;
         [SerializeField] private Transform itemContainer;
         [SerializeField] private UIInventoryCell cellPrefab;
+        [SerializeField] private Button spawnCharacterBtn;
         
         private RectTransform inventoryRect;
-        
+
+        private C_Class characterClassOwnInventory;
         private UIInventoryPanelCellHandle cellHandle;
         private UIInventoryPanelEquipmentHandle equipmentHandle;
 
@@ -24,6 +27,9 @@ namespace UI
             InitInventoryEmptyCell();
 
             equipmentHandle = new UIInventoryPanelEquipmentHandle();   
+            
+            spawnCharacterBtn.onClick.RemoveAllListeners();
+            spawnCharacterBtn.onClick.AddListener(OnCharacterEquipmentReady);
             
             return;
 
@@ -72,6 +78,8 @@ namespace UI
 
         public void OpenInventory(Inventory characterInventory)
         {
+            characterClassOwnInventory = characterInventory.CharacterClass;
+            
             cellHandle.LockAllCells();
             cellHandle.ResetAllCellHoverState();
 
@@ -95,6 +103,26 @@ namespace UI
             }
         }
 
+        private void OnCharacterEquipmentReady()
+        {
+            // EventManager.Instance.TriggerEvent(new EventData.OnMinionEquipmentReady()
+            // {
+            //     CharacterClass = characterClassOwnInventory,
+            //     Equipments = equipmentHandle.GetEquipmentData()
+            // });
+
+            var config = Resources.Load<CharacterConfig>($"Character/{characterClassOwnInventory}");
+            if (config != null)
+            {
+                EventManager.Instance.TriggerEvent(new EventData.OnSpawnMinion()
+                {
+                    Config = config,
+                    Equipments = equipmentHandle.GetEquipmentData(),
+                    SpawnPosition = Vector3.zero
+                });
+            }
+        }
+        
         private void OnCheckDraggingEquipmentHoverInventory(EventData.DraggingEquipment data)
         {
             if (!data.UIItem.MyRect.IsWorldOverlap(inventoryRect))

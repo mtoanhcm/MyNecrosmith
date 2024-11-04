@@ -12,6 +12,6 @@ namespace  Config
         public int HP;
         public float MoveSpeed;
         public float AttacSpeed;
-        public Vector2 InventorySize;
+        public Vector2Int InventorySize;
     }
 }

@@ -10,14 +10,16 @@ namespace Character
         public int Row { get; private set; }
         public int Column { get; private set; }
         
+        public C_Class CharacterClass { get; private set; }
         public List<InventoryItem> Items { get; private set; }
 
-        public Inventory(int row, int column)
+        public Inventory(int row, int column, C_Class characterClass)
         {
             Row = row;
             Column = column;
             
             Items = new List<InventoryItem>();
+            CharacterClass = characterClass;
         }
 
         public EquipmentData[] GetEquipmentData()

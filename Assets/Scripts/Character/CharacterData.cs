@@ -8,6 +8,7 @@ namespace Character
     {
         private CharacterConfig baseConfig;
         
+        public C_Class Class => baseConfig.Class;
         public int HP => baseConfig.HP;
         public int CurrentHP { get; private set; }
         public float MoveSpeed => baseConfig.MoveSpeed;
@@ -32,7 +33,7 @@ namespace Character
 
     public enum C_Class
     {
-        SwordMan
+        HumanKnight
     }
 
     public enum C_Race

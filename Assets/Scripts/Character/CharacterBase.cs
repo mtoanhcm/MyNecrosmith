@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Config;
-using Equipment;
 using UnityEngine;
 
 namespace Character

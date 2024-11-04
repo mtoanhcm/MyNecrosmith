@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Equipment
+  m_EditorClassIdentifier: 
+  m_GroupName: Equipment
+  m_GUID: a9023e45ba1747e4d9045ee57f395f35
+  m_SerializeEntries:
+  - m_GUID: 180d3aa41a683b540af4c52875f39c52
+    m_Address: Equipment
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 36de6fda61eb56945a75aa937a44cde5, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 74c7a30d2c865fa4fb8dec59dfee89b7, type: 2}
+    - {fileID: 11400000, guid: 4347ee3d961afd34da4037fd1b1db49f, type: 2}

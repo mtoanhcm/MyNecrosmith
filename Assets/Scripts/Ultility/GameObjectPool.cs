@@ -18,10 +18,12 @@ namespace GameUtility
 
         public GameObjectPool(Func<string, T> onCreateObj, Action<T> onGetObjFromPool, Action<T> onReturnObjToPool, Transform parent = null, int poolAddAmount = 5)
         {
-            Assert.IsNull(onCreateObj, "Create object action cannot be null");
+            Assert.IsNotNull(onCreateObj, "Create object action cannot be null");
             
             this.parent = parent;
             this.poolAddAmount = poolAddAmount;
+            
+            pool = new Dictionary<string, Queue<T>>();
             
             onCreateNewObj = onCreateObj;
             onGetObject = onGetObjFromPool;
@@ -66,6 +68,7 @@ namespace GameUtility
                 var obj = onCreateNewObj(type);
                 Assert.IsNotNull(obj, $"Cannot create pool object {type} because the prefab is null");
                 
+                obj.SetActive(false);
                 pool[type].Enqueue(obj);
             }
         }

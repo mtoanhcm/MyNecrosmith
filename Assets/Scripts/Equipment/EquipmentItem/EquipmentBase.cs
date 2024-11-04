@@ -13,7 +13,7 @@ namespace Equipment
         public abstract void PerformAction(Transform target);
         public abstract void DeSpawn();
         
-        public virtual void Spawn(CharacterBase owner ,EquipmentData data)
+        public virtual void Init(CharacterBase owner ,EquipmentData data)
         {
             Data = data;   
             Owner = owner;
