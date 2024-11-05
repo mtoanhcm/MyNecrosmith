@@ -5,6 +5,39 @@ using UnityEngine;
 namespace GameUtility {
     public static class UltilityExtension
     {
+        public static List<Vector3> GetEquipmentPositionAroundCharacter(this Vector3 characterPosition, int totalEqupiment, 
+            float initialRadius = 2f, float radiusIncrement = 2f, float minAngle = 40)
+        {
+            var positions = new List<Vector3>();
+            var currentRadius = initialRadius;
+            var maxEquipmentPerCircle = Mathf.FloorToInt(360f / minAngle); // Maximum number of equipment in one circle
+
+            var currentIndex = 0;
+
+            while (currentIndex < totalEqupiment)
+            {
+                var equipmentsInThisCircle = Mathf.Min(totalEqupiment - currentIndex, maxEquipmentPerCircle); // Number of equipment in the current circle
+                var angleStep = 360f / equipmentsInThisCircle;
+
+                for (var i = 0; i < equipmentsInThisCircle; i++)
+                {
+                    var angle = i * angleStep;
+                    var position = new Vector3(
+                        Mathf.Cos(angle * Mathf.Deg2Rad) * currentRadius,
+                        0,
+                        Mathf.Sin(angle * Mathf.Deg2Rad) * currentRadius
+                    );
+
+                    positions.Add(characterPosition + position);
+                    currentIndex++;
+                }
+
+                currentRadius += radiusIncrement; // Increase the radius for the next circle
+            }
+
+            return positions;
+        }
+        
         public static void SetActive(this Component component, bool active)
         {
             if (component == null)

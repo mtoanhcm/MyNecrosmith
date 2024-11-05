@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Character;
 using Config;
@@ -60,6 +61,7 @@ namespace Observer {
             public EquipmentData Equipment;
             public CharacterBase Owner;
             public Vector3 SpawnPosition;
+            public Action<EquipmentBase> OnSpawnEqupimentSuccessHandle;
         }
 
         public struct OnMinionEquipmentReady

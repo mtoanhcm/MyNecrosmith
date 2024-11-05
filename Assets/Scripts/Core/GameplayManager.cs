@@ -48,7 +48,7 @@ namespace Gameplay
                     continue;
                 }
                 
-                await resourcesManager.LoadCharacterPrefabAsync(equipmetID.ToString());
+                await resourcesManager.LoadEquipmentPrefabAsync(equipmetID.ToString());
             }
 
             Debug.Log("Done load equpiment resources");

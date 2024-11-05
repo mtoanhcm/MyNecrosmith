@@ -105,12 +105,6 @@ namespace UI
 
         private void OnCharacterEquipmentReady()
         {
-            // EventManager.Instance.TriggerEvent(new EventData.OnMinionEquipmentReady()
-            // {
-            //     CharacterClass = characterClassOwnInventory,
-            //     Equipments = equipmentHandle.GetEquipmentData()
-            // });
-
             var config = Resources.Load<CharacterConfig>($"Character/{characterClassOwnInventory}");
             if (config != null)
             {
@@ -120,6 +114,8 @@ namespace UI
                     Equipments = equipmentHandle.GetEquipmentData(),
                     SpawnPosition = Vector3.zero
                 });
+
+                CloseInventoryUIPanel();
             }
         }
         
@@ -157,6 +153,11 @@ namespace UI
         private void OnPickingEquipmentFromInventory(EventData.OnPickingEquipmentFromInventory data)
         {
             cellHandle.RemoveItemForcell(data.UIItemPick.GetInstanceID().ToString());
+        }
+
+        private void CloseInventoryUIPanel()
+        {
+            gameObject.SetActive(false);
         }
     }   
 }

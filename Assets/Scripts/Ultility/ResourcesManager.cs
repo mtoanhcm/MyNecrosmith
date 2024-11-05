@@ -101,19 +101,27 @@ namespace Gameplay
         /// <returns>The loaded equipment prefab.</returns>
         public async Task<EquipmentBase> LoadEquipmentPrefabAsync(string equipmentType)
         {
-            var handle = Addressables.LoadAssetAsync<EquipmentBase>(equipmentType);
-
+            var handle = Addressables.LoadAssetAsync<GameObject>($"Equipment/{equipmentType}.prefab");
+            EquipmentBase equipmentPrefab = null;
+            
             // Subscribe to progress updates
             handle.Completed += (operation) =>
             {
-                if (operation.Status == AsyncOperationStatus.Succeeded)
+                if (operation.Status == AsyncOperationStatus.Succeeded && operation.Result.TryGetComponent(out equipmentPrefab))
                 {
-                    equipmentPrefabs[equipmentType] = operation.Result;
-                    Debug.Log($"Character Prefab '{equipmentType}' loaded successfully.");
+                    equipmentPrefabs[equipmentType] = equipmentPrefab;
+                    
+                    EventManager.Instance.TriggerEvent(new EventData.OnLoadEquipmentPrefabSuccess()
+                    {
+                        EquipmentTypeID = equipmentType,
+                        EquipmentPrefab = equipmentPrefab
+                    });
+                    
+                    Debug.Log($"Equipment Prefab '{equipmentType}' loaded successfully.");
                 }
                 else
                 {
-                    Debug.LogError($"Failed to load Character Prefab with address: {equipmentType}");
+                    Debug.LogError($"Failed to load Equipment Prefab with address: {equipmentType}");
                 }
             };
 
@@ -124,7 +132,7 @@ namespace Gameplay
                 await Task.Yield(); // Wait for the next frame
             }
 
-            return handle.Status == AsyncOperationStatus.Succeeded ? handle.Result : null;
+            return handle.Status == AsyncOperationStatus.Succeeded ? equipmentPrefab : null;
         }
 
         /// <summary>

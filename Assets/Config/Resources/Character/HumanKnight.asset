@@ -17,4 +17,4 @@ MonoBehaviour:
   HP: 100
   MoveSpeed: 5
   AttacSpeed: 10
-  InventorySize: {x: 5, y: 3}
+  InventorySize: {x: 7, y: 7}

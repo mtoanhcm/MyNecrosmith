@@ -8,9 +8,9 @@ namespace Equipment
     {
         private FlyFowardAction flyTowardAction;
 
-        public override void Init(CharacterBase owner ,EquipmentData data)
+        public override void Init(CharacterBase owner ,EquipmentData data, Vector3 spawnPosition)
         {
-            base.Init(owner ,data);
+            base.Init(owner ,data, spawnPosition);
             
             flyTowardAction = new FlyFowardAction();
         }

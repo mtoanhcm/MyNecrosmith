@@ -34,7 +34,8 @@ namespace Spawner
                  return;
              }
 
-             equipment.Init(data.Owner, data.Equipment);
+             equipment.Init(data.Owner, data.Equipment, data.SpawnPosition);
+             data.OnSpawnEqupimentSuccessHandle?.Invoke(equipment);
          }
      }
  }

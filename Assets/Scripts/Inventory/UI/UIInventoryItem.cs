@@ -125,7 +125,7 @@ namespace UI
         {
             transform.position = Mouse.current.position.ReadValue();
             delayFrameToUpdateHoverEvent++;
-            if (delayFrameToUpdateHoverEvent % 10 == 0)
+            if (delayFrameToUpdateHoverEvent % 5 == 0)
             {
                 EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
             }
