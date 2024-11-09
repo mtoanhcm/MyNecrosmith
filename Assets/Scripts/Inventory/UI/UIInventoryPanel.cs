@@ -21,7 +21,9 @@ namespace UI
         private UIInventoryPanelCellHandle cellHandle;
         private UIInventoryPanelEquipmentHandle equipmentHandle;
 
-        private void Awake()
+        private bool isInit;
+        
+        private void Init()
         {
             InitInventorySize();
             InitInventoryEmptyCell();
@@ -78,6 +80,12 @@ namespace UI
 
         public void OpenInventory(Inventory characterInventory)
         {
+            if (!isInit)
+            {
+                Init();
+                isInit = true;
+            }
+            
             characterClassOwnInventory = characterInventory.CharacterClass;
             
             cellHandle.LockAllCells();
@@ -157,7 +165,7 @@ namespace UI
 
         private void CloseInventoryUIPanel()
         {
-            gameObject.SetActive(false);
+            EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory() { InventoryData = null });
         }
     }   
 }

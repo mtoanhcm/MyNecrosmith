@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Config;
@@ -5,9 +6,11 @@ using UnityEngine;
 
 namespace Equipment
 {
+    [Serializable]
     public class EquipmentData
     {
-        private readonly EquipmentConfig baseData;
+        [SerializeField]
+        private EquipmentConfig baseData;
         
         public EquipmentID ID => baseData.ID;
         public EquipmentCategoryID Category => baseData.CategoryID;

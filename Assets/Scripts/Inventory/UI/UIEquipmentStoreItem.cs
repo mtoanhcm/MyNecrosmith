@@ -5,22 +5,23 @@ using Config;
 using Equipment;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
 {
-    public class UIEquipmentStoreItem : MonoBehaviour
+    public class UIEquipmentStoreItem : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private Image equipmentIcon;
         [SerializeField] private Transform slotContainer;
         
         private List<GameObject> slots;
 
-        private const float SLOT_WIDTH = 4f;
-        private const float SLOT_HEIGHT = 4f;
-        private const float SLOT_SPACING = 0.5f;
+        private const float SLOT_WIDTH = 12f;
+        private const float SLOT_HEIGHT = 12f;
+        private const float SLOT_SPACING = 2f;
 
-        private void Start()
+        private void InitDefaultSlots()
         {
             slots = new List<GameObject>();
             var totalSlots = InventoryParam.MAX_EQUIPMENT_WIDTH * InventoryParam.MAX_EQUIPMENT_HEIGHT;
@@ -45,6 +46,11 @@ namespace UI
         {
             equipmentIcon.sprite = data.IconSpr;
 
+            if (slots == null)
+            {
+                InitDefaultSlots();
+            }
+            
             HideAllSlots();
             var index = 0;
             for (var i = 0; i < data.Width; i++)
@@ -68,28 +74,9 @@ namespace UI
             }
         }
 
-        [Button]
-        private void TestSetData()
+        public void OnPointerClick(PointerEventData eventData)
         {
-            Start();
-            var config = Resources.Load<EquipmentConfig>("Equipment/Sword/IronSword");
-            SetData(new EquipmentData(config));
-        }
-
-        [Button]
-        private void DeleteData()
-        {
-            for (var i = 0; i < slots.Count; i++)
-            {
-                if (slots[i] == null)
-                {
-                    continue;
-                }
-                
-                DestroyImmediate(slots[i]);
-            }
-            
-            slots.Clear();
+            Debug.Log("Click");
         }
     }   
 }

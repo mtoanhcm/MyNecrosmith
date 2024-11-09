@@ -87,5 +87,13 @@ namespace Observer {
             public string EquipmentTypeID;
             public EquipmentBase EquipmentPrefab;
         }
+
+        /// <summary>
+        /// Call when any minion obtains the equipment or player obtains the equipment from event, box...
+        /// </summary>
+        public struct OnObtainedEquipment
+        {
+            public EquipmentData EquipmentData;
+        }
     }
 }
