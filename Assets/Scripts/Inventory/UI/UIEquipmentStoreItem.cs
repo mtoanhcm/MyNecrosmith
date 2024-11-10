@@ -10,12 +10,16 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class UIEquipmentStoreItem : MonoBehaviour, IPointerClickHandler
+    public class UIEquipmentStoreItem : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField] private Image equipmentIcon;
         [SerializeField] private Transform slotContainer;
+
+        public EquipmentData EquipmentData => equipmentData;
         
+        private Action<UIEquipmentStoreItem> onRemoveItemFromStorage;
         private List<GameObject> slots;
+        private EquipmentData equipmentData;
 
         private const float SLOT_WIDTH = 12f;
         private const float SLOT_HEIGHT = 12f;
@@ -42,7 +46,7 @@ namespace UI
             }
         }
 
-        public void SetData(EquipmentData data)
+        public void SetData(EquipmentData data, Action<UIEquipmentStoreItem> onHandleRemoveItemFromStorage)
         {
             equipmentIcon.sprite = data.IconSpr;
 
@@ -64,6 +68,9 @@ namespace UI
                     index++;
                 }
             }
+
+            onRemoveItemFromStorage = onHandleRemoveItemFromStorage;
+            equipmentData = data;
         }
 
         private void HideAllSlots()
@@ -74,9 +81,10 @@ namespace UI
             }
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("Click");
+            Debug.Log("Hold");
+            onRemoveItemFromStorage?.Invoke(this);
         }
     }   
 }

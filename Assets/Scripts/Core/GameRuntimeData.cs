@@ -8,18 +8,25 @@ namespace Gameplay
     public class GameRuntimeData : ScriptableObject
     {
         public List<EquipmentData> EquipmentStorage => equipmentStorage;
+        public int StorageMax => storageMax;
 
-        [SerializeField]
         private List<EquipmentData> equipmentStorage;
-
-        public void AddEquipmentToStorage(EquipmentData equipment)
+        private int storageMax;
+        
+        public bool AddEquipmentToStorage(EquipmentData equipment)
         {
             if (equipmentStorage == null)
             {
                 equipmentStorage = new List<EquipmentData>();
             }
+
+            if (equipmentStorage.Count >= storageMax)
+            {
+                return false;
+            }
             
             equipmentStorage.Add(equipment);
+            return true;
         }
 
         public void RemoveEquipmentFromStorage(EquipmentData equipment)

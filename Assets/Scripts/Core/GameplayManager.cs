@@ -24,11 +24,6 @@ namespace Gameplay
             EventManager.Instance.TriggerEvent(new EventData.OnStartGame() { IsStart = true});
         }
 
-        private void OnDestroy()
-        {
-            resourcesManager.UnloadAllAssets();
-        }
-
         private async Task PrepareCharacterResources()
         {
             foreach (C_Class charClass in Enum.GetValues(typeof(C_Class)))

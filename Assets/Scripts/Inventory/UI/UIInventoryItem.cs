@@ -1,3 +1,4 @@
+using System;
 using Character;
 using Equipment;
 using Observer;
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class UIInventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class UIInventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler//, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         public RectTransform MyRect => myRect;
         public InventoryItem Item { get; private set; }
@@ -29,6 +30,21 @@ namespace UI
         private void Awake()
         {
             myRect = GetComponent<RectTransform>();
+        }
+
+        private void Update()
+        {
+            if (!isHoldingItem)
+            {
+                return;
+            }
+            
+            transform.position = Mouse.current.position.ReadValue();
+            delayFrameToUpdateHoverEvent++;
+            if (delayFrameToUpdateHoverEvent % 5 == 0)
+            {
+                EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
+            }
         }
 
         public void Init(EquipmentData equipment)
@@ -87,6 +103,16 @@ namespace UI
             isInInventory = isIn;
         }
 
+        public void ActiveDragging()
+        {
+            transform.position = Mouse.current.position.ReadValue();
+            
+            EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
+            
+            isHoldingItem = true;
+            delayFrameToUpdateHoverEvent = 0;
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
             if (isInInventory)
@@ -95,45 +121,43 @@ namespace UI
                 {
                     UIItemPick = this,
                 });
-
+                
                 MarkItemInInventory(false);
             }
-            
-            transform.position = Mouse.current.position.ReadValue();
-            
-            EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
-            isHoldingItem = true;
+
+            ActiveDragging();
         }
         
         public void OnPointerUp(PointerEventData eventData)
         {
+            Debug.Log("A");
+            isHoldingItem = false;
+            
             EventManager.Instance.TriggerEvent(new EventData.OnPlacingEquipment()
             {
                 UIItem = this
             });
-
-            isHoldingItem = false;
         }
         
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            delayFrameToUpdateHoverEvent = 0;
-            transform.position = Mouse.current.position.ReadValue();
-        }
+        // public void OnBeginDrag(PointerEventData eventData)
+        // {
+        //     delayFrameToUpdateHoverEvent = 0;
+        //     transform.position = Mouse.current.position.ReadValue();
+        // }
         
-        public void OnDrag(PointerEventData eventData)
-        {
-            transform.position = Mouse.current.position.ReadValue();
-            delayFrameToUpdateHoverEvent++;
-            if (delayFrameToUpdateHoverEvent % 5 == 0)
-            {
-                EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
-            }
-        }
+        // public void OnDrag(PointerEventData eventData)
+        // {
+        //     transform.position = Mouse.current.position.ReadValue();
+        //     delayFrameToUpdateHoverEvent++;
+        //     if (delayFrameToUpdateHoverEvent % 5 == 0)
+        //     {
+        //         EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
+        //     }
+        // }
 
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            
-        }
+        // public void OnEndDrag(PointerEventData eventData)
+        // {
+        //     
+        // }
     }   
 }
