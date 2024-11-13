@@ -6,17 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/InventoryItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/InventoryItem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Sword/IronSword.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Sword/IronSword.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GrandStore/UI/UIEquipmentGrandStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GrandStore/UI/UIEquipmentGrandStore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEquipmentStoreItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEquipmentStoreItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle/UIInventoryPanelCellHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle/UIInventoryPanelCellHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIItemDragAndDrop.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIItemDragAndDrop.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,11 +30,17 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/54724222b7684530a2810ae1eac94ec7176000/9c/91afed73/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/54724222b7684530a2810ae1eac94ec7176000/c7/61441c32/SetupCoroutine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8ce0bd04a7a04b4b9395538239d3fdd846ac00/9f/71db1525/IntPtr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/95aa47eebb6745fa961ad6d1257e2150104b8/7b/f01561de/Utility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/8f/52bb8c83/ObjectPool`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/da/34a1feda/Vector3.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Config/EquipmentConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Config/ItemID.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Equipment/Action/ActionBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle/UIInventoryPanelEquipmentHandle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawner/ObjectSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ultility/DynamicScrollView.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -55,14 +56,14 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.39003646&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/Inventory-System&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/Core-Gameplay&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.and.region&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -147,6 +148,25 @@
       <workItem from="1729436118456" duration="8824000" />
       <workItem from="1729702386068" duration="2800000" />
       <workItem from="1729787584004" duration="1071000" />
+      <workItem from="1729910371216" duration="2812000" />
+      <workItem from="1729932332152" duration="10802000" />
+      <workItem from="1729961161652" duration="3613000" />
+      <workItem from="1730020937232" duration="3408000" />
+      <workItem from="1730049634410" duration="1126000" />
+      <workItem from="1730134851079" duration="3071000" />
+      <workItem from="1730393025045" duration="1546000" />
+      <workItem from="1730513277551" duration="12202000" />
+      <workItem from="1730540605784" duration="11233000" />
+      <workItem from="1730638375805" duration="60000" />
+      <workItem from="1730655688637" duration="2592000" />
+      <workItem from="1730738344637" duration="3904000" />
+      <workItem from="1730820931717" duration="9272000" />
+      <workItem from="1731084204110" duration="5417000" />
+      <workItem from="1731146448562" duration="2162000" />
+      <workItem from="1731167394670" duration="5861000" />
+      <workItem from="1731227227090" duration="8732000" />
+      <workItem from="1731247140988" duration="1673000" />
+      <workItem from="1731431579159" duration="1605000" />
     </task>
     <servers />
   </component>

@@ -28,5 +28,16 @@ namespace UI
         {
             inventoryItems.Add(item);
         }
+
+        public List<EquipmentData> GetEquipmentData()
+        {
+            var equipmentData = new List<EquipmentData>();
+            for (var i = 0; i < inventoryItems.Count; i++)
+            {
+                equipmentData.Add(inventoryItems[i].Item.Equipment);
+            }
+            
+            return equipmentData;
+        }
     }   
 }

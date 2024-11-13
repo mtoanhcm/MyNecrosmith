@@ -2,7 +2,8 @@ using System.Linq;
 using Observer;
 using UnityEngine;
 using Character;
-using Ultility;
+using Config;
+using GameUtility;
 using UnityEngine.UI;
 
 namespace UI
@@ -12,18 +13,25 @@ namespace UI
         [SerializeField] private GridLayoutGroup cellGridContainer;
         [SerializeField] private Transform itemContainer;
         [SerializeField] private UIInventoryCell cellPrefab;
+        [SerializeField] private Button spawnCharacterBtn;
         
         private RectTransform inventoryRect;
-        
+
+        private C_Class characterClassOwnInventory;
         private UIInventoryPanelCellHandle cellHandle;
         private UIInventoryPanelEquipmentHandle equipmentHandle;
 
-        private void Awake()
+        private bool isInit;
+        
+        private void Init()
         {
             InitInventorySize();
             InitInventoryEmptyCell();
 
             equipmentHandle = new UIInventoryPanelEquipmentHandle();   
+            
+            spawnCharacterBtn.onClick.RemoveAllListeners();
+            spawnCharacterBtn.onClick.AddListener(OnCharacterEquipmentReady);
             
             return;
 
@@ -72,6 +80,20 @@ namespace UI
 
         public void OpenInventory(Inventory characterInventory)
         {
+            if (!isInit)
+            {
+                Init();
+                isInit = true;
+            }
+
+            if (characterInventory == null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            
+            characterClassOwnInventory = characterInventory.CharacterClass;
+            
             cellHandle.LockAllCells();
             cellHandle.ResetAllCellHoverState();
 
@@ -95,6 +117,22 @@ namespace UI
             }
         }
 
+        private void OnCharacterEquipmentReady()
+        {
+            var config = Resources.Load<CharacterConfig>($"Character/{characterClassOwnInventory}");
+            if (config != null)
+            {
+                EventManager.Instance.TriggerEvent(new EventData.OnSpawnMinion()
+                {
+                    Config = config,
+                    Equipments = equipmentHandle.GetEquipmentData(),
+                    SpawnPosition = Vector3.zero
+                });
+
+                CloseInventoryUIPanel();
+            }
+        }
+        
         private void OnCheckDraggingEquipmentHoverInventory(EventData.DraggingEquipment data)
         {
             if (!data.UIItem.MyRect.IsWorldOverlap(inventoryRect))
@@ -129,6 +167,11 @@ namespace UI
         private void OnPickingEquipmentFromInventory(EventData.OnPickingEquipmentFromInventory data)
         {
             cellHandle.RemoveItemForcell(data.UIItemPick.GetInstanceID().ToString());
+        }
+
+        private void CloseInventoryUIPanel()
+        {
+            EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory() { InventoryData = null });
         }
     }   
 }

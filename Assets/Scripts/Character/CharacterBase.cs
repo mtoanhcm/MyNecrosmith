@@ -1,26 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace  Character
+namespace Character
 {
-    public class CharacterBase : MonoBehaviour
+    public abstract class CharacterBase : MonoBehaviour
     {
-        [SerializeField]
-        private int inventoryWidth;
-        [SerializeField]
-        private int inventoryHeight;
+        public CharacterStats Stats { get;private set; }
+
+        private Transform modelContainer;
         
-        private void Start()
+        public virtual void Spawn(CharacterStats stat)
         {
-            
+            Stats = stat;
+        }
+        
+        public virtual void TakeDamage(int damage)
+        {
+            Stats.TakeDamage(damage, Die);
         }
 
-        [Button]
-        private void OpenInventory()
-        {
-            
-        }
+        protected abstract void Die();
     }   
 }
