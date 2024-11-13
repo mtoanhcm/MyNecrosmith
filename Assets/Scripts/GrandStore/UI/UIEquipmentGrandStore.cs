@@ -13,11 +13,11 @@ namespace UI
 {
     public class UIEquipmentGrandStore : MonoBehaviour
     {
-        [SerializeField] private UIEquipmentStoreItem equipmentItemPrefab;
+        [SerializeField] private UIInventoryItem equipmentItemPrefab;
         [SerializeField] private UIEquipmentSpawner equipmentUIItemSpawner;
         [SerializeField] private Transform itemContainer;
         
-        private List<UIEquipmentStoreItem> inventoryItems;
+        private List<UIInventoryItem> inventoryItems;
         private GameRuntimeData runtimeData;
 
         private void Awake()
@@ -41,7 +41,7 @@ namespace UI
 
         private void Start()
         {
-            EventManager.Instance.StartListening<EventData.OnPickingEquipmentFromInventory>(OnPickingFromInventory);
+            
         }
 
         private void ShowEqupimentList()
@@ -57,13 +57,13 @@ namespace UI
                 if (inventoryItems.Count <= i)
                 {
                     var newItem = Instantiate(equipmentItemPrefab, itemContainer);
-                    newItem.SetData(equipmentLst[i], GetEquipmentFromStorage);
+                    newItem.Init(equipmentLst[i]);
                     
                     inventoryItems.Add(newItem);
                     continue;
                 }
                 
-                inventoryItems[i].SetData(equipmentLst[i], GetEquipmentFromStorage);
+                inventoryItems[i].Init(equipmentLst[i]);
             }
         }
 
@@ -82,14 +82,9 @@ namespace UI
         private void OnObtainedEquipment(EventData.OnObtainedEquipment data)
         {
             var newEquipmentItem = Instantiate(equipmentItemPrefab, itemContainer);
-            newEquipmentItem.SetData(data.EquipmentData, GetEquipmentFromStorage);
+            newEquipmentItem.Init(data.EquipmentData);
             
             inventoryItems.Add(newEquipmentItem);
-        }
-        
-        private void OnPickingFromInventory(EventData.OnPickingEquipmentFromInventory data)
-        {
-            data.UIItemPick.transform.SetParent(itemContainer);
         }
     }   
 }

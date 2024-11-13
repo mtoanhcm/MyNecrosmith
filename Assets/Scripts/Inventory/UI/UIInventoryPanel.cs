@@ -85,6 +85,12 @@ namespace UI
                 Init();
                 isInit = true;
             }
+
+            if (characterInventory == null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
             
             characterClassOwnInventory = characterInventory.CharacterClass;
             

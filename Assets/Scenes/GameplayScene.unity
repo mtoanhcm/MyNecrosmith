@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1767527db6a6f94409fdb77f4f88b8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentItemPrefab: {fileID: 4534567748239238810, guid: 841536b24852d4441a360a7838b88a70, type: 3}
+  equipmentItemPrefab: {fileID: 135994981665854799, guid: 4e490620f315078418844cb3e921f2c8, type: 3}
   equipmentUIItemSpawner: {fileID: 724627825}
   itemContainer: {fileID: 53052400}
 --- !u!114 &724627825

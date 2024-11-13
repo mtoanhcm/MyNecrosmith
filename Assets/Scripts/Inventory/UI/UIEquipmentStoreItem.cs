@@ -83,7 +83,6 @@ namespace UI
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("Hold");
             onRemoveItemFromStorage?.Invoke(this);
         }
     }   

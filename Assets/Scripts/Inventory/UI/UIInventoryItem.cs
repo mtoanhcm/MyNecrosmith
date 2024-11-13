@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class UIInventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler//, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class UIInventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         public RectTransform MyRect => myRect;
         public InventoryItem Item { get; private set; }
@@ -130,7 +130,6 @@ namespace UI
         
         public void OnPointerUp(PointerEventData eventData)
         {
-            Debug.Log("A");
             isHoldingItem = false;
             
             EventManager.Instance.TriggerEvent(new EventData.OnPlacingEquipment()
@@ -139,25 +138,25 @@ namespace UI
             });
         }
         
-        // public void OnBeginDrag(PointerEventData eventData)
-        // {
-        //     delayFrameToUpdateHoverEvent = 0;
-        //     transform.position = Mouse.current.position.ReadValue();
-        // }
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            delayFrameToUpdateHoverEvent = 0;
+            transform.position = Mouse.current.position.ReadValue();
+        }
         
-        // public void OnDrag(PointerEventData eventData)
-        // {
-        //     transform.position = Mouse.current.position.ReadValue();
-        //     delayFrameToUpdateHoverEvent++;
-        //     if (delayFrameToUpdateHoverEvent % 5 == 0)
-        //     {
-        //         EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
-        //     }
-        // }
+        public void OnDrag(PointerEventData eventData)
+        {
+            transform.position = Mouse.current.position.ReadValue();
+            delayFrameToUpdateHoverEvent++;
+            if (delayFrameToUpdateHoverEvent % 5 == 0)
+            {
+                EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
+            }
+        }
 
-        // public void OnEndDrag(PointerEventData eventData)
-        // {
-        //     
-        // }
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            
+        }
     }   
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IronSword
   m_EditorClassIdentifier: 
   ID: 1
-  CategoryID: 0
+  CategoryID: 1
   EquipmentName: Iron Sword
   EffectValue: 10
   AttackRadius: 0
