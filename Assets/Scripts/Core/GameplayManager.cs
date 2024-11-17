@@ -36,15 +36,15 @@ namespace Gameplay
 
         private async Task PrepareEqupimentResources()
         {
-            foreach (EquipmentID equipmetID in Enum.GetValues(typeof(EquipmentID)))
-            {
-                if (equipmetID == EquipmentID.None)
-                {
-                    continue;
-                }
-                
-                await resourcesManager.LoadEquipmentPrefabAsync(equipmetID.ToString());
-            }
+            // foreach (EquipmentID equipmetID in Enum.GetValues(typeof(EquipmentID)))
+            // {
+            //     if (equipmetID == EquipmentID.None)
+            //     {
+            //         continue;
+            //     }
+            //     
+            //     await resourcesManager.LoadEquipmentPrefabAsync(equipmetID.ToString());
+            // }
 
             Debug.Log("Done load equpiment resources");
         }

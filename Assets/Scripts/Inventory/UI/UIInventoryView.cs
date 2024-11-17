@@ -14,23 +14,16 @@ namespace UI
         private UIInventoryPanel inventoryPanel;
         [SerializeField]
         private UIEquipmentGrandStore grandStore;
-
-        private void OnEnable()
-        {
-            EventManager.Instance?.StartListening<EventData.OpenCharacterInventory>(OnGetCharacterInventoryData);
-        }
-
-        private void OnDisable()
-        {
-            EventManager.Instance?.StopListening<EventData.OpenCharacterInventory>(OnGetCharacterInventoryData);
-        }
         
-        private void OnGetCharacterInventoryData(EventData.OpenCharacterInventory data)
+        public void OpenCharacterInventory(Inventory data)
         {
-            inventoryPanel.OpenInventory(data.InventoryData);
+            gameObject.SetActive(data != null);
+            if (data == null)
+            {
+                return;
+            }
             
-            inventoryPanel.SetActive(data.InventoryData != null);
-            grandStore.SetActive(data.InventoryData != null);
+            inventoryPanel.OpenInventory(data);
         }
     }   
 }

@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 4618485138640884916}
   - component: {fileID: 3405278468508786884}
   - component: {fileID: 2731342605189510236}
-  - component: {fileID: 7926699359014879381}
   m_Layer: 5
-  m_Name: InventoryCell
+  m_Name: EquipmentStorageCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3405278468508786884
 CanvasRenderer:
@@ -76,16 +75,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7926699359014879381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4817889434284344656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20f437e24411cd94694ca961a90485fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bg: {fileID: 2731342605189510236}

@@ -9,12 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c685e410362dc4140b8a3df7f70a96ee, type: 3}
-  m_Name: HumanKnight
+  m_Script: {fileID: 11500000, guid: 027ba6065042c794f801fa335a2fbf89, type: 3}
+  m_Name: Knife
   m_EditorClassIdentifier: 
-  Race: 0
-  Class: 0
-  HP: 100
-  MoveSpeed: 5
-  AttacSpeed: 10
-  InventorySize: {x: 7, y: 5}
+  EquipmentName: Knife
+  LoadPoint: 7
+  Icon: {fileID: 0}
+  Width: 1
+  Height: 1
+  ID: 0
+  DamageType: 0
+  Damage: 3
+  AttackRange: 2
+  AttackSpeed: 0.16666667

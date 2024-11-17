@@ -27,7 +27,7 @@ namespace Spawner
 
          private void SpawnEquipment(EventData.OnSpawnEquipment data)
          {
-             var equipment = objectPool.GetObject(data.Equipment.ID.ToString());
+             var equipment = objectPool.GetObject(data.Equipment.ID);
              if (equipment == null)
              {
                  Debug.LogError($"Cannot instantiate equipment {data.Equipment.ID}");

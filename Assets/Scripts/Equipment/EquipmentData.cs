@@ -12,12 +12,11 @@ namespace Equipment
         [SerializeField]
         private EquipmentConfig baseData;
         
-        public EquipmentID ID => baseData.ID;
-        public EquipmentCategoryID Category => baseData.CategoryID;
+        public string ID => string.Empty;
         public string Name => baseData.EquipmentName;
-        public int EffectValue => baseData.EffectValue;
-        public float AttackRadius => baseData.AttackRadius;
-        public float AttackSpeed => baseData.AttackSpeed;
+        public int EffectValue => 0;
+        public float AttackRadius => 0;
+        public float AttackSpeed => 0;
         public Sprite IconSpr => baseData.Icon;
         public int Width => baseData.Width;
         public int Height => baseData.Height;
@@ -26,5 +25,7 @@ namespace Equipment
         {
             this.baseData = baseData;
         }
+        
+        
     }
 }
