@@ -25,7 +25,7 @@ namespace Gameplay
         [Button]
         public void TestPickupEquipment()
         {
-            var swordConfig = Resources.Load<EquipmentConfig>("Equipment/Sword/IronSword");
+            var swordConfig = Resources.Load<EquipmentConfig>("Equipment/Weapon/Knife");
             if (swordConfig != null)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment(){ EquipmentData = new EquipmentData(swordConfig) });

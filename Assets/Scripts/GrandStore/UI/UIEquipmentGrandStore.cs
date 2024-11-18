@@ -1,13 +1,8 @@
-using System;
 using System.Collections.Generic;
-using Config;
+using Equipment;
 using Gameplay;
-using GameUtility;
 using Observer;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 namespace UI
 {
@@ -15,14 +10,17 @@ namespace UI
     {
         [SerializeField] private UIInventoryItem equipmentItemPrefab;
         [SerializeField] private UIEquipmentSpawner equipmentUIItemSpawner;
-        [SerializeField] private Transform itemContainer;
+        [SerializeField] private Transform cellContainer;
         
-        private List<UIInventoryItem> inventoryItems;
+        private List<UIEquipmentStorageCell> equipmentCells;
+        private List<EquipmentData> equipmentDatas;
         private GameRuntimeData runtimeData;
 
         private void Awake()
         {
-            inventoryItems = new();
+            equipmentCells = new List<UIEquipmentStorageCell>(cellContainer.GetComponentsInChildren<UIEquipmentStorageCell>());
+            equipmentDatas = new List<EquipmentData>();
+            
             equipmentUIItemSpawner.Init();
             runtimeData = Resources.Load<GameRuntimeData>("GameRuntimeData");
         }
@@ -31,7 +29,7 @@ namespace UI
         {
             EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
 
-            ShowEqupimentList();
+            ShowEquipmentList();
         }
 
         private void OnDisable()
@@ -39,12 +37,7 @@ namespace UI
             EventManager.Instance?.StopListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
         }
 
-        private void Start()
-        {
-            
-        }
-
-        private void ShowEqupimentList()
+        private void ShowEquipmentList()
         {
             var equipmentLst = runtimeData.EquipmentStorage;
             if (equipmentLst == null || equipmentLst.Count == 0)
@@ -52,39 +45,38 @@ namespace UI
                 return;
             }
             
+            equipmentDatas.Clear();
             for (var i = 0; i < equipmentLst.Count; i++)
             {
-                if (inventoryItems.Count <= i)
-                {
-                    var newItem = Instantiate(equipmentItemPrefab, itemContainer);
-                    newItem.Init(equipmentLst[i]);
-                    
-                    inventoryItems.Add(newItem);
-                    continue;
-                }
-                
-                inventoryItems[i].Init(equipmentLst[i]);
+                AddEquipmentToStorage(equipmentLst[i]);
             }
         }
 
-        private void GetEquipmentFromStorage(UIEquipmentStoreItem item)
+        private void AddEquipmentToStorage(EquipmentData data)
         {
-            var uiEquipmentDrag = equipmentUIItemSpawner.GetEquipmentUIItem();
-            uiEquipmentDrag.Init(item.EquipmentData);
-            uiEquipmentDrag.transform.SetParent(itemContainer);
-            
-            uiEquipmentDrag.ActiveDragging();
-            
-            //inventoryItems.Remove(item);
-            item.SetActive(false);
+            equipmentDatas.Add(data);
+
+            UpdateEquipmentUI(data);
+        }
+
+        private void UpdateEquipmentUI(EquipmentData data)
+        {
+            for (var i = 0; i < equipmentCells.Count; i++)
+            {
+                var cell = equipmentCells[i];
+                if (cell.HasEquipment)
+                {
+                    continue;
+                }
+                
+                cell.SetData(data);
+                break;
+            }
         }
         
         private void OnObtainedEquipment(EventData.OnObtainedEquipment data)
         {
-            var newEquipmentItem = Instantiate(equipmentItemPrefab, itemContainer);
-            newEquipmentItem.Init(data.EquipmentData);
-            
-            inventoryItems.Add(newEquipmentItem);
+            AddEquipmentToStorage(data.EquipmentData);
         }
     }   
 }
