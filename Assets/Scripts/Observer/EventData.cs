@@ -64,18 +64,6 @@ namespace Observer {
             public Action<EquipmentBase> OnSpawnEqupimentSuccessHandle;
         }
 
-        public struct OnMinionEquipmentReady
-        {
-            public C_Class CharacterClass;
-            public List<EquipmentData> Equipments;
-        }
-
-        public struct OnSpawnEnemy
-        {
-            public C_Class Class;
-            public Vector3 Position;
-        }
-
         public struct OnLoadCharacterPrefabSuccess
         {
             public string Class;
@@ -94,6 +82,11 @@ namespace Observer {
         public struct OnObtainedEquipment
         {
             public EquipmentData EquipmentData;
+        }
+
+        public struct OnChooseEquipmentInStorage
+        {
+            public EquipmentData Equipment;
         }
     }
 }

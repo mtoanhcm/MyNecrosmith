@@ -148,17 +148,19 @@ namespace UI
                 return false;
             }
     
-            var adjustedX = localPosition.x + inventoryRect.rect.width * 0.5f;
-            var adjustedY = inventoryRect.rect.height * 0.5f - localPosition.y;
-
+            var adjustedX = localPosition.x + inventoryRect.rect.width * inventoryRect.pivot.x;
+            var adjustedY = inventoryRect.rect.height * (1 - inventoryRect.pivot.y) - localPosition.y;
+            
             var column = Mathf.FloorToInt(adjustedX / (InventoryParam.CELL_SIZE + InventoryParam.CELL_SPACING));
             var row = Mathf.FloorToInt(adjustedY / (InventoryParam.CELL_SIZE + InventoryParam.CELL_SPACING));
-
+            
             // check position in limit of inventory
             if (row < 0 || row >= InventoryParam.MAX_ROW || column < 0 || column >= InventoryParam.MAX_COLUMN)
             {
                 return false;
             }
+            
+            //Debug.Log($"{row} --- {column}");
             
             pos = new Vector2Int(row, column);
             

@@ -10,21 +10,20 @@ namespace Equipment
     public class EquipmentData
     {
         [SerializeField]
-        private EquipmentConfig baseData;
-        
-        public EquipmentID ID => baseData.ID;
-        public EquipmentCategoryID Category => baseData.CategoryID;
-        public string Name => baseData.EquipmentName;
-        public int EffectValue => baseData.EffectValue;
-        public float AttackRadius => baseData.AttackRadius;
-        public float AttackSpeed => baseData.AttackSpeed;
-        public Sprite IconSpr => baseData.Icon;
-        public int Width => baseData.Width;
-        public int Height => baseData.Height;
+        protected EquipmentConfig baseConfig;
 
-        public EquipmentData(EquipmentConfig baseData)
+        public virtual string ID => string.Empty;
+        public virtual string EffectType => string.Empty;
+        public virtual string EffectValue => string.Empty;
+        public string Name => baseConfig.EquipmentName;
+        public Sprite IconSpr => baseConfig.Icon;
+        public int LoadPoint => baseConfig.LoadPoint;
+        public int Width => baseConfig.Width;
+        public int Height => baseConfig.Height;
+
+        public EquipmentData(EquipmentConfig config)
         {
-            this.baseData = baseData;
+            baseConfig = config;
         }
     }
 }

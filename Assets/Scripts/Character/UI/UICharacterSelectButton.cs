@@ -26,8 +26,8 @@ namespace UI
                 EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory()
                 {
                     InventoryData = new Inventory(
-                        Mathf.Clamp(config.InventorySize.x ,InventoryParam.MIN_ROW, InventoryParam.MAX_ROW), 
-                        Mathf.Clamp(config.InventorySize.y, InventoryParam.MIN_COLUMN, InventoryParam.MAX_COLUMN),
+                        Mathf.Clamp(config.InventorySize.y ,InventoryParam.MIN_ROW, InventoryParam.MAX_ROW), 
+                        Mathf.Clamp(config.InventorySize.x, InventoryParam.MIN_COLUMN, InventoryParam.MAX_COLUMN),
                         config.Class
                         )
                 });

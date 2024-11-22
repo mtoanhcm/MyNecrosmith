@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c685e410362dc4140b8a3df7f70a96ee, type: 3}
-  m_Name: HumanKnight
+  m_Script: {fileID: 11500000, guid: 384cabfca5d82274fb54c03f7901495b, type: 3}
+  m_Name: ChainArmor
   m_EditorClassIdentifier: 
-  Race: 0
-  Class: 0
-  HP: 100
-  MoveSpeed: 5
-  AttacSpeed: 10
-  InventorySize: {x: 7, y: 5}
+  ID: 3
+  Name: Chain Armor
+  HP: 5
+  Type: 2
+  LoadPoint: 16

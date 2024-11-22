@@ -55,6 +55,11 @@ namespace GameUtility {
         
         public static bool IsWorldOverlap(this RectTransform originRect, RectTransform targetRect)
         {
+            if (targetRect == null)
+            {
+                return false;
+            }
+            
             var currentRect1 = GetWorldRect(originRect);
             var currentRect2 = GetWorldRect(targetRect);
 

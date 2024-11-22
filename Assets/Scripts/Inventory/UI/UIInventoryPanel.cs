@@ -25,40 +25,52 @@ namespace UI
         
         private void Init()
         {
-            InitInventorySize();
+            //InitInventorySize();
             InitInventoryEmptyCell();
 
             equipmentHandle = new UIInventoryPanelEquipmentHandle();   
+            inventoryRect = cellGridContainer.GetComponent<RectTransform>();
             
             spawnCharacterBtn.onClick.RemoveAllListeners();
             spawnCharacterBtn.onClick.AddListener(OnCharacterEquipmentReady);
             
             return;
 
-            void InitInventorySize()
-            {
-                inventoryRect = cellGridContainer.GetComponent<RectTransform>();
-                inventoryRect.sizeDelta = new Vector2(
-                    InventoryParam.CELL_SIZE * InventoryParam.MAX_ROW +
-                    (cellGridContainer.spacing.x * (InventoryParam.MAX_ROW - 1)),
-                    InventoryParam.CELL_SIZE * InventoryParam.MAX_COLUMN +
-                    (cellGridContainer.spacing.x * (InventoryParam.MAX_COLUMN - 1))
-                );
-            
-                cellGridContainer.spacing = new Vector2(InventoryParam.CELL_SPACING, InventoryParam.CELL_SPACING);
-                cellGridContainer.cellSize = new Vector2(InventoryParam.CELL_SIZE, InventoryParam.CELL_SIZE);
-            }
+            // void InitInventorySize()
+            // {
+            //     inventoryRect = cellGridContainer.GetComponent<RectTransform>();
+            //     inventoryRect.sizeDelta = new Vector2(
+            //         InventoryParam.CELL_SIZE * InventoryParam.MAX_COLUMN +
+            //         (cellGridContainer.spacing.x * (InventoryParam.MAX_COLUMN - 1)),
+            //         InventoryParam.CELL_SIZE * InventoryParam.MAX_ROW +
+            //         (cellGridContainer.spacing.x * (InventoryParam.MAX_ROW - 1))
+            //     );
+            //
+            //     cellGridContainer.spacing = new Vector2(InventoryParam.CELL_SPACING, InventoryParam.CELL_SPACING);
+            //     cellGridContainer.cellSize = new Vector2(InventoryParam.CELL_SIZE, InventoryParam.CELL_SIZE);
+            // }
 
             void InitInventoryEmptyCell()
             {
                 cellHandle = new UIInventoryPanelCellHandle(InventoryParam.MAX_ROW, InventoryParam.MAX_COLUMN);
-                
+                var allCellObj = cellGridContainer.transform.GetComponentsInChildren<UIInventoryCell>(true);
+
+                if (cellHandle.InventoryCellHash.Count != allCellObj.Length)
+                {
+                    Debug.LogError("The total cells in inventory data do not match");
+                    return;
+                }
+
+                var index = 0;
                 foreach (var pos in cellHandle.InventoryCellHash)
                 {
-                    var cell = Instantiate(cellPrefab, cellGridContainer.transform).GetComponent<UIInventoryCell>();
+                    var cell = allCellObj[index];
+                    cell.name = pos.ToString();
                     cell.Init(pos.Item1, pos.Item2);
                     
                     cellHandle.SetUIInventoryCell(pos.Item1, pos.Item2, cell);
+
+                    index++;
                 }
             }
         }
@@ -139,7 +151,7 @@ namespace UI
             {
                 return;
             }
-
+            
             cellHandle.ResetAllCellHoverState();
             cellHandle.CheckHoverCell(data.UIItem, inventoryRect);
         }
