@@ -29,6 +29,7 @@ namespace UI
             InitInventoryEmptyCell();
 
             equipmentHandle = new UIInventoryPanelEquipmentHandle();   
+            inventoryRect = cellGridContainer.GetComponent<RectTransform>();
             
             spawnCharacterBtn.onClick.RemoveAllListeners();
             spawnCharacterBtn.onClick.AddListener(OnCharacterEquipmentReady);
@@ -150,7 +151,7 @@ namespace UI
             {
                 return;
             }
-
+            
             cellHandle.ResetAllCellHoverState();
             cellHandle.CheckHoverCell(data.UIItem, inventoryRect);
         }

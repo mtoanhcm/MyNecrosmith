@@ -46,7 +46,7 @@ namespace UI
                 EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
             }
         }
-
+        
         public void Init(EquipmentData equipment)
         {
             Item = new InventoryItem(equipment);
@@ -103,7 +103,7 @@ namespace UI
             isInInventory = isIn;
         }
 
-        public void ActiveDragging()
+        private void ActiveDragging()
         {
             transform.position = Mouse.current.position.ReadValue();
             

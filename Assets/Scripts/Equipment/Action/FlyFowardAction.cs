@@ -13,10 +13,16 @@ namespace Equipment
 
         private IEnumerator FlyFoward(CharacterBase caster, Transform target, EquipmentBase equipment)
         {
+            var weaponData = equipment.Data as WeaponData;
+            if (weaponData == null)
+            {
+                yield break;
+            }
+            
             var elapsedTime = 0f;
             var startPosition = equipment.transform.position;
             var targetDirection = (target.transform.position - startPosition).normalized;
-            var targetPosition = startPosition + targetDirection * equipment.Data.AttackRadius;
+            var targetPosition = startPosition + targetDirection * weaponData.AttackRadius;
 
             // Smoothly rotate equipment to face the target direction in 0.5 seconds
             var initialRotation = equipment.transform.rotation;
@@ -33,10 +39,10 @@ namespace Equipment
 
             // Move towards target position
             elapsedTime = 0f;
-            while (elapsedTime < equipment.Data.AttackSpeed)
+            while (elapsedTime < weaponData.AttackSpeed)
             {
                 equipment.transform.position = Vector3.Lerp(startPosition, targetPosition,
-                    elapsedTime / equipment.Data.AttackSpeed);
+                    elapsedTime / weaponData.AttackSpeed);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
@@ -50,13 +56,13 @@ namespace Equipment
             initialRotation = equipment.transform.rotation;
             targetRotation = Quaternion.Euler(0, 0, 0); // Rotate to face upwards
 
-            while (elapsedTime < equipment.Data.AttackSpeed)
+            while (elapsedTime < weaponData.AttackSpeed)
             {
                 equipment.transform.SetPositionAndRotation(
                     Vector3.Lerp(startPosition, targetPosition,
-                        elapsedTime / equipment.Data.AttackSpeed),
+                        elapsedTime / weaponData.AttackSpeed),
                     Quaternion.Slerp(initialRotation, targetRotation,
-                        elapsedTime / equipment.Data.AttackSpeed)
+                        elapsedTime / weaponData.AttackSpeed)
                     );
                 
                 elapsedTime += Time.deltaTime;
