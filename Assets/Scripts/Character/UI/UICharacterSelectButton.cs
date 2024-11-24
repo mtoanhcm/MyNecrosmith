@@ -8,7 +8,7 @@ namespace UI
 {
     public class UICharacterSelectButton : MonoBehaviour
     {
-        [SerializeField] private C_Class characterClass;
+        [SerializeField] private CharacterClass characterClass;
         [SerializeField] private Button myBtn;
         
         private void Start()
@@ -16,7 +16,7 @@ namespace UI
             myBtn.onClick.RemoveAllListeners();
             myBtn.onClick.AddListener(() =>
             {
-                var config = Resources.Load<CharacterConfig>($"Character/{characterClass}");
+                var config = Resources.Load<MinionConfig>($"Character/{characterClass}");
                 if (config == null)
                 {
                     Debug.LogError($"Cannot find character {characterClass} config");

@@ -43,9 +43,9 @@ namespace Gameplay
         /// </summary>
         /// <param name="characterClass">The class of the character to load.</param>
         /// <returns>The loaded character prefab.</returns>
-        public async Task<CharacterBase> LoadCharacterPrefabAsync(string characterClass)
-        {
-            var handle = Addressables.LoadAssetAsync<GameObject>($"Character/{characterClass}.prefab");
+        public async Task<CharacterBase> LoadCharacterPrefabAsync(string characterSide ,string characterClass)
+        { 
+            var handle = Addressables.LoadAssetAsync<GameObject>($"Character/{characterSide}/{characterClass}.prefab");
             CharacterBase characterPrefab = null;
             // Subscribe to progress updates
             handle.Completed += (operation) =>
