@@ -29,7 +29,7 @@ namespace Spawner
 
         private void SpawnMinion(EventData.OnSpawnMinion data)
         {
-            var minion = objectPool.GetObject(data.Config.Class.ToString()) as MinionCharacter;
+            var minion = objectPool.GetObject(data.Config.ID.ToString()) as MinionCharacter;
             if (minion == null)
             {
                 Debug.LogError("Cannot instantiate minion character");

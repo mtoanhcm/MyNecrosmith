@@ -17,7 +17,7 @@ namespace UI
         
         private RectTransform inventoryRect;
 
-        private CharacterClass characterClassOwnInventory;
+        private CharacterID _characterIDOwnInventory;
         private UIInventoryPanelCellHandle cellHandle;
         private UIInventoryPanelEquipmentHandle equipmentHandle;
 
@@ -104,7 +104,7 @@ namespace UI
                 return;
             }
             
-            characterClassOwnInventory = characterInventory.CharacterClass;
+            _characterIDOwnInventory = characterInventory.CharacterID;
             
             cellHandle.LockAllCells();
             cellHandle.ResetAllCellHoverState();
@@ -131,7 +131,7 @@ namespace UI
 
         private void OnCharacterEquipmentReady()
         {
-            var config = Resources.Load<MinionConfig>($"Character/{characterClassOwnInventory}");
+            var config = Resources.Load<MinionConfig>($"Character/{_characterIDOwnInventory}");
             if (config != null)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnSpawnMinion()
