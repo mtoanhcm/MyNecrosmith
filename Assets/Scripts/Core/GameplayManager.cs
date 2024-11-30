@@ -26,9 +26,9 @@ namespace Gameplay
 
         private async Task PrepareCharacterResources()
         {
-            foreach (C_Class charClass in Enum.GetValues(typeof(C_Class)))
+            foreach (CharacterClass charClass in Enum.GetValues(typeof(CharacterClass)))
             {
-                await resourcesManager.LoadCharacterPrefabAsync(charClass.ToString());
+                await resourcesManager.LoadCharacterPrefabAsync("Minion" ,charClass.ToString());
             }
 
             Debug.Log("Done load character resources");

@@ -14,7 +14,7 @@ namespace Observer {
         /// </summary>
         public struct OpenCharacterInventory
         {
-            public C_Class CharacterClass;
+            public CharacterClass CharacterClass;
             public Inventory InventoryData;
         }
 
@@ -48,7 +48,7 @@ namespace Observer {
         /// </summary>
         public struct OnSpawnMinion
         {
-            public CharacterConfig Config;
+            public MinionConfig Config;
             public List<EquipmentData> Equipments;
             public Vector3 SpawnPosition;
         }

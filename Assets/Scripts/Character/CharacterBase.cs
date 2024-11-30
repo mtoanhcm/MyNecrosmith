@@ -4,18 +4,18 @@ namespace Character
 {
     public abstract class CharacterBase : MonoBehaviour
     {
-        public CharacterStats Stats { get;private set; }
+        public CharacterData Data { get;private set; }
 
         private Transform modelContainer;
         
-        public virtual void Spawn(CharacterStats stat)
+        public virtual void Spawn(CharacterData data)
         {
-            Stats = stat;
+            Data = data;
         }
         
         public virtual void TakeDamage(int damage)
         {
-            Stats.TakeDamage(damage, Die);
+            Data.TakeDamage(damage, Die);
         }
 
         protected abstract void Die();

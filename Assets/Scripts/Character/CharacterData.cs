@@ -4,17 +4,18 @@ using System;
 
 namespace Character
 {
-    public class CharacterStats
+    public class CharacterData
     {
-        private CharacterConfig baseConfig;
+        protected CharacterConfig baseConfig;
         
-        public C_Class Class => baseConfig.Class;
         public int HP => baseConfig.HP;
         public int CurrentHP { get; private set; }
         public float MoveSpeed => baseConfig.MoveSpeed;
-        public float AttackSpeed => baseConfig.AttacSpeed;
+        public float AttackSpeed => baseConfig.AttackSpeed;
         
-        public CharacterStats(CharacterConfig config)
+        public virtual ArmorType ArmorType => ArmorType.Flesh;
+        
+        public CharacterData(CharacterConfig config)
         {
             baseConfig = config;
             CurrentHP = baseConfig.HP;
@@ -29,15 +30,5 @@ namespace Character
                 OnDeathCallback?.Invoke();
             }
         }
-    }
-
-    public enum C_Class
-    {
-        HumanKnight
-    }
-
-    public enum C_Race
-    {
-        Human
-    }
+    }   
 }
