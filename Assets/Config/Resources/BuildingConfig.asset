@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a92bbc1e1e18a45aa0304fed9a4a0d, type: 3}
+  m_Name: BuildingConfig
+  m_EditorClassIdentifier: 
+  rewardBuilding:
+  - BaseData:
+      Type: 0
+      HP: 100
+      Level: 1
+    BuildingObj: {fileID: 5019008417968930845, guid: 4e65265849c8af64a99e476a956e6561, type: 3}
+  enemyBuilding:
+  - BaseData:
+      Type: 1
+      HP: 100
+      Level: 1
+    BuildingObj: {fileID: 1456847369859862461, guid: 1e34a5243c9636041bf3980f40554646, type: 3}
+  mainBuilding:
+  - BaseData:
+      Type: 2
+      HP: 200
+      Level: 1
+    BuildingObj: {fileID: 4712228214737143753, guid: 1a944eec5ee308f48ab445fbb23fb93a, type: 3}
