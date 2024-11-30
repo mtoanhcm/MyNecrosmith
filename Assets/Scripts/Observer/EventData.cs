@@ -14,7 +14,7 @@ namespace Observer {
         /// </summary>
         public struct OpenCharacterInventory
         {
-            public CharacterClass CharacterClass;
+            public CharacterID CharacterID;
             public Inventory InventoryData;
         }
 

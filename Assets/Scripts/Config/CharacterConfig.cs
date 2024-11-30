@@ -5,14 +5,18 @@ namespace  Config
 {
     public class CharacterConfig : ScriptableObject
     {
+        public CharacterID ID;
         public int HP;
-        public float MoveSpeed;
-        public float AttackSpeed;
+        public int MoveSpeed;
+        public int AttackSpeed;
     }
     
-    public enum CharacterClass
+    public enum CharacterID
     {
-        HumanKnight
+        HumanKnight = 0,
+        
+        BareHandZombie = 100,
+        KnifeZombie = 101
     }
 
     public enum CharacterRace
