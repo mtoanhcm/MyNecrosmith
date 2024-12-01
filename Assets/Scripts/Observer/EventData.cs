@@ -12,33 +12,33 @@ namespace Observer {
         /// <summary>
         /// Open fog of war by radius
         /// </summary>
-        public struct OpenCharacterInventory
+        public class OpenCharacterInventory
         {
-            public CharacterClass CharacterClass;
+            public CharacterID CharacterID;
             public Inventory InventoryData;
         }
 
-        public struct DraggingEquipment
+        public class DraggingEquipment
         {
             public UIInventoryItem UIItem;
         }
 
-        public struct OnPlacingEquipment
+        public class OnPlacingEquipment
         {
             public UIInventoryItem UIItem;
         }
 
-        public struct OnPickingEquipmentFromInventory
+        public class OnPickingEquipmentFromInventory
         {
             public UIInventoryItem UIItemPick;
         }
 
-        public struct OnStartGame
+        public class OnStartGame
         {
             public bool IsStart;
         }
 
-        public struct OnPauseGame
+        public class OnPauseGame
         {
             public bool IsPause;
         }
@@ -46,7 +46,7 @@ namespace Observer {
         /// <summary>
         /// Call event when player want to spawn a minion
         /// </summary>
-        public struct OnSpawnMinion
+        public class OnSpawnMinion
         {
             public MinionConfig Config;
             public List<EquipmentData> Equipments;
@@ -56,7 +56,7 @@ namespace Observer {
         /// <summary>
         /// Call event when player want to spawn a equipment
         /// </summary>
-        public struct OnSpawnEquipment
+        public class OnSpawnEquipment
         {
             public EquipmentData Equipment;
             public CharacterBase Owner;
@@ -64,13 +64,13 @@ namespace Observer {
             public Action<EquipmentBase> OnSpawnEqupimentSuccessHandle;
         }
 
-        public struct OnLoadCharacterPrefabSuccess
+        public class OnLoadCharacterPrefabSuccess
         {
             public string Class;
             public CharacterBase CharPrefab;
         }
         
-        public struct OnLoadEquipmentPrefabSuccess
+        public class OnLoadEquipmentPrefabSuccess
         {
             public string EquipmentTypeID;
             public EquipmentBase EquipmentPrefab;
@@ -79,12 +79,12 @@ namespace Observer {
         /// <summary>
         /// Call when any minion obtains the equipment or player obtains the equipment from event, box...
         /// </summary>
-        public struct OnObtainedEquipment
+        public class OnObtainedEquipment
         {
             public EquipmentData EquipmentData;
         }
 
-        public struct OnChooseEquipmentInStorage
+        public class OnChooseEquipmentInStorage
         {
             public EquipmentData Equipment;
         }

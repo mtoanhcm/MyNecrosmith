@@ -8,10 +8,46 @@ namespace Character
     {
         protected CharacterConfig baseConfig;
         
-        public int HP => baseConfig.HP;
+        public CharacterID ID => baseConfig.ID;
+        public string MaxHPStat => baseConfig.HP.ToString();
+        public string MoveSpeedStat => baseConfig.MoveSpeed.ToString();
+        public string AttackSpeedStat => baseConfig.AttackSpeed.ToString();
+        
         public int CurrentHP { get; private set; }
-        public float MoveSpeed => baseConfig.MoveSpeed;
-        public float AttackSpeed => baseConfig.AttackSpeed;
+
+        /// <summary>
+        /// Delay between 2 attacks, calculated based on AttackSpeedStat.
+        /// If AttackSpeedStat is 100, character can attack 3 times in 1 second.
+        /// </summary>
+        public float DelayAttack
+        {
+            get
+            {
+                if (baseConfig.AttackSpeed <= 0)
+                    return 100f; // Prevent division by zero for invalid stats.
+
+                return (baseConfig.AttackSpeed / 100f) * 3f; // 100 stat = 3 attacks per second
+            }
+        }
+
+        /// <summary>
+        /// Movement speed value, calculated based on MoveSpeedStat.
+        /// If MoveSpeedStat is 100, the agent can move 1 cell in Unity in 0.5 seconds,
+        /// equivalent to moving 2 units per second.
+        /// </summary>
+        public float RealMoveSpeed
+        {
+            get
+            {
+                if (baseConfig.MoveSpeed <= 0)
+                    return 0; // Prevent invalid movement speed (e.g., negative or zero).
+
+                // Calculate movement speed in units per second:
+                // - At MoveSpeedStat = 100, the agent moves 2 units per second.
+                // - MoveSpeedStat scales linearly: higher stat = faster movement.
+                return (baseConfig.MoveSpeed / 100f) * 2f; 
+            }
+        }
         
         public virtual ArmorType ArmorType => ArmorType.Flesh;
         
@@ -21,14 +57,20 @@ namespace Character
             CurrentHP = baseConfig.HP;
         }
 
-        public void TakeDamage(int damage, Action OnDeathCallback)
+        public void TakeDamage(int damage, Action onDeathCallback)
         {
             CurrentHP -= damage;
-            CurrentHP = Mathf.Clamp(CurrentHP, 0, HP);
+            CurrentHP = Mathf.Clamp(CurrentHP, 0, baseConfig.HP);
             if (CurrentHP <= 0)
             {
-                OnDeathCallback?.Invoke();
+                onDeathCallback?.Invoke();
             }
+        }
+
+        public void RestoreHealth(int health)
+        {
+            CurrentHP += health;
+            CurrentHP = Mathf.Clamp(CurrentHP, 0, baseConfig.HP);
         }
     }   
 }

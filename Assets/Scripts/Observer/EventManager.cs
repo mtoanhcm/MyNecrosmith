@@ -22,7 +22,7 @@ namespace Observer {
             Instance = null;
         }
 
-        public void StartListening<T>(Action<T> listener) where T : struct
+        public void StartListening<T>(Action<T> listener) where T : class
         {
             var eventType = typeof(T);
             if (eventDictionary.TryGetValue(eventType, out var existingDelegate))
@@ -35,7 +35,7 @@ namespace Observer {
             }
         }
 
-        public void StopListening<T>(Action<T> listener) where T : struct
+        public void StopListening<T>(Action<T> listener) where T : class
         {
             var eventType = typeof(T);
             if (eventDictionary.TryGetValue(eventType, out var existingDelegate))
@@ -53,7 +53,7 @@ namespace Observer {
             }
         }
 
-        public void TriggerEvent<T>(T eventArgs) where T : struct
+        public void TriggerEvent<T>(T eventArgs) where T : class
         {
             var eventType = typeof(T);
             if (eventDictionary.TryGetValue(eventType, out var existingDelegate))

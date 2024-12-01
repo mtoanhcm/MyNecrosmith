@@ -6,8 +6,6 @@ namespace Character
     public class MinionData : CharacterData
     {
         private MinionConfig minionConfig => baseConfig as MinionConfig;
-        
-        public CharacterClass Class => minionConfig.Class;
         public CharacterRace Race => minionConfig.Race;
         public Vector2Int InventorySize => minionConfig.InventorySize;
         public override ArmorType ArmorType => armorType;

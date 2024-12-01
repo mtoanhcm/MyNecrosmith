@@ -3,12 +3,13 @@ using UnityEngine.UI;
 using Observer;
 using Character;
 using Config;
+using UnityEngine.Serialization;
 
 namespace UI
 {
     public class UICharacterSelectButton : MonoBehaviour
     {
-        [SerializeField] private CharacterClass characterClass;
+        [FormerlySerializedAs("characterID")] [SerializeField] private CharacterID characterID;
         [SerializeField] private Button myBtn;
         
         private void Start()
@@ -19,7 +20,7 @@ namespace UI
                 var config = Resources.Load<MinionConfig>($"Character/Minion/{characterClass}");
                 if (config == null)
                 {
-                    Debug.LogError($"Cannot find character {characterClass} config");
+                    Debug.LogError($"Cannot find character {characterID} config");
                     return;
                 }
                 
@@ -28,7 +29,7 @@ namespace UI
                     InventoryData = new Inventory(
                         Mathf.Clamp(config.InventorySize.y ,InventoryParam.MIN_ROW, InventoryParam.MAX_ROW), 
                         Mathf.Clamp(config.InventorySize.x, InventoryParam.MIN_COLUMN, InventoryParam.MAX_COLUMN),
-                        config.Class
+                        config.ID
                         )
                 });
             });
