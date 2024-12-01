@@ -9,7 +9,7 @@ namespace UI
 {
     public class UICharacterSelectButton : MonoBehaviour
     {
-        [FormerlySerializedAs("characterID")] [SerializeField] private CharacterID characterID;
+        [SerializeField] private CharacterID characterID;
         [SerializeField] private Button myBtn;
         
         private void Start()
@@ -17,7 +17,7 @@ namespace UI
             myBtn.onClick.RemoveAllListeners();
             myBtn.onClick.AddListener(() =>
             {
-                var config = Resources.Load<MinionConfig>($"Character/Minion/{characterClass}");
+                var config = Resources.Load<MinionConfig>($"Character/Minion/{characterID}");
                 if (config == null)
                 {
                     Debug.LogError($"Cannot find character {characterID} config");

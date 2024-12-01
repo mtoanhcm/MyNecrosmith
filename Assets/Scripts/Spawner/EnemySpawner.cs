@@ -12,13 +12,12 @@ namespace Spawner{
         
         private bool isInit;
 
-
         protected override void Start()
         {
             base.Start();
             
-            PrepareEnemyPrefab();
             PrepareEnemyConfig();
+            PrepareEnemyPrefab();
         }
 
         private async void PrepareEnemyPrefab()
@@ -45,8 +44,13 @@ namespace Spawner{
         }
         
         [Button]
-        private void SpawnEnemy()
+        public void SpawnEnemy()
         {
+            if (isInit)
+            {
+                return;
+            }
+            
             var enemy = objectPool.GetObject(enemyNeedSpawns.ToString()) as EnemyCharacter;
             if (enemy == null)
             {
