@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4350174b0e4c55f4a92d263c37154567, type: 3}
   m_Name: BareHandZombie
   m_EditorClassIdentifier: 
-  HP: 0
+  ID: 100
+  HP: 5
   MoveSpeed: 0
   AttackSpeed: 0
-  Damage: 0
+  Damage: 5
   DamageType: 0
   ArmorType: 0
