@@ -5,6 +5,8 @@ namespace Character
 {
     public class CharacterHealth : MonoBehaviour, IHealth
     {
+        public bool IsAlive => localCharacter != null && localCharacter.Data.CurrentHP > 0;
+
         private CharacterBase localCharacter;
 
         public void Init(CharacterBase character)

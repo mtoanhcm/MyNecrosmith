@@ -13,8 +13,24 @@ namespace Spawner
         protected override void Start()
         {
             base.Start();
+
+            PrepareMinionPrefab();
+            
             EventManager.Instance.StartListening<EventData.OnSpawnMinion>(SpawnMinion);
             EventManager.Instance.StartListening<EventData.OnLoadCharacterPrefabSuccess>(OnLoadPrefabSuccess);
+        }
+        
+        private async void PrepareMinionPrefab()
+        {
+            var characterBase = await ResourcesManager.Instance.LoadCharacterPrefabAsync("Minion", CharacterID.HumanKnight.ToString());
+            var MinionCharacter = characterBase as MinionCharacter;
+            if (MinionCharacter == null)
+            {
+                Debug.LogError($"Cannot load {CharacterID.HumanKnight} prefab");
+                return;
+            }
+            
+            prefabDictionary.Add(CharacterID.HumanKnight.ToString(), MinionCharacter);
         }
 
         private void OnLoadPrefabSuccess(EventData.OnLoadCharacterPrefabSuccess data)

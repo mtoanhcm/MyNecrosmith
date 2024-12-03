@@ -13,22 +13,13 @@ public partial class CheckSelfIsAliveAction : Action
 
     protected override Status OnStart()
     {
-        var characterBase = Self.Value.GetComponent<CharacterBase>();
-        if (characterBase == null)
+        var characterHealth = Self.Value.GetComponent<CharacterHealth>();
+        if (characterHealth == null)
         {
             return Status.Failure;
         }
         
-        return Status.Running;
-    }
-
-    protected override Status OnUpdate()
-    {
-        return Status.Success;
-    }
-
-    protected override void OnEnd()
-    {
+        return characterHealth.IsAlive ? Status.Success : Status.Failure;
     }
 }
 

@@ -38,5 +38,10 @@ namespace Character
                 equipment.transform.SetParent(equipmentContainer);
             }
         }
+
+        protected override void SetupModel(CharacterID id)
+        {
+            
+        }
     }
 }    

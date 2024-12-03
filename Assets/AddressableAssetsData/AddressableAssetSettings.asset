@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 1cd54fb31c7bab54da4451470e7e7c8a
   m_currentHash:
     serializedVersion: 2
-    Hash: 8adc799e2b911617341b75584808c8dd
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
     - default
     - Character
     - Equipment
+    - CharacterModel
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 4505c184bac85aa47860f9856b5f4188, type: 2}

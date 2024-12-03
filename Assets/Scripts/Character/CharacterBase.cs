@@ -1,26 +1,34 @@
+using Config;
 using InterfaceComp;
 using Sirenix.OdinInspector;
+using Unity.Behavior;
 using UnityEngine;
 
 namespace Character
 {
-    public class CharacterBase : MonoBehaviour
+    public abstract class CharacterBase : MonoBehaviour
     {
         public CharacterData Data { get;private set; }
-
-        private Transform modelContainer;
+        
         private CharacterHealth characterHealth;
+        private BehaviorGraphAgent behaviorAgent;
 
         private void Awake()
         {
-            characterHealth = GetComponent<CharacterHealth>();
+            characterHealth = gameObject.AddComponent<CharacterHealth>();
             characterHealth.Init(this);
+
+            behaviorAgent = gameObject.AddComponent<BehaviorGraphAgent>();
+            behaviorAgent.Graph = Resources.Load<BehaviorGraph>("Graph/SimpleBrain");
         }
         
         public virtual void Spawn(CharacterData data)
         {
             Data = data;
+            SetupModel(data.ID);
         }
+
+        protected abstract void SetupModel(CharacterID id);
 
         [Button]
         private void Test()
