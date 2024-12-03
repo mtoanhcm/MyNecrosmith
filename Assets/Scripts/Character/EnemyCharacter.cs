@@ -6,9 +6,6 @@ namespace Character
     {
         
 
-        protected override void Die()
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

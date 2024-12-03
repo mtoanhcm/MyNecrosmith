@@ -1,29 +1,32 @@
 using InterfaceComp;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Character
 {
-    public abstract class CharacterBase : MonoBehaviour, IHealth
+    public class CharacterBase : MonoBehaviour
     {
         public CharacterData Data { get;private set; }
 
         private Transform modelContainer;
+        private CharacterHealth characterHealth;
+
+        private void Awake()
+        {
+            characterHealth = GetComponent<CharacterHealth>();
+            characterHealth.Init(this);
+        }
         
         public virtual void Spawn(CharacterData data)
         {
             Data = data;
         }
-        
-        public virtual void TakeDamage(int damage)
-        {
-            Data.TakeDamage(damage, Die);
-        }
 
-        public virtual void RestoreHealth(int health)
+        [Button]
+        private void Test()
         {
-            Data.RestoreHealth(health);
+            var aaa = GetComponent<IHealth>();
+            Debug.Log(aaa);
         }
-
-        protected abstract void Die();
     }   
 }
