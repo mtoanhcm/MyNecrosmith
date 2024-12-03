@@ -131,7 +131,7 @@ namespace UI
 
         private void OnCharacterEquipmentReady()
         {
-            var config = Resources.Load<MinionConfig>($"Character/{_characterIDOwnInventory}");
+            var config = Resources.Load<MinionConfig>($"Character/Minion/{_characterIDOwnInventory}");
             if (config != null)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnSpawnMinion()
@@ -142,6 +142,10 @@ namespace UI
                 });
 
                 CloseInventoryUIPanel();
+            }
+            else
+            {
+                Debug.LogError($"Cannot find the character config for {_characterIDOwnInventory}");
             }
         }
         

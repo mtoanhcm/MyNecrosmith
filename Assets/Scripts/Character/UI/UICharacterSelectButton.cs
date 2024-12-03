@@ -17,7 +17,7 @@ namespace UI
             myBtn.onClick.RemoveAllListeners();
             myBtn.onClick.AddListener(() =>
             {
-                var config = Resources.Load<MinionConfig>($"Character/{characterID}");
+                var config = Resources.Load<MinionConfig>($"Character/Minion/{characterID}");
                 if (config == null)
                 {
                     Debug.LogError($"Cannot find character {characterID} config");
