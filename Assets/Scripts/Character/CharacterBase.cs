@@ -1,4 +1,5 @@
 using Config;
+using GameUtility;
 using InterfaceComp;
 using Sirenix.OdinInspector;
 using Unity.Behavior;
@@ -20,6 +21,7 @@ namespace Character
 
             behaviorAgent = gameObject.AddComponent<BehaviorGraphAgent>();
             behaviorAgent.Graph = Resources.Load<BehaviorGraph>("Graph/SimpleBrain");
+            
         }
         
         public virtual void Spawn(CharacterData data)
@@ -28,7 +30,10 @@ namespace Character
             SetupModel(data.ID);
         }
 
-        protected abstract void SetupModel(CharacterID id);
+        protected virtual async void SetupModel(CharacterID id)
+        {
+            _ = await AddressableUtility.InstantiateAsync($"Model/Minion/{id}.prefab", transform);
+        }
 
         [Button]
         private void Test()

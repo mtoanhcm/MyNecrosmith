@@ -100,7 +100,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
-    - Character
+    - CharacterBase
     - Equipment
     - CharacterModel
   m_SchemaTemplates: []

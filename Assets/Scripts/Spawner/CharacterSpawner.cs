@@ -5,11 +5,16 @@ using GameUtility;
 using Observer;
 using UnityEngine;
 using Character;
+using UnityEngine.AddressableAssets;
 
 namespace Spawner
 {
     public class CharacterSpawner : ObjectSpawner<CharacterBase>
     {
+        [SerializeField] private AssetReference characterBaseRef;
+        
+        [SerializeField] private MinionCharacter minionCharacter;
+        
         protected override void Start()
         {
             base.Start();
@@ -17,35 +22,33 @@ namespace Spawner
             PrepareMinionPrefab();
             
             EventManager.Instance.StartListening<EventData.OnSpawnMinion>(SpawnMinion);
-            EventManager.Instance.StartListening<EventData.OnLoadCharacterPrefabSuccess>(OnLoadPrefabSuccess);
-        }
-        
-        private async void PrepareMinionPrefab()
-        {
-            var characterBase = await ResourcesManager.Instance.LoadCharacterPrefabAsync("Minion", CharacterID.HumanKnight.ToString());
-            var MinionCharacter = characterBase as MinionCharacter;
-            if (MinionCharacter == null)
-            {
-                Debug.LogError($"Cannot load {CharacterID.HumanKnight} prefab");
-                return;
-            }
-            
-            prefabDictionary.Add(CharacterID.HumanKnight.ToString(), MinionCharacter);
         }
 
-        private void OnLoadPrefabSuccess(EventData.OnLoadCharacterPrefabSuccess data)
+        protected override CharacterBase CreateObjectForPool(string typeID)
         {
-            if (prefabDictionary.ContainsKey(data.Class))
+            return Instantiate(minionCharacter, transform);
+        }
+
+        private async void PrepareMinionPrefab()
+        {
+            var characterObj = await AddressableUtility.LoadAssetAsync<GameObject>(characterBaseRef);
+            if (characterObj == null)
             {
+                Debug.LogError($"Cannot load character base");
                 return;
             }
             
-            prefabDictionary.Add(data.Class, data.CharPrefab);
+            minionCharacter = characterObj.GetComponent<MinionCharacter>();
+            if (minionCharacter == null)
+            {
+                Debug.LogError($"Cannot parse character base to minion character");
+                return;
+            }
         }
 
         private void SpawnMinion(EventData.OnSpawnMinion data)
         {
-            var minion = objectPool.GetObject(data.Config.ID.ToString()) as MinionCharacter;
+            var minion = objectPool.GetObject("Minion") as MinionCharacter;
             if (minion == null)
             {
                 Debug.LogError("Cannot instantiate minion character");

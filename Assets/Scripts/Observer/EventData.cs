@@ -63,12 +63,6 @@ namespace Observer {
             public Vector3 SpawnPosition;
             public Action<EquipmentBase> OnSpawnEqupimentSuccessHandle;
         }
-
-        public class OnLoadCharacterPrefabSuccess
-        {
-            public string Class;
-            public CharacterBase CharPrefab;
-        }
         
         public class OnLoadEquipmentPrefabSuccess
         {

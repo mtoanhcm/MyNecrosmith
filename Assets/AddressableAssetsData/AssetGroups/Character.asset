@@ -16,10 +16,10 @@ MonoBehaviour:
   m_GUID: 1cd54fb31c7bab54da4451470e7e7c8a
   m_SerializeEntries:
   - m_GUID: 6fc1c4aff6397bc4b99dc1e955ba9a17
-    m_Address: Character
+    m_Address: CharacterBase
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Character
+    - CharacterBase
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c433196061709dc4f8b270312ee782c5
     m_Address: Model
