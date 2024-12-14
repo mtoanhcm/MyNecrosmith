@@ -38,5 +38,10 @@ namespace Character
                 equipment.transform.SetParent(equipmentContainer);
             }
         }
+
+        protected override async void SetupModel(CharacterID id)
+        {
+            _ = await AddressableUtility.InstantiateAsync($"Model/Minion/{id}.prefab", transform);
+        }
     }
 }    

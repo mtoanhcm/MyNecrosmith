@@ -2,44 +2,57 @@ using Config;
 using GameUtility;
 using InterfaceComp;
 using Sirenix.OdinInspector;
-using Unity.Behavior;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Character
 {
     public abstract class CharacterBase : MonoBehaviour
     {
-        public CharacterData Data { get;private set; }
-        
-        private CharacterHealth characterHealth;
-        private BehaviorGraphAgent behaviorAgent;
+        public CharacterData Data { get; private set; }
+        public CharacterHealth CharacterHealth { get; private set; }
+        public CharacterBrain CharacterBrain { get; private set; }
+        public CharacterMovement CharacterMovement { get; private set; }
 
-        private void Awake()
-        {
-            characterHealth = gameObject.AddComponent<CharacterHealth>();
-            characterHealth.Init(this);
-
-            behaviorAgent = gameObject.AddComponent<BehaviorGraphAgent>();
-            behaviorAgent.Graph = Resources.Load<BehaviorGraph>("Graph/SimpleBrain");
-            
-        }
-        
         public virtual void Spawn(CharacterData data)
         {
             Data = data;
             SetupModel(data.ID);
+            SetupHealth();
+            SetupAIBrain();
+            SetupMovement();
         }
 
-        protected virtual async void SetupModel(CharacterID id)
+        protected abstract void SetupModel(CharacterID id);
+
+        protected virtual void SetupAIBrain()
         {
-            _ = await AddressableUtility.InstantiateAsync($"Model/Minion/{id}.prefab", transform);
+            if (CharacterBrain == null)
+            {
+                CharacterBrain = gameObject.AddComponent<CharacterBrain>();
+            }
+            
+            CharacterBrain.Init(this);
         }
 
-        [Button]
-        private void Test()
+        protected virtual void SetupHealth()
         {
-            var aaa = GetComponent<IHealth>();
-            Debug.Log(aaa);
+            if (CharacterHealth == null)
+            {
+                CharacterHealth = gameObject.AddComponent<CharacterHealth>();
+            }
+            
+            CharacterHealth.Init(this);
+        }
+
+        protected virtual void SetupMovement()
+        {
+            if (CharacterMovement == null)
+            {
+                CharacterMovement = gameObject.AddComponent<CharacterMovement>();
+            }
+            
+            CharacterMovement.Init(this);
         }
     }   
 }

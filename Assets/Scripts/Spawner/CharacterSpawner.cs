@@ -13,7 +13,7 @@ namespace Spawner
     {
         [SerializeField] private AssetReference characterBaseRef;
         
-        [SerializeField] private MinionCharacter minionCharacter;
+        private MinionCharacter minionCharacter;
         
         protected override void Start()
         {
@@ -42,7 +42,6 @@ namespace Spawner
             if (minionCharacter == null)
             {
                 Debug.LogError($"Cannot parse character base to minion character");
-                return;
             }
         }
 

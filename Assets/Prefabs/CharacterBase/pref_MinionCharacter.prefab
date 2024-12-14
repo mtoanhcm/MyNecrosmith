@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1621809251802005113}
   - component: {fileID: 2009947783570995092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pref_MinionCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

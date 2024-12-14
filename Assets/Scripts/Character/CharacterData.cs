@@ -9,7 +9,8 @@ namespace Character
         protected CharacterConfig baseConfig;
         
         public CharacterID ID => baseConfig.ID;
-        public string MaxHPStat => baseConfig.HP.ToString();
+        public float ViewRadius => baseConfig.ViewRadius;
+        public int MaxHP => baseConfig.HP;
         public string MoveSpeedStat => baseConfig.MoveSpeed.ToString();
         public string AttackSpeedStat => baseConfig.AttackSpeed.ToString();
         
