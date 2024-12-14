@@ -1,13 +1,14 @@
 using Config;
+using GameUtility;
 using UnityEngine;
 
 namespace Character
 {
     public class EnemyCharacter : CharacterBase
     {
-        protected override void SetupModel(CharacterID id)
+        protected override async void SetupModel(CharacterID id)
         {
-            throw new System.NotImplementedException();
+            _ = await AddressableUtility.InstantiateAsync($"Model/Enemy/{id}.prefab", transform);
         }
     }
 }
