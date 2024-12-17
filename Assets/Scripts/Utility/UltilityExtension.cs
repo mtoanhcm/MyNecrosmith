@@ -1,10 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GameUtility {
     public static class UltilityExtension
     {
+        public static Vector3 GetRandomNavmeshPositionAround(this Vector3 center, float minRadius, float maxRadius)
+        {
+            // Generate a random direction on the horizontal plane
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+
+            // Random distance constrained between minimum and maximum radius
+            float randomDistance = Random.Range(minRadius, maxRadius);
+
+            // Calculate the target point in 3D space
+            Vector3 targetPoint = center + new Vector3(randomDirection.x, 0, randomDirection.y) * randomDistance;
+
+            // Validate the point on the NavMesh within a tight margin
+            if (NavMesh.SamplePosition(targetPoint, out var hit, 1.0f, NavMesh.AllAreas)) // 1.0f margin ensures precision
+            {
+                return hit.position;
+            }
+
+            return Vector3.zero; // Return zero if no valid point is found
+        }
+        
         public static List<Vector3> GetEquipmentPositionAroundCharacter(this Vector3 characterPosition, int totalEqupiment, 
             float initialRadius = 2f, float radiusIncrement = 2f, float minAngle = 40)
         {

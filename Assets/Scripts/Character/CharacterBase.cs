@@ -19,8 +19,11 @@ namespace Character
             Data = data;
             SetupModel(data.ID);
             SetupHealth();
-            SetupAIBrain();
             SetupMovement();
+            SetupAIBrain();
+            
+            Debug.Log("Active the brain");
+            CharacterBrain.ActiveBrain();
         }
 
         protected abstract void SetupModel(CharacterID id);

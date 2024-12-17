@@ -20,6 +20,7 @@ namespace BOT
 
         public override void OnStart()
         {
+            Debug.Log("AAAA");
             status = brain.IsCharacterAlive ? TaskStatus.Success : TaskStatus.Failure;
         }
 

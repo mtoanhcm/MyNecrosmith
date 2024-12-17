@@ -23,8 +23,8 @@ namespace BOT
         {
             status = TaskStatus.Running;
             
-            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget.AddListener(OnCompleteMoveToTarget);
-            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget.AddListener(OnFailMoveToTarget);
+            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget += OnCompleteMoveToTarget;
+            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget += OnFailMoveToTarget;
             
             brain.LocalCharacter.CharacterMovement.MoveToTarget(targetMovePosition.Value);
         }
@@ -36,8 +36,8 @@ namespace BOT
 
         public override void OnEnd()
         {
-            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget.RemoveListener(OnCompleteMoveToTarget);
-            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget.RemoveListener(OnFailMoveToTarget);
+            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget += OnCompleteMoveToTarget;
+            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget += OnFailMoveToTarget;
         }
 
         private void OnCompleteMoveToTarget()

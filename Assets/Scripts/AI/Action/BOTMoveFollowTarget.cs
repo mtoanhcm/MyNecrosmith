@@ -30,8 +30,8 @@ namespace BOT
                 return;
             }
 
-            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget.AddListener(OnCompleteMoveToTarget);
-            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget.AddListener(OnFailMoveToTarget);
+            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget += OnCompleteMoveToTarget;
+            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget += OnFailMoveToTarget;
 
             StartCoroutine(MoveFollowTarget());
         }
@@ -50,8 +50,8 @@ namespace BOT
         {
             StopAllCoroutines();
             
-            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget.RemoveListener(OnCompleteMoveToTarget);
-            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget.RemoveListener(OnFailMoveToTarget);
+            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget -= OnCompleteMoveToTarget;
+            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget -= OnFailMoveToTarget;
         }
 
         private IEnumerator MoveFollowTarget()

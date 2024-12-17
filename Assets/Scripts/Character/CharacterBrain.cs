@@ -17,14 +17,13 @@ namespace Character
         {
             if (behaviorTree != null)
             {
-                
                 return;
             }
             
             behaviorTree = gameObject.AddComponent<BehaviorTree>();
             behaviorTree.StartWhenEnabled = false;
-            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>("BehaviourGraph/SimpleBrain");
             behaviorTree.RestartWhenComplete = true;
+            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>("BehaviourGraph/MinionBrain");
             
             localCharacter = character;
 
@@ -35,6 +34,11 @@ namespace Character
                 1,
                 GetEnemyLayer(1<<localCharacter.gameObject.layer)
                 );
+        }
+
+        public void ActiveBrain()
+        {
+            behaviorTree.EnableBehavior();
         }
 
         public CharacterBase[] GetEnemiesAround()

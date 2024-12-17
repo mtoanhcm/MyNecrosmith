@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -6,25 +8,11 @@ namespace Character
 {
     public class CharacterMovement : MonoBehaviour
     {
-        public UnityEvent OnCompleteMoveToTarget;
-        public UnityEvent OnFailMoveToTarget;
+        public UnityAction OnCompleteMoveToTarget;
+        public UnityAction OnFailMoveToTarget;
         
         private const float REACHTHRESHOLD = 0.5f;
         private NavMeshAgent navAgent;
-
-        private void Update()
-        {
-            if (navAgent == null || !navAgent.hasPath)
-            {
-                return;
-            }
-
-            if (IsAgentAtDestination())
-            {
-                OnCompleteMoveToTarget.Invoke();
-                navAgent.ResetPath();
-            }
-        }
         
         public void Init(CharacterBase character)
         {
@@ -40,21 +28,33 @@ namespace Character
         {
             if (navAgent.SetDestination(target))
             {
-                
+                StartCoroutine(CheckReachDestination());
             }
             else
             {
                 OnFailMoveToTarget?.Invoke();
             }
         }
+
+        private IEnumerator CheckReachDestination()
+        {
+            while (!IsAgentAtDestination())
+            {
+                yield return null;
+            }
+            
+            navAgent.ResetPath();
+            OnCompleteMoveToTarget.Invoke();
+        }
         
         bool IsAgentAtDestination()
-        {
+        {   
             // Ensure the agent has a path and is not stopped
-            if (!navAgent.pathPending && navAgent.remainingDistance <= REACHTHRESHOLD && !navAgent.hasPath)
+            if (!navAgent.pathPending && navAgent.remainingDistance <= REACHTHRESHOLD)
             {
                 return true;
             }
+            
             return false;
         }
     }   
