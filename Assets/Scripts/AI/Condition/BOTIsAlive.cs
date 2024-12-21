@@ -1,6 +1,5 @@
 using BehaviorDesigner.Runtime.Tasks;
 using Character;
-using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 
 namespace BOT
@@ -10,18 +9,12 @@ namespace BOT
     public class BOTIsAlive : Conditional
     {
         [SerializeField]
-        private CharacterBrain brain;
+        private SharedCharacterBase character;
         private TaskStatus status;
-        
-        public override void OnAwake()
-        {
-            brain = GetComponent<CharacterBrain>();
-        }
 
         public override void OnStart()
-        {
-            Debug.Log("AAAA");
-            status = brain.IsCharacterAlive ? TaskStatus.Success : TaskStatus.Failure;
+        { 
+            status = character.Value.CharacterBrain.IsCharacterAlive ? TaskStatus.Success : TaskStatus.Failure;
         }
 
         public override TaskStatus OnUpdate()

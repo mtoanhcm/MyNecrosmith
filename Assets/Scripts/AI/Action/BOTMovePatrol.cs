@@ -9,18 +9,17 @@ namespace BOT
     [TaskDescription("Character move patrol on map")]
     public class BOTMovePatrol : Action
     {
-        private CharacterBrain brain;
+        [SerializeField]
+        private SharedCharacterBase character;
 
         private TaskStatus status;
-        
-        public override void OnAwake()
-        {
-            brain = GetComponent<CharacterBrain>();
-        }
+        private CharacterBrain brain;
 
         public override void OnStart()
         {
             status = TaskStatus.Running;
+
+            brain = character.Value.CharacterBrain;
             
             brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget += OnCharacterMoveComplete;
             brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget += OnCharacterCanNotMoveToTargetPosition;

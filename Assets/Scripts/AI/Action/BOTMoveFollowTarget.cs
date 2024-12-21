@@ -10,26 +10,23 @@ namespace BOT
     [TaskDescription("Move following the target")]
     public class BOTMoveFollowTarget : Action
     {
+        [SerializeField] private SharedCharacterBase character;
         [SerializeField] private SharedCharacterBase target;
 
         private CharacterBrain brain;
         private TaskStatus status;
-        
-        public override void OnAwake()
-        {
-            brain = GetComponent<CharacterBrain>();
-        }
 
         public override void OnStart()
         {
             status = TaskStatus.Running;
-
+            
             if (target.Value == null || !target.Value.CharacterHealth.IsAlive)
             {
                 status = TaskStatus.Failure;
                 return;
             }
 
+            brain = character.Value.CharacterBrain;
             brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget += OnCompleteMoveToTarget;
             brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget += OnFailMoveToTarget;
 

@@ -6,6 +6,7 @@ namespace Config
     public class EnemyConfig : CharacterConfig
     {
         public int Damage;
+        public float AttackRange;
         public DamageType DamageType;
         public ArmorType ArmorType;
     }   

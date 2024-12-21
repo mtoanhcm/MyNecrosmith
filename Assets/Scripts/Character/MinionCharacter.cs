@@ -14,7 +14,7 @@ namespace Character
         private List<EquipmentBase> equipments;
 
         [SerializeField] private Transform equipmentContainer;
-
+        
         public void InitEquipment(List<EquipmentData> equipmentDatas)
         {
             var equipmentPositions = equipmentContainer.position.GetEquipmentPositionAroundCharacter(equipmentDatas.Count);
@@ -42,6 +42,11 @@ namespace Character
         protected override async void SetupModel(CharacterID id)
         {
             _ = await AddressableUtility.InstantiateAsync($"Model/Minion/{id}.prefab", transform);
+        }
+
+        public override void Attack()
+        {
+            
         }
     }
 }    

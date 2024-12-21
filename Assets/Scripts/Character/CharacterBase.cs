@@ -26,6 +26,8 @@ namespace Character
             CharacterBrain.ActiveBrain();
         }
 
+        public abstract void Attack();
+
         protected abstract void SetupModel(CharacterID id);
 
         protected virtual void SetupAIBrain()

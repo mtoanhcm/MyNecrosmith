@@ -10,5 +10,10 @@ namespace Character
         {
             _ = await AddressableUtility.InstantiateAsync($"Model/Enemy/{id}.prefab", transform);
         }
+
+        public override void Attack()
+        {
+            
+        }
     }
 }

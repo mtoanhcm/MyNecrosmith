@@ -17,6 +17,7 @@ namespace Character
         {
             if (behaviorTree != null)
             {
+                behaviorTree.SetVariableValue("MainCharacter", character);
                 return;
             }
             
@@ -24,6 +25,7 @@ namespace Character
             behaviorTree.StartWhenEnabled = false;
             behaviorTree.RestartWhenComplete = true;
             behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>("BehaviourGraph/MinionBrain");
+            behaviorTree.SetVariableValue("MainCharacter", character);
             
             localCharacter = character;
 

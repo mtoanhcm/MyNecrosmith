@@ -9,20 +9,17 @@ namespace BOT
     [TaskDescription("Character move to target position")]
     public class BOTMoveToPosition : Action
     {
+        [SerializeField] private SharedCharacterBase character;
         [SerializeField] private SharedVector3 targetMovePosition;
-
+        
         private CharacterBrain brain;
         private TaskStatus status;
-
-        public override void OnAwake()
-        {
-            brain = GetComponent<CharacterBrain>();
-        }
 
         public override void OnStart()
         {
             status = TaskStatus.Running;
-            
+
+            brain = character.Value.CharacterBrain;
             brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget += OnCompleteMoveToTarget;
             brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget += OnFailMoveToTarget;
             

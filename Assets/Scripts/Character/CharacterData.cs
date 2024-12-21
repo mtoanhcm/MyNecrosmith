@@ -51,7 +51,8 @@ namespace Character
         }
         
         public virtual ArmorType ArmorType => ArmorType.Flesh;
-        
+        public virtual float AttackRange => 0;
+
         public CharacterData(CharacterConfig config)
         {
             baseConfig = config;

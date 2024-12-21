@@ -6,6 +6,66 @@ using UnityEngine.AI;
 namespace GameUtility {
     public static class UltilityExtension
     {
+        /// <summary>
+        /// Determines if the target Transform is within the specified radius of the source Transform.
+        /// </summary>
+        /// <param name="source">The Transform performing the detection.</param>
+        /// <param name="target">The Transform to check against.</param>
+        /// <param name="radius">The detection radius.</param>
+        /// <returns>True if target is within radius; otherwise, false.</returns>
+        public static bool IsWithinRadius(this Transform source, Transform target, float radius)
+        {
+            // Return false if either Transform is null
+            if (source == null || target == null) return false;
+
+            // Calculate the squared distance between source and target
+            float distanceSquared = (source.position - target.position).sqrMagnitude;
+
+            // Compare squared distance with squared radius for efficiency
+            return distanceSquared <= radius * radius;
+        }
+        
+        /// <summary>
+        /// Finds the nearest object of type T from the enumerable based on the basePosition.
+        /// </summary>
+        /// <typeparam name="T">Type of MonoBehaviour.</typeparam>
+        /// <param name="enumerable">Enumerable collection of objects to search.</param>
+        /// <param name="basePosition">Reference position to find the nearest object.</param>
+        /// <returns>The nearest object of type T. Returns null if the enumerable is empty.</returns>
+        public static T FindNearest<T>(this IEnumerable<T> enumerable, Vector3 basePosition) where T : MonoBehaviour
+        {
+            if (enumerable == null)
+            {
+                Debug.LogWarning("FindNearest: The enumerable is null.");
+                return null;
+            }
+
+            T nearest = null;
+            float minDistanceSqr = Mathf.Infinity;
+
+            foreach (T obj in enumerable)
+            {
+                if (obj == null)
+                {
+                    continue; // Skip null objects
+                }
+
+                float distanceSqr = (obj.transform.position - basePosition).sqrMagnitude;
+                if (distanceSqr < minDistanceSqr)
+                {
+                    minDistanceSqr = distanceSqr;
+                    nearest = obj;
+                }
+            }
+
+            if (nearest == null)
+            {
+                Debug.LogWarning("FindNearest: No valid objects found in the enumerable.");
+            }
+
+            return nearest;
+        }
+
         public static Vector3 GetRandomNavmeshPositionAround(this Vector3 center, float minRadius, float maxRadius)
         {
             // Generate a random direction on the horizontal plane
