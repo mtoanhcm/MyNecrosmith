@@ -14,6 +14,8 @@ namespace Character
         public CharacterBrain CharacterBrain { get; private set; }
         public CharacterMovement CharacterMovement { get; private set; }
 
+        public bool IsDebug;
+        
         public virtual void Spawn(CharacterData data)
         {
             Data = data;
@@ -37,7 +39,7 @@ namespace Character
                 CharacterBrain = gameObject.AddComponent<CharacterBrain>();
             }
             
-            CharacterBrain.Init(this);
+            CharacterBrain.Init(this, GetBrainType());
         }
 
         protected virtual void SetupHealth()
@@ -47,7 +49,7 @@ namespace Character
                 CharacterHealth = gameObject.AddComponent<CharacterHealth>();
             }
             
-            CharacterHealth.Init(this);
+            CharacterHealth.Init(this, OnCharacterDeath);
         }
 
         protected virtual void SetupMovement()
@@ -59,5 +61,13 @@ namespace Character
             
             CharacterMovement.Init(this);
         }
+
+        protected virtual void OnCharacterDeath()
+        {
+            CharacterBrain.DeActiveBrain();
+        }
+        
+        protected abstract string GetBrainType();
+        
     }   
 }

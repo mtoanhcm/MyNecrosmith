@@ -45,12 +45,14 @@ namespace BOT
         
         private void OnCharacterCanNotMoveToTargetPosition()
         {
-            PatrolToNextPoint();
+            status = TaskStatus.Failure;
+            //PatrolToNextPoint();
         }
 
         private void OnCharacterMoveComplete()
         {
-            PatrolToNextPoint();
+            status = TaskStatus.Success;
+            //PatrolToNextPoint();
         }
     }   
 }

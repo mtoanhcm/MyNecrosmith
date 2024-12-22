@@ -10,17 +10,20 @@ namespace BOT
     {
         [SerializeField] private SharedCharacterBase character;
         [SerializeField] private SharedCharacterBase enemy;
+        public bool isDebug;
 
         private TaskStatus status;
 
         public override void OnStart()
         {
-            status = TaskStatus.Running;
-
+            status = TaskStatus.Failure;
+            if(isDebug)
+            Debug.Log("A");
+            
             var enemyAround = character.Value.CharacterBrain.GetEnemiesAround();
+            Debug.Log($"{gameObject.name} detect enemy around {enemyAround.Length}");
             if (enemyAround.Length == 0)
             {
-                status = TaskStatus.Failure;
                 return;
             }
 
@@ -30,6 +33,9 @@ namespace BOT
 
         public override TaskStatus OnUpdate()
         {
+            if(isDebug)
+                Debug.Log("A");
+            
             return status;
         }
     }   

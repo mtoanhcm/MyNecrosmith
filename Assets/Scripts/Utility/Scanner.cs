@@ -18,14 +18,16 @@ namespace GameUtility
         private readonly float radius;
 
         private bool isScanning;
-
+        private bool isDebug;
+        
         public Scanner(
             int fixAmountObjectScan,
             Func<Vector3> getBasePosition, // Allows dynamic base position retrieval
             float radius,
             int frequencySeconds,
             LayerMask layerMask,
-            Predicate<T> scanConditionHandler = null)
+            Predicate<T> scanConditionHandler = null,
+            bool isDebug = false)
         {
             if (fixAmountObjectScan <= 0)
                 throw new ArgumentException("fixAmountObjectScan must be greater than zero.");
@@ -37,7 +39,13 @@ namespace GameUtility
             this.scanConditionHandler = scanConditionHandler;
             this.getBasePosition = getBasePosition ?? throw new ArgumentNullException(nameof(getBasePosition));
             this.radius = radius;
+            this.isDebug = isDebug;
 
+            if (this.isDebug)
+            {
+                Debug.Log($"Set enemy layer mask: {LayerMask.LayerToName(layerMask)}");
+            }
+            
             StartScanning().Forget();
         }
 
@@ -53,8 +61,13 @@ namespace GameUtility
                 {
                     Vector3 basePos = getBasePosition();
 
-                    int objectFound = Physics.OverlapSphereNonAlloc(basePos, radius, colliders, layerMask);
+                    int objectFound = Physics.OverlapSphereNonAlloc(basePos, radius, colliders, 1 << layerMask, QueryTriggerInteraction.Collide);
 
+                    if (isDebug)
+                    {
+                        Debug.Log($"Detect {LayerMask.LayerToName(layerMask)} by amount {objectFound}");
+                    }
+                    
                     ObjectAround.Clear();
 
                     for (int i = 0; i < objectFound; i++)
@@ -68,6 +81,11 @@ namespace GameUtility
                         }
                     }
 
+                    if (isDebug)
+                    {
+                        Debug.Log($"Enemy list {ObjectAround.Count}");
+                    }
+                    
                     await UniTask.Delay(frequencyMilliseconds);
                 }
             }

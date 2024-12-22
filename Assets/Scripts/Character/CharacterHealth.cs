@@ -1,5 +1,6 @@
 using UnityEngine;
 using InterfaceComp;
+using UnityEngine.Events;
 
 namespace Character
 {
@@ -8,10 +9,12 @@ namespace Character
         public bool IsAlive => localCharacter != null && localCharacter.Data.CurrentHP > 0;
 
         private CharacterBase localCharacter;
+        private UnityAction onDeath;
 
-        public void Init(CharacterBase character)
+        public void Init(CharacterBase character, UnityAction deathHandler)
         {
             this.localCharacter = character;
+            onDeath = deathHandler;
         }
         
         public void TakeDamage(int damage)
@@ -26,7 +29,7 @@ namespace Character
 
         private void Die()
         {
-            
+            onDeath?.Invoke();
         }
     }
 }

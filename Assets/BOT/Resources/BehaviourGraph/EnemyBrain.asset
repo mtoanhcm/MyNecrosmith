@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b23f08d2ae4cba14087c1ed36193d82b, type: 3}
-  m_Name: MinionBrain
+  m_Name: EnemyBrain
   m_EditorClassIdentifier: 
   mBehaviorSource:
     behaviorName: Behavior
@@ -27,8 +27,9 @@ MonoBehaviour:
         Progress","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"BOT.BOTHasEnemyInAttackRange","NodeData":{"Offset":"(-129.472168,158.544662)"},"ID":9,"Name":"BOT
         Has Enemy In Attack Range","Instant":true,"SharedCharacterBasecharacter":{"Type":"BOT.SharedCharacterBase","Name":"MainCharacter","IsShared":true},"SharedCharacterBaseenemy":{"Type":"BOT.SharedCharacterBase","Name":"TargetCharacter","IsShared":true}},{"Type":"BOT.BOTAttackEnemy","NodeData":{"Offset":"(123.035172,163.5625)"},"ID":10,"Name":"BOT
         Attack Enemy","Instant":true,"SharedCharacterBasecharacter":{"Type":"BOT.SharedCharacterBase","Name":"MainCharacter","IsShared":true},"SharedCharacterBaseenemy":{"Type":"BOT.SharedCharacterBase","Name":"TargetCharacter","IsShared":true}}]},{"Type":"BOT.BOTMoveFollowTarget","NodeData":{"Offset":"(119.448547,173.25)"},"ID":11,"Name":"BOT
-        Move Follow Target","Instant":true,"SharedCharacterBasecharacter":{"Type":"BOT.SharedCharacterBase","Name":"MainCharacter","IsShared":true},"SharedCharacterBasetarget":{"Type":"BOT.SharedCharacterBase","Name":"TargetCharacter","IsShared":true}}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(275.470337,198.241425)"},"ID":12,"Name":"Patrol","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BOT.BOTMovePatrol","NodeData":{"Offset":"(2.25,166.34375)"},"ID":13,"Name":"BOT
-        Move Patrol","Instant":true,"SharedCharacterBasecharacter":{"Type":"BOT.SharedCharacterBase","Name":"MainCharacter","IsShared":true}}]}]}]},"Variables":[{"Type":"BOT.SharedCharacterBase","Name":"TargetCharacter","IsShared":true},{"Type":"BOT.SharedCharacterBase","Name":"MainCharacter","IsShared":true}]}'
+        Move Follow Target","Instant":true,"SharedCharacterBasecharacter":{"Type":"BOT.SharedCharacterBase","Name":"MainCharacter","IsShared":true},"SharedCharacterBasetarget":{"Type":"BOT.SharedCharacterBase","Name":"TargetCharacter","IsShared":true}}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(275.470337,198.241425)"},"ID":12,"Name":"Go
+        to main base","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BOT.BOTMoveToPosition","NodeData":{"Offset":"(-2.75,173.75)"},"ID":13,"Name":"BOT
+        Move To Position","Instant":true,"SharedCharacterBasecharacter":{"Type":"BOT.SharedCharacterBase","Name":"MainCharacter","IsShared":true},"SharedVector3targetMovePosition":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(0,0,0)"}}]}]}]},"Variables":[{"Type":"BOT.SharedCharacterBase","Name":"TargetCharacter","IsShared":true},{"Type":"BOT.SharedCharacterBase","Name":"MainCharacter","IsShared":true}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 

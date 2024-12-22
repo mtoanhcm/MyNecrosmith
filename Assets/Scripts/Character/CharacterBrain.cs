@@ -13,34 +13,42 @@ namespace Character
         private CharacterBase localCharacter;
         private Scanner<CharacterBase> enemyScanner;
         
-        public void Init(CharacterBase character)
+        public void Init(CharacterBase character, string brainPath)
         {
+            localCharacter = character;
+            
+            enemyScanner = new Scanner<CharacterBase>(
+                100,
+                () => localCharacter.transform.position,
+                localCharacter.Data.ViewRadius,
+                2,
+                GetEnemyLayer(localCharacter.gameObject.layer),
+                isDebug: character is MinionCharacter
+            );
+            
             if (behaviorTree != null)
             {
-                behaviorTree.SetVariableValue("MainCharacter", character);
+                behaviorTree.SetVariableValue("MainCharacter", localCharacter);
                 return;
             }
             
             behaviorTree = gameObject.AddComponent<BehaviorTree>();
             behaviorTree.StartWhenEnabled = false;
             behaviorTree.RestartWhenComplete = true;
-            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>("BehaviourGraph/MinionBrain");
-            behaviorTree.SetVariableValue("MainCharacter", character);
-            
-            localCharacter = character;
-
-            enemyScanner = new Scanner<CharacterBase>(
-                100,
-                () => localCharacter.transform.position,
-                localCharacter.Data.ViewRadius,
-                1,
-                GetEnemyLayer(1<<localCharacter.gameObject.layer)
-                );
+            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>(brainPath);
+            behaviorTree.SetVariableValue("MainCharacter", localCharacter);
         }
 
         public void ActiveBrain()
         {
             behaviorTree.EnableBehavior();
+            enemyScanner.StartScanning();
+        }
+
+        public void DeActiveBrain()
+        {
+            behaviorTree.DisableBehavior();
+            enemyScanner.StopScanning();
         }
 
         public CharacterBase[] GetEnemiesAround()
@@ -50,25 +58,22 @@ namespace Character
 
         private LayerMask GetEnemyLayer(LayerMask myLayer)
         {
-            int enemyLayer = LayerMask.NameToLayer("Enemy");
-            int minionLayer = LayerMask.NameToLayer("Minion");
+            var enemyLayer = LayerMask.NameToLayer("Enemy");
+            var minionLayer = LayerMask.NameToLayer("Minion");
 
             if (enemyLayer == -1 || minionLayer == -1)
             {
-                Debug.LogError($"Layer 'Enemy' or 'Minion' does not exist. Please add them in Tags and Layers.");
+                Debug.LogError("Layer 'Enemy' or 'Minion' does not exist. Please add them in Tags and Layers.");
                 return myLayer;
             }
 
-            int enemyMask = 1 << enemyLayer;
-            int minionMask = 1 << minionLayer;
-
-            if (myLayer.value == enemyMask)
+            if (myLayer == enemyLayer)
             {
-                return minionMask;
+                return minionLayer;
             }
-            else if (myLayer.value == minionMask)
+            else if (myLayer == minionLayer)
             {
-                return enemyMask;
+                return enemyLayer;
             }
 
             return myLayer;
