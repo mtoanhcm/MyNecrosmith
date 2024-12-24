@@ -9,12 +9,14 @@ namespace Character
 {
     public class MinionCharacter : CharacterBase
     {
+        public MinionData MinionData => Data as MinionData;
+        
         public List<EquipmentBase> Equipments => equipments;
         
         private List<EquipmentBase> equipments;
 
         [SerializeField] private Transform equipmentContainer;
-
+        
         public void InitEquipment(List<EquipmentData> equipmentDatas)
         {
             var equipmentPositions = equipmentContainer.position.GetEquipmentPositionAroundCharacter(equipmentDatas.Count);
@@ -29,7 +31,9 @@ namespace Character
                     OnSpawnEqupimentSuccessHandle = OnSpawnEquipmentSuccess
                 });
             }
-
+            
+            MinionData?.SetAttackRange(5);
+            
             return;
             
             void OnSpawnEquipmentSuccess(EquipmentBase equipment)
@@ -39,7 +43,17 @@ namespace Character
             }
         }
 
-        protected override void Die()
+        protected override async void SetupModel(CharacterID id)
+        {
+            _ = await AddressableUtility.InstantiateAsync($"Model/Minion/{id}.prefab", transform);
+        }
+
+        protected override string GetBrainType()
+        {
+            return "BehaviourGraph/MinionBrain";
+        }
+
+        public override void Attack()
         {
             
         }

@@ -9,6 +9,7 @@ namespace  Config
         public int HP;
         public int MoveSpeed;
         public int AttackSpeed;
+        public int ViewRadius;
     }
     
     public enum CharacterID

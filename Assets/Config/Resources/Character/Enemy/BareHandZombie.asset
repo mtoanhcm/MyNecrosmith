@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 100
   HP: 5
-  MoveSpeed: 0
+  MoveSpeed: 60
   AttackSpeed: 0
+  ViewRadius: 15
   Damage: 5
+  AttackRange: 3
   DamageType: 0
   ArmorType: 0
