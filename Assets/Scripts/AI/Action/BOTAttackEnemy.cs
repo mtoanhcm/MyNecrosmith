@@ -25,7 +25,7 @@ namespace BOT
 
         public override TaskStatus OnUpdate()
         {
-            if(!IsEnemyStillEValid())
+            if(!IsEnemyValid())
             {
                 return TaskStatus.Failure;
             }
@@ -34,9 +34,9 @@ namespace BOT
             return TaskStatus.Running;
         }
 
-        private bool IsEnemyStillEValid()
+        private bool IsEnemyValid()
         {
-            return enemy.Value == null || !enemy.Value.CharacterHealth.IsAlive;
+            return enemy.Value != null && enemy.Value.CharacterHealth.IsAlive;
         }
         
         private IEnumerator FaceToTargetEnemy()
@@ -44,7 +44,7 @@ namespace BOT
             var characterTrans = character.Value.transform;
             var enemyTrans = enemy.Value.transform;
 
-            while (IsEnemyStillEValid())
+            while (IsEnemyValid())
             {
                 var direction = enemyTrans.position - characterTrans.position;
                 if (direction == Vector3.zero)

@@ -4,6 +4,7 @@ using System;
 
 namespace Character
 {
+    [Serializable]
     public class CharacterData
     {
         protected CharacterConfig baseConfig;
@@ -14,6 +15,7 @@ namespace Character
         public string MoveSpeedStat => baseConfig.MoveSpeed.ToString();
         public string AttackSpeedStat => baseConfig.AttackSpeed.ToString();
         
+        [field: SerializeField]
         public int CurrentHP { get; private set; }
 
         /// <summary>

@@ -13,7 +13,7 @@ namespace Character
 
         public void Init(CharacterBase character, UnityAction deathHandler)
         {
-            this.localCharacter = character;
+            localCharacter = character;
             onDeath = deathHandler;
         }
         

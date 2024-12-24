@@ -9,6 +9,7 @@ namespace Character
 {
     public abstract class CharacterBase : MonoBehaviour
     {
+        [field: SerializeField]
         public CharacterData Data { get; private set; }
         public CharacterHealth CharacterHealth { get; private set; }
         public CharacterBrain CharacterBrain { get; private set; }

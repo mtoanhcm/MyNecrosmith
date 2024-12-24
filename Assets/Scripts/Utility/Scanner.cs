@@ -40,11 +40,6 @@ namespace GameUtility
             this.getBasePosition = getBasePosition ?? throw new ArgumentNullException(nameof(getBasePosition));
             this.radius = radius;
             this.isDebug = isDebug;
-
-            if (this.isDebug)
-            {
-                Debug.Log($"Set enemy layer mask: {LayerMask.LayerToName(layerMask)}");
-            }
             
             StartScanning().Forget();
         }
@@ -62,11 +57,6 @@ namespace GameUtility
                     Vector3 basePos = getBasePosition();
 
                     int objectFound = Physics.OverlapSphereNonAlloc(basePos, radius, colliders, 1 << layerMask, QueryTriggerInteraction.Collide);
-
-                    if (isDebug)
-                    {
-                        Debug.Log($"Detect {LayerMask.LayerToName(layerMask)} by amount {objectFound}");
-                    }
                     
                     ObjectAround.Clear();
 
@@ -79,11 +69,6 @@ namespace GameUtility
                         {
                             ObjectAround.Add(obj);
                         }
-                    }
-
-                    if (isDebug)
-                    {
-                        Debug.Log($"Enemy list {ObjectAround.Count}");
                     }
                     
                     await UniTask.Delay(frequencyMilliseconds);

@@ -47,6 +47,7 @@ namespace BOT
         {
             StopAllCoroutines();
             
+            brain.LocalCharacter.CharacterMovement.StopMove();
             brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget -= OnCompleteMoveToTarget;
             brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget -= OnFailMoveToTarget;
         }

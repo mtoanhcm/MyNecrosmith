@@ -18,5 +18,6 @@ MonoBehaviour:
   AttackSpeed: 0
   ViewRadius: 15
   Damage: 5
+  AttackRange: 3
   DamageType: 0
   ArmorType: 0

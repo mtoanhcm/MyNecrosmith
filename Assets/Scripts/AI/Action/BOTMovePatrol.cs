@@ -29,6 +29,7 @@ namespace BOT
 
         public override void OnEnd()
         {
+            brain.LocalCharacter.CharacterMovement.StopMove();
             brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget -= OnCharacterMoveComplete;
             brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget -= OnCharacterCanNotMoveToTargetPosition;
         }
@@ -45,14 +46,14 @@ namespace BOT
         
         private void OnCharacterCanNotMoveToTargetPosition()
         {
-            status = TaskStatus.Failure;
-            //PatrolToNextPoint();
+            //status = TaskStatus.Failure;
+            PatrolToNextPoint();
         }
 
         private void OnCharacterMoveComplete()
         {
-            status = TaskStatus.Success;
-            //PatrolToNextPoint();
+            //status = TaskStatus.Success;
+            PatrolToNextPoint();
         }
     }   
 }

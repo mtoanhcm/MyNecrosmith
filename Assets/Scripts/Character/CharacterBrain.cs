@@ -22,8 +22,7 @@ namespace Character
                 () => localCharacter.transform.position,
                 localCharacter.Data.ViewRadius,
                 2,
-                GetEnemyLayer(localCharacter.gameObject.layer),
-                isDebug: character is MinionCharacter
+                GetEnemyLayer(localCharacter.gameObject.layer)
             );
             
             if (behaviorTree != null)

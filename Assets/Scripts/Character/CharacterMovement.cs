@@ -36,6 +36,11 @@ namespace Character
             }
         }
 
+        public void StopMove()
+        {
+            navAgent.ResetPath();
+        }
+
         private IEnumerator CheckReachDestination()
         {
             while (!IsAgentAtDestination())
@@ -44,7 +49,7 @@ namespace Character
             }
             
             navAgent.ResetPath();
-            OnCompleteMoveToTarget.Invoke();
+            OnCompleteMoveToTarget?.Invoke();
         }
         
         bool IsAgentAtDestination()

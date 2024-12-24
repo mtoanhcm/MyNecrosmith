@@ -10,20 +10,15 @@ namespace BOT
     public class BOTHasEnemyInAttackRange : Conditional
     {
         [SerializeField] private SharedCharacterBase character;
-        [SerializeField] private SharedCharacterBase enemy;
-
-        private TaskStatus status;
         
-        public override void OnStart()
-        {
-            status = character.Value.transform.IsWithinRadius(enemy.Value.transform, character.Value.Data.AttackRange)
-                ? TaskStatus.Success
-                : TaskStatus.Failure;
-        }
+        [Header("---------- Input -----------")]
+        [SerializeField] private SharedCharacterBase enemy;
 
         public override TaskStatus OnUpdate()
         {
-            return status;
+            return character.Value.transform.IsWithinRadius(enemy.Value.transform, character.Value.Data.AttackRange)
+                ? TaskStatus.Success
+                : TaskStatus.Failure;
         }
     }   
 }
