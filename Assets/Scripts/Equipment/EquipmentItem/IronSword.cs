@@ -1,23 +1,23 @@
 using Character;
+using Combat;
 using Config;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Equipment
 {
     public class IronSword : EquipmentBase
     {
-        private FlyFowardAction flyTowardAction;
 
         public override void Init(CharacterBase owner ,EquipmentData data, Vector3 spawnPosition)
         {
             base.Init(owner ,data, spawnPosition);
-            
-            flyTowardAction = new FlyFowardAction();
         }
 
+        [Button]
         public override void PerformAction(Transform target)
         {
-            flyTowardAction.Execute(Owner,target,this);
+            
         }
 
         public override void DeSpawn()

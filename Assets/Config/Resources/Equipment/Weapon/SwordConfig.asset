@@ -21,4 +21,4 @@ MonoBehaviour:
   DamageType: 1
   Damage: 5
   AttackRange: 3
-  AttackSpeed: 0.13
+  AttackSpeed: 5

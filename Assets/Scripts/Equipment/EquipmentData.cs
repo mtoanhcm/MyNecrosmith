@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using Config;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Equipment
         [SerializeField]
         protected EquipmentConfig baseConfig;
 
+        public WeaponConfig WeaponConfig => baseConfig as WeaponConfig;
         public virtual string ID => string.Empty;
         public virtual string EffectType => string.Empty;
         public virtual string EffectValue => string.Empty;
@@ -20,6 +22,9 @@ namespace Equipment
         public int LoadPoint => baseConfig.LoadPoint;
         public int Width => baseConfig.Width;
         public int Height => baseConfig.Height;
+        public float Damage => WeaponConfig.Damage;
+        public float AttackRange => WeaponConfig.AttackRange;
+        public float AttackSpeed => WeaponConfig.AttackSpeed;
 
         public EquipmentData(EquipmentConfig config)
         {
