@@ -1816,12 +1816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e3e28b3890b314ead9bca9dc7768cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterBaseRef:
-    m_AssetGUID: c8c6198639f159c4cafaa6e2c1811db9
-    m_SubObjectName: 
-    m_SubObjectGUID: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 1
 --- !u!4 &399667227
 Transform:
   m_ObjectHideFlags: 0
@@ -2913,12 +2907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52448c397930e4a2e95196620c6e44c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterBaseRef:
-    m_AssetGUID: 96f7b3283cf31994ea910a3ac474076c
-    m_SubObjectName: 
-    m_SubObjectGUID: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 1
   enemyNeedSpawns: 100
 --- !u!4 &480184239
 Transform:
@@ -11971,6 +11959,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4618485138640884916, guid: a51d3ab5f62b6654a8f92c19bf935bda, type: 3}
   m_PrefabInstance: {fileID: 1657691021}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1692163393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692163394}
+  m_Layer: 0
+  m_Name: EnmyObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692163394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692163393}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727517401
 GameObject:
   m_ObjectHideFlags: 0
@@ -15902,3 +15921,4 @@ SceneRoots:
   - {fileID: 456810590}
   - {fileID: 209720415}
   - {fileID: 683939757}
+  - {fileID: 1692163394}

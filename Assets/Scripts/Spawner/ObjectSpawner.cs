@@ -7,12 +7,12 @@ namespace Spawner
 {
     public abstract class ObjectSpawner<T> : MonoBehaviour where T : MonoBehaviour
     {
-        protected GameObjectPool<T> objectPool;
+        //protected GameObjectPool<T> objectPool;
         protected Dictionary<string, T> prefabDictionary = new Dictionary<string, T>();
 
         protected virtual void Start()
         {
-            objectPool = new GameObjectPool<T>(CreateObjectForPool, OnGetObjectFromPool, OnReturnObjectToPool, transform);
+            //objectPool = new GameObjectPool<T>(CreateObjectForPool, OnGetObjectFromPool, OnReturnObjectToPool, transform);
             prefabDictionary = new Dictionary<string, T>();
         }
 
