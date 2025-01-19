@@ -1,4 +1,5 @@
 using Combat;
+using Combat.Projectile;
 using UnityEngine;
 
 namespace Config
@@ -18,6 +19,7 @@ namespace Config
         [Header("Stats")]
         public WeaponID ID;
         public DamageType DamageType;
+        public ProjectileDataSO ProjectileDataConfig;
         public float Damage;
         public float AttackRange;
         public float AttackSpeed;

@@ -1,3 +1,4 @@
+using System;
 using Config;
 using GameUtility;
 using InterfaceComp;
@@ -7,6 +8,7 @@ using UnityEngine.Serialization;
 
 namespace Character
 {
+    [RequireComponent(typeof(CharacterHealth), typeof(CharacterBrain), typeof(CharacterMovement))]
     public abstract class CharacterBase : MonoBehaviour
     {
         [field: SerializeField]
@@ -16,22 +18,19 @@ namespace Character
         public CharacterMovement CharacterMovement { get; private set; }
 
         public bool IsDebug;
-        
+
         public virtual void Spawn(CharacterData data)
         {
             Data = data;
-            SetupModel(data.ID);
             SetupHealth();
             SetupMovement();
             SetupAIBrain();
             
-            Debug.Log("Active the brain");
+            Debug.Log($"Character {name} Active the brain");
             CharacterBrain.ActiveBrain();
         }
 
         public abstract void Attack();
-
-        protected abstract void SetupModel(CharacterID id);
 
         protected virtual void SetupAIBrain()
         {

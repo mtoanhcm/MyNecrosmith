@@ -43,11 +43,6 @@ namespace Character
             }
         }
 
-        protected override async void SetupModel(CharacterID id)
-        {
-            _ = await AddressableUtility.InstantiateAsync($"Model/Minion/{id}.prefab", transform);
-        }
-
         protected override string GetBrainType()
         {
             return "BehaviourGraph/MinionBrain";

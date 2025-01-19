@@ -34,6 +34,11 @@ namespace Config
         GoldenArmor,
     }
 
+    public enum ProjectileID
+    {
+        StrikeSword
+    }
+
     public enum EquipmentCategoryID
     {
         None,

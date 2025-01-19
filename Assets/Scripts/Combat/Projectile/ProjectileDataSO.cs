@@ -1,12 +1,14 @@
+using Config;
 using UnityEngine;
 
-namespace Combat
+namespace Combat.Projectile
 {
     [CreateAssetMenu(menuName = "Projectile/ProjectileData")]
     public class ProjectileDataSO : ScriptableObject
     {
-        [Header("Visual / Prefab")]
-        public GameObject ProjectilePrefab;
+        [Header("Stat")]
+        public ProjectileID ProjectileID;
+        public float MoveSpeed;
         
         [Header("Movement Logic")]
         public ProjectileMovementSO ProjectileMovement;
