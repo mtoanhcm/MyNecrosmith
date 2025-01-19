@@ -51,6 +51,24 @@ namespace Observer {
             public MinionConfig Config;
             public List<EquipmentData> Equipments;
             public Vector3 SpawnPosition;
+            public Action<CharacterBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when the game want to spawn an enemy
+        /// </summary>
+        public class OnSpawnEnemy
+        {
+            public string EnemyID;
+            public Action<CharacterBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when enemy death
+        /// </summary>
+        public class OnEnemyDeath
+        {
+            public CharacterBase Enemy;
         }
 
         /// <summary>
