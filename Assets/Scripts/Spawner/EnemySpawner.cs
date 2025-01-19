@@ -7,9 +7,8 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace Spawner{
-    public class EnemySpawner : ObjectSpawner<CharacterBase>
+    public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private AssetReference characterBaseRef;
         [SerializeField] private CharacterID enemyNeedSpawns;
 
         private CharacterBase enemyCharacter;
@@ -18,33 +17,19 @@ namespace Spawner{
         
         private bool isInit;
 
-        protected override void Start()
+        private void Awake()
         {
-            base.Start();
             
-            PrepareEnemyConfig();
-            PrepareEnemyPrefab();
-        }
-
-        protected override CharacterBase CreateObjectForPool(string typeID)
-        {
-            return Instantiate(enemyCharacter, transform);
         }
         
-        private async void PrepareEnemyPrefab()
+        private void Start()
         {
-            var characterObj = await AddressableUtility.LoadAssetAsync<GameObject>(characterBaseRef);
-            if (characterObj == null)
-            {
-                Debug.LogError($"Cannot load character base");
-                return;
-            }
-            
-            enemyCharacter = characterObj.GetComponent<EnemyCharacter>();
-            if (enemyCharacter == null)
-            {
-                Debug.LogError($"Cannot parse character base to minion character");
-            }
+            PrepareEnemyConfig();
+        }
+
+        private CharacterBase CreateObjectForPool(string typeID)
+        {
+            return Instantiate(enemyCharacter, transform);
         }
 
         private void PrepareEnemyConfig()
@@ -59,15 +44,15 @@ namespace Spawner{
         [Button]
         public void SpawnEnemy()
         {
-            var enemy = objectPool.GetObject(enemyNeedSpawns.ToString());
-            if (enemy == null)
-            {
-                Debug.LogError("Cannot instantiate minion character");
-                return;
-            }
-
-            enemy.Spawn(new EnemyData(config));
-            enemy.transform.position = transform.position;
+            // var enemy = objectPool.GetObject(enemyNeedSpawns.ToString());
+            // if (enemy == null)
+            // {
+            //     Debug.LogError("Cannot instantiate minion character");
+            //     return;
+            // }
+            //
+            // enemy.Spawn(new EnemyData(config));
+            // enemy.transform.position = transform.position;
         }
     }
 }

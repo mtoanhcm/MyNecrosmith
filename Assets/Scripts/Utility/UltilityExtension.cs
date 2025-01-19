@@ -7,7 +7,7 @@ namespace GameUtility {
     public static class UltilityExtension
     {
         /// <summary>
-        /// Determines if the target Transform is within the specified radius of the source Transform.
+        /// Determines if the target Transform is within the specified radius of the source Transform
         /// </summary>
         /// <param name="source">The Transform performing the detection.</param>
         /// <param name="target">The Transform to check against.</param>

@@ -73,6 +73,34 @@ namespace GameUtility
         }
 
         /// <summary>
+        /// Loads an asset asynchronously using an AssetReference.
+        /// </summary>
+        /// <typeparam name="T">The type of the asset to load.</typeparam>
+        /// <param name="url">The URL to load the asset from.</param>
+        /// <returns>The loaded asset.</returns>
+        public static async Task<T> LoadAssetAsync<T>(string url) where T : UnityEngine.Object
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                Debug.LogError("URL is null or empty.");
+                return null;
+            }
+
+            var handle = Addressables.LoadAssetAsync<T>(url);
+
+            await handle.Task;
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                return handle.Result;
+            }
+            else
+            {
+                Debug.LogError($"Failed to load Addressable asset from url: {url}");
+                return null;
+            }
+        }
+        
+        /// <summary>
         /// Instantiates a prefab asynchronously from a URL.
         /// </summary>
         /// <param name="url">The URL of the prefab to instantiate.</param>
