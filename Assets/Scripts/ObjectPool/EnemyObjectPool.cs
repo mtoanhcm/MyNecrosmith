@@ -14,7 +14,10 @@ namespace Spawner
         private void Awake()
         {
             pool = new ObjectPool<CharacterBase>(transform);
-            
+        }
+
+        private void Start()
+        {
             EventManager.Instance.StartListening<EventData.OnSpawnEnemy>(OnSpawnEnemy);
             EventManager.Instance.StartListening<EventData.OnEnemyDeath>(OnDespawnEnemy);
         }
@@ -29,7 +32,7 @@ namespace Spawner
 
         private async void OnSpawnEnemy(EventData.OnSpawnEnemy data)
         {
-            var enemy = await pool.Get($"CharacterBase/Enemy/{data.EnemyID}.prefab");
+            var enemy = await pool.Get($"Character/Enemy/{data.EnemyID}.prefab");
             if (enemy == null)
             {
                 Debug.LogWarning($"Cannot spawn enemy {data.EnemyID}");
@@ -41,7 +44,7 @@ namespace Spawner
         
         private void OnDespawnEnemy(EventData.OnEnemyDeath data)
         {
-            pool.Return($"CharacterBase/Enemy/{data.Enemy.Data.ID}.prefab", data.Enemy);
+            pool.Return($"Character/Enemy/{data.Enemy.Data.ID}.prefab", data.Enemy);
         }
     }   
 }

@@ -9,55 +9,40 @@ using UnityEngine.AddressableAssets;
 
 namespace Spawner
 {
-    public class CharacterSpawner : ObjectSpawner<CharacterBase>
+    public class CharacterSpawner : MonoBehaviour
     {
         private Dictionary<string, MinionCharacter> characterPrefabDic;
         
-        protected override void Start()
+        private void Start()
         {
-            base.Start();
-            
-            EventManager.Instance.StartListening<EventData.OnSpawnMinion>(SpawnMinion);
+            EventManager.Instance.StartListening<EventData.OnPrepareEquipmentForSpawnMinion>(SpawnMinion);
         }
 
-        protected override CharacterBase CreateObjectForPool(string characterID)
+        private void SpawnMinion(EventData.OnPrepareEquipmentForSpawnMinion data)
         {
-            if (characterPrefabDic.TryGetValue(characterID, out var characterPrefab))
+            var spawnData = new EventData.OnSpawnMinion()
             {
-                return Instantiate(characterPrefab, transform);
-            }
+                MinionID = data.MinionConfig.ID.ToString(),
+                OnSpawnSuccess = OnSpawnMinionSuccess
+            };
 
-            return null;
-        }
-
-        private async void PrepareMinionPrefab(CharacterID id)
-        {
-            var characterObj = await AddressableUtility.LoadAssetAsync<GameObject>($"Assets/Characters/{id}");
-            if (characterObj == null)
-            {
-                Debug.LogError($"Cannot load character base");
-                return;
-            }
+            EventManager.Instance.TriggerEvent(spawnData);
             
-            // minionCharacter = characterObj.GetComponent<MinionCharacter>();
-            // if (minionCharacter == null)
-            // {
-            //     Debug.LogError($"Cannot parse character base to minion character");
-            // }
-        }
+            return;
 
-        private void SpawnMinion(EventData.OnSpawnMinion data)
-        {
-            // var minion = objectPool.GetObject("Minion") as MinionCharacter;
-            // if (minion == null)
-            // {
-            //     Debug.LogError("Cannot instantiate minion character");
-            //     return;
-            // }
-            //
-            // minion.Spawn(new MinionData(data.Config));
-            // minion.InitEquipment(data.Equipments);
-            // minion.transform.position = data.SpawnPosition;
+            void OnSpawnMinionSuccess(CharacterBase character)
+            {
+                var minion = character as MinionCharacter;
+                if(minion == null)
+                {
+                    Debug.LogError($"Cannot spawn minion {data.MinionConfig.ID}");
+                    return;
+                }
+                
+                minion.Spawn(new MinionData(data.MinionConfig));
+                minion.InitEquipment(data.Equipment);
+                minion.transform.position = transform.position;
+            }
         }
     }
 }

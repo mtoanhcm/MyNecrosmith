@@ -134,11 +134,10 @@ namespace UI
             var config = Resources.Load<MinionConfig>($"Character/Minion/{_characterIDOwnInventory}");
             if (config != null)
             {
-                EventManager.Instance.TriggerEvent(new EventData.OnSpawnMinion()
+                EventManager.Instance.TriggerEvent(new EventData.OnPrepareEquipmentForSpawnMinion()
                 {
-                    Config = config,
-                    Equipments = equipmentHandle.GetEquipmentData(),
-                    SpawnPosition = Vector3.zero
+                    MinionConfig = config,
+                    Equipment = equipmentHandle.GetEquipmentData(),
                 });
 
                 CloseInventoryUIPanel();

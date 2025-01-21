@@ -48,10 +48,22 @@ namespace Observer {
         /// </summary>
         public class OnSpawnMinion
         {
-            public MinionConfig Config;
-            public List<EquipmentData> Equipments;
-            public Vector3 SpawnPosition;
+            public string MinionID;
             public Action<CharacterBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when minion death
+        /// </summary>
+        public class OnMinionDeath
+        {
+            public CharacterBase Minion;
+        }
+
+        public class OnPrepareEquipmentForSpawnMinion
+        {
+            public MinionConfig MinionConfig;
+            public List<EquipmentData> Equipment;
         }
 
         /// <summary>
