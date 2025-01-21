@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Character;
 using Observer;
 using Pool;

@@ -1,32 +1,25 @@
 using System.Collections.Generic;
 using Config;
-using GameUtility;
 using Observer;
 using UnityEngine;
 using Equipment;
 
 namespace Spawner
  {
-     public class EquipmentSpawner : ObjectSpawner<EquipmentBase>
+     public class EquipmentSpawner : MonoBehaviour
      {
-         protected override void Start()
-         {
-             base.Start();
-
-             PrepareSwordPrefab();
-             
-             EventManager.Instance.StartListening<EventData.OnSpawnEquipment>(SpawnEquipment);
-             EventManager.Instance.StartListening<EventData.OnLoadEquipmentPrefabSuccess>(OnLoadPrefabSuccess);
-         }
+         public List<EquipmentBase> Equipments => equipments;
+        
+         private List<EquipmentBase> equipments;
 
          private void OnLoadPrefabSuccess(EventData.OnLoadEquipmentPrefabSuccess data)
          {
-             if (prefabDictionary.ContainsKey(data.EquipmentTypeID))
-             {
-                 return;
-             }
-             
-             prefabDictionary.Add(data.EquipmentTypeID, data.EquipmentPrefab);
+             // if (prefabDictionary.ContainsKey(data.EquipmentTypeID))
+             // {
+             //     return;
+             // }
+             //
+             // prefabDictionary.Add(data.EquipmentTypeID, data.EquipmentPrefab);
          }
 
          private async void PrepareSwordPrefab()
@@ -39,7 +32,7 @@ namespace Spawner
                  return;
              }
             
-             prefabDictionary.Add(WeaponID.Sword.ToString(), sword);
+             //prefabDictionary.Add(WeaponID.Sword.ToString(), sword);
          }
          
          private void SpawnEquipment(EventData.OnSpawnEquipment data)

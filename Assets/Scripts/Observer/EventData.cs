@@ -88,10 +88,16 @@ namespace Observer {
         /// </summary>
         public class OnSpawnEquipment
         {
-            public EquipmentData Equipment;
-            public CharacterBase Owner;
-            public Vector3 SpawnPosition;
-            public Action<EquipmentBase> OnSpawnEqupimentSuccessHandle;
+            public string EquipmentID;
+            public Action<EquipmentBase> OnSpawnEquipmentSuccessHandle;
+        }
+
+        /// <summary>
+        /// Call event when destroy equipment
+        /// </summary>
+        public class OnDestroyEquipment
+        {
+            public EquipmentBase Equipment;
         }
         
         public class OnLoadEquipmentPrefabSuccess

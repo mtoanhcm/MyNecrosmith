@@ -53,7 +53,7 @@ MonoBehaviour:
   <Data>k__BackingField:
     <CurrentHP>k__BackingField: 0
   IsDebug: 0
-  equipmentContainer: {fileID: 3724081761517059704}
+  equipmentController: {fileID: 4487179179409539001}
 --- !u!114 &2190714252872618938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3724081761517059704}
+  - component: {fileID: 4487179179409539001}
   m_Layer: 0
   m_Name: Equipment
   m_TagString: Untagged
@@ -144,6 +145,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1621809251802005113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4487179179409539001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4386090929749109195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64caf20c12824434090510e5bfb5ee44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8630791335728281439
 GameObject:
   m_ObjectHideFlags: 0
