@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Character;
 using Config;
 using Equipment;
+using Projectile;
 using UI;
 using UnityEngine;
 
@@ -99,7 +100,24 @@ namespace Observer {
         {
             public EquipmentBase Equipment;
         }
-        
+
+        /// <summary>
+        /// Call event when spawn projectile
+        /// </summary>
+        public class OnSpawnProjectile
+        {
+            public string ProjectileID;
+            public Action<ProjectileBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when despawn projectile
+        /// </summary>
+        public class OnDespawnProjectile
+        {
+            public ProjectileBase Projectile;
+        }
+
         public class OnLoadEquipmentPrefabSuccess
         {
             public string EquipmentTypeID;

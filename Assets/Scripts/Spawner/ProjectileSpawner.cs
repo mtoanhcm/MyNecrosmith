@@ -1,9 +1,9 @@
-using Combat.Projectile;
+using Projectile;
 using UnityEngine;
 
 namespace Spawner
 {
-    public class ProjectileSpawner : ObjectSpawner<ProjectileController>
+    public class ProjectileSpawner : ObjectSpawner<ProjectileBase>
     {
         
     }   

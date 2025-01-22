@@ -1,9 +1,5 @@
 using System.Collections.Generic;
-using Config;
 using Equipment;
-using GameUtility;
-using Observer;
-using Spawner;
 using UnityEngine;
 
 namespace Character

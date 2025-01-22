@@ -1,5 +1,5 @@
 using Combat;
-using Combat.Projectile;
+using Projectile;
 using UnityEngine;
 
 namespace Config
