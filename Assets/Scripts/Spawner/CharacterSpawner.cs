@@ -11,8 +11,6 @@ namespace Spawner
 {
     public class CharacterSpawner : MonoBehaviour
     {
-        private Dictionary<string, MinionCharacter> characterPrefabDic;
-        
         private void Start()
         {
             EventManager.Instance.StartListening<EventData.OnPrepareEquipmentForSpawnMinion>(SpawnMinion);

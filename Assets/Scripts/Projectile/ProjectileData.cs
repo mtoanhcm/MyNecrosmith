@@ -1,4 +1,5 @@
 using Character;
+using Combat;
 using Config;
 using Equipment;
 using UnityEngine;
@@ -7,33 +8,27 @@ namespace Projectile
 {
     public class ProjectileData
     {
-        public ProjectileID ID => originConfig.ProjectileID;
+        public ProjectileID ID => Config.ProjectileID;
+        public ProjectileDataSO Config { get; private set; }
         public float Damage { get; private set; }
         public float MoveSpeed { get; private set; }
 
-        private ProjectileDataSO originConfig;
-
-        private EquipmentBase sourceEquipment;
-        private CharacterBase sourceCharacter;
-
-        public ProjectileData(ProjectileDataSO config, EquipmentBase equipment, CharacterBase character)
+        public ProjectileData(AttackData data)
         {
-            originConfig = config;
-            sourceEquipment = equipment;
-            sourceCharacter = character;
+            Config = data.ProjectileConfig;
 
-            Damage = equipment.Data.Damage;
-            MoveSpeed = config.MoveSpeed;
+            Damage = data.Damage;
+            MoveSpeed = data.AttackSpeed;
         }
 
         public void Fire(ProjectileBase projectile)
         {
-            originConfig.ProjectileMovement.StartMovement(projectile, ApplyDamage);
+            Config.ProjectileMovement.StartMovement(projectile, ApplyDamage);
         }
 
         private void ApplyDamage(ProjectileBase projectile)
         {
-            originConfig.DamageApplication.DetectAndApplyDamage(projectile);
+            Config.DamageApplication.DetectAndApplyDamage(projectile);
         }
     }
 }

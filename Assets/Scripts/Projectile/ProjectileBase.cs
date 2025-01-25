@@ -1,4 +1,5 @@
 using Character;
+using Combat;
 using Equipment;
 using UnityEngine;
 
@@ -10,9 +11,9 @@ namespace Projectile
         
         private ProjectileData data;
 
-        public void Initialize(EquipmentBase equipmentSource, CharacterBase characterSource)
+        public void Initialize(AttackData attackData)
         {
-            data = new ProjectileData(equipmentSource.Data.WeaponConfig.ProjectileDataConfig, equipmentSource, characterSource);
+            data = new ProjectileData(attackData);
             data.Fire(this);
         }
     }   
