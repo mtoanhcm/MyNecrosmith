@@ -14,6 +14,11 @@ namespace Projectile
             data = new ProjectileData(attackData);
             data.Fire(this);
         }
+
+        public void ResetData()
+        {
+            data = null;
+        }
     }   
 }
 

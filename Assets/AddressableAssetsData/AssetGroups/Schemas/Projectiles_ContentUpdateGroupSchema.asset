@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37531d8bb492dc64aade1b7746b4f7fd, type: 3}
-  m_Name: SwordProjectileSO
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: Projectiles_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  ProjectileID: 0
-  MoveSpeed: 5
-  ProjectileMovement: {fileID: 11400000, guid: 528c8ea9c60b649969b89ee36d1b3a67, type: 2}
-  DamageApplication: {fileID: 0}
+  m_Group: {fileID: 11400000, guid: e6c66366069254b26a37b4a743642ac1, type: 2}
+  m_StaticContent: 0

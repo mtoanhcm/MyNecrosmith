@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Projectile
+namespace Projectile.Movement
 {
     public abstract class ProjectileMovementSO : ScriptableObject
     {

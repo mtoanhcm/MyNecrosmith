@@ -1,14 +1,14 @@
 using Config;
+using Projectile.Movement;
 using UnityEngine;
 
 namespace Projectile
 {
-    [CreateAssetMenu(menuName = "Projectile/ProjectileData")]
+    [CreateAssetMenu(menuName = "Config/Projectile/ProjectileDataSO")]
     public class ProjectileDataSO : ScriptableObject
     {
         [Header("Stat")]
         public ProjectileID ProjectileID;
-        public float MoveSpeed;
         
         [Header("Movement Logic")]
         public ProjectileMovementSO ProjectileMovement;

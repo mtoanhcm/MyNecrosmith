@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37531d8bb492dc64aade1b7746b4f7fd, type: 3}
-  m_Name: SwordProjectileSO
+  m_Script: {fileID: 11500000, guid: ed7f03911d36b40d9b6e99ee63ee5ab8, type: 3}
+  m_Name: StrikeForceMovementSO
   m_EditorClassIdentifier: 
-  ProjectileID: 0
-  MoveSpeed: 5
-  ProjectileMovement: {fileID: 11400000, guid: 528c8ea9c60b649969b89ee36d1b3a67, type: 2}
-  DamageApplication: {fileID: 0}
