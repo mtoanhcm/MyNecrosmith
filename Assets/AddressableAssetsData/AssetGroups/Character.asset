@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Character
   m_GUID: 1cd54fb31c7bab54da4451470e7e7c8a
   m_SerializeEntries:
+  - m_GUID: 3133f06c42037b34eb11baca9d42bf35
+    m_Address: Projectiles
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6fc1c4aff6397bc4b99dc1e955ba9a17
     m_Address: Character
     m_ReadOnly: 0

@@ -90,6 +90,7 @@ namespace Observer {
         public class OnSpawnEquipment
         {
             public string EquipmentID;
+            public string EquipmentCategoryID;
             public Action<EquipmentBase> OnSpawnEquipmentSuccessHandle;
         }
 

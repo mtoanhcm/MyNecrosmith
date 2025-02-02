@@ -15,6 +15,7 @@ namespace Equipment
 
         public WeaponConfig WeaponConfig => baseConfig as WeaponConfig;
         public virtual string ID => string.Empty;
+        public virtual string CategoryID => baseConfig.CategoryID.ToString();
         public virtual string EffectType => string.Empty;
         public virtual string EffectValue => string.Empty;
         public string Name => baseConfig.EquipmentName;

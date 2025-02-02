@@ -36,7 +36,7 @@ namespace Config
 
     public enum ProjectileID
     {
-        StrikeSword
+        SwordStrike
     }
 
     public enum EquipmentCategoryID

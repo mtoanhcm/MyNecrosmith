@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027ba6065042c794f801fa335a2fbf89, type: 3}
   m_Name: SwordConfig
   m_EditorClassIdentifier: 
-  EquipmentName: Sword
+  CategoryID: 1
+  EquipmentName: Iron Sword
   LoadPoint: 13
   Icon: {fileID: 21300000, guid: 676b2deedd411cd44abc613f36bdf752, type: 3}
   Width: 1
   Height: 2
   ID: 3
   DamageType: 1
+  ProjectileDataConfig: {fileID: 11400000, guid: 6d193e4da9947f34dac09a7832dba8e2, type: 2}
   Damage: 5
   AttackRange: 3
   AttackSpeed: 5

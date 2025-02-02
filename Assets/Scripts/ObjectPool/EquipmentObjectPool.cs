@@ -5,7 +5,7 @@ using Pool;
 
 namespace Spawner
 {
-    public class ItemObjectPool : MonoBehaviour
+    public class EquipmentObjectPool : MonoBehaviour
     {
         private ObjectPool<EquipmentBase> pool;
 
@@ -30,7 +30,7 @@ namespace Spawner
 
         private async void OnSpawnEquipment(EventData.OnSpawnEquipment data)
         {
-            var equipment = await pool.Get($"Equipment/{data.EquipmentID}.prefab");
+            var equipment = await pool.Get($"Equipment/{data.EquipmentCategoryID}/{data.EquipmentID}.prefab");
             if (equipment == null)
             {
                 Debug.LogWarning($"Cannot spawn equipment {data.EquipmentID}");
@@ -42,7 +42,7 @@ namespace Spawner
         
         private void OnDespawnEquipment(EventData.OnDestroyEquipment data)
         {
-            pool.Return($"Equipment/{data.Equipment.Data.ID}.prefab", data.Equipment);
+            pool.Return($"Equipment/{data.Equipment.Data.CategoryID}/{data.Equipment.Data.ID}.prefab", data.Equipment);
         }
     }   
 }

@@ -1,6 +1,4 @@
-using Character;
 using Combat;
-using Equipment;
 using UnityEngine;
 
 namespace Projectile
