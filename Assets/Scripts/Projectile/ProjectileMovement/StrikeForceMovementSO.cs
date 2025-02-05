@@ -38,8 +38,6 @@ namespace Projectile.Movement
 
         protected virtual void ReturnProjectile(ProjectileBase projectile)
         {
-            projectile.ResetData();
-            
             EventManager.Instance.TriggerEvent(new EventData.OnDespawnProjectile()
             {
                 Projectile = projectile,

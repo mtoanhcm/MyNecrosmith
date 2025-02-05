@@ -3992,8 +3992,8 @@ MonoBehaviour:
   distance: 80
   rotationX: 45
   rotationY: 45
-  followSpeed: 5
-  moveSpeed: 10
+  followSpeed: 7
+  moveSpeed: 20
   zoomSpeed: 1
   minZoom: 10
   maxZoom: 30
@@ -12671,51 +12671,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814743280}
   m_CullTransparentMesh: 1
---- !u!1 &1822191622
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1822191624}
-  - component: {fileID: 1822191623}
-  m_Layer: 0
-  m_Name: EquipmentSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1822191623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822191622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0be047f0984264f87ba9c6d5f4a0bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipments: []
---- !u!4 &1822191624
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822191622}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.7, y: 0, z: 73.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1830446697
 GameObject:
   m_ObjectHideFlags: 0
@@ -16060,7 +16015,6 @@ SceneRoots:
   - {fileID: 544906596}
   - {fileID: 1833309506}
   - {fileID: 399667227}
-  - {fileID: 1822191624}
   - {fileID: 379600410}
   - {fileID: 480184239}
   - {fileID: 903182328}

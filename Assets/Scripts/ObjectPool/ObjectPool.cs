@@ -127,19 +127,18 @@ namespace Pool
         {
             ThrowIfDisposed();
             var key = new PoolKey(itemId);
-
             if (!pools.TryGetValue(key, out var data))
             {
                 Debug.LogWarning($"Attempted to return instance to non-existent pool: {itemId}");
                 return;
             }
-
+            
             if (!data.UsedItems.Remove(instance))
             {
                 Debug.LogWarning($"Instance {instance} was not acquired from pool {itemId}");
                 return;
             }
-
+            
             instance.gameObject.SetActive(false);
             data.AvailableItems.Push(instance);
         }

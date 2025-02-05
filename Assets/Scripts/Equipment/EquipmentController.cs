@@ -39,6 +39,7 @@ namespace Equipment
                 var data = new EventData.OnSpawnEquipment()
                 {
                     EquipmentID = equipment.ID,
+                    EquipmentCategoryID = equipment.CategoryID,
                     OnSpawnEquipmentSuccessHandle = OnSpawnEquipmentSuccess
                 };
                 

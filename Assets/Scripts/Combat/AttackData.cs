@@ -7,14 +7,14 @@ namespace Combat
 {
     public class AttackData
     {
-        public ProjectileDataSO ProjectileConfig { get; }
-        public float Damage { get; }
-        public GameObject Attacker { get; }
-        public GameObject Target { get; }
-        public Vector3 SpawnPos { get; }
-        public Vector3 Direction { get; }
-        public float AttackRange { get; }
-        public float AttackSpeed { get; }
-        public UnityAction OnDestroyTarget;
+        public ProjectileDataSO ProjectileConfig { get; set; }
+        public float Damage { get; set; }
+        public GameObject Attacker { get; set; }
+        public GameObject Target { get; set; }
+        public Vector3 SpawnPos { get; set; }
+        public Vector3 Direction { get; set; }
+        public float AttackRange { get; set; }
+        public float AttackSpeed { get; set; }
+        public UnityAction OnDestroyTarget { get; set; }
     }
 }

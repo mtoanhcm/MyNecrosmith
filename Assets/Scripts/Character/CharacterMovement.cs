@@ -10,6 +10,7 @@ namespace Character
     {
         public UnityAction OnCompleteMoveToTarget;
         public UnityAction OnFailMoveToTarget;
+        public UnityAction<float> OnStartMoveToTarget;
         
         private const float REACHTHRESHOLD = 0.5f;
         private NavMeshAgent navAgent;
@@ -28,6 +29,7 @@ namespace Character
         {
             if (navAgent.SetDestination(target))
             {
+                OnStartMoveToTarget?.Invoke(navAgent.speed);
                 StartCoroutine(CheckReachDestination());
             }
             else
@@ -39,6 +41,7 @@ namespace Character
         public void StopMove()
         {
             navAgent.ResetPath();
+            OnCompleteMoveToTarget?.Invoke();
         }
 
         private IEnumerator CheckReachDestination()
@@ -47,9 +50,8 @@ namespace Character
             {
                 yield return null;
             }
-            
-            navAgent.ResetPath();
-            OnCompleteMoveToTarget?.Invoke();
+
+            StopMove();
         }
         
         bool IsAgentAtDestination()

@@ -1,14 +1,17 @@
 using System;
+using System.Runtime.CompilerServices;
 using Config;
 using GameUtility;
 using InterfaceComp;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Character
 {
     [RequireComponent(typeof(CharacterHealth), typeof(CharacterBrain), typeof(CharacterMovement))]
+    [RequireComponent(typeof(CharacterAnimationController))]
     public abstract class CharacterBase : MonoBehaviour
     {
         [field: SerializeField]
@@ -16,6 +19,8 @@ namespace Character
         public CharacterHealth CharacterHealth { get; private set; }
         public CharacterBrain CharacterBrain { get; private set; }
         public CharacterMovement CharacterMovement { get; private set; }
+        
+        public CharacterAnimationController CharacterAnimationController { get; private set; }
 
         public bool IsDebug;
 
@@ -25,6 +30,7 @@ namespace Character
             SetupHealth();
             SetupMovement();
             SetupAIBrain();
+            SetupAnimation();
             
             Debug.Log($"Character {name} Active the brain");
             CharacterBrain.ActiveBrain();
@@ -61,10 +67,24 @@ namespace Character
             
             CharacterMovement.Init(this);
         }
+        
+        protected virtual void SetupAnimation()
+        {
+            if (CharacterAnimationController == null)
+            {
+                CharacterAnimationController = gameObject.AddComponent<CharacterAnimationController>();
+            }
+            
+            CharacterAnimationController.Reset();
+
+            CharacterMovement.OnStartMoveToTarget += CharacterAnimationController.PlayMoveAnimation;
+        }
 
         protected virtual void OnCharacterDeath()
         {
             CharacterBrain.DeActiveBrain();
+            
+            CharacterMovement.OnStartMoveToTarget -= CharacterAnimationController.PlayMoveAnimation;
         }
         
         protected abstract string GetBrainType();

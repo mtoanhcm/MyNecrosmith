@@ -30,7 +30,7 @@ namespace Spawner
 
         private async void OnSpawnProjectile(EventData.OnSpawnProjectile data)
         {
-            var projectile = await pool.Get($"Projectile/{data.ProjectileID}.prefab");
+            var projectile = await pool.Get($"Projectiles/{data.ProjectileID}.prefab");
             if (projectile == null)
             {
                 Debug.LogWarning($"Cannot spawn equipment {data.ProjectileID}");
@@ -42,7 +42,10 @@ namespace Spawner
         
         private void OnDespawnProjectile(EventData.OnDespawnProjectile data)
         {
-            pool.Return($"Projectile/{data.Projectile.Data.ID}.prefab", data.Projectile);
+            Debug.Log($"Despawn projectile {data.Projectile}");
+            pool.Return($"Projectiles/{data.Projectile.Data.ID}.prefab", data.Projectile);
+            
+            data.Projectile.ResetData();
         }
     }   
 }

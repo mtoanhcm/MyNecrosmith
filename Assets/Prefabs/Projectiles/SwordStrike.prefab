@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7990061530133957616}
-  - component: {fileID: 1432584493957205975}
+  - component: {fileID: 6393804722803926275}
   m_Layer: 0
-  m_Name: SwordStrikeProjectile
+  m_Name: SwordStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3103587913900853727}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1432584493957205975
+--- !u!114 &6393804722803926275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,10 +74,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2058288141942855765}
+  - {fileID: 4265233307250217116}
   m_Father: {fileID: 7990061530133957616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2058288141942393819
+--- !u!1001 &4265233307250672402
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -107,15 +107,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 463758, guid: 555fe218b31145540abfefa2086c482b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463758, guid: 555fe218b31145540abfefa2086c482b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463758, guid: 555fe218b31145540abfefa2086c482b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463758, guid: 555fe218b31145540abfefa2086c482b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -134,8 +134,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 555fe218b31145540abfefa2086c482b, type: 3}
---- !u!4 &2058288141942855765 stripped
+--- !u!4 &4265233307250217116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 463758, guid: 555fe218b31145540abfefa2086c482b, type: 3}
-  m_PrefabInstance: {fileID: 2058288141942393819}
+  m_PrefabInstance: {fileID: 4265233307250672402}
   m_PrefabAsset: {fileID: 0}

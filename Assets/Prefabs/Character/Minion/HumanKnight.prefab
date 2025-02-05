@@ -57,6 +57,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73908ff37f8527246b505b44088d5f62, type: 3}
+--- !u!95 &4636739048321628404 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9533240, guid: 73908ff37f8527246b505b44088d5f62, type: 3}
+  m_PrefabInstance: {fileID: 4636739048331136972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4636739048330976790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 430554, guid: 73908ff37f8527246b505b44088d5f62, type: 3}
@@ -112,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2618993535442272966, guid: c8c6198639f159c4cafaa6e2c1811db9, type: 3}
       propertyPath: m_Name
-      value: pref_Minion_Knight
+      value: HumanKnight
       objectReference: {fileID: 0}
     - target: {fileID: 5973000464814954614, guid: c8c6198639f159c4cafaa6e2c1811db9, type: 3}
       propertyPath: m_Height
@@ -130,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1.6132048
       objectReference: {fileID: 0}
+    - target: {fileID: 8140816104426464936, guid: c8c6198639f159c4cafaa6e2c1811db9, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 4636739048321628404}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
