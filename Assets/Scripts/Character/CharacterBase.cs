@@ -36,7 +36,7 @@ namespace Character
             CharacterBrain.ActiveBrain();
         }
 
-        public abstract void Attack();
+        public abstract void Attack(Transform target);
 
         protected virtual void SetupAIBrain()
         {

@@ -20,7 +20,8 @@ MonoBehaviour:
   Height: 2
   ID: 3
   DamageType: 1
-  ProjectileDataConfig: {fileID: 11400000, guid: 6d193e4da9947f34dac09a7832dba8e2, type: 2}
+  ProjectileSO: {fileID: 11400000, guid: 6d193e4da9947f34dac09a7832dba8e2, type: 2}
   Damage: 5
   AttackRange: 8
   AttackSpeed: 20
+  Cooldown: 0

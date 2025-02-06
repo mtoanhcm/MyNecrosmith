@@ -70,6 +70,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 209600964148053837, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 209600964148053837, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.546
+      objectReference: {fileID: 0}
     - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -112,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297020877496785909, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
       propertyPath: m_Name
-      value: pref_BareHandZombie
+      value: BareHandZombie
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

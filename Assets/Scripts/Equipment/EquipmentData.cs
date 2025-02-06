@@ -12,8 +12,6 @@ namespace Equipment
     {
         [SerializeField]
         protected EquipmentConfig baseConfig;
-
-        public WeaponConfig WeaponConfig => baseConfig as WeaponConfig;
         public virtual string ID => string.Empty;
         public virtual string CategoryID => baseConfig.CategoryID.ToString();
         public virtual string EffectType => string.Empty;
@@ -23,9 +21,6 @@ namespace Equipment
         public int LoadPoint => baseConfig.LoadPoint;
         public int Width => baseConfig.Width;
         public int Height => baseConfig.Height;
-        public float Damage => WeaponConfig.Damage;
-        public float AttackRange => WeaponConfig.AttackRange;
-        public float AttackSpeed => WeaponConfig.AttackSpeed;
 
         public EquipmentData(EquipmentConfig config)
         {

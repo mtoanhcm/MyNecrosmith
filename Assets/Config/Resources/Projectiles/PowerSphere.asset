@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20e80700b477d834da63f5a90243fbfa, type: 3}
-  m_Name: HumanKnight
+  m_Script: {fileID: 11500000, guid: 37531d8bb492dc64aade1b7746b4f7fd, type: 3}
+  m_Name: PowerSphere
   m_EditorClassIdentifier: 
-  ID: 0
-  HP: 100
-  MoveSpeed: 75
-  AttackSpeed: 50
-  ViewRadius: 20
-  Race: 0
-  InventorySize: {x: 4, y: 4}
+  ProjectileID: 1
+  ProjectileMovement: {fileID: 11400000, guid: 528c8ea9c60b649969b89ee36d1b3a67, type: 2}
+  DamageApplication: {fileID: 0}

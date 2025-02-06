@@ -3993,7 +3993,7 @@ MonoBehaviour:
   rotationX: 45
   rotationY: 45
   followSpeed: 7
-  moveSpeed: 20
+  moveSpeed: 40
   zoomSpeed: 1
   minZoom: 10
   maxZoom: 30

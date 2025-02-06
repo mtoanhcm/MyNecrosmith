@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Character;
 using GameUtility;
@@ -13,6 +12,7 @@ namespace Equipment
         
         private List<EquipmentBase> equipments;
         private List<Vector3> equipmentPositions;
+        
         private void Awake()
         {
             equipments = new List<EquipmentBase>();
@@ -28,6 +28,14 @@ namespace Equipment
             StickEquipmentToPlayer();
         }
 
+        public void Attack(Transform target)
+        {
+            for (var i = 0; i < equipments.Count; i++)
+            {
+                equipments[i].PerformAction(target);
+            }
+        }
+        
         public void AddEquipment(List<EquipmentData> equipmentData, CharacterBase owner)
         {
             equipmentPositions = transform.position.GetEquipmentPositionAroundCharacter(equipmentData.Count);

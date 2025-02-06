@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Equipment;
+using InterfaceComp;
 using UnityEngine;
 
 namespace Character
@@ -27,9 +28,9 @@ namespace Character
             equipmentController.ReleaseAllEquipment();
         }
 
-        public override void Attack()
+        public override void Attack(Transform target)
         {
-            
+            equipmentController.Attack(target);
         }
         
     }

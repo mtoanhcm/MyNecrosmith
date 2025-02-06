@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6808804929960485395}
-  - component: {fileID: 9170425377887519413}
+  - component: {fileID: 1474955666707978085}
   m_Layer: 0
   m_Name: SwordEquipment
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   - {fileID: 5624029010482045128}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9170425377887519413
+--- !u!114 &1474955666707978085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8093847788577288045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1612bc2270504848b75a257181c2a14, type: 3}
+  m_Script: {fileID: 11500000, guid: 8921a42a51468be48b34ba51c0ede559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileID: 0

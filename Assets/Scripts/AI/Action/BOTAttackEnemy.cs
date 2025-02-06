@@ -30,7 +30,7 @@ namespace BOT
                 return TaskStatus.Failure;
             }
             
-            character.Value.Attack();
+            character.Value.Attack(enemy.Value.transform);
             return TaskStatus.Running;
         }
 

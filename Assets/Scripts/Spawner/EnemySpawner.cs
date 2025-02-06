@@ -23,8 +23,9 @@ namespace Spawner{
             
             EventManager.Instance.TriggerEvent(data);
 
-            void OnSpawnEnemy(CharacterBase enemy)
+            void OnSpawnEnemy(CharacterBase character)
             {
+                var enemy = character as EnemyCharacter;
                 if (enemy == null)
                 {
                     Debug.LogError("Cannot instantiate minion character");
