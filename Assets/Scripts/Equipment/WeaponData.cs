@@ -16,7 +16,7 @@ namespace Equipment
         public WeaponID WeaponID => weaponConfig.ID;
         public DamageType DamageType => weaponConfig.DamageType;
         public  ProjectileDataSO ProjectileSO => weaponConfig.ProjectileSO;
-        public float Damage => weaponConfig.Damage;
+        public int Damage => weaponConfig.Damage;
         public float AttackRadius => weaponConfig.AttackRange;
         public float AttackSpeed => weaponConfig.AttackSpeed;
         public float Cooldown => weaponConfig.Cooldown;

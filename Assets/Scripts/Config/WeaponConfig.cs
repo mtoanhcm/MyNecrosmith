@@ -20,7 +20,7 @@ namespace Config
         public WeaponID ID;
         public DamageType DamageType;
         public ProjectileDataSO ProjectileSO;
-        public float Damage;
+        public int Damage;
         public float AttackRange;
         public float AttackSpeed;
         public float Cooldown;

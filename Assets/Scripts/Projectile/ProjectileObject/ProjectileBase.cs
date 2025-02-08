@@ -1,9 +1,10 @@
 using Combat;
+using Observer;
 using UnityEngine;
 
 namespace Projectile
 {
-    public class ProjectileBase : MonoBehaviour
+    public abstract class ProjectileBase : MonoBehaviour
     {
         public ProjectileData Data => data;
         
@@ -24,6 +25,14 @@ namespace Projectile
         {
             data = null;
         }
+
+        public virtual void Despawn()
+        {
+            EventManager.Instance.TriggerEvent(new EventData.OnDespawnProjectile(){ Projectile = this});
+        }
+        
+        // Method to get damage area info for DamageApplicationSO
+        public abstract (Vector3 center, Vector3 size, Quaternion rotation) GetDamageArea();
     }   
 }
 

@@ -1,4 +1,5 @@
 using Combat;
+using Observer;
 using Spawner;
 using UnityEngine;
 
@@ -12,11 +13,11 @@ namespace Character
 
         private float cooldownTime;
 
-        public override void Spawn(CharacterData data)
+        protected override void OnCharacterDeath()
         {
-            base.Spawn(data);
+            base.OnCharacterDeath();
             
-            
+            EventManager.Instance.TriggerEvent(new EventData.OnEnemyDeath(){ Enemy = this});
         }
 
         protected override string GetBrainType()

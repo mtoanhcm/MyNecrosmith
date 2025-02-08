@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileID: 0
   ProjectileMovement: {fileID: 11400000, guid: 528c8ea9c60b649969b89ee36d1b3a67, type: 2}
-  DamageApplication: {fileID: 0}
+  DamageApplication: {fileID: 11400000, guid: 43dc4706eea0345edb96caa64e137af5, type: 2}

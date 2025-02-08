@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Equipment;
 using InterfaceComp;
+using Observer;
 using UnityEngine;
 
 namespace Character
@@ -26,6 +27,8 @@ namespace Character
         {
             base.OnCharacterDeath();
             equipmentController.ReleaseAllEquipment();
+            
+            EventManager.Instance.TriggerEvent(new EventData.OnMinionDeath(){ Minion = this});
         }
 
         public override void Attack(Transform target)

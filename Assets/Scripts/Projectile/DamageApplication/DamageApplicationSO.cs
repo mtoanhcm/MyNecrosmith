@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace Projectile
+namespace Projectile.DamageApply
 {
     public abstract class DamageApplicationSO : ScriptableObject
     {
-        public abstract void DetectAndApplyDamage(ProjectileBase projectile);
+        public abstract bool DetectAndApplyDamage(ProjectileBase projectile);
     }   
 }

@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using Config;
 using GameUtility;
 using InterfaceComp;
+using Observer;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
