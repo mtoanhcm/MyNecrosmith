@@ -1,13 +1,4 @@
-using System;
-using System.Runtime.CompilerServices;
-using Config;
-using GameUtility;
-using InterfaceComp;
-using Observer;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Character
 {
@@ -43,7 +34,7 @@ namespace Character
         {
             if (CharacterBrain == null)
             {
-                CharacterBrain = gameObject.AddComponent<CharacterBrain>();
+                CharacterBrain = gameObject.GetComponent<CharacterBrain>();
             }
             
             CharacterBrain.Init(this, GetBrainType());
@@ -53,7 +44,7 @@ namespace Character
         {
             if (CharacterHealth == null)
             {
-                CharacterHealth = gameObject.AddComponent<CharacterHealth>();
+                CharacterHealth = gameObject.GetComponent<CharacterHealth>();
             }
             
             CharacterHealth.Init(this, OnCharacterDeath);
@@ -63,7 +54,7 @@ namespace Character
         {
             if (CharacterMovement == null)
             {
-                CharacterMovement = gameObject.AddComponent<CharacterMovement>();
+                CharacterMovement = gameObject.GetComponent<CharacterMovement>();
             }
             
             CharacterMovement.Init(this);
@@ -73,7 +64,7 @@ namespace Character
         {
             if (CharacterAnimationController == null)
             {
-                CharacterAnimationController = gameObject.AddComponent<CharacterAnimationController>();
+                CharacterAnimationController = gameObject.GetComponent<CharacterAnimationController>();
             }
             
             CharacterAnimationController.Reset();

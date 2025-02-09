@@ -39,7 +39,7 @@ namespace Character
                 AttackSpeed = EnemyData.AttackSpeed,
                 AttackRange = EnemyData.AttackRange,
                 Target = target != null ? target.gameObject : null,
-                SpawnPos = transform.position,
+                SpawnPos = projectileSpawner.transform.position,
                 ProjectileConfig = EnemyData.ProjectileSO,
                 Direction = target != null ? (target.position - transform.position).normalized : transform.forward,
                 OnDestroyTarget = OnKillTargetSuccess

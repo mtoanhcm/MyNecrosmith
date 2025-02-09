@@ -18,23 +18,31 @@ namespace Projectile.Movement
             var duration = projectile.Data.AttackRange / projectile.Data.MoveSpeed;
 
             // Setup the movement with DOTween
+            bool hasTakeDamage = false;
             currentTween = projectile.transform
                 .DOMove(targetPosition, duration)
                 .SetEase(Ease.Linear)
                 .OnUpdate(() =>
                 {
-                    if (checkApplyDamage(projectile))
+                    if (!hasTakeDamage && checkApplyDamage(projectile))
                     {
                         currentTween.Complete();
                     }
                 })
-                .OnComplete(() => CompleteMovement(projectile));
+                .OnComplete(() =>
+                {
+                    if (!hasTakeDamage)
+                    {
+                        hasTakeDamage = true;
+                        CompleteMovement(projectile);
+                    }
+                });
         }
 
         protected override void CompleteMovement(ProjectileBase projectile)
         {
             base.CompleteMovement(projectile);
-            
+            Debug.Log("Complete movement");
             currentTween?.Kill();
             projectile.Despawn();
         }

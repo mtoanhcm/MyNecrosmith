@@ -12,13 +12,9 @@ namespace BOT
         private SharedCharacterBase character;
         private TaskStatus status;
 
-        public override void OnStart()
-        { 
-            status = character.Value.CharacterBrain.IsCharacterAlive ? TaskStatus.Success : TaskStatus.Failure;
-        }
-
         public override TaskStatus OnUpdate()
         {
+            status = character.Value.CharacterBrain.IsCharacterAlive ? TaskStatus.Success : TaskStatus.Failure;
             return status;
         }
     }   

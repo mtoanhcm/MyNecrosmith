@@ -15,7 +15,7 @@ namespace Character
         public void InitEquipment(List<EquipmentData> equipmentData)
         {
             equipmentController.AddEquipment(equipmentData, this);
-            MinionData?.SetAttackRange(5);
+            MinionData?.SetAttackRange(GetFarthestAttackRangeFromEquipment(equipmentData));
         }
 
         protected override string GetBrainType()
@@ -35,6 +35,19 @@ namespace Character
         {
             equipmentController.Attack(target);
         }
-        
+
+        private float GetFarthestAttackRangeFromEquipment(List<EquipmentData> equipmentData)
+        {
+            float farthestRange = 0;
+            foreach (var data in equipmentData)
+            {
+                if (data is WeaponData wp && farthestRange < wp.AttackRadius)
+                {
+                    farthestRange = wp.AttackRadius;
+                }
+            }
+            
+            return farthestRange;
+        }
     }
 }    

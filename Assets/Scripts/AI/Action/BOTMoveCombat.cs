@@ -1,18 +1,18 @@
 using System.Collections;
-using UnityEngine;
-using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using Character;
+using UnityEngine;
+using Action = BehaviorDesigner.Runtime.Tasks.Action;
 
 namespace BOT
 {
     [TaskCategory("BOT_V1")]
-    [TaskDescription("Move following the target")]
-    public class BOTMoveFollowTarget : Action
+    [TaskDescription("BOT attack target enemy")]
+    public class BOTMoveCombat : Action
     {
         [SerializeField] private SharedCharacterBase character;
         [SerializeField] private SharedCharacterBase target;
-
+        
         private CharacterBrain brain;
         private TaskStatus status;
 
@@ -25,46 +25,23 @@ namespace BOT
                 status = TaskStatus.Failure;
                 return;
             }
-
+            
             brain = character.Value.CharacterBrain;
             brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget += OnCompleteMoveToTarget;
             brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget += OnFailMoveToTarget;
 
-            StartCoroutine(MoveFollowTarget());
+            StartCoroutine(MoveAroundTarget());
         }
 
         public override TaskStatus OnUpdate()
         {
-            if (status == TaskStatus.Running && !target.Value.CharacterHealth.IsAlive)
-            {
-                status = TaskStatus.Failure;
-            }
-            
-            return status;
+            return base.OnUpdate();
         }
 
-        public override void OnEnd()
-        {
-            StopAllCoroutines();
-
-            if (brain == null)
-            {
-                return;
-            }
-            
-            brain.LocalCharacter.CharacterMovement.StopMove();
-            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget -= OnCompleteMoveToTarget;
-            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget -= OnFailMoveToTarget;
-        }
-
-        private IEnumerator MoveFollowTarget()
+        private IEnumerator MoveAroundTarget()
         {
             var waitingUpdate = new WaitForSeconds(0.5f);
-            while (target.Value.CharacterHealth.IsAlive)
-            {
-                brain.LocalCharacter.CharacterMovement.MoveToTarget(target.Value.transform.position);
-                yield return waitingUpdate;
-            }
+            
         }
         
         private void OnFailMoveToTarget()

@@ -9,7 +9,7 @@ namespace Gameplay
 {
     public class GameplayManager : MonoBehaviour
     {
-        private async void Start()
+        private void Start()
         {
             EventManager.Instance.TriggerEvent(new EventData.OnStartGame() { IsStart = true});
         }
