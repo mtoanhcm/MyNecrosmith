@@ -35,13 +35,16 @@ namespace BOT
 
         public override TaskStatus OnUpdate()
         {
-            return base.OnUpdate();
+            return status;
         }
 
         private IEnumerator MoveAroundTarget()
         {
             var waitingUpdate = new WaitForSeconds(0.5f);
+
+            yield return waitingUpdate;
             
+            brain.LocalCharacter.CharacterMovement.StopMove();
         }
         
         private void OnFailMoveToTarget()
