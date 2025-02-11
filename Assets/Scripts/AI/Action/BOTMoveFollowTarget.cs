@@ -46,6 +46,11 @@ namespace BOT
         public override void OnEnd()
         {
             StopAllCoroutines();
+
+            if (brain == null)
+            {
+                return;
+            }
             
             brain.LocalCharacter.CharacterMovement.StopMove();
             brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget -= OnCompleteMoveToTarget;

@@ -1,3 +1,4 @@
+using Projectile;
 using UnityEngine;
 
 namespace Config
@@ -7,7 +8,9 @@ namespace Config
     {
         public int Damage;
         public float AttackRange;
+        public float Cooldown;
         public DamageType DamageType;
         public ArmorType ArmorType;
+        public ProjectileDataSO ProjectileSO;
     }   
 }

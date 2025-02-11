@@ -1,12 +1,9 @@
-using Config;
-using GameUtility;
-using InterfaceComp;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Character
 {
+    [RequireComponent(typeof(CharacterHealth), typeof(CharacterBrain), typeof(CharacterMovement))]
+    [RequireComponent(typeof(CharacterAnimationController))]
     public abstract class CharacterBase : MonoBehaviour
     {
         [field: SerializeField]
@@ -14,30 +11,30 @@ namespace Character
         public CharacterHealth CharacterHealth { get; private set; }
         public CharacterBrain CharacterBrain { get; private set; }
         public CharacterMovement CharacterMovement { get; private set; }
+        
+        public CharacterAnimationController CharacterAnimationController { get; private set; }
 
         public bool IsDebug;
-        
+
         public virtual void Spawn(CharacterData data)
         {
             Data = data;
-            SetupModel(data.ID);
             SetupHealth();
             SetupMovement();
             SetupAIBrain();
+            SetupAnimation();
             
-            Debug.Log("Active the brain");
+            Debug.Log($"Character {name} Active the brain");
             CharacterBrain.ActiveBrain();
         }
 
-        public abstract void Attack();
-
-        protected abstract void SetupModel(CharacterID id);
+        public abstract void Attack(Transform target);
 
         protected virtual void SetupAIBrain()
         {
             if (CharacterBrain == null)
             {
-                CharacterBrain = gameObject.AddComponent<CharacterBrain>();
+                CharacterBrain = gameObject.GetComponent<CharacterBrain>();
             }
             
             CharacterBrain.Init(this, GetBrainType());
@@ -47,7 +44,7 @@ namespace Character
         {
             if (CharacterHealth == null)
             {
-                CharacterHealth = gameObject.AddComponent<CharacterHealth>();
+                CharacterHealth = gameObject.GetComponent<CharacterHealth>();
             }
             
             CharacterHealth.Init(this, OnCharacterDeath);
@@ -57,15 +54,29 @@ namespace Character
         {
             if (CharacterMovement == null)
             {
-                CharacterMovement = gameObject.AddComponent<CharacterMovement>();
+                CharacterMovement = gameObject.GetComponent<CharacterMovement>();
             }
             
             CharacterMovement.Init(this);
+        }
+        
+        protected virtual void SetupAnimation()
+        {
+            if (CharacterAnimationController == null)
+            {
+                CharacterAnimationController = gameObject.GetComponent<CharacterAnimationController>();
+            }
+            
+            CharacterAnimationController.Reset();
+
+            CharacterMovement.OnStartMoveToTarget += CharacterAnimationController.PlayMoveAnimation;
         }
 
         protected virtual void OnCharacterDeath()
         {
             CharacterBrain.DeActiveBrain();
+            
+            CharacterMovement.OnStartMoveToTarget -= CharacterAnimationController.PlayMoveAnimation;
         }
         
         protected abstract string GetBrainType();

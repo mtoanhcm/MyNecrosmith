@@ -15,9 +15,11 @@ MonoBehaviour:
   ID: 100
   HP: 5
   MoveSpeed: 60
-  AttackSpeed: 0
+  AttackSpeed: 50
   ViewRadius: 15
   Damage: 5
-  AttackRange: 3
+  AttackRange: 10
+  Cooldown: 1.5
   DamageType: 0
   ArmorType: 0
+  ProjectileSO: {fileID: 11400000, guid: 029e637dbc82fc6418cfee06400a4254, type: 2}

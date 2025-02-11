@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: HumanKnight
   m_EditorClassIdentifier: 
   ID: 0
-  HP: 100
-  MoveSpeed: 50
-  AttackSpeed: 0
-  ViewRadius: 10
+  HP: 20
+  MoveSpeed: 75
+  AttackSpeed: 50
+  ViewRadius: 20
   Race: 0
   InventorySize: {x: 4, y: 4}

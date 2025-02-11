@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Character;
 using Config;
 using Equipment;
+using Projectile;
 using UI;
 using UnityEngine;
 
@@ -48,9 +49,39 @@ namespace Observer {
         /// </summary>
         public class OnSpawnMinion
         {
-            public MinionConfig Config;
-            public List<EquipmentData> Equipments;
-            public Vector3 SpawnPosition;
+            public string MinionID;
+            public Action<CharacterBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when minion death
+        /// </summary>
+        public class OnMinionDeath
+        {
+            public CharacterBase Minion;
+        }
+
+        public class OnPrepareEquipmentForSpawnMinion
+        {
+            public MinionConfig MinionConfig;
+            public List<EquipmentData> Equipment;
+        }
+
+        /// <summary>
+        /// Call event when the game want to spawn an enemy
+        /// </summary>
+        public class OnSpawnEnemy
+        {
+            public string EnemyID;
+            public Action<CharacterBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when enemy death
+        /// </summary>
+        public class OnEnemyDeath
+        {
+            public CharacterBase Enemy;
         }
 
         /// <summary>
@@ -58,12 +89,36 @@ namespace Observer {
         /// </summary>
         public class OnSpawnEquipment
         {
-            public EquipmentData Equipment;
-            public CharacterBase Owner;
-            public Vector3 SpawnPosition;
-            public Action<EquipmentBase> OnSpawnEqupimentSuccessHandle;
+            public string EquipmentID;
+            public string EquipmentCategoryID;
+            public Action<EquipmentBase> OnSpawnEquipmentSuccessHandle;
         }
-        
+
+        /// <summary>
+        /// Call event when destroy equipment
+        /// </summary>
+        public class OnDestroyEquipment
+        {
+            public EquipmentBase Equipment;
+        }
+
+        /// <summary>
+        /// Call event when spawn projectile
+        /// </summary>
+        public class OnSpawnProjectile
+        {
+            public string ProjectileID;
+            public Action<ProjectileBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when despawn projectile
+        /// </summary>
+        public class OnDespawnProjectile
+        {
+            public ProjectileBase Projectile;
+        }
+
         public class OnLoadEquipmentPrefabSuccess
         {
             public string EquipmentTypeID;

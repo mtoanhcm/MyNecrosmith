@@ -34,6 +34,12 @@ namespace Config
         GoldenArmor,
     }
 
+    public enum ProjectileID
+    {
+        SwordStrike,
+        PowerSphere
+    }
+
     public enum EquipmentCategoryID
     {
         None,

@@ -22,3 +22,5 @@ MonoBehaviour:
   Damage: 3
   AttackRange: 2
   AttackSpeed: 0.16666667
+  AttackType: {fileID: 11400000, guid: aadb9e593c917a84499a14bb4c73a0e4, type: 2}
+  HitDamageType: {fileID: 0}

@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6129177104013013141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5935777618413906130}
+    m_Modifications:
+    - target: {fileID: 140344, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_Name
+      value: BareHandZombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+--- !u!4 &6129177104012619765 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 401248, guid: d3c324f7d1cc64045ab231e0e0c0e9f7, type: 3}
+  m_PrefabInstance: {fileID: 6129177104013013141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7726830725570940211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 209600964148053837, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 209600964148053837, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.546
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870477329232525482, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297020877496785909, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      propertyPath: m_Name
+      value: BareHandZombie
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4132943057555072481, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6129177104012619765}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+--- !u!4 &5935777618413906130 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4132943057555072481, guid: 96f7b3283cf31994ea910a3ac474076c, type: 3}
+  m_PrefabInstance: {fileID: 7726830725570940211}
+  m_PrefabAsset: {fileID: 0}

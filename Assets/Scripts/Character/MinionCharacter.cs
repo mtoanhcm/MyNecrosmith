@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Config;
 using Equipment;
-using GameUtility;
+using InterfaceComp;
 using Observer;
 using UnityEngine;
 
@@ -10,42 +9,13 @@ namespace Character
     public class MinionCharacter : CharacterBase
     {
         public MinionData MinionData => Data as MinionData;
-        
-        public List<EquipmentBase> Equipments => equipments;
-        
-        private List<EquipmentBase> equipments;
 
-        [SerializeField] private Transform equipmentContainer;
+        [SerializeField] private EquipmentController equipmentController;
         
-        public void InitEquipment(List<EquipmentData> equipmentDatas)
+        public void InitEquipment(List<EquipmentData> equipmentData)
         {
-            var equipmentPositions = equipmentContainer.position.GetEquipmentPositionAroundCharacter(equipmentDatas.Count);
-            equipments = new List<EquipmentBase>();
-            for (var i = 0; i < equipmentDatas.Count; i++)
-            {
-                EventManager.Instance.TriggerEvent(new EventData.OnSpawnEquipment()
-                {
-                    Equipment = equipmentDatas[i],
-                    SpawnPosition = equipmentPositions[i],
-                    Owner = this,
-                    OnSpawnEqupimentSuccessHandle = OnSpawnEquipmentSuccess
-                });
-            }
-            
-            MinionData?.SetAttackRange(5);
-            
-            return;
-            
-            void OnSpawnEquipmentSuccess(EquipmentBase equipment)
-            {
-                equipments.Add(equipment);
-                equipment.transform.SetParent(equipmentContainer);
-            }
-        }
-
-        protected override async void SetupModel(CharacterID id)
-        {
-            _ = await AddressableUtility.InstantiateAsync($"Model/Minion/{id}.prefab", transform);
+            equipmentController.AddEquipment(equipmentData, this);
+            MinionData?.SetAttackRange(GetFarthestAttackRangeFromEquipment(equipmentData));
         }
 
         protected override string GetBrainType()
@@ -53,9 +23,31 @@ namespace Character
             return "BehaviourGraph/MinionBrain";
         }
 
-        public override void Attack()
+        protected override void OnCharacterDeath()
         {
+            base.OnCharacterDeath();
+            equipmentController.ReleaseAllEquipment();
             
+            EventManager.Instance.TriggerEvent(new EventData.OnMinionDeath(){ Minion = this});
+        }
+
+        public override void Attack(Transform target)
+        {
+            equipmentController.Attack(target);
+        }
+
+        private float GetFarthestAttackRangeFromEquipment(List<EquipmentData> equipmentData)
+        {
+            float farthestRange = 0;
+            foreach (var data in equipmentData)
+            {
+                if (data is WeaponData wp && farthestRange < wp.AttackRadius)
+                {
+                    farthestRange = wp.AttackRadius;
+                }
+            }
+            
+            return farthestRange;
         }
     }
 }    

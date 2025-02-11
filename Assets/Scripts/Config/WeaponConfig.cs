@@ -1,3 +1,5 @@
+using Combat;
+using Projectile;
 using UnityEngine;
 
 namespace Config
@@ -14,10 +16,13 @@ namespace Config
     [CreateAssetMenu(fileName = "WeaponConfig", menuName = "Config/WeaponConfig")]
     public class WeaponConfig : EquipmentConfig
     {
+        [Header("Stats")]
         public WeaponID ID;
         public DamageType DamageType;
-        public float Damage;
+        public ProjectileDataSO ProjectileSO;
+        public int Damage;
         public float AttackRange;
         public float AttackSpeed;
+        public float Cooldown;
     }   
 }

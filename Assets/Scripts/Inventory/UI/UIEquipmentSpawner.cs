@@ -9,23 +9,23 @@ namespace  UI
         [SerializeField]
         private UIInventoryItem equipmentUIItemPrefab;
         
-        private GameObjectPool<UIInventoryItem> equipmentUIItemPool;
+        //private GameObjectPool<UIInventoryItem> equipmentUIItemPool;
 
         public void Init()
         {
-            equipmentUIItemPool =
-                new GameObjectPool<UIInventoryItem>(OnCreateObj, OnGetObjFromPool, OnReturnObjToPool, transform, 5);
+            // equipmentUIItemPool =
+            //     new GameObjectPool<UIInventoryItem>(OnCreateObj, OnGetObjFromPool, OnReturnObjToPool, transform, 5);
         }
 
-        public UIInventoryItem GetEquipmentUIItem()
-        {
-            return equipmentUIItemPool.GetObject("EquipmentUIItem");
-        }
+        // public UIInventoryItem GetEquipmentUIItem()
+        // {
+        //     return equipmentUIItemPool.GetObject("EquipmentUIItem");
+        // }
 
-        public void ReturnEquipmentUIItem(UIInventoryItem equipmentUIItem)
-        {
-            equipmentUIItemPool.ReturnToPool("EquipmentUIItem", equipmentUIItem);
-        }
+        // public void ReturnEquipmentUIItem(UIInventoryItem equipmentUIItem)
+        // {
+        //     equipmentUIItemPool.ReturnToPool("EquipmentUIItem", equipmentUIItem);
+        // }
         
         private UIInventoryItem OnCreateObj(string arg)
         {

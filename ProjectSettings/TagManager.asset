@@ -13,11 +13,11 @@ TagManager:
   - UI
   - Minion
   - Enemy
-  - RewardBuilding
-  - EnemySpawner
-  - Character
+  - Building
   - Terrain
   - Obstacle
+  - Projectile
+  - 
   - 
   - 
   - 
