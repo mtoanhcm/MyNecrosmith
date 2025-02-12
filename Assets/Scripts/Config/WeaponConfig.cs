@@ -17,7 +17,6 @@ namespace Config
     public class WeaponConfig : EquipmentConfig
     {
         [Header("Stats")]
-        public WeaponID ID;
         public DamageType DamageType;
         public ProjectileDataSO ProjectileSO;
         public int Damage;

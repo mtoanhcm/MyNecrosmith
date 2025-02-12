@@ -9,6 +9,7 @@ namespace Config
 {
     public abstract class EquipmentConfig : ScriptableObject
     {
+        public EquipmentID EquipmentID;
         public EquipmentCategoryID CategoryID;
         public string EquipmentName;
         public int LoadPoint;

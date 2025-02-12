@@ -24,7 +24,6 @@ namespace Character
             SetupAIBrain();
             SetupAnimation();
             
-            Debug.Log($"Character {name} Active the brain");
             CharacterBrain.ActiveBrain();
         }
 

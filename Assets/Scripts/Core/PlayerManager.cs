@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Config;
 using Equipment;
@@ -9,26 +10,74 @@ namespace Gameplay
 {
     public class PlayerManager : MonoBehaviour
     {
+        [Serializable]
+        public struct EquipmentInitData
+        {
+            public EquipmentID EquipmentID;
+            public EquipmentCategoryID Category;
+            public int Amount;
+        }
+
+        [SerializeField] 
+        private EquipmentInitData[] initEquipment;
+        
         private GameRuntimeData runtimeData;
         
         private void Awake()
         {
             runtimeData = Resources.Load<GameRuntimeData>("GameRuntimeData");
+            #if UNITY_EDITOR
+            if (runtimeData != null)
+            {
+                runtimeData.Reset();
+            }
+            #endif
+            
             EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
+            EventManager.Instance.StartListening<EventData.OnRemoveEquipmentFromPlayerStorage>(OnRemoveEquipment);
+        }
+
+        private void Start()
+        {
+            InitStartupEquipment();
         }
 
         private void OnObtainedEquipment(EventData.OnObtainedEquipment data)
         {
             runtimeData.AddEquipmentToStorage(data.EquipmentData);
+            SendEventEquipmentStorageChanged();
         }
 
-        [Button]
-        public void TestPickupSword()
+        private void OnRemoveEquipment(EventData.OnRemoveEquipmentFromPlayerStorage data)
         {
-            var swordConfig = Resources.Load<EquipmentConfig>("Equipment/Weapon/SwordConfig");
-            if (swordConfig != null)
+            runtimeData.RemoveEquipmentFromStorage(data.EquipmentID);
+            SendEventEquipmentStorageChanged();
+        }
+
+        private void SendEventEquipmentStorageChanged()
+        {
+            EventManager.Instance.TriggerEvent(new EventData.OnEquipmentStorageChanged()
             {
-                EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment(){ EquipmentData = new WeaponData(swordConfig) });
+                Equipment = runtimeData.EquipmentStorage
+            });
+        }
+
+        private void InitStartupEquipment()
+        {
+            for (var i = 0; i < initEquipment.Length; i++)
+            {
+                var equipment = initEquipment[i];
+                for (var j = 0; j < equipment.Amount; j++)
+                {
+                    var config = Resources.Load($"Equipment/{equipment.Category}/{equipment.EquipmentID}") as EquipmentConfig;
+                    if (config == null)
+                    {
+                        Debug.LogError($"Could not load equipment {equipment.EquipmentID} from Resources");
+                        continue;
+                    }
+                
+                    runtimeData.AddEquipmentToStorage(new EquipmentData(config));   
+                }
             }
         }
     }   

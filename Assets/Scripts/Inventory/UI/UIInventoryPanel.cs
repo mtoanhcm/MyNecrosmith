@@ -36,20 +36,6 @@ namespace UI
             
             return;
 
-            // void InitInventorySize()
-            // {
-            //     inventoryRect = cellGridContainer.GetComponent<RectTransform>();
-            //     inventoryRect.sizeDelta = new Vector2(
-            //         InventoryParam.CELL_SIZE * InventoryParam.MAX_COLUMN +
-            //         (cellGridContainer.spacing.x * (InventoryParam.MAX_COLUMN - 1)),
-            //         InventoryParam.CELL_SIZE * InventoryParam.MAX_ROW +
-            //         (cellGridContainer.spacing.x * (InventoryParam.MAX_ROW - 1))
-            //     );
-            //
-            //     cellGridContainer.spacing = new Vector2(InventoryParam.CELL_SPACING, InventoryParam.CELL_SPACING);
-            //     cellGridContainer.cellSize = new Vector2(InventoryParam.CELL_SIZE, InventoryParam.CELL_SIZE);
-            // }
-
             void InitInventoryEmptyCell()
             {
                 cellHandle = new UIInventoryPanelCellHandle(InventoryParam.MAX_ROW, InventoryParam.MAX_COLUMN);
@@ -177,6 +163,8 @@ namespace UI
             cellHandle.SetItemForCell(claimPos, data.UIItem.GetInstanceID().ToString());
             cellHandle.ResetAllCellHoverState();
             equipmentHandle.AddItemToInventory(data.UIItem);
+            
+            data.OnPlaceEquipmentInInventorySuccess?.Invoke(data.UIItem.Item.Equipment.EquipmentID);
         }
 
         private void OnPickingEquipmentFromInventory(EventData.OnPickingEquipmentFromInventory data)

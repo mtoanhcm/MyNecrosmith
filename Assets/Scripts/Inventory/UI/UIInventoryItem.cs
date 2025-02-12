@@ -1,5 +1,6 @@
 using System;
 using Character;
+using Config;
 using Equipment;
 using Observer;
 using GameUtility;
@@ -70,7 +71,7 @@ namespace UI
                 for (var j = 0; j < InventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
                 {
                     var cell = Instantiate(dragCellPrefab, layoutGroup.transform);
-                    cell.SetActive(false);
+                    cell.SetVisible(false);
                     
                     cells[i, j] = cell;
                 }
@@ -88,12 +89,17 @@ namespace UI
             myRect.sizeDelta = scaleSize;
             
             layoutGroup.cellSize = new Vector2(InventoryParam.CELL_SIZE, InventoryParam.CELL_SIZE);
-            
-            for (var i = 0; i < equipment.Width; i++)
+
+            ToggleCells(equipment, true);
+        }
+
+        private void ToggleCells(EquipmentData equipment, bool isEnable)
+        {
+            for (var i = 0; i < InventoryParam.MAX_EQUIPMENT_WIDTH; i++)
             {
-                for (var j = 0; j < equipment.Height; j++)
+                for (var j = 0; j < InventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
                 {
-                    cells[i, j].SetActive(true);
+                    cells[i, j].SetVisible(i < equipment.Width && j < equipment.Height);
                 }
             }
         }
@@ -134,14 +140,25 @@ namespace UI
             
             EventManager.Instance.TriggerEvent(new EventData.OnPlacingEquipment()
             {
-                UIItem = this
+                UIItem = this,
+                OnPlaceEquipmentInInventorySuccess = OnPlaceEquipmentSuccessInInventory
             });
+
+            void OnPlaceEquipmentSuccessInInventory(EquipmentID id)
+            {
+                EventManager.Instance.TriggerEvent(new EventData.OnRemoveEquipmentFromPlayerStorage()
+                {
+                    EquipmentID = Item.Equipment.EquipmentID
+                });
+            }
         }
         
         public void OnBeginDrag(PointerEventData eventData)
         {
             delayFrameToUpdateHoverEvent = 0;
             transform.position = Mouse.current.position.ReadValue();
+
+            ToggleCells(Item.Equipment, false);
         }
         
         public void OnDrag(PointerEventData eventData)
@@ -156,7 +173,7 @@ namespace UI
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            
+            ToggleCells(Item.Equipment, true);
         }
     }   
 }

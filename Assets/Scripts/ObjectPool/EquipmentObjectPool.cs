@@ -42,7 +42,7 @@ namespace Spawner
         
         private void OnDespawnEquipment(EventData.OnDestroyEquipment data)
         {
-            pool.Return($"Equipment/{data.Equipment.Data.CategoryID}/{data.Equipment.Data.ID}.prefab", data.Equipment);
+            pool.Return($"Equipment/{data.Equipment.Data.CategoryID}/{data.Equipment.Data.EquipmentID}.prefab", data.Equipment);
         }
     }   
 }
