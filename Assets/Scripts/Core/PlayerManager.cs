@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Config;
 using Equipment;
+using GameUtility;
 using Observer;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -75,10 +76,24 @@ namespace Gameplay
                         Debug.LogError($"Could not load equipment {equipment.EquipmentID} from Resources");
                         continue;
                     }
-                
-                    runtimeData.AddEquipmentToStorage(new EquipmentData(config));   
+
+                    if (AddWeaponEquipment(config))
+                    {
+                        continue;
+                    }
                 }
             }
+        }
+
+        private bool AddWeaponEquipment(EquipmentConfig config)
+        {
+            if (config.CategoryID.IsWeaponType())
+            {
+                runtimeData.AddEquipmentToStorage(new WeaponData(config));
+                return true;
+            }
+
+            return false;
         }
     }   
 }

@@ -27,6 +27,7 @@ namespace Character
 
         public void SetAttackRange(float range)
         {
+            Debug.Log($"Set attack range {range}");
             attackRange = range;
         }
     }   
