@@ -358,6 +358,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4618485138640884916, guid: 52847e3c3f1b4d047bcc3f36752153a8, type: 3}
   m_PrefabInstance: {fileID: 31256057}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &34678074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 34678076}
+  - component: {fileID: 34678075}
+  m_Layer: 0
+  m_Name: DropEquipmentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &34678075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34678074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d236b012e4798a74dae53bf285115d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &34678076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34678074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &77003742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1831,6 +1875,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173b31dd578ec164781642ae612c9ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initEquipment:
+  - EquipmentID: 4
+    Category: 1
+    Amount: 3
 --- !u!1 &399667225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4403,11 +4451,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 465117663}
-  - {fileID: 1318058200}
+  - {fileID: 1002731164}
   - {fileID: 1975490929}
   - {fileID: 2081709072}
   - {fileID: 1167636251}
-  - {fileID: 1002731164}
+  - {fileID: 1318058200}
   m_Father: {fileID: 2011756100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -16017,6 +16065,7 @@ SceneRoots:
   - {fileID: 399667227}
   - {fileID: 379600410}
   - {fileID: 480184239}
+  - {fileID: 34678076}
   - {fileID: 903182328}
   - {fileID: 456810590}
   - {fileID: 209720415}

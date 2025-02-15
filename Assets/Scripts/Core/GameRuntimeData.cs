@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Config;
 using Equipment;
 using UnityEngine;
 
@@ -8,10 +10,14 @@ namespace Gameplay
     public class GameRuntimeData : ScriptableObject
     {
         public List<EquipmentData> EquipmentStorage => equipmentStorage;
-        public int StorageMax => storageMax;
 
+        [SerializeField]
         private List<EquipmentData> equipmentStorage;
-        private int storageMax;
+
+        public void Reset()
+        {
+            equipmentStorage = new List<EquipmentData>();
+        }
         
         public bool AddEquipmentToStorage(EquipmentData equipment)
         {
@@ -19,24 +25,20 @@ namespace Gameplay
             {
                 equipmentStorage = new List<EquipmentData>();
             }
-
-            if (equipmentStorage.Count >= storageMax)
-            {
-                return false;
-            }
             
             equipmentStorage.Add(equipment);
             return true;
         }
 
-        public void RemoveEquipmentFromStorage(EquipmentData equipment)
+        public void RemoveEquipmentFromStorage(EquipmentID id)
         {
-            if (!equipmentStorage.Contains(equipment))
+            var equipmentIndex = equipmentStorage.FindIndex(item =>  item.EquipmentID == id);
+            if (equipmentIndex < 0)
             {
                 return;
             }
             
-            equipmentStorage.Remove(equipment);
+            equipmentStorage.RemoveAt(equipmentIndex);
         }
     }   
 }

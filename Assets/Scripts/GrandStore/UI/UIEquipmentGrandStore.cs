@@ -19,6 +19,11 @@ namespace UI
         private void Awake()
         {
             equipmentCells = new List<UIEquipmentStorageCell>(cellContainer.GetComponentsInChildren<UIEquipmentStorageCell>());
+            for (var i = 0; i < equipmentCells.Count; i++)
+            {
+                equipmentCells[i].Init();
+            }
+            
             equipmentDatas = new List<EquipmentData>();
             
             equipmentUIItemSpawner.Init();
@@ -28,6 +33,7 @@ namespace UI
         private void OnEnable()
         {
             EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
+            EventManager.Instance.StartListening<EventData.OnEquipmentStorageChanged>(OnEquipmentStorageChanged);
 
             ShowEquipmentList();
         }
@@ -35,6 +41,7 @@ namespace UI
         private void OnDisable()
         {
             EventManager.Instance?.StopListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
+            EventManager.Instance?.StopListening<EventData.OnEquipmentStorageChanged>(OnEquipmentStorageChanged);
         }
 
         private void ShowEquipmentList()
@@ -45,7 +52,8 @@ namespace UI
                 return;
             }
             
-            equipmentDatas.Clear();
+            ResetStorageView();
+            
             for (var i = 0; i < equipmentLst.Count; i++)
             {
                 AddEquipmentToStorage(equipmentLst[i]);
@@ -55,7 +63,6 @@ namespace UI
         private void AddEquipmentToStorage(EquipmentData data)
         {
             equipmentDatas.Add(data);
-
             UpdateEquipmentUI(data);
         }
 
@@ -77,6 +84,21 @@ namespace UI
         private void OnObtainedEquipment(EventData.OnObtainedEquipment data)
         {
             AddEquipmentToStorage(data.EquipmentData);
+        }
+        
+        private void OnEquipmentStorageChanged(EventData.OnEquipmentStorageChanged data)
+        {
+            ShowEquipmentList();
+        }
+
+        private void ResetStorageView()
+        {
+            equipmentDatas.Clear();
+            for (var i = 0; i < equipmentCells.Count; i++)
+            {
+                var cell = equipmentCells[i];
+                cell.SetData(null);
+            }
         }
     }   
 }

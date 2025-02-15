@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384cabfca5d82274fb54c03f7901495b, type: 3}
   m_Name: BareBody
   m_EditorClassIdentifier: 
+  EquipmentID: 16
+  CategoryID: 2
   EquipmentName: Bare Body
   LoadPoint: 7
   Icon: {fileID: 0}
   Width: 2
   Height: 3
-  ID: 0
   Type: 1
   HP: 3

@@ -27,6 +27,7 @@ namespace Observer {
         public class OnPlacingEquipment
         {
             public UIInventoryItem UIItem;
+            public Action<EquipmentID> OnPlaceEquipmentInInventorySuccess;
         }
 
         public class OnPickingEquipmentFromInventory
@@ -133,9 +134,22 @@ namespace Observer {
             public EquipmentData EquipmentData;
         }
 
+        /// <summary>
+        /// Call when remove equipment from player storage
+        /// </summary>
+        public class OnRemoveEquipmentFromPlayerStorage
+        {
+            public EquipmentID EquipmentID;
+        }
+
         public class OnChooseEquipmentInStorage
         {
             public EquipmentData Equipment;
+        }
+
+        public class OnEquipmentStorageChanged
+        {
+            public List<EquipmentData> Equipment;
         }
     }
 }

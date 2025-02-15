@@ -13,7 +13,6 @@ namespace Config
     [CreateAssetMenu(fileName = "ArmorConfig", menuName = "Config/ArmorConfig")]
     public class ArmorConfig : EquipmentConfig
     {
-        public ArmorID ID;
         public ArmorType Type;
         public int HP;
     }   

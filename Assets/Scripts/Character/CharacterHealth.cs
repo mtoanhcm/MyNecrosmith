@@ -14,7 +14,6 @@ namespace Character
 
         public void Init(CharacterBase character, UnityAction deathHandler)
         {
-            Debug.Log($"Set local character {character.name}");
             localCharacter = character;
             onDeath = deathHandler;
         }
