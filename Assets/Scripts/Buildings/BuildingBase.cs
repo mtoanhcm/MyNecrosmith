@@ -5,19 +5,14 @@ using UnityEngine;
 namespace Building {
     public abstract class BuildingBase : MonoBehaviour
     {
-        public Vector3 Position => postition;
-
-        protected int ID;
-        protected Vector3 postition;
         protected BuildingData data;
-
+        protected bool isActive;
+        
         protected float delayActiveTime;
-        private float tempDelayAcTiveTime;
+        private float tempDelayActiveTime;
 
-        public void Init(int id, Vector3 pos ,BuildingData initData) { 
+        public void Init(Vector3 pos ,BuildingData initData) { 
             data = initData;
-            ID = id;
-            postition = pos;
         }
 
         public abstract void Spawn();
@@ -27,15 +22,16 @@ namespace Building {
 
         private void Update()
         {
-            if (delayActiveTime <= 0) {
+            if (!isActive)
+            {
                 return;
             }
 
-            if (tempDelayAcTiveTime > Time.time) {
+            if (tempDelayActiveTime > Time.time) {
                 return;
             }
 
-            tempDelayAcTiveTime = Time.deltaTime + delayActiveTime;
+            tempDelayActiveTime = Time.deltaTime + delayActiveTime;
             PlayActivation();
         }
     }

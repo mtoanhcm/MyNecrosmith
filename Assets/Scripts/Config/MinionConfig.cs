@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Config
 {
-    [CreateAssetMenu(fileName = "MinionConfig", menuName = "Config/MinionConfig")]
+    [CreateAssetMenu(fileName = "MinionConfig", menuName = "Config/Character/MinionConfig")]
     public class MinionConfig : CharacterConfig
     {
         public CharacterRace Race;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Config
 {
-    [CreateAssetMenu(fileName = "EnemyConfig", menuName = "Config/EnemyConfig")]
+    [CreateAssetMenu(fileName = "EnemyConfig", menuName = "Config/Character/EnemyConfig")]
     public class EnemyConfig : CharacterConfig
     {
         public int Damage;

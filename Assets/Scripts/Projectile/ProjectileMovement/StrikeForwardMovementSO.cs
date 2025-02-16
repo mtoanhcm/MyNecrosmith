@@ -4,7 +4,7 @@ using DG.Tweening;
 
 namespace Projectile.Movement
 {
-    [CreateAssetMenu(fileName = "StrikeForwardMovementSO", menuName = "Config/Projectile/Movement/StrikeForward")]
+    [CreateAssetMenu(fileName = "StrikeForwardMovementSO", menuName = "baseConfig/Projectile/Movement/StrikeForward")]
     public class StrikeForwardMovementSO : ProjectileMovementSO
     {
         private Tween currentTween;

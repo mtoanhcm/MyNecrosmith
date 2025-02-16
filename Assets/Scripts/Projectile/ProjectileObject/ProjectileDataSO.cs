@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Projectile
 {
-    [CreateAssetMenu(menuName = "Config/Projectile/ProjectileDataSO")]
+    [CreateAssetMenu(menuName = "baseConfig/Projectile/ProjectileDataSO")]
     public class ProjectileDataSO : ScriptableObject
     {
         [Header("Stat")]
