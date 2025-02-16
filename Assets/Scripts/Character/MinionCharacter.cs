@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Equipment;
+using Fog;
 using InterfaceComp;
 using Observer;
 using UnityEngine;

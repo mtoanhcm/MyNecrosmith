@@ -151,5 +151,15 @@ namespace Observer {
         {
             public List<EquipmentData> Equipment;
         }
+
+        public class OnUnitRegisterOpenFogOfWar
+        {
+            public Transform Unit;
+        }
+
+        public class OnUnitUnRegisterOpenFogOfWar
+        {
+            public Transform Unit;
+        }
     }
 }
