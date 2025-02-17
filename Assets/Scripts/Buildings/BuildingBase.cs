@@ -16,7 +16,7 @@ namespace Building {
         }
 
         public abstract void Spawn();
-        public abstract void Claimp();
+        public abstract void Claim();
         public abstract void TakeDamage(float damage);
         public abstract void PlayActivation();
 
