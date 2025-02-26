@@ -7,7 +7,8 @@ namespace Building
     {
         private readonly EnemyBuildingConfig config;
 
-        public CharacterID EnemySpawnID => config.EnemySpawnID;
+        public CharacterID EnemySpawnID => config.EnemySpawnConfig.ID;
+        public EnemyConfig EnemySpawnConfig => config.EnemySpawnConfig;
         public float Cooldown => config.CooldownSpawnTime;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,7 +17,7 @@ namespace Building
             config = baseConfig as EnemyBuildingConfig;
             if (config == null)
             {
-                Debug.LogError($"Error parse config for {base.baseConfig.BuildingType}");
+                Debug.LogError($"Error parse config for {base.baseConfig.ID}");
             }
         }
     }   

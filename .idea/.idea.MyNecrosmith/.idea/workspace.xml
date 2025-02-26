@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/ArmorConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/ArmorConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/EnemyConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/EnemyConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/MinionConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/MinionConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/WeaponConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/WeaponConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/EnemyBuildingData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/EnemyBuildingData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/BuildingConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/BuildingConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,24 +53,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "0.39003646",
-    "git-widget-placeholder": "Building-Sysem",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.39003646&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Building-Sysem&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../../Game Build/PC/Necrosmith\MyNecrosmith.exe" />
@@ -228,6 +230,8 @@
       <workItem from="1739355809161" duration="2116000" />
       <workItem from="1739462759583" duration="1355000" />
       <workItem from="1739690192632" duration="9141000" />
+      <workItem from="1740576325398" duration="2129000" />
+      <workItem from="1740578651141" duration="760000" />
     </task>
     <servers />
   </component>

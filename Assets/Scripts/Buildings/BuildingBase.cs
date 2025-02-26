@@ -1,24 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Building {
+    
+    [RequireComponent(typeof(BuildingHealth))]
     public abstract class BuildingBase : MonoBehaviour
     {
         protected BuildingData data;
         protected bool isActive;
-        
+        protected BuildingHealth buildingHealth;
         protected float delayActiveTime;
         private float tempDelayActiveTime;
 
-        public void Init(Vector3 pos ,BuildingData initData) { 
-            data = initData;
-        }
+        public BuildingID BuildingID => data.ID;
+        
+        public virtual void Spawn(Vector3 pos, BuildingData initData)
+        {
+             data = initData;
+             transform.position = pos;
 
-        public abstract void Spawn();
-        public abstract void Claim();
-        public abstract void TakeDamage(float damage);
-        public abstract void PlayActivation();
+             InitHealth();
+        }
+        
+        protected abstract void PlayActivation();
+
+        protected abstract void OnBuildingClaimed();
 
         private void Update()
         {
@@ -33,6 +38,16 @@ namespace Building {
 
             tempDelayActiveTime = Time.deltaTime + delayActiveTime;
             PlayActivation();
+        }
+
+        private void InitHealth()
+        {
+            if (buildingHealth == null)
+            {
+                TryGetComponent(out buildingHealth);
+            }
+            
+            buildingHealth.Init(data, OnBuildingClaimed);
         }
     }
 }

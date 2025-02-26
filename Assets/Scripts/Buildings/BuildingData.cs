@@ -3,9 +3,9 @@ using Config;
 
 namespace Building {
 
-    public enum BuildingType { 
+    public enum BuildingID { 
         Treasure,
-        EnemyBase,
+        EnemyFortress,
         MainBase
     }
     
@@ -13,6 +13,7 @@ namespace Building {
     public class BuildingData
     {
         protected readonly BuildingConfig baseConfig;
+        public BuildingID ID => baseConfig.ID;
         public int CurrentHP;
         public int MaxHP => baseConfig.HP;
         public int Level;

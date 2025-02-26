@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Building;
 using Character;
 using Config;
 using Equipment;
@@ -150,6 +151,17 @@ namespace Observer {
         public class OnEquipmentStorageChanged
         {
             public List<EquipmentData> Equipment;
+        }
+
+        public class OnSpawnBuilding
+        {
+            public BuildingID BuildingID;
+            public Action<BuildingBase> OnSpawnSuccess;
+        }
+        
+        public class OnDespawnBuilding
+        {
+            public BuildingBase Building;
         }
     }
 }

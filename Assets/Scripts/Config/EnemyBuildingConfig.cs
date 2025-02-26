@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace Config
 {
-    [CreateAssetMenu(fileName = "EnemyBuildingConfig", menuName = "baseConfig/Building/EnemyConfig")]
+    [CreateAssetMenu(fileName = "EnemyBuildingConfig", menuName = "baseConfig/Building/EnemyBuildingConfig")]
     public class EnemyBuildingConfig : BuildingConfig
     {
-        public CharacterID EnemySpawnID;
+        public EnemyConfig EnemySpawnConfig;
         public float CooldownSpawnTime;
     }
 }

@@ -7,12 +7,16 @@ using UnityEngine;
 namespace Spawner{
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private EnemyConfig enemyNeedSpawnConfig;
+        private EnemyConfig enemyNeedSpawnConfig;
+
+        public void Init(EnemyConfig config)
+        {
+            enemyNeedSpawnConfig = config;
+        }
         
-        [Button]
         public void SpawnEnemy()
         {
-            EventData.OnSpawnEnemy data = new EventData.OnSpawnEnemy()
+            var data = new EventData.OnSpawnEnemy()
             {
                 EnemyID = enemyNeedSpawnConfig.ID.ToString(),
                 OnSpawnSuccess = OnSpawnEnemy
