@@ -2,10 +2,9 @@ using UnityEngine;
 
 namespace Config
 {
-    [CreateAssetMenu(fileName = "MinionConfig", menuName = "Config/MinionConfig")]
+    [CreateAssetMenu(fileName = "MinionConfig", menuName = "baseConfig/Character/MinionConfig")]
     public class MinionConfig : CharacterConfig
     {
-        public CharacterClass Class;
         public CharacterRace Race;
         public Vector2Int InventorySize;
     }   

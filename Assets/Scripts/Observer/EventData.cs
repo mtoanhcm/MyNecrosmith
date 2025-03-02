@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Building;
 using Character;
 using Config;
 using Equipment;
+using Projectile;
 using UI;
 using UnityEngine;
 
@@ -12,33 +14,34 @@ namespace Observer {
         /// <summary>
         /// Open fog of war by radius
         /// </summary>
-        public struct OpenCharacterInventory
+        public class OpenCharacterInventory
         {
-            public CharacterClass CharacterClass;
+            public CharacterID CharacterID;
             public Inventory InventoryData;
         }
 
-        public struct DraggingEquipment
+        public class DraggingEquipment
         {
             public UIInventoryItem UIItem;
         }
 
-        public struct OnPlacingEquipment
+        public class OnPlacingEquipment
         {
             public UIInventoryItem UIItem;
+            public Action<EquipmentID> OnPlaceEquipmentInInventorySuccess;
         }
 
-        public struct OnPickingEquipmentFromInventory
+        public class OnPickingEquipmentFromInventory
         {
             public UIInventoryItem UIItemPick;
         }
 
-        public struct OnStartGame
+        public class OnStartGame
         {
             public bool IsStart;
         }
 
-        public struct OnPauseGame
+        public class OnPauseGame
         {
             public bool IsPause;
         }
@@ -46,31 +49,79 @@ namespace Observer {
         /// <summary>
         /// Call event when player want to spawn a minion
         /// </summary>
-        public struct OnSpawnMinion
+        public class OnSpawnMinion
         {
-            public MinionConfig Config;
-            public List<EquipmentData> Equipments;
-            public Vector3 SpawnPosition;
+            public string MinionID;
+            public Action<CharacterBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when minion death
+        /// </summary>
+        public class OnMinionDeath
+        {
+            public CharacterBase Minion;
+        }
+
+        public class OnPrepareEquipmentForSpawnMinion
+        {
+            public MinionConfig MinionConfig;
+            public List<EquipmentData> Equipment;
+        }
+
+        /// <summary>
+        /// Call event when the game want to spawn an enemy
+        /// </summary>
+        public class OnSpawnEnemy
+        {
+            public string EnemyID;
+            public Action<CharacterBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when enemy death
+        /// </summary>
+        public class OnEnemyDeath
+        {
+            public CharacterBase Enemy;
         }
 
         /// <summary>
         /// Call event when player want to spawn a equipment
         /// </summary>
-        public struct OnSpawnEquipment
+        public class OnSpawnEquipment
         {
-            public EquipmentData Equipment;
-            public CharacterBase Owner;
-            public Vector3 SpawnPosition;
-            public Action<EquipmentBase> OnSpawnEqupimentSuccessHandle;
+            public string EquipmentID;
+            public string EquipmentCategoryID;
+            public Action<EquipmentBase> OnSpawnEquipmentSuccessHandle;
         }
 
-        public struct OnLoadCharacterPrefabSuccess
+        /// <summary>
+        /// Call event when destroy equipment
+        /// </summary>
+        public class OnDestroyEquipment
         {
-            public string Class;
-            public CharacterBase CharPrefab;
+            public EquipmentBase Equipment;
         }
-        
-        public struct OnLoadEquipmentPrefabSuccess
+
+        /// <summary>
+        /// Call event when spawn projectile
+        /// </summary>
+        public class OnSpawnProjectile
+        {
+            public string ProjectileID;
+            public Action<ProjectileBase> OnSpawnSuccess;
+        }
+
+        /// <summary>
+        /// Call event when despawn projectile
+        /// </summary>
+        public class OnDespawnProjectile
+        {
+            public ProjectileBase Projectile;
+        }
+
+        public class OnLoadEquipmentPrefabSuccess
         {
             public string EquipmentTypeID;
             public EquipmentBase EquipmentPrefab;
@@ -79,14 +130,38 @@ namespace Observer {
         /// <summary>
         /// Call when any minion obtains the equipment or player obtains the equipment from event, box...
         /// </summary>
-        public struct OnObtainedEquipment
+        public class OnObtainedEquipment
         {
             public EquipmentData EquipmentData;
         }
 
-        public struct OnChooseEquipmentInStorage
+        /// <summary>
+        /// Call when remove equipment from player storage
+        /// </summary>
+        public class OnRemoveEquipmentFromPlayerStorage
+        {
+            public EquipmentID EquipmentID;
+        }
+
+        public class OnChooseEquipmentInStorage
         {
             public EquipmentData Equipment;
+        }
+
+        public class OnEquipmentStorageChanged
+        {
+            public List<EquipmentData> Equipment;
+        }
+
+        public class OnSpawnBuilding
+        {
+            public BuildingID BuildingID;
+            public Action<BuildingBase> OnSpawnSuccess;
+        }
+        
+        public class OnDespawnBuilding
+        {
+            public BuildingBase Building;
         }
     }
 }

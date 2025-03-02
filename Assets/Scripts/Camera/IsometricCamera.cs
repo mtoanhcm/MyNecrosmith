@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace CameraControl
 {
     [RequireComponent(typeof(Camera))]
     public class IsometricCamera : MonoBehaviour
     {
-        public Transform TargetFollow { get; private set; } // The object the camera will follow
+        public Transform TargetFollow; // The object the camera will follow
         
         [SerializeField]private float distance; // Default distance from the focus point
         [SerializeField]private float rotationX; // Camera rotation around the X-axis
@@ -14,8 +15,8 @@ namespace CameraControl
         [SerializeField]private float followSpeed; // Speed at which the camera follows the target
         [SerializeField]private float moveSpeed; // Speed of W, A, S, D movement
         [SerializeField]private float zoomSpeed; // Speed of zooming in/out
-        [SerializeField]private float minDistance; // Minimum zoom distance
-        [SerializeField]private float maxDistance; // Maximum zoom distance
+        [SerializeField]private float minZoom; // Minimum zoom distance
+        [SerializeField]private float maxZoom; // Maximum zoom distance
         [SerializeField]private float fov; // Field of view for the camera
 
         private Camera camera;
@@ -75,17 +76,17 @@ namespace CameraControl
 
         private void Update()
         {
-            // Adjust distance based on zoom input
+            // Adjust orthographic size based on zoom input
             if (zoomInput != 0)
             {
-                float oldDistance = distance;
-                distance -= zoomInput * zoomSpeed;
-                distance = Mathf.Clamp(distance, minDistance, maxDistance);
+                float oldSize = camera.orthographicSize;
+                camera.orthographicSize -= zoomInput * zoomSpeed;
+                camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minZoom, maxZoom);
 
                 // If not following, calculate zoom adjustment towards mouse position
                 if (!isFollowing)
                 {
-                    zoomAdjustment = CalculateZoomAdjustment(oldDistance, distance);
+                    zoomAdjustment = CalculateZoomAdjustment(oldSize, camera.orthographicSize);
                 }
                 else
                 {

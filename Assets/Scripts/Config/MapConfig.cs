@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 namespace Config {
-    [CreateAssetMenu(fileName = "MapConfig", menuName = "Config/MapConfig", order = 1)]
+    [CreateAssetMenu(fileName = "MapConfig", menuName = "baseConfig/MapConfig", order = 1)]
     public class MapConfig : ScriptableObject
     {
         [Serializable]

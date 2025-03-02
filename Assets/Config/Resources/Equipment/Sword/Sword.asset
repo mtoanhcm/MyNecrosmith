@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027ba6065042c794f801fa335a2fbf89, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  EquipmentID: 4
+  CategoryID: 1
+  EquipmentName: Iron Sword
+  LoadPoint: 13
+  Icon: {fileID: 21300000, guid: 676b2deedd411cd44abc613f36bdf752, type: 3}
+  Width: 1
+  Height: 2
+  DamageType: 1
+  ProjectileSO: {fileID: 11400000, guid: 6d193e4da9947f34dac09a7832dba8e2, type: 2}
+  Damage: 5
+  AttackRange: 8
+  AttackSpeed: 20
+  Cooldown: 3

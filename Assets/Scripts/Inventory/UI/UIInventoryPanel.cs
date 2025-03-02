@@ -17,7 +17,7 @@ namespace UI
         
         private RectTransform inventoryRect;
 
-        private CharacterClass characterClassOwnInventory;
+        private CharacterID _characterIDOwnInventory;
         private UIInventoryPanelCellHandle cellHandle;
         private UIInventoryPanelEquipmentHandle equipmentHandle;
 
@@ -35,20 +35,6 @@ namespace UI
             spawnCharacterBtn.onClick.AddListener(OnCharacterEquipmentReady);
             
             return;
-
-            // void InitInventorySize()
-            // {
-            //     inventoryRect = cellGridContainer.GetComponent<RectTransform>();
-            //     inventoryRect.sizeDelta = new Vector2(
-            //         InventoryParam.CELL_SIZE * InventoryParam.MAX_COLUMN +
-            //         (cellGridContainer.spacing.x * (InventoryParam.MAX_COLUMN - 1)),
-            //         InventoryParam.CELL_SIZE * InventoryParam.MAX_ROW +
-            //         (cellGridContainer.spacing.x * (InventoryParam.MAX_ROW - 1))
-            //     );
-            //
-            //     cellGridContainer.spacing = new Vector2(InventoryParam.CELL_SPACING, InventoryParam.CELL_SPACING);
-            //     cellGridContainer.cellSize = new Vector2(InventoryParam.CELL_SIZE, InventoryParam.CELL_SIZE);
-            // }
 
             void InitInventoryEmptyCell()
             {
@@ -104,7 +90,7 @@ namespace UI
                 return;
             }
             
-            characterClassOwnInventory = characterInventory.CharacterClass;
+            _characterIDOwnInventory = characterInventory.CharacterID;
             
             cellHandle.LockAllCells();
             cellHandle.ResetAllCellHoverState();
@@ -131,17 +117,20 @@ namespace UI
 
         private void OnCharacterEquipmentReady()
         {
-            var config = Resources.Load<MinionConfig>($"Character/{characterClassOwnInventory}");
+            var config = Resources.Load<MinionConfig>($"Character/Minion/{_characterIDOwnInventory}");
             if (config != null)
             {
-                EventManager.Instance.TriggerEvent(new EventData.OnSpawnMinion()
+                EventManager.Instance.TriggerEvent(new EventData.OnPrepareEquipmentForSpawnMinion()
                 {
-                    Config = config,
-                    Equipments = equipmentHandle.GetEquipmentData(),
-                    SpawnPosition = Vector3.zero
+                    MinionConfig = config,
+                    Equipment = equipmentHandle.GetEquipmentData(),
                 });
 
                 CloseInventoryUIPanel();
+            }
+            else
+            {
+                Debug.LogError($"Cannot find the character config for {_characterIDOwnInventory}");
             }
         }
         
@@ -174,6 +163,8 @@ namespace UI
             cellHandle.SetItemForCell(claimPos, data.UIItem.GetInstanceID().ToString());
             cellHandle.ResetAllCellHoverState();
             equipmentHandle.AddItemToInventory(data.UIItem);
+            
+            data.OnPlaceEquipmentInInventorySuccess?.Invoke(data.UIItem.Item.Equipment.EquipmentID);
         }
 
         private void OnPickingEquipmentFromInventory(EventData.OnPickingEquipmentFromInventory data)

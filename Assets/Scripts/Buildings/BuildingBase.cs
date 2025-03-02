@@ -1,42 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Building {
+    
+    [RequireComponent(typeof(BuildingHealth))]
     public abstract class BuildingBase : MonoBehaviour
     {
-        public Vector3 Position => postition;
-
-        protected int ID;
-        protected Vector3 postition;
         protected BuildingData data;
-
+        protected bool isActive;
+        protected BuildingHealth buildingHealth;
         protected float delayActiveTime;
-        private float tempDelayAcTiveTime;
+        private float tempDelayActiveTime;
 
-        public void Init(int id, Vector3 pos ,BuildingData initData) { 
-            data = initData;
-            ID = id;
-            postition = pos;
+        public BuildingID BuildingID => data.ID;
+        
+        public virtual void Spawn(Vector3 pos, BuildingData initData)
+        {
+             data = initData;
+             transform.position = pos;
+
+             InitHealth();
         }
+        
+        protected abstract void PlayActivation();
 
-        public abstract void Spawn();
-        public abstract void Claimp();
-        public abstract void TakeDamage(float damage);
-        public abstract void PlayActivation();
+        protected abstract void OnBuildingClaimed();
 
         private void Update()
         {
-            if (delayActiveTime <= 0) {
+            if (!isActive)
+            {
                 return;
             }
 
-            if (tempDelayAcTiveTime > Time.time) {
+            if (tempDelayActiveTime > Time.time) {
                 return;
             }
 
-            tempDelayAcTiveTime = Time.deltaTime + delayActiveTime;
+            tempDelayActiveTime = Time.deltaTime + delayActiveTime;
             PlayActivation();
+        }
+
+        private void InitHealth()
+        {
+            if (buildingHealth == null)
+            {
+                TryGetComponent(out buildingHealth);
+            }
+            
+            buildingHealth.Init(data, OnBuildingClaimed);
         }
     }
 }

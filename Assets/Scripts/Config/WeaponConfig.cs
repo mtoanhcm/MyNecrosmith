@@ -1,3 +1,5 @@
+using Combat;
+using Projectile;
 using UnityEngine;
 
 namespace Config
@@ -11,13 +13,15 @@ namespace Config
         Siege
     }
     
-    [CreateAssetMenu(fileName = "WeaponConfig", menuName = "Config/WeaponConfig")]
+    [CreateAssetMenu(fileName = "WeaponConfig", menuName = "baseConfig/Equipment/WeaponConfig")]
     public class WeaponConfig : EquipmentConfig
     {
-        public WeaponID ID;
+        [Header("Stats")]
         public DamageType DamageType;
-        public float Damage;
+        public ProjectileDataSO ProjectileSO;
+        public int Damage;
         public float AttackRange;
         public float AttackSpeed;
+        public float Cooldown;
     }   
 }

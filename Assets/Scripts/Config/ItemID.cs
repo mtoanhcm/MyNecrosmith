@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace Config
 {
-    public enum WeaponID
+    public enum EquipmentID
     {
+        None = 0,
         Knife,
         Club,
         Mace,
@@ -20,11 +21,7 @@ namespace Config
         Whip,
         Machete,
         Spear,
-        Hammer
-    }
-
-    public enum ArmorID
-    {
+        Hammer,
         BareBody,
         LeatherBody,
         LightArmor,
@@ -33,10 +30,17 @@ namespace Config
         SilverArmor,
         GoldenArmor,
     }
-
+    
     public enum EquipmentCategoryID
     {
         None,
-        Sword
+        Sword,
+        Armor,
+    }
+
+    public enum ProjectileID
+    {
+        SwordStrike,
+        PowerSphere
     }
 }

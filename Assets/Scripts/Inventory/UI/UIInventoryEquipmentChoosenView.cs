@@ -4,6 +4,7 @@ using Equipment;
 using Observer;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UI
 {
@@ -16,7 +17,8 @@ namespace UI
         
         [SerializeField] private UIInventoryItem equipmentUIItemPrefab;
         [SerializeField] private Transform equipmentUIItemContainer;
-        
+
+        private UIInventoryItem equipmentUIItem;
         
         private void OnEnable()
         {
@@ -35,13 +37,18 @@ namespace UI
                 ResetInfo();
                 return;
             }
+
+            if (equipmentUIItem != null)
+            {
+                Destroy(equipmentUIItem.gameObject);
+            }
             
             equipmentNameTxt.text = data.Equipment.Name;
             effectAttributeTxt.text = data.Equipment.EffectValue;
             equipmentTypeTxt.text = data.Equipment.EffectType;
             loadPointTxt.text = $"Load point: {data.Equipment.LoadPoint.ToString()}";
             
-            var equipmentUIItem = Instantiate(equipmentUIItemPrefab, equipmentUIItemContainer);
+            equipmentUIItem = Instantiate(equipmentUIItemPrefab, equipmentUIItemContainer);
             equipmentUIItem.Init(data.Equipment);
         }
 

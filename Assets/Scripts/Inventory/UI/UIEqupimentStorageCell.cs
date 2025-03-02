@@ -15,8 +15,8 @@ namespace UI
         [SerializeField] private Image equipmentIconImg;
         
         private EquipmentData currentEquipment;
-
-        private void Awake()
+        
+        public void Init()
         {
             equipmentIconImg.SetActive(false);
         }
@@ -26,7 +26,7 @@ namespace UI
             HasEquipment = equipment != null;
             currentEquipment = equipment;
             equipmentIconImg.SetActive(HasEquipment);
-            equipmentIconImg.sprite = HasEquipment ? equipment.IconSpr : null;
+            equipmentIconImg.sprite = HasEquipment ? equipment?.IconSpr : null;
         }
 
         public void OnPointerClick(PointerEventData eventData)

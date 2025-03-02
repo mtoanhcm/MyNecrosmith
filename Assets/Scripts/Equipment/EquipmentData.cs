@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Combat;
 using Config;
 using UnityEngine;
 
@@ -12,7 +13,8 @@ namespace Equipment
         [SerializeField]
         protected EquipmentConfig baseConfig;
 
-        public virtual string ID => string.Empty;
+        public EquipmentID EquipmentID => baseConfig.EquipmentID;
+        public EquipmentCategoryID CategoryID => baseConfig.CategoryID;
         public virtual string EffectType => string.Empty;
         public virtual string EffectValue => string.Empty;
         public string Name => baseConfig.EquipmentName;

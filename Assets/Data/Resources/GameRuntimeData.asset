@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029c6c1e087440a4da796b284e61afae, type: 3}
   m_Name: GameRuntimeData
   m_EditorClassIdentifier: 
-  equipmentStorage:
-  - baseData: {fileID: 11400000, guid: 1cf7f763dd64cd94cb304df9af499fd0, type: 2}
+  equipmentStorage: []
