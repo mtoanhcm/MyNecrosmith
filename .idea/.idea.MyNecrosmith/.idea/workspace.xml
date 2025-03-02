@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingManager.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,14 +265,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/AI/Action/BOTMoveCombat.cs</url>
           <line>22</line>
-          <properties documentPath="D:\Projects\MyNecrosmith\Assets\Scripts\AI\Action\BOTMoveCombat.cs" containingFunctionPresentation="Method 'OnStart'">
-            <startOffsets>
-              <option value="618" />
-            </startOffsets>
-            <endOffsets>
-              <option value="684" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Projects\MyNecrosmith\Assets\Scripts\AI\Action\BOTMoveCombat.cs" containingFunctionPresentation="Method 'OnStart'" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
