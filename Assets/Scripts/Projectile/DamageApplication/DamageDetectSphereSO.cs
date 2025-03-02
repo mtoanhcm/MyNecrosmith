@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Projectile.DamageApply
 {
-    [CreateAssetMenu(fileName = "DamageDetectSphereSO", menuName = "Config/Projectile/DamageDetect/SphereDetect")]
+    [CreateAssetMenu(fileName = "DamageDetectSphereSO", menuName = "baseConfig/Projectile/DamageDetect/SphereDetect")]
     public class DamageDetectSphereSO : DamageApplicationSO
     {
         private Collider[] hits = new Collider[1];

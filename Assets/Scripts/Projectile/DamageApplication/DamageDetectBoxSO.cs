@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Projectile.DamageApply
 {
-    [CreateAssetMenu(fileName = "DamageDetectBoxSO", menuName = "Config/Projectile/DamageDetect/BoxDetect")]
+    [CreateAssetMenu(fileName = "DamageDetectBoxSO", menuName = "baseConfig/Projectile/DamageDetect/BoxDetect")]
     public class DamageDetectBoxSO : DamageApplicationSO
     {
         private Collider[] hits = new Collider[1];
