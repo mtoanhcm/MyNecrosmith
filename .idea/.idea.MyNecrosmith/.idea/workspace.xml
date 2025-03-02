@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/EnemyBuildingData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/EnemyBuildingData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/BuildingConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/BuildingConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +225,8 @@
       <workItem from="1739462759583" duration="1355000" />
       <workItem from="1739690192632" duration="9141000" />
       <workItem from="1740576325398" duration="2129000" />
-      <workItem from="1740578651141" duration="760000" />
+      <workItem from="1740578651141" duration="3554000" />
+      <workItem from="1740911548242" duration="1086000" />
     </task>
     <servers />
   </component>
