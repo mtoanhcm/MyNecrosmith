@@ -15,25 +15,25 @@ MonoBehaviour:
   AreaConfigs:
   - AreaIndex: 0
     SpawnRangeMin: 100
-    SpawnRangeMax: 200
+    SpawnRangeMax: 300
     BuildingLevel: 1
     BuildingAmount: 30
     BuildingDistance: 30
     EnemyBuildingConfigs:
     - {fileID: 11400000, guid: 7695f47dcc236407fa9547fea9cf6809, type: 2}
   - AreaIndex: 1
-    SpawnRangeMin: 250
-    SpawnRangeMax: 500
+    SpawnRangeMin: 350
+    SpawnRangeMax: 700
     BuildingLevel: 2
-    BuildingAmount: 60
-    BuildingDistance: 60
+    BuildingAmount: 100
+    BuildingDistance: 50
     EnemyBuildingConfigs:
     - {fileID: 11400000, guid: 7695f47dcc236407fa9547fea9cf6809, type: 2}
   - AreaIndex: 2
-    SpawnRangeMin: 550
-    SpawnRangeMax: 1100
+    SpawnRangeMin: 750
+    SpawnRangeMax: 1400
     BuildingLevel: 3
-    BuildingAmount: 360
-    BuildingDistance: 60
+    BuildingAmount: 500
+    BuildingDistance: 70
     EnemyBuildingConfigs:
     - {fileID: 11400000, guid: 7695f47dcc236407fa9547fea9cf6809, type: 2}
