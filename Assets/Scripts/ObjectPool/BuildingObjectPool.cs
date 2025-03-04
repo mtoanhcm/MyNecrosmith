@@ -44,7 +44,7 @@ namespace Spawner
 
         private void OnDespawnBuilding(EventData.OnDespawnBuilding data)
         {
-            pool.Return($"Building/{data.Building.BuildingID}.prefab", data.Building);
+            pool.Return($"Building/{data.Building.ID}.prefab", data.Building);
         }
     }   
 }

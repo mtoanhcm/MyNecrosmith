@@ -16,13 +16,15 @@ namespace Building {
         public BuildingID ID => baseConfig.ID;
         public int CurrentHP;
         public int MaxHP => baseConfig.HP;
-        public int Level;
+        public int AreaIndex { get; private set; }
+        public int Level { get; private set; }
 
-        public BuildingData(BuildingConfig baseConfig)
+        public BuildingData(BuildingConfig baseConfig, int areaIndex, int level)
         {
             this.baseConfig = baseConfig;
             CurrentHP = baseConfig.HP;
-            Level = 1;
+            Level = level;
+            AreaIndex = areaIndex;
         }
 
         public virtual void LevelUp()

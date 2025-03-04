@@ -9,10 +9,10 @@ namespace Building
 
         public CharacterID EnemySpawnID => config.EnemySpawnConfig.ID;
         public EnemyConfig EnemySpawnConfig => config.EnemySpawnConfig;
-        public float Cooldown => config.CooldownSpawnTime;
+        public float CooldownSpawnTime => config.CooldownSpawnTime;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        public EnemyBuildingData(BuildingConfig baseConfig) : base(baseConfig)
+        public EnemyBuildingData(BuildingConfig baseConfig, int areaIndex, int level) : base(baseConfig, areaIndex, level)
         {
             config = baseConfig as EnemyBuildingConfig;
             if (config == null)

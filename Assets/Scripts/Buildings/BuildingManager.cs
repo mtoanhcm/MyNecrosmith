@@ -18,7 +18,9 @@ namespace Building
         [Header("Spawn Settings")]
         [SerializeField] private float initialSpawnDelay = 2f;
         [SerializeField] private float spawnDelayBetweenAreas = 1f;
-        [SerializeField] private int maxAreaIndex = 3;
+        [SerializeField] private float activeBuildingDelay = 1f;
+        [SerializeField] private int amountBuildingActiveInFirstWave = 5;
+        [SerializeField] private int delayTimeActiveTheFirstWave = 20;
         [SerializeField] private LayerMask buildingLayer;
         
         [Header("Debug")]
@@ -40,13 +42,20 @@ namespace Building
             {
                 mapCenter = transform;
             }
-            
-            LogInfo($"BuildingManager initialized with maxAreaIndex: {maxAreaIndex}");
         }
 
         private void Start()
         {
-            LogInfo("Starting initial building spawn sequence");
+            EventManager.Instance.StartListening<EventData.OnStartGame>(OnStartGamePlay);
+        }
+
+        private void OnStartGamePlay(EventData.OnStartGame data)
+        {
+            if (!data.IsStart)
+            {
+                return;
+            }
+            
             StartCoroutine(SpawnInitialBuildings());
         }
 
@@ -55,58 +64,45 @@ namespace Building
         /// </summary>
         private IEnumerator SpawnInitialBuildings()
         {
-            LogInfo($"Waiting {initialSpawnDelay} seconds before spawning");
             yield return new WaitForSeconds(initialSpawnDelay);
 
-            LogInfo($"Beginning area spawning sequence (0 to {maxAreaIndex - 1})");
-            for (int areaIndex = 0; areaIndex < maxAreaIndex; areaIndex++)
+            //Spawn building for each area
+            var maxArea = spawnConfig.AreaConfigs.Length;
+            for (int areaIndex = 0; areaIndex < maxArea; areaIndex++)
             {
-                LogInfo($"Spawning buildings for area {areaIndex}");
                 SpawnBuildingsForArea(areaIndex);
                 
-                if (areaStats.TryGetValue(areaIndex, out var stats)) 
-                {
-                    LogInfo($"Area {areaIndex} spawn stats: {stats.succeeded}/{stats.attempted} successful ({(stats.attempted > 0 ? stats.succeeded * 100f / stats.attempted : 0):F1}%)");
-                }
-                
-                LogInfo($"Waiting {spawnDelayBetweenAreas} seconds before next area");
                 yield return new WaitForSeconds(spawnDelayBetweenAreas);
             }
             
-            LogInfo("Finished spawning buildings for all areas");
-            LogSpawnSummary();
+            //Check start active building
+            var nearestBuilding = buildingSpawner.GetBuildings(0, amountBuildingActiveInFirstWave, mapCenter.position);
+            for (var i = 0; i < amountBuildingActiveInFirstWave; i++)
+            {
+                nearestBuilding[i].SetActiveBuildingByTime(true, delayTimeActiveTheFirstWave);
+            }
         }
 
         /// <summary>
         /// Spawns buildings for a specific area
         /// </summary>
-        public void SpawnBuildingsForArea(int areaIndex)
+        private void SpawnBuildingsForArea(int areaIndex)
         {
-            LogInfo($"SpawnBuildingsForArea: Starting for area {areaIndex}");
-            
             var areaConfig = spawnConfig.GetAreaConfig(areaIndex);
             if (areaConfig == null)
             {
-                LogError($"Cannot spawn buildings - area config for index {areaIndex} not found");
                 return;
             }
-
-            LogInfo($"Area {areaIndex} config: SpawnRangeMin={areaConfig.SpawnRangeMin}, SpawnRangeMax={areaConfig.SpawnRangeMax}, " +
-                   $"BuildingAmount={areaConfig.BuildingAmount}, BuildingDistance={areaConfig.BuildingDistance}");
             
             if (areaConfig.EnemyBuildingConfigs == null)
             {
-                LogError($"Area {areaIndex}: EnemyBuildingConfigs is null");
                 return;
             }
-            
-            LogInfo($"Area {areaIndex}: EnemyBuildingConfigs count = {areaConfig.EnemyBuildingConfigs.Length}");
             
             // Initialize positions tracker for this area if needed
             if (!spawnedBuildingPositions.ContainsKey(areaIndex))
             {
                 spawnedBuildingPositions[areaIndex] = new List<Vector3>();
-                LogInfo($"Initialized position tracking for area {areaIndex}");
             }
             
             // Initialize failed positions tracker
@@ -118,64 +114,45 @@ namespace Building
             int attemptedBuildings = 0;
             int successfullySpawned = 0;
             int maxAttempts = areaConfig.BuildingAmount * 10; // Limit attempts to avoid infinite loop
-
-            LogInfo($"Area {areaIndex}: Starting spawn loop. Target: {areaConfig.BuildingAmount} buildings");
             
             while (successfullySpawned < areaConfig.BuildingAmount && attemptedBuildings < maxAttempts)
             {
                 attemptedBuildings++;
                 
-                if (attemptedBuildings % 10 == 0)
-                {
-                    LogInfo($"Area {areaIndex}: Attempted {attemptedBuildings} spawns, succeeded {successfullySpawned} so far");
-                }
-                
                 // Get random position within the area's range
                 Vector3 spawnPosition = GetRandomPositionInArea(areaConfig, areaIndex);
-                LogDebug($"Area {areaIndex}: Generated position at {spawnPosition}");
                 
                 // Check if position is valid for building placement
-                string failReason = "";
-                if (IsValidBuildingPosition(spawnPosition, areaIndex, areaConfig.BuildingDistance, out failReason))
+                if (IsValidBuildingPosition(spawnPosition, areaIndex, areaConfig.BuildingDistance, out var failReason))
                 {
-                    LogDebug($"Area {areaIndex}: Position {spawnPosition} is valid");
-                    
                     // Get random enemy building config from available options
                     EnemyBuildingConfig buildingConfig = GetRandomEnemyBuildingConfig(areaConfig, areaIndex);
                     if (buildingConfig == null) 
                     {
-                        LogError($"Area {areaIndex}: Failed to get valid EnemyBuildingConfig");
                         failedPositions[areaIndex].Add((spawnPosition, "Null building config"));
                         continue;
                     }
-
-                    LogDebug($"Area {areaIndex}: Selected building config ID={buildingConfig.ID}");
                     
                     try
                     {
                         // Create a building data instance
-                        var buildingData = new EnemyBuildingData(buildingConfig);
+                        var buildingData = new EnemyBuildingData(buildingConfig, areaIndex, areaConfig.BuildingLevel);
                         
                         // Track the position
                         spawnedBuildingPositions[areaIndex].Add(spawnPosition);
-                        LogInfo($"Area {areaIndex}: Added position {spawnPosition} to tracking list");
                         
                         // Spawn the building
-                        LogInfo($"Area {areaIndex}: Calling buildingSpawner.SpawnBuilding with {buildingConfig.ID} at {spawnPosition}");
                         buildingSpawner.SpawnBuilding(buildingData, spawnPosition);
                         
                         successfullySpawned++;
-                        LogInfo($"Area {areaIndex}: Successfully spawned building {successfullySpawned}/{areaConfig.BuildingAmount}");
                     }
                     catch (System.Exception e)
                     {
-                        LogError($"Area {areaIndex}: Exception during building spawn: {e.Message}\n{e.StackTrace}");
                         failedPositions[areaIndex].Add((spawnPosition, $"Exception: {e.Message}"));
                     }
                 }
                 else
                 {
-                    LogDebug($"Area {areaIndex}: Position {spawnPosition} is invalid: {failReason}");
                     failedPositions[areaIndex].Add((spawnPosition, failReason));
                 }
             }
@@ -185,10 +162,8 @@ namespace Building
 
             if (successfullySpawned < areaConfig.BuildingAmount)
             {
-                LogWarning($"Area {areaIndex}: Could only spawn {successfullySpawned}/{areaConfig.BuildingAmount} buildings after {attemptedBuildings} attempts");
                 if (failedPositions[areaIndex].Count > 0)
                 {
-                    LogWarning($"Area {areaIndex}: Top failure reasons:");
                     Dictionary<string, int> reasonCounts = new Dictionary<string, int>();
                     foreach (var (_, reason) in failedPositions[areaIndex])
                     {
@@ -196,49 +171,7 @@ namespace Building
                             reasonCounts[reason] = 0;
                         reasonCounts[reason]++;
                     }
-                    
-                    foreach (var kvp in reasonCounts)
-                    {
-                        LogWarning($"  - {kvp.Key}: {kvp.Value} times");
-                    }
                 }
-            }
-            else
-            {
-                LogInfo($"Area {areaIndex}: Successfully spawned all {successfullySpawned} buildings after {attemptedBuildings} attempts");
-            }
-        }
-
-        /// <summary>
-        /// Spawns buildings for a specific area with a delay
-        /// </summary>
-        public void SpawnBuildingsForAreaDelayed(int areaIndex, float delay)
-        {
-            LogInfo($"Scheduling delayed spawn for area {areaIndex} in {delay} seconds");
-            StartCoroutine(SpawnAreaDelayed(areaIndex, delay));
-        }
-
-        private IEnumerator SpawnAreaDelayed(int areaIndex, float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            SpawnBuildingsForArea(areaIndex);
-        }
-
-        /// <summary>
-        /// Clear buildings tracking data for a specific area
-        /// Note: This doesn't despawn actual buildings, just clears the position tracking
-        /// </summary>
-        public void ClearBuildingsInArea(int areaIndex)
-        {
-            if (spawnedBuildingPositions.ContainsKey(areaIndex))
-            {
-                LogInfo($"Clearing position tracking for area {areaIndex}, had {spawnedBuildingPositions[areaIndex].Count} positions");
-                spawnedBuildingPositions[areaIndex].Clear();
-            }
-            
-            if (failedPositions.ContainsKey(areaIndex))
-            {
-                failedPositions[areaIndex].Clear();
             }
         }
 
@@ -255,7 +188,6 @@ namespace Building
             
             // Calculate position
             Vector3 randomPosition = mapCenter.position + new Vector3(randomDirection.x, 0, randomDirection.y) * distance;
-            LogDebug($"Area {areaIndex}: Generated raw position at {randomPosition}, direction={randomDirection}, distance={distance}");
             
             // Ensure the point is on the NavMesh
             if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, navMeshSampleDistance, NavMesh.AllAreas))
@@ -319,7 +251,6 @@ namespace Building
         {
             if (areaConfig.EnemyBuildingConfigs == null || areaConfig.EnemyBuildingConfigs.Length == 0)
             {
-                LogError($"Area {areaIndex}: No enemy building configs found");
                 return null;
             }
             
@@ -328,78 +259,11 @@ namespace Building
             
             if (config == null)
             {
-                LogError($"Area {areaIndex}: Enemy building config at index {randomIndex} is null");
                 return null;
             }
             
             return config;
         }
-        
-        /// <summary>
-        /// Logs a summary of the spawn results for all areas
-        /// </summary>
-        private void LogSpawnSummary()
-        {
-            LogInfo("========== BUILDING SPAWN SUMMARY ==========");
-            
-            int totalAttempted = 0;
-            int totalSucceeded = 0;
-            int totalTargeted = 0;
-            
-            foreach (var areaConfig in spawnConfig.AreaConfigs)
-            {
-                int areaIndex = areaConfig.AreaIndex;
-                int targeted = areaConfig.BuildingAmount;
-                totalTargeted += targeted;
-                
-                string statInfo = "No spawn attempt made";
-                if (areaStats.TryGetValue(areaIndex, out var stats))
-                {
-                    totalAttempted += stats.attempted;
-                    totalSucceeded += stats.succeeded;
-                    
-                    float successRate = stats.attempted > 0 ? (float)stats.succeeded / stats.attempted * 100 : 0;
-                    statInfo = $"{stats.succeeded}/{targeted} buildings ({successRate:F1}% success rate)";
-                }
-                
-                LogInfo($"Area {areaIndex}: {statInfo}");
-            }
-            
-            float overallRate = totalAttempted > 0 ? (float)totalSucceeded / totalAttempted * 100 : 0;
-            float completionRate = totalTargeted > 0 ? (float)totalSucceeded / totalTargeted * 100 : 0;
-            
-            LogInfo($"Overall: {totalSucceeded}/{totalTargeted} buildings spawned");
-            LogInfo($"Attempt success rate: {overallRate:F1}%, Completion rate: {completionRate:F1}%");
-            LogInfo("=============================================");
-        }
-
-        #region Logging Methods
-        private void LogInfo(string message)
-        {
-            if (verboseLogging)
-            {
-                Debug.Log($"[BuildingManager] {message}");
-            }
-        }
-
-        private void LogDebug(string message)
-        {
-            if (verboseLogging)
-            {
-                Debug.Log($"[BuildingManager][Debug] {message}");
-            }
-        }
-
-        private void LogWarning(string message)
-        {
-            Debug.LogWarning($"[BuildingManager] {message}");
-        }
-
-        private void LogError(string message)
-        {
-            Debug.LogError($"[BuildingManager] {message}");
-        }
-        #endregion
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()

@@ -5614,8 +5614,10 @@ MonoBehaviour:
   buildingSpawner: {fileID: 701831810}
   mapCenter: {fileID: 0}
   initialSpawnDelay: 2
-  spawnDelayBetweenAreas: 1
-  maxAreaIndex: 3
+  spawnDelayBetweenAreas: 0.5
+  activeBuildingDelay: 1
+  amountBuildingActiveInFirstWave: 5
+  delayTimeActiveTheFirstWave: 5
   buildingLayer:
     serializedVersion: 2
     m_Bits: 256
