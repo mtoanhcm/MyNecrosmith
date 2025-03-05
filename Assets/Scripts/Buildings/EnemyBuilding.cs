@@ -14,13 +14,18 @@ namespace Building
         {
             base.Spawn(pos, initData);
             enemyBuildingData = initData as EnemyBuildingData;
-            
-            InitSpawner();
+
+            if (enemyBuildingData != null)
+            {
+                activationCooldownTime = enemyBuildingData.CooldownSpawnTime;
+                //Debug.Log($"Set enemy building spawn time delay: {activationCooldownTime} --- {enemyBuildingData.CooldownSpawnTime}");
+                InitSpawner();
+            }
         }
 
         protected override void PlayActivation()
         {
-            throw new System.NotImplementedException();
+            enemySpawner.SpawnEnemy();
         }
 
         protected override void OnBuildingClaimed()
@@ -35,6 +40,7 @@ namespace Building
                 Debug.LogError($"Building {name} does not has spawner");
                 return;
             }
+            
             enemySpawner.Init(enemyBuildingData.EnemySpawnConfig);
         }
     }

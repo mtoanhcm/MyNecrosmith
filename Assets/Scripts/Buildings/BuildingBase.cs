@@ -1,3 +1,5 @@
+using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Building {
@@ -5,13 +7,16 @@ namespace Building {
     [RequireComponent(typeof(BuildingHealth))]
     public abstract class BuildingBase : MonoBehaviour
     {
-        protected BuildingData data;
+        private BuildingData data;
         protected bool isActive;
         protected BuildingHealth buildingHealth;
-        protected float delayActiveTime;
-        private float tempDelayActiveTime;
+        
+        protected float activationCooldownTime;
+        private float tempActivationCooldownTime;
 
-        public BuildingID BuildingID => data.ID;
+        public BuildingID ID => data.ID;
+        public int AreaIndex => data.AreaIndex;
+        public int Level => data.Level;
         
         public virtual void Spawn(Vector3 pos, BuildingData initData)
         {
@@ -19,6 +24,26 @@ namespace Building {
              transform.position = pos;
 
              InitHealth();
+        }
+
+        public void SetActiveBuildingByTime(bool hasActive, int delayActiveTime)
+        {
+            StopAllCoroutines();
+            
+            if (delayActiveTime > 0)
+            {
+                StartCoroutine(ProgressActiveBuildingByTime(hasActive ,delayActiveTime));
+                return;
+            }
+            
+            isActive = hasActive;
+        }
+
+        private IEnumerator ProgressActiveBuildingByTime(bool hasActive ,float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+
+            isActive = hasActive;
         }
         
         protected abstract void PlayActivation();
@@ -32,11 +57,11 @@ namespace Building {
                 return;
             }
 
-            if (tempDelayActiveTime > Time.time) {
+            if (tempActivationCooldownTime > Time.time) {
                 return;
             }
 
-            tempDelayActiveTime = Time.deltaTime + delayActiveTime;
+            tempActivationCooldownTime = Time.time + activationCooldownTime;
             PlayActivation();
         }
 
@@ -49,5 +74,7 @@ namespace Building {
             
             buildingHealth.Init(data, OnBuildingClaimed);
         }
+        
+        
     }
 }

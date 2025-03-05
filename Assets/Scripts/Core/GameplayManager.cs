@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Character;
 using Config;
+using Cysharp.Threading.Tasks;
 using Observer;
 using UnityEngine;
 
@@ -9,8 +10,16 @@ namespace Gameplay
 {
     public class GameplayManager : MonoBehaviour
     {
-        private void Start()
+        private async void Start()
         {
+            await UniTask.Delay(2 * 1000);
+            
+            StartGame();
+        }
+
+        private void StartGame()
+        {
+            Debug.Log("START GAME");
             EventManager.Instance.TriggerEvent(new EventData.OnStartGame() { IsStart = true});
         }
     }   
