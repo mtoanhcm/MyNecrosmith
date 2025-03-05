@@ -8,21 +8,30 @@ namespace Spawner{
     public class EnemySpawner : MonoBehaviour
     {
         private EnemyConfig enemyNeedSpawnConfig;
+        private bool isInit;
 
         public void Init(EnemyConfig config)
         {
             enemyNeedSpawnConfig = config;
+            isInit = true;
         }
-        
+
         public void SpawnEnemy()
         {
+            if (!isInit)
+            {
+                return;
+            }
+
             var data = new EventData.OnSpawnEnemy()
             {
                 EnemyID = enemyNeedSpawnConfig.ID.ToString(),
                 OnSpawnSuccess = OnSpawnEnemy
             };
-            
+
             EventManager.Instance.TriggerEvent(data);
+
+            return;
 
             void OnSpawnEnemy(CharacterBase character)
             {
@@ -32,7 +41,7 @@ namespace Spawner{
                     Debug.LogError("Cannot instantiate minion character");
                     return;
                 }
-            
+
                 enemy.Spawn(new EnemyData(enemyNeedSpawnConfig));
                 enemy.transform.position = transform.position;
             }
