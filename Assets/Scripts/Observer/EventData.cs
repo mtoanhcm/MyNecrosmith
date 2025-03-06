@@ -4,6 +4,8 @@ using Building;
 using Character;
 using Config;
 using Equipment;
+using Inventory;
+using Inventory.UI;
 using Projectile;
 using UI;
 using UnityEngine;
@@ -17,7 +19,7 @@ namespace Observer {
         public class OpenCharacterInventory
         {
             public CharacterID CharacterID;
-            public Inventory InventoryData;
+            public InventoryData InventoryData;
         }
 
         public class DraggingEquipment
