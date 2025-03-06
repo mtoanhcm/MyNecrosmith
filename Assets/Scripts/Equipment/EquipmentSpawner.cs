@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace Equipment.Drop
 {
-    public class DropEquipmentManager : MonoBehaviour
+    public class EquipmentSpawner : MonoBehaviour
     {
         private Dictionary<string, EquipmentConfig> equipmentConfigs;
-
+        
         private void Awake()
         {
             equipmentConfigs = new Dictionary<string, EquipmentConfig>();
@@ -27,6 +27,10 @@ namespace Equipment.Drop
             if (config != null)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment(){ EquipmentData = new WeaponData(config)});
+            }
+            else
+            {
+                Debug.Log($"Cannot find config for equipment");
             }
         }
 

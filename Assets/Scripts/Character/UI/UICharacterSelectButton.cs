@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Observer;
 using Character;
 using Config;
+using Inventory;
 using UnityEngine.Serialization;
 
 namespace UI
@@ -24,14 +25,14 @@ namespace UI
                     return;
                 }
                 
-                // EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory()
-                // {
-                //     InventoryData = new Inventory(
-                //         Mathf.Clamp(config.InventorySize.y ,InventoryParam.MIN_ROW, InventoryParam.MAX_ROW), 
-                //         Mathf.Clamp(config.InventorySize.x, InventoryParam.MIN_COLUMN, InventoryParam.MAX_COLUMN),
-                //         config.ID
-                //         )
-                // });
+                EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory()
+                {
+                    InventoryData = new InventoryData(
+                        Mathf.Clamp(config.InventorySize.y ,InventoryConstants.MIN_ROW, InventoryConstants.MAX_ROW), 
+                        Mathf.Clamp(config.InventorySize.x, InventoryConstants.MIN_COLUMN, InventoryConstants.MAX_COLUMN),
+                        config.ID
+                        )
+                });
             });
         }
     }   

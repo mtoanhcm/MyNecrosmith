@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5840665830272067380}
   - component: {fileID: -9127505907575811243}
   m_Layer: 5
-  m_Name: InventoryItem
+  m_Name: UIInventoryItem_pref
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
