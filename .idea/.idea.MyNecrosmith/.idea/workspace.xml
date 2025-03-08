@@ -6,53 +6,67 @@
   <component name="ChangeListManager">
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/EquipmentStorageCell.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/EquipmentStorageCell.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/UIInventoryItem_pref.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/UIInventoryItem_pref.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Character.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Character.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/BareBody.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/BareBody.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/ChainArmor.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/ChainArmor.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/GoldenArmor.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/GoldenArmor.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/HeavyArmor.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/HeavyArmor.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/LeatherCloth.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/LeatherCloth.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/LightArmor.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/LightArmor.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/SilverArmor.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Armor/SilverArmor.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Building.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Building/BuildingSpawnConfig.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Building/BuildingSpawnConfig.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Building/EnemyFortressConfig.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Building/EnemyFortressConfig.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Character.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Character/Enemy.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Character/Enemy/BareHandZombie.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Character/Enemy/BareHandZombie.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Character/Minion.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Character/Minion/HumanKnight.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Character/Minion/HumanKnight.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Body.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Body/BareBody.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Body/BareBody.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Sword.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Sword/Sword.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Sword/Sword.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Weapon.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Weapon/KnifeConfig.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Equipment/Weapon/KnifeConfig.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/DamageApplySO.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/DamageApplySO/DamageDetectBoxSO.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/DamageApplySO/DamageDetectBoxSO.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/DamageApplySO/DamageDetectSphereSO.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/DamageApplySO/DamageDetectSphereSO.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/MovementSO.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/MovementSO/StrikeForceMovementSO.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/MovementSO/StrikeForceMovementSO.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/PowerSphere.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/PowerSphere.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/SwordStrike.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Config/Resources/Projectiles/SwordStrike.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/UI/UICharacterSelectButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/UI/UICharacterSelectButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GrandStore.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GrandStore/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/CharacterInventoryController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/CharacterInventoryController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/GridCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/GridCell.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryConstants.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryConstants.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryGridManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryGridManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventorySerializer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventorySerializer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventorySystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventorySystem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUtilities.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUtilities.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemPlacementValidator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemPlacementValidator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryCell.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryEquipmentChoosenView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryEquipmentChoosenView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryGrid.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryGrid.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelCellHandle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelCellHandle.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelEquipmentHandle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelEquipmentHandle.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIItemDragCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIItemDragCell.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InventoryMinion/InventorySerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InventoryMinion/InventorySerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InventoryMinion/InventorySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InventoryMinion/InventorySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InventoryMinion/UI/UIInventoryView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InventoryMinion/UI/UIInventoryView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObjectPool/ObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ObjectPool/ObjectPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawner/ResourcesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawner/ResourcesManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,15 +167,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6605">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6605" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -284,6 +296,8 @@
       <workItem from="1741263933235" duration="2507000" />
       <workItem from="1741274101681" duration="4937000" />
       <workItem from="1741399488474" duration="9220000" />
+      <workItem from="1741418365860" duration="1837000" />
+      <workItem from="1741437086312" duration="2448000" />
     </task>
     <servers />
   </component>

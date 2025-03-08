@@ -9,11 +9,11 @@ namespace Pool
 {
     /// <summary>
     /// High-performance object pool for Unity components.
-    /// Supports automatic pool expansion and object recycling.
+    /// Uses Addressables for asset loading.
     /// </summary>
     public class ObjectPool<T> : IDisposable where T : Component
     {
-        private readonly struct PoolKey : System.IEquatable<PoolKey>
+        private readonly struct PoolKey : IEquatable<PoolKey>
         {
             private readonly int hashCode;
             public readonly string Id;
@@ -72,44 +72,20 @@ namespace Pool
         }
 
         /// <summary>
-        /// Attempts to get an instance from the pool without creating new instances.
-        /// </summary>
-        /// <param name="itemId">Addressable ID of the prefab</param>
-        /// <param name="instance">Output instance if available</param>
-        /// <returns>True if an instance was retrieved, false otherwise</returns>
-        public bool TryGet(string itemId, out T instance)
-        {
-            ThrowIfDisposed();
-            var key = new PoolKey(itemId);
-            instance = null;
-
-            if (!pools.TryGetValue(key, out var data))
-                return false;
-
-            if (data.AvailableItems.Count == 0)
-                return false;
-
-            instance = data.AvailableItems.Pop();
-            data.UsedItems.Add(instance);
-            instance.gameObject.SetActive(true);
-            return true;
-        }
-
-        /// <summary>
         /// Gets an instance from the pool, creating a new one if necessary.
         /// Will expand the pool if needed.
         /// </summary>
-        /// <param name="itemId">Addressable ID of the prefab</param>
+        /// <param name="addressablePath">Addressable path of the prefab</param>
         /// <returns>An instance of the requested type</returns>
-        public async Task<T> Get(string itemId)
+        public async Task<T> Get(string addressablePath)
         {
             ThrowIfDisposed();
-            var key = new PoolKey(itemId);
+            var key = new PoolKey(addressablePath);
 
             // Get or create pool for this prefab
             if (!pools.TryGetValue(key, out var data))
             {
-                data = await InitializePool(key, itemId);
+                data = await InitializePool(key, addressablePath);
                 pools[key] = data;
             }
 
@@ -132,7 +108,7 @@ namespace Pool
                 data.MaxSize += maxSizeIncrement;
                 
                 // Expand the pool and get an instance
-                return await ExpandPoolAndGetInstance(data, itemId);
+                return await ExpandPoolAndGetInstance(data, addressablePath);
             }
 
             // Calculate how many new instances we can create
@@ -172,11 +148,12 @@ namespace Pool
                 if (newInstance != null)
                 {
                     data.UsedItems.Add(newInstance);
+                    newInstance.gameObject.SetActive(true);
                     return newInstance;
                 }
                 else
                 {
-                    throw new InvalidOperationException($"Failed to create new instance of {itemId}");
+                    throw new InvalidOperationException($"Failed to create new instance of {addressablePath}");
                 }
             }
             catch (Exception ex)
@@ -201,7 +178,7 @@ namespace Pool
         /// Expands the pool beyond its current max size and returns a new instance.
         /// Creates multiple instances at once to improve efficiency.
         /// </summary>
-        private async Task<T> ExpandPoolAndGetInstance(PoolData data, string itemId)
+        private async Task<T> ExpandPoolAndGetInstance(PoolData data, string addressablePath)
         {
             // Create multiple new instances at once
             List<T> newInstances = new List<T>(expansionSize);
@@ -224,7 +201,7 @@ namespace Pool
             
             if (newInstances.Count == 0)
             {
-                Debug.LogError($"Failed to create any instances during forced expansion for {itemId}");
+                Debug.LogError($"Failed to create any instances during forced expansion for {addressablePath}");
                 return await WaitForAvailableInstance(data);
             }
             
@@ -249,21 +226,21 @@ namespace Pool
         /// <summary>
         /// Returns an instance to the pool, making it available for reuse.
         /// </summary>
-        /// <param name="itemId">Addressable ID of the prefab</param>
+        /// <param name="addressablePath">Addressable path of the prefab</param>
         /// <param name="instance">Instance to return to the pool</param>
-        public void Return(string itemId, T instance)
+        public void Return(string addressablePath, T instance)
         {
             ThrowIfDisposed();
-            var key = new PoolKey(itemId);
+            var key = new PoolKey(addressablePath);
             if (!pools.TryGetValue(key, out var data))
             {
-                Debug.LogWarning($"Attempted to return instance to non-existent pool: {itemId}");
+                Debug.LogWarning($"Attempted to return instance to non-existent pool: {addressablePath}");
                 return;
             }
             
             if (!data.UsedItems.Remove(instance))
             {
-                Debug.LogWarning($"Instance {instance} was not acquired from pool {itemId}");
+                Debug.LogWarning($"Instance {instance} was not acquired from pool {addressablePath}");
                 return;
             }
             
@@ -275,31 +252,31 @@ namespace Pool
         /// Initializes a new pool for the specified prefab.
         /// Creates the initial set of instances.
         /// </summary>
-        private async Task<PoolData> InitializePool(PoolKey key, string itemId)
+        private async Task<PoolData> InitializePool(PoolKey key, string addressablePath)
         {
             var data = new PoolData(initialSize, defaultMaxSize);
 
             try
             {
                 data.IsLoading = true;
-                data.LoadHandle = Addressables.LoadAssetAsync<GameObject>(itemId);
+                data.LoadHandle = Addressables.LoadAssetAsync<GameObject>(addressablePath);
                 await data.LoadHandle.Task;
 
                 if (data.LoadHandle.Status != AsyncOperationStatus.Succeeded)
                 {
-                    throw new System.Exception($"Failed to load asset: {itemId}");
+                    throw new Exception($"Failed to load asset: {addressablePath}");
                 }
 
                 data.SourcePrefab = data.LoadHandle.Result;
 
                 if (data.SourcePrefab == null)
                 {
-                    throw new System.Exception($"Loaded prefab is null for {itemId}");
+                    throw new Exception($"Loaded prefab is null for {addressablePath}");
                 }
 
                 if (data.SourcePrefab.GetComponent<T>() == null)
                 {
-                    throw new System.Exception($"Prefab {itemId} missing required component: {typeof(T)}");
+                    throw new Exception($"Prefab {addressablePath} missing required component: {typeof(T)}");
                 }
 
                 // Create initial pool size
@@ -378,7 +355,7 @@ namespace Pool
         /// </summary>
         private async Task<T> WaitForAvailableInstance(PoolData data)
         {
-            int timeoutSeconds = 10; // Reduced timeout
+            int timeoutSeconds = 10;
             float startTime = Time.realtimeSinceStartup;
             bool timeoutWarned = false;
             int attemptCount = 0;
@@ -471,7 +448,6 @@ namespace Pool
             {
                 foreach (var poolEntry in pools)
                 {
-                    var key = poolEntry.Key;
                     var pool = poolEntry.Value;
                     
                     try

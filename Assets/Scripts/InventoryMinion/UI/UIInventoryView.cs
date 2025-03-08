@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Config;
 using Equipment;
 using UnityEngine;
@@ -134,7 +135,7 @@ namespace Inventory.UI
         }
         
         /// <summary>
-        /// Saves the current inventory state
+        /// Saves the current inventory state asynchronously
         /// </summary>
         /// <param name="key">Key to use for saving</param>
         /// <returns>True if the save was successful, false otherwise</returns>
@@ -150,15 +151,15 @@ namespace Inventory.UI
         }
         
         /// <summary>
-        /// Loads an inventory state
+        /// Loads an inventory state asynchronously
         /// </summary>
         /// <param name="key">Key used for saving</param>
         /// <param name="characterID">ID of the character that owns the inventory</param>
         /// <returns>True if the load was successful, false otherwise</returns>
-        public bool LoadInventory(string key, CharacterID characterID)
+        public async Task<bool> LoadInventoryAsync(string key, CharacterID characterID)
         {
             // Use the InventorySerializer to load the inventory
-            var loadedInventory = InventorySerializer.LoadFromPlayerPrefs(key, characterID);
+            var loadedInventory = await InventorySerializer.LoadFromPlayerPrefsAsync(key, characterID);
             
             if (loadedInventory != null)
             {
@@ -167,6 +168,57 @@ namespace Inventory.UI
             }
             
             return false;
+        }
+        
+        /// <summary>
+        /// Loads an inventory state - this is a compatibility method that works with
+        /// the async version internally but returns immediately with a minimal inventory
+        /// </summary>
+        /// <param name="key">Key used for saving</param>
+        /// <param name="characterID">ID of the character that owns the inventory</param>
+        /// <returns>True if process started successfully</returns>
+        public bool LoadInventory(string key, CharacterID characterID)
+        {
+            Debug.LogWarning($"Using synchronous LoadInventory. Consider switching to LoadInventoryAsync for better performance.");
+            
+            // Create a new minimal inventory to use while async loading happens
+            var tempInventory = new InventoryData(
+                InventoryConstants.MIN_ROW,
+                InventoryConstants.MIN_COLUMN,
+                characterID
+            );
+            
+            // Show the minimal inventory
+            OpenCharacterInventory(tempInventory);
+            
+            // Start an async task to load the real inventory
+            LoadInventoryInBackgroundAndUpdate(key, characterID);
+            
+            return true;
+        }
+        
+        /// <summary>
+        /// Asynchronously loads the inventory in the background and updates the UI when complete
+        /// </summary>
+        private async void LoadInventoryInBackgroundAndUpdate(string key, CharacterID characterID)
+        {
+            try
+            {
+                var loadedInventory = await InventorySerializer.LoadFromPlayerPrefsAsync(key, characterID);
+                
+                if (loadedInventory != null)
+                {
+                    // Update the current inventory
+                    currentInventory = loadedInventory;
+                    
+                    // Refresh the UI
+                    RefreshInventory();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error loading inventory in background: {ex.Message}");
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Character;
+using System.Threading.Tasks;
 using Config;
 using Equipment;
 using Inventory.UI;
@@ -265,26 +265,21 @@ namespace Inventory
                 return false;
                 
             // Use the InventorySerializer to save the inventory
-            string data = InventorySerializer.SerializeInventory(currentInventory);
-            PlayerPrefs.SetString(key, data);
-            PlayerPrefs.Save();
+            InventorySerializer.SaveToPlayerPrefs(key, currentInventory);
             
             return true;
         }
         
         /// <summary>
-        /// Loads an inventory state
+        /// Loads an inventory state asynchronously
         /// </summary>
         /// <param name="key">Key used for saving</param>
         /// <param name="characterID">ID of the character that owns the inventory</param>
         /// <returns>True if the load was successful, false otherwise</returns>
-        public bool LoadInventory(string key, CharacterID characterID)
+        public async Task<bool> LoadInventoryAsync(string key, CharacterID characterID)
         {
-            if (!PlayerPrefs.HasKey(key))
-                return false;
-                
-            string data = PlayerPrefs.GetString(key);
-            InventoryData loadedInventory = InventorySerializer.DeserializeInventory(data, characterID);
+            // Use the InventorySerializer to load the inventory asynchronously
+            var loadedInventory = await InventorySerializer.LoadFromPlayerPrefsAsync(key, characterID);
             
             if (loadedInventory != null)
             {
@@ -340,6 +335,75 @@ namespace Inventory
         private void OnChooseEquipmentInStorage(EventData.OnChooseEquipmentInStorage data)
         {
             // Equipment selection is handled by the UI components
+        }
+        
+        /// <summary>
+        /// For backwards compatibility, provides a synchronous version of LoadInventory.
+        /// This method creates a dummy inventory if needed, rather than trying to load with Resources.Load
+        /// </summary>
+        /// <param name="key">Key used for saving</param>
+        /// <param name="characterID">ID of the character that owns the inventory</param>
+        /// <returns>True if the load was successful, false otherwise</returns>
+        public bool LoadInventory(string key, CharacterID characterID)
+        {
+            Debug.LogWarning("Using synchronous LoadInventory. Consider switching to LoadInventoryAsync for better performance.");
+            
+            // Create a new inventory 
+            var newInventory = new InventoryData(
+                InventoryConstants.MIN_ROW,
+                InventoryConstants.MIN_COLUMN,
+                characterID
+            );
+            
+            currentInventory = newInventory;
+            
+            // Create or update the grid manager
+            if (gridManager == null)
+            {
+                gridManager = new InventoryGridManager(newInventory.Row, newInventory.Column);
+            }
+            
+            // Create or update the placement validator
+            if (placementValidator == null)
+            {
+                placementValidator = new ItemPlacementValidator(gridManager);
+            }
+            
+            // Update the grid
+            gridManager.UpdateGridState(currentInventory.Items);
+            
+            // Refresh the UI
+            if (uiView != null)
+            {
+                uiView.OpenCharacterInventory(currentInventory);
+            }
+            
+            // Start async load in background to update with real data when it completes
+            LoadInventoryInBackground(key, characterID);
+            
+            return true;
+        }
+        
+        /// <summary>
+        /// Loads inventory data in the background and updates when complete
+        /// </summary>
+        private async void LoadInventoryInBackground(string key, CharacterID characterID)
+        {
+            var loadedInventory = await InventorySerializer.LoadFromPlayerPrefsAsync(key, characterID);
+            
+            if (loadedInventory != null)
+            {
+                currentInventory = loadedInventory;
+                
+                // Update the grid
+                gridManager.UpdateGridState(currentInventory.Items);
+                
+                // Refresh the UI
+                if (uiView != null)
+                {
+                    uiView.RefreshInventory();
+                }
+            }
         }
     }
 }

@@ -1,34 +1,48 @@
 using System;
 using System.Collections.Generic;
-using Character;
+using System.Threading.Tasks;
 using Config;
 using Cysharp.Threading.Tasks;
 using Observer;
-using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Equipment.Drop
 {
     public class EquipmentSpawner : MonoBehaviour
     {
-        private Dictionary<string, EquipmentConfig> equipmentConfigs;
+        private Dictionary<string, AsyncOperationHandle<EquipmentConfig>> configHandles = new Dictionary<string, AsyncOperationHandle<EquipmentConfig>>();
         
         private void Awake()
         {
-            equipmentConfigs = new Dictionary<string, EquipmentConfig>();
+            // Initialize dictionary
+        }
+
+        private void OnDestroy()
+        {
+            // Release all addressable handles when destroyed
+            foreach (var handle in configHandles.Values)
+            {
+                if (handle.IsValid())
+                {
+                    Addressables.Release(handle);
+                }
+            }
+            configHandles.Clear();
         }
 
         private void Start()
         {
             EventManager.Instance.StartListening<EventData.OnEnemyDeath>(OnEnemyDeath);
-            TestAddEquipment();
+            TestAddEquipment().Forget();
         }
 
-        private async void TestAddEquipment()
+        private async UniTaskVoid TestAddEquipment()
         {
             await UniTask.Delay(1000);
             
-            var config = GetEquipmentConfig("Sword", "Sword") as WeaponConfig;
+            var config = await GetEquipmentConfig("Sword", "Sword") as WeaponConfig;
             if (config != null)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment(){ EquipmentData = new WeaponData(config)});
@@ -39,9 +53,9 @@ namespace Equipment.Drop
             }
         }
         
-        private void OnEnemyDeath(EventData.OnEnemyDeath data)
+        private async void OnEnemyDeath(EventData.OnEnemyDeath data)
         {
-            var config = GetEquipmentConfig("Sword", "Sword") as WeaponConfig;
+            var config = await GetEquipmentConfig("Sword", "Sword") as WeaponConfig;
             if (config != null)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment(){ EquipmentData = new WeaponData(config)});
@@ -52,22 +66,42 @@ namespace Equipment.Drop
             }
         }
 
-        private EquipmentConfig GetEquipmentConfig(string equipmentName, string equipmentCategory)
+        private async Task<EquipmentConfig> GetEquipmentConfig(string equipmentCategory, string equipmentName)
         {
-            if (equipmentConfigs.ContainsKey(equipmentName))
+            string cacheKey = $"{equipmentCategory}_{equipmentName}";
+            
+            // Check if we already have a valid handle in the cache
+            if (configHandles.TryGetValue(cacheKey, out var cachedHandle) && cachedHandle.IsValid())
             {
-                return equipmentConfigs[equipmentName];
+                Debug.Log($"Equipment Config '{equipmentName}' retrieved from cache.");
+                return cachedHandle.Result;
             }
             
-            var config = Resources.Load<EquipmentConfig>($"Equipment/{equipmentCategory}/{equipmentName}");
-            if (config == null)
+            try
             {
-                Debug.LogError($"Cannot find equipment {equipmentName} config");
+                // Load the config using Addressables
+                string address = $"Config/Equipment/{equipmentCategory}/{equipmentName}";
+                var handle = Addressables.LoadAssetAsync<EquipmentConfig>(address);
+                await handle.Task;
+
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    // Cache the handle
+                    configHandles[cacheKey] = handle;
+                    Debug.Log($"Equipment Config '{equipmentName}' loaded successfully.");
+                    return handle.Result;
+                }
+                else
+                {
+                    Debug.LogError($"Failed to load Equipment Config with address: {address}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error loading equipment config: {ex.Message}");
                 return null;
             }
-            
-            equipmentConfigs[equipmentName] = config;
-            return config;
         }
     }   
 }

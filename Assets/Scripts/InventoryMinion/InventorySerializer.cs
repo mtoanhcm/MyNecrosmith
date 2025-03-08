@@ -1,18 +1,25 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Equipment;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Config;
 
 namespace Inventory
 {
     /// <summary>
     /// Handles serialization and deserialization of inventory data.
-    /// Provides methods to save and load inventory state.
+    /// Provides methods to save and load inventory state using Addressables.
     /// </summary>
     public static class InventorySerializer
     {
+        // Cache for equipment config handles to avoid reloading same configs
+        private static Dictionary<string, AsyncOperationHandle<EquipmentConfig>> configHandles = 
+            new Dictionary<string, AsyncOperationHandle<EquipmentConfig>>();
+        
         /// <summary>
         /// Serializes an inventory to a JSON string
         /// </summary>
@@ -60,12 +67,12 @@ namespace Inventory
         }
         
         /// <summary>
-        /// Deserializes an inventory from a JSON string
+        /// Deserializes an inventory from a JSON string asynchronously
         /// </summary>
         /// <param name="data">JSON representation of the inventory</param>
         /// <param name="ownerId">ID of the character that owns the inventory</param>
         /// <returns>Deserialized inventory, or null if deserialization failed</returns>
-        public static InventoryData DeserializeInventory(string data, CharacterID ownerId)
+        public static async Task<InventoryData> DeserializeInventoryAsync(string data, CharacterID ownerId)
         {
             if (string.IsNullOrEmpty(data))
                 return null;
@@ -85,8 +92,8 @@ namespace Inventory
                 // Add items to the inventory
                 foreach (var serializableItem in serializableInventory.Items)
                 {
-                    // Load the equipment data
-                    EquipmentData equipmentData = LoadEquipmentData(
+                    // Load the equipment data asynchronously
+                    EquipmentData equipmentData = await LoadEquipmentDataAsync(
                         (EquipmentID)serializableItem.EquipmentID,
                         (EquipmentCategoryID)serializableItem.CategoryID
                     );
@@ -135,18 +142,18 @@ namespace Inventory
         }
         
         /// <summary>
-        /// Loads an inventory from PlayerPrefs
+        /// Loads an inventory from PlayerPrefs asynchronously
         /// </summary>
         /// <param name="key">Key used to save the inventory</param>
         /// <param name="ownerId">ID of the character that owns the inventory</param>
         /// <returns>Loaded inventory, or null if not found</returns>
-        public static InventoryData LoadFromPlayerPrefs(string key, CharacterID ownerId)
+        public static async Task<InventoryData> LoadFromPlayerPrefsAsync(string key, CharacterID ownerId)
         {
             if (!PlayerPrefs.HasKey(key))
                 return null;
                 
             string data = PlayerPrefs.GetString(key);
-            return DeserializeInventory(data, ownerId);
+            return await DeserializeInventoryAsync(data, ownerId);
         }
         
         /// <summary>
@@ -164,54 +171,105 @@ namespace Inventory
         }
         
         /// <summary>
-        /// Loads an inventory from a file
+        /// Loads an inventory from a file asynchronously
         /// </summary>
         /// <param name="filePath">Path to the file</param>
         /// <param name="ownerId">ID of the character that owns the inventory</param>
         /// <returns>Loaded inventory, or null if file not found</returns>
-        public static InventoryData LoadFromFile(string filePath, CharacterID ownerId)
+        public static async Task<InventoryData> LoadFromFileAsync(string filePath, CharacterID ownerId)
         {
             if (!File.Exists(filePath))
                 return null;
                 
             string data = File.ReadAllText(filePath);
-            return DeserializeInventory(data, ownerId);
+            return await DeserializeInventoryAsync(data, ownerId);
         }
         
         /// <summary>
-        /// Loads equipment data from resources
+        /// Loads equipment data using Addressables
         /// </summary>
         /// <param name="equipmentId">ID of the equipment</param>
         /// <param name="categoryId">Category of the equipment</param>
         /// <returns>Loaded equipment data, or null if not found</returns>
-        private static EquipmentData LoadEquipmentData(EquipmentID equipmentId, EquipmentCategoryID categoryId)
+        private static async Task<EquipmentData> LoadEquipmentDataAsync(EquipmentID equipmentId, EquipmentCategoryID categoryId)
         {
             try
             {
-                // Load the equipment config
-                EquipmentConfig config = Resources.Load<EquipmentConfig>($"Equipment/{categoryId}/{equipmentId}");
+                string cacheKey = $"{categoryId}_{equipmentId}";
+                
+                // Check if we already have a valid handle in the cache
+                if (configHandles.TryGetValue(cacheKey, out var cachedHandle) && cachedHandle.IsValid())
+                {
+                    return CreateEquipmentDataFromConfig(cachedHandle.Result, categoryId);
+                }
+                
+                // Load the equipment config using Addressables
+                string address = $"Config/Equipment/{categoryId}/{equipmentId}";
+                var handle = Addressables.LoadAssetAsync<EquipmentConfig>(address);
+                await handle.Task;
+
+                if (handle.Status != AsyncOperationStatus.Succeeded)
+                {
+                    Debug.LogError($"Failed to load equipment config: {address}");
+                    return null;
+                }
+
+                var config = handle.Result;
+                
+                // Cache the handle for future use
+                configHandles[cacheKey] = handle;
                 
                 if (config == null)
                     return null;
                     
-                // Create the appropriate equipment data based on category
-                if (categoryId == EquipmentCategoryID.Sword)
-                {
-                    return new WeaponData(config);
-                }
-                else if (categoryId == EquipmentCategoryID.Armor)
-                {
-                    return new ArmorData(config as ArmorConfig);
-                }
-                
-                // Default case - create generic equipment data
-                return new EquipmentData(config);
+                return CreateEquipmentDataFromConfig(config, categoryId);
             }
             catch (Exception ex)
             {
                 Debug.LogError($"Failed to load equipment data: {ex.Message}");
                 return null;
             }
+        }
+        
+        /// <summary>
+        /// Creates appropriate equipment data based on the equipment category
+        /// </summary>
+        /// <param name="config">Equipment configuration</param>
+        /// <param name="categoryId">Category of the equipment</param>
+        /// <returns>Equipment data of appropriate type</returns>
+        private static EquipmentData CreateEquipmentDataFromConfig(EquipmentConfig config, EquipmentCategoryID categoryId)
+        {
+            if (config == null)
+                return null;
+                
+            // Create the appropriate equipment data based on category
+            if (categoryId == EquipmentCategoryID.Sword)
+            {
+                return new WeaponData(config);
+            }
+            else if (categoryId == EquipmentCategoryID.Armor)
+            {
+                return new ArmorData(config as ArmorConfig);
+            }
+            
+            // Default case - create generic equipment data
+            return new EquipmentData(config);
+        }
+        
+        /// <summary>
+        /// Releases all cached handles to prevent memory leaks
+        /// </summary>
+        public static void ReleaseAllHandles()
+        {
+            foreach (var handle in configHandles.Values)
+            {
+                if (handle.IsValid())
+                {
+                    Addressables.Release(handle);
+                }
+            }
+            
+            configHandles.Clear();
         }
         
         #region Serializable Classes
