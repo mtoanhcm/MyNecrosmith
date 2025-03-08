@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Config;
 using Equipment;
 using UnityEngine;
@@ -290,8 +291,27 @@ namespace Inventory.UI
             // Re-enable drag cells
             ToggleCells(Item.Equipment, true);
             
-            // If the item wasn't placed in inventory, return to original position
-            if (!isInInventory)
+            // Check if we're over a valid inventory
+            bool placedInInventory = false;
+    
+            // Get the current results from the event system
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, results);
+    
+            for (int i = 0; i < results.Count; i++)
+            {
+                // Check if we hit an inventory cell
+                UIInventoryCell inventoryCell = results[i].gameObject.GetComponent<UIInventoryCell>();
+                if (inventoryCell != null && !inventoryCell.IsLocked && !inventoryCell.IsClaimed)
+                {
+                    // We found a valid cell in the minion inventory
+                    placedInInventory = true;
+                    break;
+                }
+            }
+            
+            // If not placed in inventory, return to original position
+            if (!placedInInventory && !isInInventory)
             {
                 transform.SetParent(originalParent);
                 transform.position = originalPosition;

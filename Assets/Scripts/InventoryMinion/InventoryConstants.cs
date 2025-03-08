@@ -21,5 +21,9 @@ namespace Inventory
         // Maximum dimensions for equipment items
         public const int MAX_EQUIPMENT_WIDTH = 4;
         public const int MAX_EQUIPMENT_HEIGHT = 4;
+        
+        //Player inventory
+        public const int PLAYER_INVENTORY_MAX_ROW = 3;
+        public const int PLAYER_INVENTORY_MAX_COLUMN = 7;
     }
 }

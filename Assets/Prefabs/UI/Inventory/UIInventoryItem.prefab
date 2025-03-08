@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5840665830272067380}
   - component: {fileID: -9127505907575811243}
   m_Layer: 5
-  m_Name: UIInventoryItem_pref
+  m_Name: UIInventoryItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e3a6e5ef5f9d44cb09826cbf6b77d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentIconImg: {fileID: 7586811922629550325}
-  canInteract: 0
+  equipmentIcon: {fileID: 7586811922629550325}
+  isInInventory: 0
   layoutGroup: {fileID: 3001738245941590946}
   dragCellPrefab: {fileID: 285790450517351556, guid: aaa48bc2b38dbf54e8afb1c68a08d904, type: 3}
 --- !u!222 &-5840665830272067380

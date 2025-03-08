@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using Character;
 using Config;
+using Cysharp.Threading.Tasks;
 using Observer;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Equipment.Drop
@@ -19,8 +21,24 @@ namespace Equipment.Drop
         private void Start()
         {
             EventManager.Instance.StartListening<EventData.OnEnemyDeath>(OnEnemyDeath);
+            TestAddEquipment();
         }
 
+        private async void TestAddEquipment()
+        {
+            await UniTask.Delay(1000);
+            
+            var config = GetEquipmentConfig("Sword", "Sword") as WeaponConfig;
+            if (config != null)
+            {
+                EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment(){ EquipmentData = new WeaponData(config)});
+            }
+            else
+            {
+                Debug.Log($"Cannot find config for equipment");
+            }
+        }
+        
         private void OnEnemyDeath(EventData.OnEnemyDeath data)
         {
             var config = GetEquipmentConfig("Sword", "Sword") as WeaponConfig;
