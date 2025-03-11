@@ -21,11 +21,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - CharacterBase
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: aa08910f181425a42ab81c98b00cf168
-    m_Address: Assets/Config
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c433196061709dc4f8b270312ee782c5
     m_Address: Model
     m_ReadOnly: 0

@@ -156,7 +156,7 @@ namespace Gameplay
             try
             {
                 // Load the config using Addressables
-                string address = $"Config/Equipment/{categoryName}/{equipmentName}";
+                string address = $"Config/Equipment/{categoryName}/{equipmentName}.asset";
                 var handle = Addressables.LoadAssetAsync<EquipmentConfig>(address);
                 await handle.Task;
 

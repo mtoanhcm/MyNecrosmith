@@ -27,7 +27,7 @@ namespace UI
             try
             {
                 // Load the character config using Addressables
-                string address = $"Config/Character/Minion/{characterID}";
+                string address = $"Config/Character/Minion/{characterID}.asset";
                 configHandle = Addressables.LoadAssetAsync<MinionConfig>(address);
                 await configHandle.Task;
                 

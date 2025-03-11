@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Packed Assets
   m_GUID: 36e73da1a83dd4b9dac36a47337526b7
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 60ce292c241b7db479f29df56b61f3ef
+    m_Address: GameRuntimeData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa08910f181425a42ab81c98b00cf168
+    m_Address: Config
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 36de6fda61eb56945a75aa937a44cde5, type: 2}
   m_SchemaSet:
