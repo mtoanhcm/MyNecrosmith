@@ -165,5 +165,22 @@ namespace Observer {
         {
             public BuildingBase Building;
         }
+        
+        /// <summary>
+        /// Event data for requesting a UI inventory item
+        /// </summary>
+        public class RequestUIInventoryItem
+        {
+            public EquipmentData Equipment;
+            public Action<UIInventoryItem> OnItemCreated;
+        }
+
+        /// <summary>
+        /// Event data for returning a UI inventory item to the pool
+        /// </summary>
+        public class ReturnUIInventoryItem
+        {
+            public UIInventoryItem Item;
+        }
     }
 }

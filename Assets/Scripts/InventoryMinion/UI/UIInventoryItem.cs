@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Observer;
+using Pool;
 using UnityEngine.InputSystem;
 
 namespace Inventory.UI
@@ -313,8 +314,14 @@ namespace Inventory.UI
             // If not placed in inventory, return to original position
             if (!placedInInventory && !isInInventory)
             {
-                transform.SetParent(originalParent);
-                transform.position = originalPosition;
+                // Create return data
+                var returnData = new EventData.ReturnUIInventoryItem
+                {
+                    Item = this
+                };
+        
+                // Trigger the event
+                EventManager.Instance.TriggerEvent(returnData);
             }
         }
         

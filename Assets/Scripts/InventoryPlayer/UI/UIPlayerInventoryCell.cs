@@ -1,6 +1,7 @@
 using Equipment;
 using Inventory.UI;
 using Observer;
+using Pool;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -139,24 +140,30 @@ namespace Player.Inventory.UI
         /// <summary>
         /// Creates a draggable item from this cell
         /// </summary>
-        private void CreateDraggableItem()
+        private async void CreateDraggableItem()
         {
-            // Find the UIInventoryItem prefab
-            var uiItemPrefab = Resources.Load<UIInventoryItem>("Prefabs/UI/Inventory/UIInventoryItem");
-            if (uiItemPrefab == null)
-            {
-                Debug.LogError("UIInventoryItem prefab not found!");
+            if (equipmentSlot == null || equipmentSlot.Equipment == null)
                 return;
+
+            // Create request data
+            var requestData = new EventData.RequestUIInventoryItem
+            {
+                Equipment = equipmentSlot.Equipment,
+                OnItemCreated = OnUIItemCreated
+            };
+    
+            // Trigger the event
+            EventManager.Instance.TriggerEvent(requestData);
+
+            void OnUIItemCreated(UIInventoryItem item)
+            {
+                // Initialize it with our equipment data
+                item.Init(equipmentSlot.Equipment);
+    
+                // Position it at the mouse
+                item.transform.SetParent(transform.root);
+                item.transform.position = Input.mousePosition;
             }
-            
-            // Instantiate the prefab
-            var uiItem = Instantiate(uiItemPrefab, transform.root);
-            
-            // Initialize it with our equipment data
-            uiItem.Init(equipmentSlot.Equipment);
-            
-            // Position it at the mouse
-            uiItem.transform.position = Input.mousePosition;
         }
         
         /// <summary>

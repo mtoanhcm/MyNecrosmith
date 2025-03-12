@@ -80,7 +80,7 @@ namespace Equipment.Drop
             try
             {
                 // Load the config using Addressables
-                string address = $"Config/Equipment/{equipmentCategory}/{equipmentName}";
+                string address = $"Config/Equipment/{equipmentCategory}/{equipmentName}.asset";
                 var handle = Addressables.LoadAssetAsync<EquipmentConfig>(address);
                 await handle.Task;
 
