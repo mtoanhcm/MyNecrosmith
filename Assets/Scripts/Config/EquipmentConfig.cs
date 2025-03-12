@@ -11,6 +11,7 @@ namespace Config
     {
         public EquipmentID EquipmentID;
         public EquipmentCategoryID CategoryID;
+        public Rarity Rarity;
         public string EquipmentName;
         public int LoadPoint;
         public Sprite Icon; // Sprite representing the weapon

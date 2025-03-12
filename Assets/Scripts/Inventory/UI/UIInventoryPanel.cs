@@ -164,7 +164,7 @@ namespace UI
             cellHandle.ResetAllCellHoverState();
             equipmentHandle.AddItemToInventory(data.UIItem);
             
-            data.OnPlaceEquipmentInInventorySuccess?.Invoke(data.UIItem.Item.Equipment.EquipmentID);
+            data.OnPlaceEquipmentInInventorySuccess?.Invoke(data.UIItem.Item.Equipment);
         }
 
         private void OnPickingEquipmentFromInventory(EventData.OnPickingEquipmentFromInventory data)

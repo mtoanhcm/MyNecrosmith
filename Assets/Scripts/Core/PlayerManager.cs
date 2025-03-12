@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
+    [RequireComponent(typeof(PlayerInventory))]
     public class PlayerManager : MonoBehaviour
     {
         [Serializable]
@@ -22,17 +23,12 @@ namespace Gameplay
         [SerializeField] 
         private EquipmentInitData[] initEquipment;
         
-        private GameRuntimeData runtimeData;
+        private PlayerInventory inventory;
         
         private void Awake()
         {
-            runtimeData = Resources.Load<GameRuntimeData>("GameRuntimeData");
-            #if UNITY_EDITOR
-            if (runtimeData != null)
-            {
-                runtimeData.Reset();
-            }
-            #endif
+            TryGetComponent(out inventory);
+            inventory.Init();
             
             EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
             EventManager.Instance.StartListening<EventData.OnRemoveEquipmentFromPlayerStorage>(OnRemoveEquipment);
@@ -45,32 +41,30 @@ namespace Gameplay
 
         private void OnObtainedEquipment(EventData.OnObtainedEquipment data)
         {
-            runtimeData.AddEquipmentToStorage(data.EquipmentData);
+            inventory.AddEquipmentToStorage(data.EquipmentData);
             SendEventEquipmentStorageChanged();
         }
 
         private void OnRemoveEquipment(EventData.OnRemoveEquipmentFromPlayerStorage data)
         {
-            runtimeData.RemoveEquipmentFromStorage(data.EquipmentID);
+            inventory.RemoveEquipment(data.EquipmentData);
             SendEventEquipmentStorageChanged();
         }
 
         private void SendEventEquipmentStorageChanged()
         {
-            EventManager.Instance.TriggerEvent(new EventData.OnEquipmentStorageChanged()
-            {
-                Equipment = runtimeData.EquipmentStorage
-            });
+            
         }
 
-        private void InitStartupEquipment()
+        private async void InitStartupEquipment()
         {
             for (var i = 0; i < initEquipment.Length; i++)
             {
                 var equipment = initEquipment[i];
                 for (var j = 0; j < equipment.Amount; j++)
                 {
-                    var config = Resources.Load($"Equipment/{equipment.Category}/{equipment.EquipmentID}") as EquipmentConfig;
+                    var path = $"Config/Equipment/{equipment.Category}/{equipment.EquipmentID}.asset";
+                    var config = await AddressableUtility.LoadAssetAsync<EquipmentConfig>(path);
                     if (config == null)
                     {
                         Debug.LogError($"Could not load equipment {equipment.EquipmentID} from Resources");
@@ -89,7 +83,7 @@ namespace Gameplay
         {
             if (config.CategoryID.IsWeaponType())
             {
-                runtimeData.AddEquipmentToStorage(new WeaponData(config));
+                inventory.AddEquipmentToStorage(new WeaponData(config));
                 return true;
             }
 

@@ -2306,6 +2306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 379600410}
   - component: {fileID: 379600411}
+  - component: {fileID: 379600412}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -2325,7 +2326,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1535281341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &379600411
@@ -2344,6 +2346,18 @@ MonoBehaviour:
   - EquipmentID: 4
     Category: 1
     Amount: 3
+--- !u!114 &379600412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379600409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b013d124e386cce49b1e5052b2c23a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &399667225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5319,11 +5333,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 465117663}
-  - {fileID: 1002731164}
+  - {fileID: 1318058200}
   - {fileID: 1975490929}
   - {fileID: 2081709072}
   - {fileID: 1167636251}
-  - {fileID: 1318058200}
+  - {fileID: 1002731164}
   m_Father: {fileID: 2011756100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5585,7 +5599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &701831810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11038,7 +11052,7 @@ GameObject:
   - component: {fileID: 1318058201}
   - component: {fileID: 1318058202}
   m_Layer: 5
-  m_Name: EquipmentStoragePanel
+  m_Name: UIEquipmentStoragePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13198,6 +13212,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525245956}
   m_CullTransparentMesh: 1
+--- !u!1 &1535281340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1535281341}
+  m_Layer: 0
+  m_Name: PlayerInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1535281341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535281340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 379600410}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1549764721
 PrefabInstance:
   m_ObjectHideFlags: 0

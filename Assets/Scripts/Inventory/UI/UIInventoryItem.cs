@@ -144,11 +144,11 @@ namespace UI
                 OnPlaceEquipmentInInventorySuccess = OnPlaceEquipmentSuccessInInventory
             });
 
-            void OnPlaceEquipmentSuccessInInventory(EquipmentID id)
+            void OnPlaceEquipmentSuccessInInventory(EquipmentData equipmentData)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnRemoveEquipmentFromPlayerStorage()
                 {
-                    EquipmentID = Item.Equipment.EquipmentID
+                    EquipmentData = equipmentData
                 });
             }
         }

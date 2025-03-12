@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Equipment;
 using Gameplay;
+using GameUtility;
 using Observer;
 using UnityEngine;
 
@@ -27,7 +28,8 @@ namespace UI
             equipmentDatas = new List<EquipmentData>();
             
             equipmentUIItemSpawner.Init();
-            runtimeData = Resources.Load<GameRuntimeData>("GameRuntimeData");
+            //runtimeData = Resources.Load<GameRuntimeData>("GameRuntimeData");
+            //runtimeData = await AddressableUtility.LoadAssetAsync<GameRuntimeData>("GameRuntimeData.asset");
         }
 
         private void OnEnable()

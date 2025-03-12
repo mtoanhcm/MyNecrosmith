@@ -28,7 +28,7 @@ namespace Observer {
         public class OnPlacingEquipment
         {
             public UIInventoryItem UIItem;
-            public Action<EquipmentID> OnPlaceEquipmentInInventorySuccess;
+            public Action<EquipmentData> OnPlaceEquipmentInInventorySuccess;
         }
 
         public class OnPickingEquipmentFromInventory
@@ -140,7 +140,7 @@ namespace Observer {
         /// </summary>
         public class OnRemoveEquipmentFromPlayerStorage
         {
-            public EquipmentID EquipmentID;
+            public EquipmentData EquipmentData;
         }
 
         public class OnChooseEquipmentInStorage

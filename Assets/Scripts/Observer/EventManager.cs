@@ -1,26 +1,13 @@
 using System;
 using System.Collections.Generic;
+using GameUtility;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Observer {
-    public class EventManager : MonoBehaviour
+    public class EventManager : SingletonForScene<EventManager>
     {
-        public static EventManager Instance;
-
         private Dictionary<Type, Delegate> eventDictionary = new Dictionary<Type, Delegate>();
-
-        private void Awake()
-        {
-            if (Instance == null) { 
-                Instance = this;
-            }
-        }
-
-        private void OnDestroy()
-        {
-            Instance = null;
-        }
 
         public void StartListening<T>(Action<T> listener) where T : class
         {
@@ -63,6 +50,13 @@ namespace Observer {
                     callback.Invoke(eventArgs);
                 }
             }
+        }
+
+        public override void OnDestroy()
+        {
+            eventDictionary.Clear();
+            
+            base.OnDestroy();
         }
     }
 }
