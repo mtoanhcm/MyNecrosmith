@@ -16,12 +16,14 @@ namespace Gameplay
             public readonly int Level;
             public readonly Rarity Rarity;
             public readonly EquipmentID ID;
+            public readonly EquipmentCategoryID Category;
             
-            public EquipmentKey(int level, Rarity rarity, EquipmentID id)
+            public EquipmentKey(int level, Rarity rarity, EquipmentID id, EquipmentCategoryID category)
             {
                 Level = level;
                 Rarity = rarity;
                 ID = id;
+                Category = category;
             }
             
             public override bool Equals(object obj)
@@ -42,6 +44,8 @@ namespace Gameplay
             }
         }
         
+        public Dictionary<EquipmentKey, List<EquipmentData>> PlayerEquipments => playerEquipments;
+        
         private Dictionary<EquipmentKey, List<EquipmentData>> playerEquipments;
 
         public void Init()
@@ -56,7 +60,7 @@ namespace Gameplay
         
         public void AddEquipmentToStorage(EquipmentData data)
         {
-            var key = new EquipmentKey(data.Level, data.Rarity, data.EquipmentID);
+            var key = new EquipmentKey(data.Level, data.Rarity, data.EquipmentID, data.CategoryID);
             
             if (!playerEquipments.ContainsKey(key))
             {
@@ -70,7 +74,7 @@ namespace Gameplay
         {
             if (equipment == null) return false;
 
-            var key = new EquipmentKey(equipment.Level, equipment.Rarity, equipment.EquipmentID);
+            var key = new EquipmentKey(equipment.Level, equipment.Rarity, equipment.EquipmentID, equipment.CategoryID);
         
             if (playerEquipments.TryGetValue(key, out var equipments))
             {
@@ -87,9 +91,9 @@ namespace Gameplay
             return false;
         }
         
-        public List<EquipmentData> GetEquipments(int level, Rarity rarity, EquipmentID id)
+        public List<EquipmentData> GetEquipments(int level, Rarity rarity, EquipmentID id, EquipmentCategoryID category)
         {
-            var key = new EquipmentKey(level, rarity, id);
+            var key = new EquipmentKey(level, rarity, id, category);
         
             if (playerEquipments.TryGetValue(key, out var equipments))
             {
@@ -126,6 +130,40 @@ namespace Gameplay
         public int GetTotalEquipmentCount()
         {
             return playerEquipments.Values.Sum(list => list.Count);
+        }
+        
+        public Dictionary<EquipmentKey, List<EquipmentData>> GetEquipmentsByCategory(EquipmentCategoryID category)
+        {
+            Dictionary<EquipmentKey, List<EquipmentData>> filteredEquipments = new Dictionary<EquipmentKey, List<EquipmentData>>();
+    
+            foreach (var equipment in playerEquipments)
+            {
+                if (equipment.Key.Category != category)
+                {
+                    continue;
+                }
+                
+                filteredEquipments[equipment.Key] = equipment.Value;
+                // Filter only equipment data with the matching category
+                // List<EquipmentData> categoryEquipments = equipment.Value
+                //     .Where(data => data.CategoryID == category)
+                //     .ToList();
+                //
+                // // Add to the result dictionary only if there are matching equipments
+                // if (categoryEquipments.Count > 0)
+                // {
+                //     // Create a new equipment key that includes the category
+                //     EquipmentKey key = new EquipmentKey(
+                //         equipment.Key.Level,
+                //         equipment.Key.Rarity, 
+                //         equipment.Key.ID,
+                //         equipment.Key.Category);
+                //
+                //     filteredEquipments[key] = new List<EquipmentData>(categoryEquipments);
+                // }
+            }
+    
+            return filteredEquipments;
         }
     }   
 }

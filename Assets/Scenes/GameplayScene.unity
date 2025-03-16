@@ -4296,10 +4296,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1002731164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 490, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &580761853
 PrefabInstance:
@@ -5314,7 +5314,7 @@ GameObject:
   - component: {fileID: 686844317}
   - component: {fileID: 686844318}
   m_Layer: 5
-  m_Name: UIInventory
+  m_Name: UIInventoryPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5338,6 +5338,7 @@ RectTransform:
   - {fileID: 2081709072}
   - {fileID: 1167636251}
   - {fileID: 1002731164}
+  - {fileID: 1140068204}
   m_Father: {fileID: 2011756100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5354,11 +5355,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 686844316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9004af7254d44bf4d9060d131c7c2cb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4331a924b65eefe47946195693e061b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryPanel: {fileID: 1002731165}
-  grandStore: {fileID: 1318058201}
+  minionInventoryView: {fileID: 1002731165}
+  playerInventoryView: {fileID: 1318058201}
 --- !u!1001 &697045365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8638,7 +8639,7 @@ GameObject:
   - component: {fileID: 1002731164}
   - component: {fileID: 1002731165}
   m_Layer: 5
-  m_Name: UIInventoryPanel
+  m_Name: UIMinionInventoryView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8675,13 +8676,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1002731163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4331a924b65eefe47946195693e061b8, type: 3}
+  m_Script: {fileID: 11500000, guid: dff6f5e2908511a44af31cb9ac40e883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellGridContainer: {fileID: 1338339143}
-  itemContainer: {fileID: 571654222}
-  cellPrefab: {fileID: 7926699359014879381, guid: a51d3ab5f62b6654a8f92c19bf935bda, type: 3}
-  spawnCharacterBtn: {fileID: 699947499}
+  cellParent: {fileID: 1338339143}
 --- !u!1001 &1004182686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9524,6 +9522,55 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4618485138640884916, guid: 52847e3c3f1b4d047bcc3f36752153a8, type: 3}
   m_PrefabInstance: {fileID: 1127890627}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1140068203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140068204}
+  - component: {fileID: 1140068205}
+  m_Layer: 5
+  m_Name: InventoryItemDragHandle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1140068204
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140068203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 686844317}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1140068205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140068203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb313a966827c54f98c55256e880c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draggedItemPrefab: {fileID: 135994981665854799, guid: 4e490620f315078418844cb3e921f2c8, type: 3}
 --- !u!1 &1167636250
 GameObject:
   m_ObjectHideFlags: 0
@@ -11050,9 +11097,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1318058200}
   - component: {fileID: 1318058201}
-  - component: {fileID: 1318058202}
   m_Layer: 5
-  m_Name: UIEquipmentStoragePanel
+  m_Name: UIPlayerInventoryView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11090,25 +11136,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1318058199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1767527db6a6f94409fdb77f4f88b8ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 03404891e84c61f449950b75909eb84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentItemPrefab: {fileID: 135994981665854799, guid: 4e490620f315078418844cb3e921f2c8, type: 3}
-  equipmentUIItemSpawner: {fileID: 1318058202}
-  cellContainer: {fileID: 918763162}
---- !u!114 &1318058202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318058199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce9d9d0c379b2304e90651a3a61b4f19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentUIItemPrefab: {fileID: 135994981665854799, guid: 4e490620f315078418844cb3e921f2c8, type: 3}
+  cellParent: {fileID: 918763163}
 --- !u!1 &1319108812
 GameObject:
   m_ObjectHideFlags: 0
@@ -11392,7 +11423,7 @@ GameObject:
   - component: {fileID: 1338339142}
   - component: {fileID: 1338339143}
   m_Layer: 5
-  m_Name: InventoryPanel
+  m_Name: CellGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16443,50 +16474,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 683939757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1956542759
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1956542761}
-  - component: {fileID: 1956542760}
-  m_Layer: 0
-  m_Name: Initialization
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1956542760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956542759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f04df3659ab0b4bba11da96b04d3ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1956542761
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956542759}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1975490928
 GameObject:
   m_ObjectHideFlags: 0
@@ -16496,7 +16483,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1975490929}
-  - component: {fileID: 1975490930}
   m_Layer: 5
   m_Name: ChoosenItemPanel
   m_TagString: Untagged
@@ -16527,24 +16513,6 @@ RectTransform:
   m_AnchoredPosition: {x: 244.42139, y: 312}
   m_SizeDelta: {x: 267.8428, y: 378}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1975490930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975490928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf500ed15e8e0546a615046466a761f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentNameTxt: {fileID: 407753464}
-  effectAttributeTxt: {fileID: 481570557}
-  equipmentTypeTxt: {fileID: 862527505}
-  loadPointTxt: {fileID: 220572109}
-  equipmentUIItemPrefab: {fileID: 135994981665854799, guid: 4e490620f315078418844cb3e921f2c8, type: 3}
-  equipmentUIItemContainer: {fileID: 442333139}
 --- !u!1001 &2003574635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16951,7 +16919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterListView: {fileID: 2008623067}
-  inventoryView: {fileID: 686844318}
+  inventoryPanel: {fileID: 686844318}
 --- !u!1 &2014861605
 GameObject:
   m_ObjectHideFlags: 0
@@ -19225,7 +19193,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 652013806}
   - {fileID: 924732211}
-  - {fileID: 1956542761}
   - {fileID: 2011756100}
   - {fileID: 1926012547}
   - {fileID: 544906596}

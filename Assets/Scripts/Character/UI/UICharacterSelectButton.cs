@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Observer;
-using Character;
 using Config;
 using GameUtility;
-using UnityEngine.Serialization;
+using Minion.Inventory;
 
 namespace UI
 {
@@ -29,11 +28,11 @@ namespace UI
                 return;
             }
                 
-            EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory()
+            EventManager.Instance.TriggerEvent(new EventData.OpenMinionInventory()
             {
-                InventoryData = new Inventory(
-                    Mathf.Clamp(config.InventorySize.y ,InventoryParam.MIN_ROW, InventoryParam.MAX_ROW), 
-                    Mathf.Clamp(config.InventorySize.x, InventoryParam.MIN_COLUMN, InventoryParam.MAX_COLUMN),
+                InventoryData = new Minion.Inventory.Inventory(
+                    Mathf.Clamp(config.InventorySize.y ,MinionInventoryParam.MIN_ROW, MinionInventoryParam.MAX_ROW), 
+                    Mathf.Clamp(config.InventorySize.x, MinionInventoryParam.MIN_COLUMN, MinionInventoryParam.MAX_COLUMN),
                     config.ID
                 )
             });

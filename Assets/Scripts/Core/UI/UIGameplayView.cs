@@ -1,26 +1,30 @@
+using Inventory.UI;
+using Minion.Inventory.UI;
 using UnityEngine;
 using Observer;
+using UI;
+using UnityEngine.Serialization;
 
-namespace UI
+namespace Gameplay.UI
 {
     public class UIGameplayView : MonoBehaviour
     {
         [SerializeField] private UICharacterListView characterListView;
-        [SerializeField] private UIInventoryView inventoryView;
+        [SerializeField] private UIInventoryPanel inventoryPanel;
         
         private void OnEnable()
         {
-            EventManager.Instance?.StartListening<EventData.OpenCharacterInventory>(OnGetCharacterInventoryData);
+            EventManager.Instance?.StartListening<EventData.OpenMinionInventory>(OnGetCharacterInventoryData);
         }
 
         private void OnDisable()
         {
-            EventManager.Instance?.StopListening<EventData.OpenCharacterInventory>(OnGetCharacterInventoryData);
+            EventManager.Instance?.StopListening<EventData.OpenMinionInventory>(OnGetCharacterInventoryData);
         }
 
-        private void OnGetCharacterInventoryData(EventData.OpenCharacterInventory data)
+        private void OnGetCharacterInventoryData(EventData.OpenMinionInventory data)
         {
-            inventoryView.OpenCharacterInventory(data.InventoryData);
+            inventoryPanel.ShowMinionInventory(data.InventoryData);
         }
     }   
 }

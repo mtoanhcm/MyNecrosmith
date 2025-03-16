@@ -10,7 +10,7 @@ using UnityEngine;
 namespace Gameplay
 {
     [RequireComponent(typeof(PlayerInventory))]
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : SingletonForScene<PlayerManager>
     {
         [Serializable]
         public struct EquipmentInitData
@@ -20,6 +20,8 @@ namespace Gameplay
             public int Amount;
         }
 
+        public PlayerInventory Inventory => inventory;
+        
         [SerializeField] 
         private EquipmentInitData[] initEquipment;
         

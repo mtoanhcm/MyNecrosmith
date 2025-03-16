@@ -1,39 +1,34 @@
 using System;
-using Character;
-using Config;
 using Equipment;
+using Minion.Inventory;
 using Observer;
-using GameUtility;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace UI
+namespace Inventory.UI
 {
     public class UIInventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        public RectTransform MyRect => myRect;
-        public InventoryItem Item { get; private set; }
-        public UIItemDragCell[,] Cells => cells;
-
-        [SerializeField] private Image equipmentIconImg;
-        [SerializeField] private bool isInInventory;
-        [SerializeField] private GridLayoutGroup layoutGroup;
-        [SerializeField] private UIItemDragCell dragCellPrefab;
-
-        private RectTransform myRect;
-        private int delayFrameToUpdateHoverEvent;
-        private UIItemDragCell[,] cells;
-        private bool isInitCell;
-        private bool isHoldingItem;
+        public UIInventoryItemCell[,] Cells => cells;
         
+        [SerializeField] private Image iconImg;
+        [SerializeField] private GridLayoutGroup cellParent;
+        [SerializeField] private UIInventoryItemCell cellPrefab;
+        
+        private RectTransform myRectTransform;
+        private InventoryItem inventoryItem;
+        private UIInventoryItemCell[,] cells;
+        private bool isHoldingItem;
+        private int delayFrameToUpdateHoverEvent;
+
         private void Awake()
         {
-            myRect = GetComponent<RectTransform>();
+            myRectTransform = GetComponent<RectTransform>();
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (!isHoldingItem)
             {
@@ -41,107 +36,48 @@ namespace UI
             }
             
             transform.position = Mouse.current.position.ReadValue();
+            
             delayFrameToUpdateHoverEvent++;
             if (delayFrameToUpdateHoverEvent % 5 == 0)
             {
-                EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
+                //EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ Item = this});
+            }
+        }
+
+        public void Init(EquipmentData data)
+        {
+            SetEmptyCells();
+            SetItemData(data);
+        }
+
+        public void SetHoldingItem(bool isHolding)
+        {
+            isHoldingItem = isHolding;
+            if (isHoldingItem)
+            {
+                //EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ Item = this});
+                delayFrameToUpdateHoverEvent = 0;
             }
         }
         
-        public void Init(EquipmentData equipment)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            Item = new InventoryItem(equipment);
-            equipmentIconImg.sprite = equipment.IconSpr;
-                
-            CheckInitEmptyCell();
-            SetItemDragData(equipment);
-        }
-
-        private void CheckInitEmptyCell()
-        {
-            if (isInitCell)
-            {
-                return;
-            } 
-            
-            layoutGroup.spacing = new Vector2(InventoryParam.CELL_SPACING, InventoryParam.CELL_SPACING);
-            cells = new UIItemDragCell[InventoryParam.MAX_EQUIPMENT_WIDTH, InventoryParam.MAX_EQUIPMENT_WIDTH];
-            for (var i = 0; i < InventoryParam.MAX_EQUIPMENT_WIDTH; i++)
-            {
-                for (var j = 0; j < InventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
-                {
-                    var cell = Instantiate(dragCellPrefab, layoutGroup.transform);
-                    cell.SetVisible(false);
-                    
-                    cells[i, j] = cell;
-                }
-            }
-
-            isInitCell = true;
-        }
-
-        private void SetItemDragData(EquipmentData equipment)
-        {
-            var scaleSize = new Vector2(
-                InventoryParam.CELL_SIZE * equipment.Width + (InventoryParam.CELL_SPACING * (equipment.Width - 1)), 
-                InventoryParam.CELL_SIZE * equipment.Height + (InventoryParam.CELL_SPACING * (equipment.Height - 1)));
-            
-            myRect.sizeDelta = scaleSize;
-            
-            layoutGroup.cellSize = new Vector2(InventoryParam.CELL_SIZE, InventoryParam.CELL_SIZE);
-
-            ToggleCells(equipment, true);
-        }
-
-        private void ToggleCells(EquipmentData equipment, bool isEnable)
-        {
-            for (var i = 0; i < InventoryParam.MAX_EQUIPMENT_WIDTH; i++)
-            {
-                for (var j = 0; j < InventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
-                {
-                    cells[i, j].SetVisible(i < equipment.Width && j < equipment.Height);
-                }
-            }
-        }
-
-        public void MarkItemInInventory(bool isIn)
-        {
-            isInInventory = isIn;
-        }
-
-        private void ActiveDragging()
-        {
-            transform.position = Mouse.current.position.ReadValue();
-            
-            EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
-            
+            //transform.position = Mouse.current.position.ReadValue();
+    
+            //EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ Item = this});
+    
             isHoldingItem = true;
             delayFrameToUpdateHoverEvent = 0;
         }
 
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            if (isInInventory)
-            {
-                EventManager.Instance.TriggerEvent(new EventData.OnPickingEquipmentFromInventory()
-                {
-                    UIItemPick = this,
-                });
-                
-                MarkItemInInventory(false);
-            }
-
-            ActiveDragging();
-        }
-        
         public void OnPointerUp(PointerEventData eventData)
         {
             isHoldingItem = false;
-            
-            EventManager.Instance.TriggerEvent(new EventData.OnPlacingEquipment()
+
+            EventManager.Instance.TriggerEvent(new EventData.OnPlaceInventoryItemUI()
             {
-                UIItem = this,
-                OnPlaceEquipmentInInventorySuccess = OnPlaceEquipmentSuccessInInventory
+                Item = this,
+                OnPlaceItemSuccess = OnPlaceEquipmentSuccessInInventory
             });
 
             void OnPlaceEquipmentSuccessInInventory(EquipmentData equipmentData)
@@ -152,28 +88,94 @@ namespace UI
                 });
             }
         }
-        
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             delayFrameToUpdateHoverEvent = 0;
             transform.position = Mouse.current.position.ReadValue();
-
-            ToggleCells(Item.Equipment, false);
         }
-        
+
         public void OnDrag(PointerEventData eventData)
         {
-            transform.position = Mouse.current.position.ReadValue();
-            delayFrameToUpdateHoverEvent++;
-            if (delayFrameToUpdateHoverEvent % 5 == 0)
-            {
-                EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
-            }
+            // transform.position = Mouse.current.position.ReadValue();
+            //
+            // delayFrameToUpdateHoverEvent++;
+            // if (delayFrameToUpdateHoverEvent % 5 == 0)
+            // {
+            //     EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ Item = this});
+            // }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            ToggleCells(Item.Equipment, true);
+            
+        }
+
+        private void SetItemData(EquipmentData equipmentData)
+        {
+            inventoryItem = new InventoryItem(equipmentData);
+            iconImg.sprite = equipmentData.IconSpr;
+            
+            var scaleSize = new Vector2(
+                MinionInventoryParam.CELL_SIZE * equipmentData.Width + (MinionInventoryParam.CELL_SPACING * (equipmentData.Width - 1)), 
+                MinionInventoryParam.CELL_SIZE * equipmentData.Height + (MinionInventoryParam.CELL_SPACING * (equipmentData.Height - 1)));
+
+            myRectTransform.sizeDelta = scaleSize;
+
+            cellParent.cellSize = new Vector2(MinionInventoryParam.CELL_SIZE, MinionInventoryParam.CELL_SIZE);
+
+            ToggleCells(equipmentData);
+        }
+        
+        private void ToggleCells(EquipmentData equipment)
+        {
+            for (var i = 0; i < MinionInventoryParam.MAX_EQUIPMENT_WIDTH; i++)
+            {
+                for (var j = 0; j < MinionInventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
+                {
+                    cells[i, j].SetVisible(i < equipment.Width && j < equipment.Height);
+                }
+            }
+        }
+        
+        private void SetEmptyCells()
+        {
+            if (cells != null && cells.Length == 0)
+            {
+                ResetCellsToEmpty();
+                return;
+            }
+
+            CreateEmptyCells();
+
+            return;
+
+            void CreateEmptyCells()
+            {
+                cellParent.spacing = new Vector2(MinionInventoryParam.CELL_SPACING, MinionInventoryParam.CELL_SPACING);
+                cells = new UIInventoryItemCell[MinionInventoryParam.MAX_EQUIPMENT_WIDTH, MinionInventoryParam.MAX_EQUIPMENT_WIDTH];
+                for (var i = 0; i < MinionInventoryParam.MAX_EQUIPMENT_WIDTH; i++)
+                {
+                    for (var j = 0; j < MinionInventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
+                    {
+                        var cell = Instantiate(cellPrefab, cellParent.transform);
+                        cell.SetVisible(false);
+
+                        cells[i, j] = cell;
+                    }
+                }
+            }
+
+            void ResetCellsToEmpty()
+            {
+                for (var i = 0; i < cells.GetLength(0); i++)
+                {
+                    for (var j = 0; j < cells.GetLength(1); j++)
+                    {
+                        cells[i, j].SetVisible(false);
+                    }
+                }
+            }
         }
     }   
 }
