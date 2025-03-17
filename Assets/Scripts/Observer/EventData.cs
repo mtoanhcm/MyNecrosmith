@@ -141,8 +141,8 @@ namespace Observer {
 
         public class OnPlaceInventoryItemUI
         {
-            public UIInventoryItem Item;
-            public Action<EquipmentData> OnPlaceItemSuccess;
+            public UIInventoryItem UIItem;
+            public Action<EquipmentData> OnPlaceItemInMinionInventorySuccess;
         }
 
         public class OnEquipmentStorageChanged

@@ -68,7 +68,7 @@ namespace Minion.Inventory
         {
             foreach (var pos in InventoryCellHash)
             {
-                //cells[pos.Item1, pos.Item2].OnExitHoverOnCell();
+                cells[pos.Item1, pos.Item2].OnExitHoverOnCell();
             }
         }
 
@@ -132,7 +132,7 @@ namespace Minion.Inventory
                     if (TryGettingInventoryPosFromWordPos(dragItem.Cells[i, j].transform.position, inventoryRect,
                             out var pos))
                     {
-                        //cells[pos.x, pos.y].OnHoverOnCell();
+                        cells[pos.x, pos.y].OnHoverOnCell();
                     }
                 }
             }

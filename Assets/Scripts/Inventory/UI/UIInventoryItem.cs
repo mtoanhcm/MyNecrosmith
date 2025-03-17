@@ -1,5 +1,6 @@
 using System;
 using Equipment;
+using GameUtility.UI;
 using Minion.Inventory;
 using Observer;
 using UnityEngine;
@@ -9,9 +10,14 @@ using UnityEngine.UI;
 
 namespace Inventory.UI
 {
-    public class UIInventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class UIInventoryItem : UIDragHandle<UIInventoryItem>
     {
         public UIInventoryItemCell[,] Cells => cells;
+        public RectTransform MyRect => myRectTransform;
+        public InventoryItem InventoryItem => inventoryItem;
+        
+        public Action<UIInventoryItem> OnCheckItemHover { get; set; }
+        public Action<EquipmentData> OnPlaceInMinionInventorySuccess {get; set;}
         
         [SerializeField] private Image iconImg;
         [SerializeField] private GridLayoutGroup cellParent;
@@ -26,6 +32,24 @@ namespace Inventory.UI
         private void Awake()
         {
             myRectTransform = GetComponent<RectTransform>();
+
+            OnPickItemAction = uiItem =>
+            {
+                isHoldingItem = true;
+                delayFrameToUpdateHoverEvent = 0;
+            };
+
+            // OnReleaseItemAction = uiItem =>
+            // {
+            //     isHoldingItem = false;
+            //
+            //     Debug.Log("Send place item event");
+            //     EventManager.Instance.TriggerEvent(new EventData.OnPlaceInventoryItemUI()
+            //     {
+            //         UIItem = uiItem,
+            //         OnPlaceItemInMinionInventorySuccess = OnPlaceInMinionInventorySuccess
+            //     });
+            // };
         }
 
         private void LateUpdate()
@@ -40,7 +64,8 @@ namespace Inventory.UI
             delayFrameToUpdateHoverEvent++;
             if (delayFrameToUpdateHoverEvent % 5 == 0)
             {
-                //EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ Item = this});
+                //EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ UIItem = this});
+                OnCheckItemHover?.Invoke(this);
             }
         }
 
@@ -55,60 +80,8 @@ namespace Inventory.UI
             isHoldingItem = isHolding;
             if (isHoldingItem)
             {
-                //EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ Item = this});
                 delayFrameToUpdateHoverEvent = 0;
             }
-        }
-        
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            //transform.position = Mouse.current.position.ReadValue();
-    
-            //EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ Item = this});
-    
-            isHoldingItem = true;
-            delayFrameToUpdateHoverEvent = 0;
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            isHoldingItem = false;
-
-            EventManager.Instance.TriggerEvent(new EventData.OnPlaceInventoryItemUI()
-            {
-                Item = this,
-                OnPlaceItemSuccess = OnPlaceEquipmentSuccessInInventory
-            });
-
-            void OnPlaceEquipmentSuccessInInventory(EquipmentData equipmentData)
-            {
-                EventManager.Instance.TriggerEvent(new EventData.OnRemoveEquipmentFromPlayerStorage()
-                {
-                    EquipmentData = equipmentData
-                });
-            }
-        }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            delayFrameToUpdateHoverEvent = 0;
-            transform.position = Mouse.current.position.ReadValue();
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            // transform.position = Mouse.current.position.ReadValue();
-            //
-            // delayFrameToUpdateHoverEvent++;
-            // if (delayFrameToUpdateHoverEvent % 5 == 0)
-            // {
-            //     EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ Item = this});
-            // }
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            
         }
 
         private void SetItemData(EquipmentData equipmentData)

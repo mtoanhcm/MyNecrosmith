@@ -8680,6 +8680,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellParent: {fileID: 1338339143}
+  inventoryRect: {fileID: 1002731164}
+  inventoryItemHolderTrans: {fileID: 571654222}
 --- !u!1001 &1004182686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9570,6 +9572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb313a966827c54f98c55256e880c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minionInventoryView: {fileID: 1002731165}
   draggedItemPrefab: {fileID: 135994981665854799, guid: 4e490620f315078418844cb3e921f2c8, type: 3}
 --- !u!1 &1167636250
 GameObject:

@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using Config;
 using Equipment;
 using Gameplay;
+using Inventory.UI;
+using Observer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +17,7 @@ namespace Player.Inventory.UI
         private List<UIPlayerInventoryCell> cells;
 
         private PlayerInventoryViewComponent playerInventoryComp;
-        
+
         public void OpenPlayerInventory(PlayerInventory playerInventory)
         {
             if (cells == null || cells.Count == 0)
@@ -29,7 +32,7 @@ namespace Player.Inventory.UI
         {
             
         }
-
+        
         private void SetPlayerInventoryDataView(PlayerInventory playerInventory)
         {
             if (playerInventoryComp == null)

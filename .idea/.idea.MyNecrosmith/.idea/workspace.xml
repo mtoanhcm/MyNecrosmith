@@ -6,62 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/EquipmentStorageCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/EquipmentStorageCell.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/InventoryCell.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/InventoryCell.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/InventoryItem.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/InventoryItem.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/ItemDragCell.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/ItemDragCell.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/UI/UICharacterSelectButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/UI/UICharacterSelectButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Config/EquipmentConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Config/EquipmentConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UI/UIGameplayView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/UI/UIGameplayView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GrandStore.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GrandStore/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GrandStore/UI/UIEquipmentGrandStore.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GrandStore/UI/UIEquipmentGrandStore.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Inventory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEquipmentSpawner.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEquipmentSpawner.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEquipmentStoreItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEquipmentStoreItem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEquipmentStoreView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEquipmentStoreView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEqupimentStorageCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIEqupimentStorageCell.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryCell.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryEquipmentChoosenView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryEquipmentChoosenView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemDragHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemDragHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/InventoryItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/InventoryItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/MinionInventoryViewComp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/MinionInventoryViewComp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory/UI/UIPlayerInventoryView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory/UI/UIPlayerInventoryView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle/UIInventoryPanelCellHandle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle/UIInventoryPanelCellHandle.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle/UIInventoryPanelEquipmentHandle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanelHandle/UIInventoryPanelEquipmentHandle.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIItemDragCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIItemDragCell.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObjectPool/PoolBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ObjectPool/PoolBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Srptes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Srptes/Equipment.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Srptes/Equipment/IronSword.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Srptes/Equipment/IronSword.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Srptes/Icon.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Srptes/Icon/Arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Srptes/Icon/Arrow.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +44,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TempScripts/MouseClickMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/AddressableUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SingletonForScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/UI/UIDragHandle.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -156,10 +110,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15116">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="15116" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -285,6 +239,7 @@
       <workItem from="1742115580200" duration="8395000" />
       <workItem from="1742140291865" duration="2733000" />
       <workItem from="1742143801545" duration="653000" />
+      <workItem from="1742221959105" duration="7281000" />
     </task>
     <servers />
   </component>
@@ -329,6 +284,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Utility/UI/UIDragHandle.cs</url>
+          <line>19</line>
+          <properties documentPath="D:\Projects\MyNecrosmith\Assets\Scripts\Utility\UI\UIDragHandle.cs" containingFunctionPresentation="Method 'OnPointerUp'">
+            <startOffsets>
+              <option value="617" />
+            </startOffsets>
+            <endOffsets>
+              <option value="656" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

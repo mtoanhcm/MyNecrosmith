@@ -1,4 +1,8 @@
+using System.Linq;
 using Equipment;
+using GameUtility;
+using Inventory.UI;
+using Observer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,10 +11,22 @@ namespace Minion.Inventory.UI
     public class UIMinionInventoryView : MonoBehaviour
     {
         [SerializeField] private GridLayoutGroup cellParent;
+        [SerializeField] private RectTransform inventoryRect;
+        [SerializeField] private Transform inventoryItemHolderTrans;
         
         private Inventory currentInventory;
         private MinionInventoryViewComp inventoryViewComp;
         private bool isInit;
+        
+        private void OnEnable()
+        {
+            //EventManager.Instance.StartListening<EventData.OnPlaceInventoryItemUI>(TryToPlaceUIInventoryItemToInventoryView);
+        }
+
+        private void OnDisable()
+        {
+            //EventManager.Instance.StopListening<EventData.OnPlaceInventoryItemUI>(TryToPlaceUIInventoryItemToInventoryView);
+        }
         
         public void OpenMinionInventory(Inventory minionInventory)
         {
@@ -37,6 +53,45 @@ namespace Minion.Inventory.UI
         private void OnCreateItemForMinionInventory(InventoryItem item)
         {
             
+        }
+        
+        public bool TryToPlaceUIInventoryItemToInventoryView(UIInventoryItem uiItem)
+        {
+            if (!uiItem.MyRect.IsWorldOverlap(inventoryRect))
+            {
+                return false;
+            }
+            
+            if (!inventoryViewComp.CanPlaceEquipmentOnCells(uiItem, inventoryRect, out var claimPos))
+            {
+                return false;
+            }
+
+            uiItem.InventoryItem.UpdatePosInInventory(claimPos);
+            uiItem.transform.SetParent(inventoryItemHolderTrans);
+
+            var uiItemClaimPos = uiItem.InventoryItem.PosClaimInventory.First();
+            uiItem.transform.position = inventoryViewComp.GetCenterPositionOfCellArea(uiItemClaimPos.Item1,
+                uiItemClaimPos.Item2, uiItem.InventoryItem.Equipment.Width, uiItem.InventoryItem.Equipment.Height);
+
+            inventoryViewComp.SetItemForCell(claimPos, uiItem.GetInstanceID().ToString());
+            inventoryViewComp.ResetAllCellHoverState();
+            //equipmentHandle.AddItemToInventory(data.UIItem);
+
+            //data.OnPlaceItemInMinionInventorySuccess?.Invoke(data.UIItem.InventoryItem.Equipment);
+            
+            return true;
+        }
+        
+        public void OnCheckDraggingEquipmentHoverInventory(UIInventoryItem uiItem)
+        {
+            if (!uiItem.MyRect.IsWorldOverlap(inventoryRect))
+            {
+                return;
+            }
+    
+            inventoryViewComp.ResetAllCellHoverState();
+            inventoryViewComp.CheckHoverCell(uiItem, inventoryRect);
         }
         
         private void SetupInventoryCellBaseOnMinionInventoryInfo(Inventory minionInventory)

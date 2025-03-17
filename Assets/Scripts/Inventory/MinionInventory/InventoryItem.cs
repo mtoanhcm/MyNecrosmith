@@ -8,7 +8,6 @@ namespace Minion.Inventory
 {
     public class InventoryItem
     {
-        public int Index { get; private set; }
         public EquipmentData Equipment { get; private set; }
         public HashSet<(int, int)> PosClaimInventory { get; private set; }
         
@@ -18,11 +17,10 @@ namespace Minion.Inventory
             PosClaimInventory = new HashSet<(int, int)>();
         }
 
-        public void UpdatePosInInventory(int index ,HashSet<(int, int)> posClaimInventory)
+        public void UpdatePosInInventory(HashSet<(int, int)> posClaimInventory)
         {
             PosClaimInventory.Clear();
             PosClaimInventory.AddRange(posClaimInventory);
-            Index = index;
         }
     }
 }

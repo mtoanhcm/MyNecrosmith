@@ -1,5 +1,6 @@
 using System;
 using Equipment;
+using Minion.Inventory.UI;
 using Observer;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Inventory.UI
 {
     public class InventoryItemDragHandle : MonoBehaviour
     {
+        [SerializeField] private UIMinionInventoryView minionInventoryView;
         [SerializeField] private UIInventoryItem draggedItemPrefab;
         
         private UIInventoryItem currentDraggedItem;
@@ -30,7 +32,7 @@ namespace Inventory.UI
             }
             
             currentDraggedItem.SetHoldingItem(false);
-            
+            currentDraggedItem.OnReleaseItemAction?.Invoke(currentDraggedItem);
         }
 
         private void CreateDraggingItem(EquipmentData data)
@@ -38,6 +40,19 @@ namespace Inventory.UI
             currentDraggedItem = Instantiate(draggedItemPrefab, transform);
             currentDraggedItem.Init(data);
             currentDraggedItem.SetHoldingItem(true);
+            
+            currentDraggedItem.OnCheckItemHover = minionInventoryView.OnCheckDraggingEquipmentHoverInventory;
+            currentDraggedItem.OnReleaseItemAction = CheckReleaseUIItem;
+        }
+
+        private void CheckReleaseUIItem(UIInventoryItem uiItem)
+        {
+            uiItem.SetHoldingItem(false);
+            
+            if (minionInventoryView.TryToPlaceUIInventoryItemToInventoryView(uiItem))
+            {
+                return;
+            }
         }
     }   
 }
