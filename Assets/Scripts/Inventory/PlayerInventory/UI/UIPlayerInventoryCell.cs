@@ -28,7 +28,7 @@ namespace Player.Inventory.UI
         {
             equipmentData = data;
             equipmentIconImg.SetActive(equipmentData != null);
-            amountTxt.SetActive(equipmentData != null);
+            amountTxt.SetActive(amount > 0);
             if (equipmentData != null)
             {
                 equipmentIconImg.sprite = equipmentData.IconSpr;

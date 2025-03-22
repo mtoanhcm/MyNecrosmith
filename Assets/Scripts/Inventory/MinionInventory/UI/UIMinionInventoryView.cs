@@ -12,7 +12,7 @@ namespace Minion.Inventory.UI
     {
         [SerializeField] private GridLayoutGroup cellParent;
         [SerializeField] private RectTransform inventoryRect;
-        [SerializeField] private Transform inventoryItemHolderTrans;
+        [SerializeField] private UIMinionInventoryItemHolder inventoryItemHolder;
         
         private Inventory currentInventory;
         private MinionInventoryViewComp inventoryViewComp;
@@ -68,19 +68,41 @@ namespace Minion.Inventory.UI
             }
 
             uiItem.InventoryItem.UpdatePosInInventory(claimPos);
-            uiItem.transform.SetParent(inventoryItemHolderTrans);
+            inventoryItemHolder.AddUIItemToInventory(uiItem);
+            //uiItem.transform.SetParent(inventoryItemHolderTrans);
 
-            var uiItemClaimPos = uiItem.InventoryItem.PosClaimInventory.First();
-            uiItem.transform.position = inventoryViewComp.GetCenterPositionOfCellArea(uiItemClaimPos.Item1,
-                uiItemClaimPos.Item2, uiItem.InventoryItem.Equipment.Width, uiItem.InventoryItem.Equipment.Height);
-
-            inventoryViewComp.SetItemForCell(claimPos, uiItem.GetInstanceID().ToString());
-            inventoryViewComp.ResetAllCellHoverState();
+            PlaceUIItemBackToInventory(uiItem);
             //equipmentHandle.AddItemToInventory(data.UIItem);
 
             //data.OnPlaceItemInMinionInventorySuccess?.Invoke(data.UIItem.InventoryItem.Equipment);
             
             return true;
+        }
+
+        public void PlaceUIItemBackToInventory(UIInventoryItem uiItem)
+        {
+            var uiItemClaimPos = uiItem.InventoryItem.PosClaimInventory.First();
+            uiItem.transform.position = inventoryViewComp.GetCenterPositionOfCellArea(uiItemClaimPos.Item1,
+                uiItemClaimPos.Item2, uiItem.InventoryItem.Equipment.Width, uiItem.InventoryItem.Equipment.Height);
+
+            inventoryViewComp.SetItemForCell(uiItem.InventoryItem.PosClaimInventory, uiItem.GetInstanceID().ToString());
+            inventoryViewComp.ResetAllCellHoverState();
+        }
+
+        public bool IsHoldingUIItem(string itemID)
+        {
+            return inventoryItemHolder.IsHoldingUIItem(itemID);
+        }
+
+        public void RemoveItemFromInventory(UIInventoryItem item, bool isCompleteRemove = false)
+        {
+            var itemID = item.GetInstanceID().ToString();
+            inventoryViewComp.RemoveItemForCell(itemID);
+
+            if (isCompleteRemove)
+            {
+                inventoryItemHolder.RemoveUIItemFromInventory(itemID);
+            }
         }
         
         public void OnCheckDraggingEquipmentHoverInventory(UIInventoryItem uiItem)
@@ -110,6 +132,7 @@ namespace Minion.Inventory.UI
         private void InitInventory()
         {
             InitInventoryCell();
+            inventoryItemHolder.Init();
             
             isInit = true;
 
@@ -137,11 +160,6 @@ namespace Minion.Inventory.UI
 
                     index++;
                 }
-            }
-            
-            void CreateUIInventoryComponent()
-            {
-                
             }
         }
         

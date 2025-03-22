@@ -2,6 +2,7 @@ using System;
 using Equipment;
 using Minion.Inventory.UI;
 using Observer;
+using Player.Inventory.UI;
 using UnityEngine;
 
 namespace Inventory.UI
@@ -9,6 +10,7 @@ namespace Inventory.UI
     public class InventoryItemDragHandle : MonoBehaviour
     {
         [SerializeField] private UIMinionInventoryView minionInventoryView;
+        [SerializeField] private UIPlayerInventoryView playerInventoryView;
         [SerializeField] private UIInventoryItem draggedItemPrefab;
         
         private UIInventoryItem currentDraggedItem;
@@ -41,10 +43,21 @@ namespace Inventory.UI
             currentDraggedItem.Init(data);
             currentDraggedItem.SetHoldingItem(true);
             
-            currentDraggedItem.OnCheckItemHover = minionInventoryView.OnCheckDraggingEquipmentHoverInventory;
+            currentDraggedItem.OnCheckItemHover = CheckDraggingUIItem;
             currentDraggedItem.OnReleaseItemAction = CheckReleaseUIItem;
+            currentDraggedItem.OnPickItemAction += CheckPickUIItem;
         }
 
+        private void CheckDraggingUIItem(UIInventoryItem uiItem)
+        {
+            minionInventoryView.OnCheckDraggingEquipmentHoverInventory(uiItem);
+        }
+
+        private void CheckPickUIItem(UIInventoryItem uiItem)
+        {
+            minionInventoryView.RemoveItemFromInventory(uiItem);
+        }
+        
         private void CheckReleaseUIItem(UIInventoryItem uiItem)
         {
             uiItem.SetHoldingItem(false);
@@ -52,6 +65,22 @@ namespace Inventory.UI
             if (minionInventoryView.TryToPlaceUIInventoryItemToInventoryView(uiItem))
             {
                 return;
+            }
+
+            if (playerInventoryView.TryToCheckOverlapAndReturnUIItemToInventory(uiItem))
+            {
+                Destroy(uiItem.gameObject);
+                return;
+            }
+            
+            if (minionInventoryView.IsHoldingUIItem(uiItem.GetInstanceID().ToString()))
+            {
+                minionInventoryView.PlaceUIItemBackToInventory(uiItem);
+            }
+            else
+            {
+                playerInventoryView.PlaceUIItemBackToInventory(uiItem);
+                Destroy(uiItem.gameObject);
             }
         }
     }   

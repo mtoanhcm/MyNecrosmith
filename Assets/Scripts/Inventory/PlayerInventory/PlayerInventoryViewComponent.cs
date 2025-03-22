@@ -16,6 +16,8 @@ namespace Player.Inventory
             public int Amount;
         }
         
+        public PlayerInventory PlayerInventory => playerInventory;
+        
         private PlayerInventory playerInventory;
 
         private Dictionary<int, EquipmentSlotData[]> equipmentPages;

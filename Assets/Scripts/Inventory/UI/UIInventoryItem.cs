@@ -33,7 +33,7 @@ namespace Inventory.UI
         {
             myRectTransform = GetComponent<RectTransform>();
 
-            OnPickItemAction = uiItem =>
+            OnPickItemAction += uiItem =>
             {
                 isHoldingItem = true;
                 delayFrameToUpdateHoverEvent = 0;

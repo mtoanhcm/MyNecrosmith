@@ -37,10 +37,8 @@ namespace Minion.Inventory
             }
         }
 
-        public void RemoveItemForcell(string itemClaimID)
+        public void RemoveItemForCell(string itemClaimID)
         {
-            Debug.Log($"Check remove item with id {itemClaimID}");
-
             foreach (var pos in InventoryCellHash)
             {
                 var cell = cells[pos.Item1, pos.Item2];
