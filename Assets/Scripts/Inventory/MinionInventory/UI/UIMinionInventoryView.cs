@@ -44,10 +44,10 @@ namespace Minion.Inventory.UI
             SetupInventoryCellBaseOnMinionInventoryInfo(minionInventory);
         }
 
-        public void CloseMinionInventory()
+        public void ClearInventory()
         {
-            inventoryViewComp.ResetAllCellHoverState();
-            ClearInventory();
+            inventoryViewComp.ClearInventoryCells();
+            inventoryItemHolder.ClearAllHolderItems();
         }
 
         private void OnCreateItemForMinionInventory(InventoryItem item)
@@ -115,6 +115,12 @@ namespace Minion.Inventory.UI
             inventoryViewComp.ResetAllCellHoverState();
             inventoryViewComp.CheckHoverCell(uiItem, inventoryRect);
         }
+
+        public bool TryToGetInventoryItemsForSpawnMinion(out EquipmentData[] equipmentData)
+        {
+            equipmentData = inventoryItemHolder.GetEquipmentData();
+            return equipmentData.Length > 0;
+        }
         
         private void SetupInventoryCellBaseOnMinionInventoryInfo(Inventory minionInventory)
         {
@@ -161,11 +167,6 @@ namespace Minion.Inventory.UI
                     index++;
                 }
             }
-        }
-        
-        private void ClearInventory()
-        {
-            
         }
     }   
 }

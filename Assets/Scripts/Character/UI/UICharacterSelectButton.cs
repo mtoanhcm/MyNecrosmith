@@ -33,7 +33,7 @@ namespace UI
                 InventoryData = new Minion.Inventory.Inventory(
                     Mathf.Clamp(config.InventorySize.y ,MinionInventoryParam.MIN_ROW, MinionInventoryParam.MAX_ROW), 
                     Mathf.Clamp(config.InventorySize.x, MinionInventoryParam.MIN_COLUMN, MinionInventoryParam.MAX_COLUMN),
-                    config.ID
+                    config
                 )
             });
         }

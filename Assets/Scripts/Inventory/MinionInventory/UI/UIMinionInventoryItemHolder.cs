@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Equipment;
 using Inventory.UI;
 using UnityEngine;
 
@@ -11,6 +12,24 @@ namespace Minion.Inventory.UI
         public void Init()
         {
             itemDic = new Dictionary<string, UIInventoryItem>();
+        }
+
+        public EquipmentData[] GetEquipmentData()
+        {
+            var tempData = new EquipmentData[itemDic.Count];
+            if (tempData.Length == 0)
+            {
+                return tempData;
+            }
+
+            var index = 0;
+            foreach (var item in itemDic)
+            {
+                tempData[index] = item.Value.InventoryItem.Equipment;
+                index++;
+            }
+            
+            return tempData;
         }
 
         public void AddUIItemToInventory(UIInventoryItem item)
@@ -39,6 +58,16 @@ namespace Minion.Inventory.UI
         public bool IsHoldingUIItem(string itemID)
         {
             return itemDic.ContainsKey(itemID);
+        }
+
+        public void ClearAllHolderItems()
+        {
+            foreach (var item in itemDic)
+            {
+                Destroy(item.Value.gameObject);
+            }
+            
+            itemDic.Clear();
         }
     }   
 }

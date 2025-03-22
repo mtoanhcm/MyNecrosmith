@@ -18,7 +18,7 @@ namespace Observer {
         /// </summary>
         public class OpenMinionInventory
         {
-            public CharacterID CharacterID;
+            public MinionConfig MinionConfig;
             public Minion.Inventory.Inventory InventoryData;
         }
 
@@ -52,7 +52,7 @@ namespace Observer {
         public class OnPrepareEquipmentForSpawnMinion
         {
             public MinionConfig MinionConfig;
-            public List<EquipmentData> Equipment;
+            public EquipmentData[] Equipment;
         }
 
         /// <summary>

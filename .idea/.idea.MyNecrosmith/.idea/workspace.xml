@@ -7,15 +7,15 @@
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemDragHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemDragHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/MinionCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/MinionCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/UI/UICharacterSelectButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/UI/UICharacterSelectButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Equipment/EquipmentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/Inventory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/MinionInventoryViewComp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/MinionInventoryViewComp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryItemHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryItemHolder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory/PlayerInventoryViewComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory/PlayerInventoryViewComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory/UI/UIPlayerInventoryCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory/UI/UIPlayerInventoryCell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory/UI/UIPlayerInventoryView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory/UI/UIPlayerInventoryView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Observer/EventData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,10 +112,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15908">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="15908" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -244,6 +244,7 @@
       <workItem from="1742221959105" duration="7281000" />
       <workItem from="1742628853500" duration="5437000" />
       <workItem from="1742645000251" duration="3823000" />
+      <workItem from="1742664189614" duration="2991000" />
     </task>
     <servers />
   </component>
@@ -275,19 +276,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Character/MinionCharacter.cs</url>
-          <line>40</line>
-          <properties documentPath="D:\Projects\MyNecrosmith\Assets\Scripts\Character\MinionCharacter.cs" containingFunctionPresentation="Method 'GetFarthestAttackRangeFromEquipment'">
-            <startOffsets>
-              <option value="1207" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1231" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

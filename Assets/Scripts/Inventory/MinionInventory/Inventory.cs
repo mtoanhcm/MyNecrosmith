@@ -11,16 +11,16 @@ namespace Minion.Inventory
         public int Row { get; private set; }
         public int Column { get; private set; }
         
-        public CharacterID CharacterID { get; private set; }
+        public MinionConfig MinionConfig { get; private set; }
         public List<InventoryItem> Items { get; private set; }
 
-        public Inventory(int row, int column, CharacterID characterID)
+        public Inventory(int row, int column, MinionConfig minionConfig)
         {
             Row = row;
             Column = column;
             
             Items = new List<InventoryItem>();
-            CharacterID = characterID;
+            MinionConfig = minionConfig;
         }
 
         public EquipmentData[] GetEquipmentData()

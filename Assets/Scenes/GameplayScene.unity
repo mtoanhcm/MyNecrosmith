@@ -5351,6 +5351,7 @@ RectTransform:
   - {fileID: 2081709072}
   - {fileID: 1167636251}
   - {fileID: 1002731164}
+  - {fileID: 699947498}
   - {fileID: 1140068204}
   m_Father: {fileID: 2011756100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5373,6 +5374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minionInventoryView: {fileID: 1002731165}
   playerInventoryView: {fileID: 1318058201}
+  spawnBtn: {fileID: 699947499}
 --- !u!1001 &697045365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5507,11 +5509,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2053740537}
-  m_Father: {fileID: 1002731164}
+  m_Father: {fileID: 686844317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -12, y: -50}
+  m_AnchoredPosition: {x: -176, y: 189}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699947499
@@ -5613,7 +5615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &701831810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8672,7 +8674,6 @@ RectTransform:
   m_Children:
   - {fileID: 1338339142}
   - {fileID: 571654222}
-  - {fileID: 699947498}
   m_Father: {fileID: 686844317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}

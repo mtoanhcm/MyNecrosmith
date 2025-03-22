@@ -136,6 +136,16 @@ namespace Minion.Inventory
             }
         }
 
+        public void ClearInventoryCells()
+        {
+            ResetAllCellHoverState();
+
+            foreach (var pos in InventoryCellHash)
+            {
+                cells[pos.Item1, pos.Item2].SetItemClaim(string.Empty);
+            }
+        }
+        
         private bool TryGettingInventoryPosFromWordPos(Vector2 worldPos, RectTransform inventoryRect,
             out Vector2Int pos)
         {
