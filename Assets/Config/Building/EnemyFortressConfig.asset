@@ -16,4 +16,4 @@ MonoBehaviour:
   ArmorType: 3
   HP: 500
   EnemySpawnConfig: {fileID: 11400000, guid: 70bec8ad60603a540839e1c80f126a14, type: 2}
-  CooldownSpawnTime: 3
+  CooldownSpawnTime: 7

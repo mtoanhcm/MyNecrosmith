@@ -42,7 +42,6 @@ namespace Projectile.Movement
         protected override void CompleteMovement(ProjectileBase projectile)
         {
             base.CompleteMovement(projectile);
-            Debug.Log("Complete movement");
             currentTween?.Kill();
             projectile.Despawn();
         }

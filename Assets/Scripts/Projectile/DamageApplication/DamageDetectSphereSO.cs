@@ -19,7 +19,6 @@ namespace Projectile.DamageApply
                 return false;
             }
         
-            Debug.Log($"AAA {hits[0]}");
             if (hits[0].TryGetComponent<IHealth>(out var hitObj))
             {
                 hitObj.TakeDamage(projectile.Data.Damage);

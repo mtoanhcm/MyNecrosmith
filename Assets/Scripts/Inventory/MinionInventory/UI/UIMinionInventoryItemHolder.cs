@@ -60,14 +60,18 @@ namespace Minion.Inventory.UI
             return itemDic.ContainsKey(itemID);
         }
 
-        public void ClearAllHolderItems()
+        public EquipmentData[] ClearAllHolderItems()
         {
+            var holderEquipmentData = new List<EquipmentData>();
             foreach (var item in itemDic)
             {
+                holderEquipmentData.Add(item.Value.InventoryItem.Equipment);
                 Destroy(item.Value.gameObject);
             }
             
             itemDic.Clear();
+            
+            return holderEquipmentData.ToArray();
         }
     }   
 }

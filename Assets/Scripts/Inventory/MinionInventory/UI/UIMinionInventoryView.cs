@@ -44,10 +44,10 @@ namespace Minion.Inventory.UI
             SetupInventoryCellBaseOnMinionInventoryInfo(minionInventory);
         }
 
-        public void ClearInventory()
+        public void ClearInventory(out EquipmentData[] holderEquipmentData)
         {
             inventoryViewComp.ClearInventoryCells();
-            inventoryItemHolder.ClearAllHolderItems();
+            holderEquipmentData = inventoryItemHolder.ClearAllHolderItems();
         }
 
         private void OnCreateItemForMinionInventory(InventoryItem item)

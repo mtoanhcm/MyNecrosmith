@@ -25,6 +25,18 @@ namespace Inventory.UI
             EventManager.Instance.StopListening<EventData.OnPickEquipmentInInventoryUI>(PickEquipmentInInventory);
         }
 
+        public void ResetDraggedItem(out EquipmentData currentDraggedEquipmentData)
+        {
+            currentDraggedEquipmentData = null; 
+            if (currentDraggedItem == null)
+            {
+                return;
+            }
+
+            currentDraggedEquipmentData = currentDraggedItem.InventoryItem.Equipment;
+            Destroy(currentDraggedItem.gameObject);
+        }
+        
         private void PickEquipmentInInventory(EventData.OnPickEquipmentInInventoryUI data)
         {
             if (data.Equipment != null)
@@ -61,7 +73,7 @@ namespace Inventory.UI
         private void CheckReleaseUIItem(UIInventoryItem uiItem)
         {
             uiItem.SetHoldingItem(false);
-            
+            currentDraggedItem = null;
             if (minionInventoryView.TryToPlaceUIInventoryItemToInventoryView(uiItem))
             {
                 return;
