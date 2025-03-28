@@ -92,6 +92,7 @@ namespace Inventory.UI
             else
             {
                 playerInventoryView.PlaceUIItemBackToInventory(uiItem);
+                minionInventoryView.RefreshInventoryCellState();
                 Destroy(uiItem.gameObject);
             }
         }

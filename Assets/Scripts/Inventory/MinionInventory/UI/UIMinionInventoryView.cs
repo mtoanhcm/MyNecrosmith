@@ -50,6 +50,11 @@ namespace Minion.Inventory.UI
             holderEquipmentData = inventoryItemHolder.ClearAllHolderItems();
         }
 
+        public void RefreshInventoryCellState()
+        {
+            inventoryViewComp.ClearInventoryCells();
+        }
+
         private void OnCreateItemForMinionInventory(InventoryItem item)
         {
             
