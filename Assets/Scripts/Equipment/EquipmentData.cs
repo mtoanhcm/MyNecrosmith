@@ -13,8 +13,10 @@ namespace Equipment
         [SerializeField]
         protected EquipmentConfig baseConfig;
 
+        public int Level => level;
         public EquipmentID EquipmentID => baseConfig.EquipmentID;
         public EquipmentCategoryID CategoryID => baseConfig.CategoryID;
+        public Rarity Rarity => baseConfig.Rarity;
         public virtual string EffectType => string.Empty;
         public virtual string EffectValue => string.Empty;
         public string Name => baseConfig.EquipmentName;
@@ -23,9 +25,12 @@ namespace Equipment
         public int Width => baseConfig.Width;
         public int Height => baseConfig.Height;
 
+        protected int level;
+        
         public EquipmentData(EquipmentConfig config)
         {
             baseConfig = config;
+            level = 1;
         }
     }
 }

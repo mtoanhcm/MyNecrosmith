@@ -1,39 +1,58 @@
 using System;
-using Character;
-using Config;
 using Equipment;
+using GameUtility.UI;
+using Minion.Inventory;
 using Observer;
-using GameUtility;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace UI
+namespace Inventory.UI
 {
-    public class UIInventoryItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class UIInventoryItem : UIDragHandle<UIInventoryItem>
     {
-        public RectTransform MyRect => myRect;
-        public InventoryItem Item { get; private set; }
-        public UIItemDragCell[,] Cells => cells;
-
-        [SerializeField] private Image equipmentIconImg;
-        [SerializeField] private bool isInInventory;
-        [SerializeField] private GridLayoutGroup layoutGroup;
-        [SerializeField] private UIItemDragCell dragCellPrefab;
-
-        private RectTransform myRect;
-        private int delayFrameToUpdateHoverEvent;
-        private UIItemDragCell[,] cells;
-        private bool isInitCell;
-        private bool isHoldingItem;
+        public UIInventoryItemCell[,] Cells => cells;
+        public RectTransform MyRect => myRectTransform;
+        public InventoryItem InventoryItem => inventoryItem;
         
+        public Action<UIInventoryItem> OnCheckItemHover { get; set; }
+        public Action<EquipmentData> OnPlaceInMinionInventorySuccess {get; set;}
+        
+        [SerializeField] private Image iconImg;
+        [SerializeField] private GridLayoutGroup cellParent;
+        [SerializeField] private UIInventoryItemCell cellPrefab;
+        
+        private RectTransform myRectTransform;
+        private InventoryItem inventoryItem;
+        private UIInventoryItemCell[,] cells;
+        private bool isHoldingItem;
+        private int delayFrameToUpdateHoverEvent;
+
         private void Awake()
         {
-            myRect = GetComponent<RectTransform>();
+            myRectTransform = GetComponent<RectTransform>();
+
+            OnPickItemAction += uiItem =>
+            {
+                isHoldingItem = true;
+                delayFrameToUpdateHoverEvent = 0;
+            };
+
+            // OnReleaseItemAction = uiItem =>
+            // {
+            //     isHoldingItem = false;
+            //
+            //     Debug.Log("Send place item event");
+            //     EventManager.Instance.TriggerEvent(new EventData.OnPlaceInventoryItemUI()
+            //     {
+            //         UIItem = uiItem,
+            //         OnPlaceItemInMinionInventorySuccess = OnPlaceInMinionInventorySuccess
+            //     });
+            // };
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (!isHoldingItem)
             {
@@ -41,139 +60,95 @@ namespace UI
             }
             
             transform.position = Mouse.current.position.ReadValue();
+            
             delayFrameToUpdateHoverEvent++;
             if (delayFrameToUpdateHoverEvent % 5 == 0)
             {
-                EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
+                //EventManager.Instance.TriggerEvent(new EventData.OnDraggingInventoryItemUI(){ UIItem = this});
+                OnCheckItemHover?.Invoke(this);
             }
+        }
+
+        public void Init(EquipmentData data)
+        {
+            SetEmptyCells();
+            SetItemData(data);
+        }
+
+        public void SetHoldingItem(bool isHolding)
+        {
+            isHoldingItem = isHolding;
+            if (isHoldingItem)
+            {
+                delayFrameToUpdateHoverEvent = 0;
+            }
+        }
+
+        private void SetItemData(EquipmentData equipmentData)
+        {
+            inventoryItem = new InventoryItem(equipmentData);
+            iconImg.sprite = equipmentData.IconSpr;
+            
+            var scaleSize = new Vector2(
+                MinionInventoryParam.CELL_SIZE * equipmentData.Width + (MinionInventoryParam.CELL_SPACING * (equipmentData.Width - 1)), 
+                MinionInventoryParam.CELL_SIZE * equipmentData.Height + (MinionInventoryParam.CELL_SPACING * (equipmentData.Height - 1)));
+
+            myRectTransform.sizeDelta = scaleSize;
+
+            cellParent.cellSize = new Vector2(MinionInventoryParam.CELL_SIZE, MinionInventoryParam.CELL_SIZE);
+
+            ToggleCells(equipmentData);
         }
         
-        public void Init(EquipmentData equipment)
+        private void ToggleCells(EquipmentData equipment)
         {
-            Item = new InventoryItem(equipment);
-            equipmentIconImg.sprite = equipment.IconSpr;
-                
-            CheckInitEmptyCell();
-            SetItemDragData(equipment);
-        }
-
-        private void CheckInitEmptyCell()
-        {
-            if (isInitCell)
+            for (var i = 0; i < MinionInventoryParam.MAX_EQUIPMENT_WIDTH; i++)
             {
-                return;
-            } 
-            
-            layoutGroup.spacing = new Vector2(InventoryParam.CELL_SPACING, InventoryParam.CELL_SPACING);
-            cells = new UIItemDragCell[InventoryParam.MAX_EQUIPMENT_WIDTH, InventoryParam.MAX_EQUIPMENT_WIDTH];
-            for (var i = 0; i < InventoryParam.MAX_EQUIPMENT_WIDTH; i++)
-            {
-                for (var j = 0; j < InventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
-                {
-                    var cell = Instantiate(dragCellPrefab, layoutGroup.transform);
-                    cell.SetVisible(false);
-                    
-                    cells[i, j] = cell;
-                }
-            }
-
-            isInitCell = true;
-        }
-
-        private void SetItemDragData(EquipmentData equipment)
-        {
-            var scaleSize = new Vector2(
-                InventoryParam.CELL_SIZE * equipment.Width + (InventoryParam.CELL_SPACING * (equipment.Width - 1)), 
-                InventoryParam.CELL_SIZE * equipment.Height + (InventoryParam.CELL_SPACING * (equipment.Height - 1)));
-            
-            myRect.sizeDelta = scaleSize;
-            
-            layoutGroup.cellSize = new Vector2(InventoryParam.CELL_SIZE, InventoryParam.CELL_SIZE);
-
-            ToggleCells(equipment, true);
-        }
-
-        private void ToggleCells(EquipmentData equipment, bool isEnable)
-        {
-            for (var i = 0; i < InventoryParam.MAX_EQUIPMENT_WIDTH; i++)
-            {
-                for (var j = 0; j < InventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
+                for (var j = 0; j < MinionInventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
                 {
                     cells[i, j].SetVisible(i < equipment.Width && j < equipment.Height);
                 }
             }
         }
-
-        public void MarkItemInInventory(bool isIn)
+        
+        private void SetEmptyCells()
         {
-            isInInventory = isIn;
-        }
-
-        private void ActiveDragging()
-        {
-            transform.position = Mouse.current.position.ReadValue();
-            
-            EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
-            
-            isHoldingItem = true;
-            delayFrameToUpdateHoverEvent = 0;
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            if (isInInventory)
+            if (cells != null && cells.Length == 0)
             {
-                EventManager.Instance.TriggerEvent(new EventData.OnPickingEquipmentFromInventory()
+                ResetCellsToEmpty();
+                return;
+            }
+
+            CreateEmptyCells();
+
+            return;
+
+            void CreateEmptyCells()
+            {
+                cellParent.spacing = new Vector2(MinionInventoryParam.CELL_SPACING, MinionInventoryParam.CELL_SPACING);
+                cells = new UIInventoryItemCell[MinionInventoryParam.MAX_EQUIPMENT_WIDTH, MinionInventoryParam.MAX_EQUIPMENT_WIDTH];
+                for (var i = 0; i < MinionInventoryParam.MAX_EQUIPMENT_WIDTH; i++)
                 {
-                    UIItemPick = this,
-                });
-                
-                MarkItemInInventory(false);
+                    for (var j = 0; j < MinionInventoryParam.MAX_EQUIPMENT_HEIGHT; j++)
+                    {
+                        var cell = Instantiate(cellPrefab, cellParent.transform);
+                        cell.SetVisible(false);
+
+                        cells[i, j] = cell;
+                    }
+                }
             }
 
-            ActiveDragging();
-        }
-        
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            isHoldingItem = false;
-            
-            EventManager.Instance.TriggerEvent(new EventData.OnPlacingEquipment()
+            void ResetCellsToEmpty()
             {
-                UIItem = this,
-                OnPlaceEquipmentInInventorySuccess = OnPlaceEquipmentSuccessInInventory
-            });
-
-            void OnPlaceEquipmentSuccessInInventory(EquipmentID id)
-            {
-                EventManager.Instance.TriggerEvent(new EventData.OnRemoveEquipmentFromPlayerStorage()
+                for (var i = 0; i < cells.GetLength(0); i++)
                 {
-                    EquipmentID = Item.Equipment.EquipmentID
-                });
+                    for (var j = 0; j < cells.GetLength(1); j++)
+                    {
+                        cells[i, j].SetVisible(false);
+                    }
+                }
             }
-        }
-        
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            delayFrameToUpdateHoverEvent = 0;
-            transform.position = Mouse.current.position.ReadValue();
-
-            ToggleCells(Item.Equipment, false);
-        }
-        
-        public void OnDrag(PointerEventData eventData)
-        {
-            transform.position = Mouse.current.position.ReadValue();
-            delayFrameToUpdateHoverEvent++;
-            if (delayFrameToUpdateHoverEvent % 5 == 0)
-            {
-                EventManager.Instance.TriggerEvent(new EventData.DraggingEquipment(){ UIItem = this});
-            }
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            ToggleCells(Item.Equipment, true);
         }
     }   
 }

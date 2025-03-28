@@ -25,7 +25,6 @@ namespace Character
                 Debug.Log($"Null local character {gameObject.name}");
             }
 
-            Debug.Log($"{localCharacter.name} takes damage");
             localCharacter.Data.TakeDamage(damage, Die);
         }
 

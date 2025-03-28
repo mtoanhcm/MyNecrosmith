@@ -4,9 +4,11 @@ using Building;
 using Character;
 using Config;
 using Equipment;
+using Inventory.UI;
 using Projectile;
 using UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Observer {
     public class EventData
@@ -14,26 +16,10 @@ namespace Observer {
         /// <summary>
         /// Open fog of war by radius
         /// </summary>
-        public class OpenCharacterInventory
+        public class OpenMinionInventory
         {
-            public CharacterID CharacterID;
-            public Inventory InventoryData;
-        }
-
-        public class DraggingEquipment
-        {
-            public UIInventoryItem UIItem;
-        }
-
-        public class OnPlacingEquipment
-        {
-            public UIInventoryItem UIItem;
-            public Action<EquipmentID> OnPlaceEquipmentInInventorySuccess;
-        }
-
-        public class OnPickingEquipmentFromInventory
-        {
-            public UIInventoryItem UIItemPick;
+            public MinionConfig MinionConfig;
+            public Minion.Inventory.Inventory InventoryData;
         }
 
         public class OnStartGame
@@ -66,7 +52,7 @@ namespace Observer {
         public class OnPrepareEquipmentForSpawnMinion
         {
             public MinionConfig MinionConfig;
-            public List<EquipmentData> Equipment;
+            public EquipmentData[] Equipment;
         }
 
         /// <summary>
@@ -140,12 +126,23 @@ namespace Observer {
         /// </summary>
         public class OnRemoveEquipmentFromPlayerStorage
         {
-            public EquipmentID EquipmentID;
+            public EquipmentData EquipmentData;
         }
 
-        public class OnChooseEquipmentInStorage
+        public class OnPickEquipmentInInventoryUI
         {
             public EquipmentData Equipment;
+        }
+
+        public class OnDraggingInventoryItemUI
+        {
+            public UIInventoryItem Item;
+        }
+
+        public class OnPlaceInventoryItemUI
+        {
+            public UIInventoryItem UIItem;
+            public Action<EquipmentData> OnPlaceItemInMinionInventorySuccess;
         }
 
         public class OnEquipmentStorageChanged

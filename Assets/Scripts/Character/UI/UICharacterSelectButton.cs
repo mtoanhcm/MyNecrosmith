@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Observer;
-using Character;
 using Config;
-using UnityEngine.Serialization;
+using GameUtility;
+using Minion.Inventory;
 
 namespace UI
 {
@@ -15,23 +15,26 @@ namespace UI
         private void Start()
         {
             myBtn.onClick.RemoveAllListeners();
-            myBtn.onClick.AddListener(() =>
+            myBtn.onClick.AddListener(LoadCharacterAsync);
+        }
+
+        private async void LoadCharacterAsync()
+        {
+            var path = $"Config/Character/Minion/{characterID}.asset";
+            var config = await AddressableUtility.LoadAssetAsync<MinionConfig>(path);
+            if (config == null)
             {
-                var config = Resources.Load<MinionConfig>($"Character/Minion/{characterID}");
-                if (config == null)
-                {
-                    Debug.LogError($"Cannot find character {characterID} config");
-                    return;
-                }
+                Debug.LogError($"Cannot find character {characterID} config");
+                return;
+            }
                 
-                EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory()
-                {
-                    InventoryData = new Inventory(
-                        Mathf.Clamp(config.InventorySize.y ,InventoryParam.MIN_ROW, InventoryParam.MAX_ROW), 
-                        Mathf.Clamp(config.InventorySize.x, InventoryParam.MIN_COLUMN, InventoryParam.MAX_COLUMN),
-                        config.ID
-                        )
-                });
+            EventManager.Instance.TriggerEvent(new EventData.OpenMinionInventory()
+            {
+                InventoryData = new Minion.Inventory.Inventory(
+                    Mathf.Clamp(config.InventorySize.y ,MinionInventoryParam.MIN_ROW, MinionInventoryParam.MAX_ROW), 
+                    Mathf.Clamp(config.InventorySize.x, MinionInventoryParam.MIN_COLUMN, MinionInventoryParam.MAX_COLUMN),
+                    config
+                )
             });
         }
     }   

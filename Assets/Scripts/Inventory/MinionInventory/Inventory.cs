@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using Config;
+using Equipment;
+using UnityEngine;
+
+namespace Minion.Inventory
+{
+    public class Inventory
+    {
+        public int Row { get; private set; }
+        public int Column { get; private set; }
+        
+        public MinionConfig MinionConfig { get; private set; }
+        public List<InventoryItem> Items { get; private set; }
+
+        public Inventory(int row, int column, MinionConfig minionConfig)
+        {
+            Row = row;
+            Column = column;
+            
+            Items = new List<InventoryItem>();
+            MinionConfig = minionConfig;
+        }
+
+        public EquipmentData[] GetEquipmentData()
+        {
+            var totalItem = Items.Count;
+            var tempEquipmentLst = new EquipmentData[totalItem];
+            
+            if (totalItem == 0)
+            {
+                return tempEquipmentLst;
+            }
+
+            for (var i = 0; i < totalItem; i++)
+            {
+                tempEquipmentLst[i] = Items[i].Equipment;
+            }
+            
+            return tempEquipmentLst;
+        }
+    }   
+}

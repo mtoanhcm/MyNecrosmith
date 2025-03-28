@@ -33,8 +33,8 @@ namespace Pool
         /// <summary>
         /// Return object back to pool
         /// </summary>
-        /// <param name="itemID">Item ID need to return</param>
-        /// <param name="item">Item need to return</param>
+        /// <param name="itemID">UIItem ID need to return</param>
+        /// <param name="item">UIItem need to return</param>
         public void ReturnObject(string itemID, T item)
         {
             pool.Return(itemID, item);

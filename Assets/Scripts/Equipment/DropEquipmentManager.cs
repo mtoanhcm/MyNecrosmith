@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Character;
 using Config;
+using GameUtility;
 using Observer;
 using UnityEngine;
 
@@ -23,29 +24,30 @@ namespace Equipment.Drop
 
         private void OnEnemyDeath(EventData.OnEnemyDeath data)
         {
-            var config = GetEquipmentConfig("Sword", "Sword") as WeaponConfig;
+            SpawnSword();
+        }
+
+        private async void SpawnSword()
+        {
+            EquipmentConfig config = null;
+            if (equipmentConfigs.ContainsKey("Sword"))
+            {
+                config = equipmentConfigs["Sword"] as WeaponConfig;
+            }
+            else
+            {
+                var path = $"Config/Equipment/Sword/Sword.asset";
+                config = await AddressableUtility.LoadAssetAsync<EquipmentConfig>(path);
+                if (config == null)
+                {
+                    equipmentConfigs["Sword"] = config;   
+                }
+            }
+            
             if (config != null)
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment(){ EquipmentData = new WeaponData(config)});
             }
-        }
-
-        private EquipmentConfig GetEquipmentConfig(string equipmentName, string equipmentCategory)
-        {
-            if (equipmentConfigs.ContainsKey(equipmentName))
-            {
-                return equipmentConfigs[equipmentName];
-            }
-            
-            var config = Resources.Load<EquipmentConfig>($"Equipment/{equipmentCategory}/{equipmentName}");
-            if (config == null)
-            {
-                Debug.LogError($"Cannot find equipment {equipmentName} config");
-                return null;
-            }
-            
-            equipmentConfigs[equipmentName] = config;
-            return config;
         }
     }   
 }
