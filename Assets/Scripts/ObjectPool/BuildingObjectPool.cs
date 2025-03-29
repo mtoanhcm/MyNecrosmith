@@ -35,7 +35,7 @@ namespace Spawner
             var building = await pool.Get($"Building/{data.BuildingID}.prefab");
             if (building == null)
             {
-                Debug.LogWarning($"Cannot spawn enemy {data.BuildingID}");
+                Debug.LogWarning($"Cannot spawn building {data.BuildingID}");
                 return;
             }
             

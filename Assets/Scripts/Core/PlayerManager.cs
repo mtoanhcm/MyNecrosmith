@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
+using Building;
 using Config;
 using Equipment;
 using GameUtility;
 using Observer;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Gameplay
@@ -24,6 +23,8 @@ namespace Gameplay
         
         [SerializeField] 
         private EquipmentInitData[] initEquipment;
+
+        [SerializeField] private BuildingBase minionCastle;
         
         private PlayerInventory inventory;
         
@@ -39,8 +40,22 @@ namespace Gameplay
         private void Start()
         {
             InitStartupEquipment();
+            InitCastleBase();
         }
 
+        private async void InitCastleBase()
+        {
+            var config = await AddressableUtility.LoadAssetAsync<MinionBuildingConfig>("Config/Building/MinionCastleConfig.asset");
+            if (config == null)
+            {
+                Debug.LogError($"Cannot get minion castle config");
+                return;
+            }
+
+            minionCastle.Spawn(Vector3.zero, new BuildingData(config, 0, 1));
+            minionCastle.SetActiveBuilding(true);
+        }
+        
         private void OnObtainedEquipment(EventData.OnObtainedEquipment data)
         {
             inventory.AddEquipmentToStorage(data.EquipmentData);
@@ -55,7 +70,7 @@ namespace Gameplay
 
         private void SendEventEquipmentStorageChanged()
         {
-            
+            EventManager.Instance.TriggerEvent(new EventData.OnPlayerInventoryChanged { HasChange = true});
         }
 
         private async void InitStartupEquipment()

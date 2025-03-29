@@ -27,7 +27,7 @@ namespace Building {
              InitHealth();
         }
 
-        public void SetActiveBuildingByTime(bool hasActive, int delayActiveTime)
+        public void SetActiveBuilding(bool hasActive, int delayActiveTime)
         {
             StopAllCoroutines();
             
@@ -37,6 +37,12 @@ namespace Building {
                 return;
             }
             
+            isActive = hasActive;
+        }
+
+        public void SetActiveBuilding(bool hasActive)
+        {
+            StopAllCoroutines();
             isActive = hasActive;
         }
 

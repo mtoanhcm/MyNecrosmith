@@ -35,11 +35,6 @@ namespace BOT
 
         public override TaskStatus OnUpdate()
         {
-            if (status == TaskStatus.Running)
-            {
-                status = TaskStatus.Failure;
-            }
-            
             return status;
         }
 

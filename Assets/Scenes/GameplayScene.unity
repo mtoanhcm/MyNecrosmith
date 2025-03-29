@@ -2346,6 +2346,7 @@ MonoBehaviour:
   - EquipmentID: 4
     Category: 1
     Amount: 3
+  minionCastle: {fileID: 544906598}
 --- !u!114 &379600412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4122,6 +4123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 399667226}
+  swordConfig: {fileID: 11400000, guid: cd344c2a939613049a9a7abc8cface72, type: 2}
 --- !u!114 &544906599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4146,7 +4148,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 8.6075, y: 3.5325, z: 4.96}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 2.9, z: -0.2}
   m_TimeToStationary: 0.5
@@ -5818,7 +5820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &701831810
 MonoBehaviour:
   m_ObjectHideFlags: 0

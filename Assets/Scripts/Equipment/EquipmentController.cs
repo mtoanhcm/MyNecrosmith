@@ -38,7 +38,7 @@ namespace Equipment
         
         public void AddEquipment(EquipmentData[] equipmentData, CharacterBase owner)
         {
-            equipmentPositions = transform.position.GetEquipmentPositionAroundCharacter(equipmentData.Length);
+            equipmentPositions = transform.GetEquipmentPositionAroundCharacter(equipmentData.Length);
             for (var i = 0; i < equipmentData.Length; i++)
             {
                 var equipment = equipmentData[i];

@@ -22,13 +22,13 @@ namespace Character
         {
             localCharacter = character;
             
-            // enemyScanner = new Scanner<CharacterBase>(
-            //     100,
-            //     () => localCharacter.transform.position,
-            //     localCharacter.Data.ViewRadius,
-            //     2,
-            //     GetEnemyLayer(localCharacter.gameObject.layer)
-            // );
+            enemyScanner = new Scanner<CharacterBase>(
+                100,
+                () => localCharacter.transform.position,
+                localCharacter.Data.ViewRadius,
+                2,
+                GetEnemyLayer(localCharacter.gameObject.layer)
+            );
 
             enemyBuildingScanner = new Scanner<BuildingBase>(
                 100,
@@ -54,21 +54,19 @@ namespace Character
         public void ActiveBrain()
         {
             behaviorTree.EnableBehavior();
-            //enemyScanner.StartScanning();
+            enemyScanner.StartScanning();
             enemyBuildingScanner.StartScanning();
         }
 
         public void DeActiveBrain()
         {
             behaviorTree.DisableBehavior();
-            // enemyScanner.StopScanning();
+            enemyScanner.StopScanning();
             enemyBuildingScanner.StopScanning();
         }
 
         public CharacterBase[] GetEnemiesAround()
         {
-            return new CharacterBase[0];
-            
             return enemyScanner.ObjectAround.ToArray();
         }
 
