@@ -6,17 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyNecrosmith/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Config/Building/EnemyFortressConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Config/Building/EnemyFortressConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BOT/Resources/BehaviourGraph/EnemyBrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BOT/Resources/BehaviourGraph/EnemyBrain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Building/EnemyFortress.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Building/EnemyFortress.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/CharacterHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/CharacterHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/MinionData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/MinionData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Equipment/DropEquipmentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Equipment/DropEquipmentManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemDragHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemDragHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryItemHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryItemHolder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/MinionInventory/UI/UIMinionInventoryView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/UI/UIInventoryPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectile/DamageApplication/DamageDetectSphereSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectile/DamageApplication/DamageDetectSphereSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectile/ProjectileMovement/StrikeForwardMovementSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectile/ProjectileMovement/StrikeForwardMovementSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/Action/BOTMoveFollowTarget.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/Action/BOTMoveFollowTarget.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/Condition/BOTHasEnemyAround.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/Condition/BOTHasEnemyAround.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/Condition/BOTHasEnemyInAttackRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/Condition/BOTHasEnemyInAttackRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/CustomSharedVariable/CustomBOTVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/CustomSharedVariable/CustomBOTVariable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/CharacterBrain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/CharacterBrain.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInventory.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawner/CharacterSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawner/MinionSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawner/CharacterSpawner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawner/MinionSpawner.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawner/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawner/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utility/Scanner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utility/Scanner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +35,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eed7427f31054735b37e5687df728aa51d400/74/fa9e1908/SharedVariable`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/CharacterData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/MinionCharacter.cs" root0="FORCE_HIGHLIGHTING" />
@@ -46,6 +52,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawner/ObjectSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TempScripts/MouseClickMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/AddressableUtility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/ObjectLayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/SingletonForScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utility/UI/UIDragHandle.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -67,7 +74,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.39003646&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/Inventory-Reward-V2&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/Prototype-gameplay-flow&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -113,10 +120,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3776">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="3776" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -249,6 +256,9 @@
       <workItem from="1742920836033" duration="1250000" />
       <workItem from="1743078978789" duration="1987000" />
       <workItem from="1743088851960" duration="2194000" />
+      <workItem from="1743176736064" duration="1421000" />
+      <workItem from="1743219587641" duration="3851000" />
+      <workItem from="1743237328291" duration="3123000" />
     </task>
     <servers />
   </component>
@@ -264,25 +274,6 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/AI/Action/BOTMoveCombat.cs</url>
-          <line>22</line>
-          <properties documentPath="D:\Projects\MyNecrosmith\Assets\Scripts\AI\Action\BOTMoveCombat.cs" containingFunctionPresentation="Method 'OnStart'">
-            <startOffsets>
-              <option value="618" />
-            </startOffsets>
-            <endOffsets>
-              <option value="684" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

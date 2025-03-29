@@ -1,4 +1,6 @@
 using BehaviorDesigner.Runtime;
+using BOT;
+using Building;
 using GameUtility;
 using UnityEngine;
 
@@ -12,18 +14,29 @@ namespace Character
         private BehaviorTree behaviorTree;
         private CharacterBase localCharacter;
         private Scanner<CharacterBase> enemyScanner;
+        private Scanner<BuildingBase> enemyBuildingScanner;
+        
+        [SerializeField] private bool isDebug;
         
         public void Init(CharacterBase character, string brainPath)
         {
             localCharacter = character;
             
-            enemyScanner = new Scanner<CharacterBase>(
+            // enemyScanner = new Scanner<CharacterBase>(
+            //     100,
+            //     () => localCharacter.transform.position,
+            //     localCharacter.Data.ViewRadius,
+            //     2,
+            //     GetEnemyLayer(localCharacter.gameObject.layer)
+            // );
+
+            enemyBuildingScanner = new Scanner<BuildingBase>(
                 100,
                 () => localCharacter.transform.position,
                 localCharacter.Data.ViewRadius,
                 2,
-                GetEnemyLayer(localCharacter.gameObject.layer)
-            );
+                GetTargetBuildingLayer(localCharacter.gameObject.layer)
+                );
             
             if (behaviorTree != null)
             {
@@ -41,38 +54,64 @@ namespace Character
         public void ActiveBrain()
         {
             behaviorTree.EnableBehavior();
-            enemyScanner.StartScanning();
+            //enemyScanner.StartScanning();
+            enemyBuildingScanner.StartScanning();
         }
 
         public void DeActiveBrain()
         {
             behaviorTree.DisableBehavior();
-            enemyScanner.StopScanning();
+            // enemyScanner.StopScanning();
+            enemyBuildingScanner.StopScanning();
         }
 
         public CharacterBase[] GetEnemiesAround()
         {
+            return new CharacterBase[0];
+            
             return enemyScanner.ObjectAround.ToArray();
+        }
+
+        public BuildingBase[] GetTargetBuildingAround()
+        {
+            return enemyBuildingScanner.ObjectAround.ToArray();
         }
 
         private LayerMask GetEnemyLayer(LayerMask myLayer)
         {
-            var enemyLayer = LayerMask.NameToLayer("Enemy");
-            var minionLayer = LayerMask.NameToLayer("Minion");
-
-            if (enemyLayer == -1 || minionLayer == -1)
+            if (ObjectLayer.EnemyLayerIndex == -1 || ObjectLayer.MinionLayerIndex == -1)
             {
                 Debug.LogError("Layer 'Enemy' or 'Minion' does not exist. Please add them in Tags and Layers.");
                 return myLayer;
             }
 
-            if (myLayer == enemyLayer)
+            if (myLayer == ObjectLayer.EnemyLayerIndex)
             {
-                return minionLayer;
+                return ObjectLayer.MinionLayerIndex;
             }
-            else if (myLayer == minionLayer)
+            else if (myLayer == ObjectLayer.MinionLayerIndex)
             {
-                return enemyLayer;
+                return ObjectLayer.EnemyLayerIndex;
+            }
+
+            return myLayer;
+        }
+
+        private LayerMask GetTargetBuildingLayer(LayerMask myLayer)
+        {
+            if (ObjectLayer.EnemyBuildingLayerIndex == -1 || ObjectLayer.MinionBuildingLayerIndex == -1)
+            {
+                Debug.LogError("Layer 'EnemyBuilding' or 'MinionBuilding' does not exist. Please add them in Tags and Layers.");
+                return myLayer;
+            }
+            
+            if (myLayer == ObjectLayer.EnemyLayerIndex)
+            {
+                return ObjectLayer.MinionBuildingLayerIndex;
+            }
+            else if (myLayer == ObjectLayer.MinionLayerIndex)
+            {
+                return ObjectLayer.EnemyBuildingLayerIndex;
             }
 
             return myLayer;

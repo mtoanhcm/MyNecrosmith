@@ -5,7 +5,7 @@ using Character;
 
 namespace Spawner
 {
-    public class CharacterSpawner : MonoBehaviour
+    public class MinionSpawner : MonoBehaviour
     {
         private void Start()
         {

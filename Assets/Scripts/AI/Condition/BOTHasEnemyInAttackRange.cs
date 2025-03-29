@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using GameUtility;
 using UnityEngine;
@@ -6,17 +7,22 @@ namespace BOT
 {
     
     [TaskCategory("BOT_V1")]
-    [TaskDescription("Check enemy in attack range")]
+    [TaskDescription("Check target in attack range")]
     public class BOTHasEnemyInAttackRange : Conditional
     {
         [SerializeField] private SharedCharacterBase character;
         
         [Header("---------- Input -----------")]
-        [SerializeField] private SharedCharacterBase enemy;
+        [SerializeField] private SharedTransform target;
 
         public override TaskStatus OnUpdate()
         {
-            return character.Value.transform.IsWithinRadius(enemy.Value.transform, character.Value.Data.AttackRange)
+            if (target.Value == null)
+            {
+                return TaskStatus.Failure;
+            }
+            
+            return character.Value.transform.IsWithinRadius(target.Value, character.Value.Data.AttackRange)
                 ? TaskStatus.Success
                 : TaskStatus.Failure;
         }

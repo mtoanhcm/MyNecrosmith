@@ -41,7 +41,7 @@ namespace GameUtility
             this.radius = radius;
             this.isDebug = isDebug;
             
-            StartScanning().Forget();
+            //StartScanning().Forget();
         }
 
         public async UniTaskVoid StartScanning()

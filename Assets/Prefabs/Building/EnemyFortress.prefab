@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyFortress
       objectReference: {fileID: 0}
+    - target: {fileID: 4977031499600294157, guid: 383e46dd4f4084d3e818c1c24b3c1c94, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
