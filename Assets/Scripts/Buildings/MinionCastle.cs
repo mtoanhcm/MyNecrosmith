@@ -16,7 +16,7 @@ namespace Building
         public override void Spawn(Vector3 pos, BuildingData initData)
         {
             base.Spawn(pos, initData);
-            activationCooldownTime = 3f;
+            activationCooldownTime = 5f;
         }
 
         // Update is called once per frame

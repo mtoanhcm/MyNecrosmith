@@ -8,7 +8,7 @@ namespace BOT
     
     [TaskCategory("BOT_V1")]
     [TaskDescription("Check target in attack range")]
-    public class BOTHasEnemyInAttackRange : Conditional
+    public class BOTHasTargetInAttackRange : Conditional
     {
         [SerializeField] private SharedCharacterBase character;
         

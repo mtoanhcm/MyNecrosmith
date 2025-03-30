@@ -5106,7 +5106,7 @@ MonoBehaviour:
   rotationX: 45
   rotationY: 45
   followSpeed: 7
-  moveSpeed: 40
+  moveSpeed: 70
   zoomSpeed: 1
   minZoom: 10
   maxZoom: 50

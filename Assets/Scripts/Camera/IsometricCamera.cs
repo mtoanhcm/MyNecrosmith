@@ -42,6 +42,10 @@ namespace CameraControl
             // Bind zoom action
             cameraControls.CameraControl.Zoom.performed += ctx => zoomInput = ctx.ReadValue<float>();
 
+            // Bind zoom speed
+            cameraControls.CameraControl.QuickMove.performed += ctx => moveSpeed *= 2;
+            cameraControls.CameraControl.QuickMove.canceled += ctx => moveSpeed /= 2;
+
             // Bind space bar to toggle following behavior
             cameraControls.CameraControl.ToggleFollow.performed += ctx =>
             {
@@ -84,14 +88,14 @@ namespace CameraControl
                 camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minZoom, maxZoom);
 
                 // If not following, calculate zoom adjustment towards mouse position
-                if (!isFollowing)
-                {
-                    zoomAdjustment = CalculateZoomAdjustment(oldSize, camera.orthographicSize);
-                }
-                else
-                {
-                    zoomAdjustment = Vector3.zero;
-                }
+                // if (!isFollowing)
+                // {
+                //     zoomAdjustment = CalculateZoomAdjustment(oldSize, camera.orthographicSize);
+                // }
+                // else
+                // {
+                //     zoomAdjustment = Vector3.zero;
+                // }
 
                 zoomInput = 0f; // Reset zoomInput to avoid continuous zooming
             }

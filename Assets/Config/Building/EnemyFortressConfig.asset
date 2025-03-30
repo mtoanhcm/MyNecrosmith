@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   ArmorType: 3
-  HP: 500
+  HP: 100
   EnemySpawnConfig: {fileID: 11400000, guid: 70bec8ad60603a540839e1c80f126a14, type: 2}
-  CooldownSpawnTime: 7
+  CooldownSpawnTime: 15
