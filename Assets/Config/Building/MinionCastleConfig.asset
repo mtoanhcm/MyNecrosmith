@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 614ad2fd131ac4e848052cedc798f3eb, type: 3}
-  m_Name: EnemyFortressConfig
+  m_Script: {fileID: 11500000, guid: bf13dc2cc3a5aab458340d9dc1b7cc0c, type: 3}
+  m_Name: MinionCastleConfig
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 2
   ArmorType: 3
   HP: 100
-  EnemySpawnConfig: {fileID: 11400000, guid: 70bec8ad60603a540839e1c80f126a14, type: 2}
-  CooldownSpawnTime: 15

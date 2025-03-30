@@ -92,8 +92,8 @@ namespace GameUtility {
             return Vector3.zero; // Return zero if no valid point is found
         }
         
-        public static List<Vector3> GetEquipmentPositionAroundCharacter(this Vector3 characterPosition, int totalEqupiment, 
-            float initialRadius = 2f, float radiusIncrement = 2f, float minAngle = 40)
+        public static List<Vector3> GetEquipmentPositionAroundCharacter(this Transform characterTrans, int totalEqupiment, 
+            float initialRadius = 1f, float radiusIncrement = 1f, float minAngle = 40)
         {
             var positions = new List<Vector3>();
             var currentRadius = initialRadius;
@@ -115,7 +115,7 @@ namespace GameUtility {
                         Mathf.Sin(angle * Mathf.Deg2Rad) * currentRadius
                     );
 
-                    positions.Add(characterPosition + position);
+                    positions.Add(characterTrans.position + position);
                     currentIndex++;
                 }
 

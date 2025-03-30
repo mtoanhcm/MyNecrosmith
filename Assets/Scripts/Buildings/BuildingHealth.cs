@@ -8,6 +8,8 @@ namespace Building
     {
         private BuildingData data;
         private UnityAction onDestroy;
+
+        public bool IsAlive => data.CurrentHP > 0;
         
         public void Init(BuildingData data, UnityAction destroyHandler)
         {

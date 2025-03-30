@@ -107,10 +107,9 @@ namespace Observer {
             public ProjectileBase Projectile;
         }
 
-        public class OnLoadEquipmentPrefabSuccess
+        public class OnPlayerInventoryChanged
         {
-            public string EquipmentTypeID;
-            public EquipmentBase EquipmentPrefab;
+            public bool HasChange;
         }
 
         /// <summary>

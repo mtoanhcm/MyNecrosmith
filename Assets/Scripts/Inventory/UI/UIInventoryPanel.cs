@@ -23,6 +23,16 @@ namespace Inventory.UI
             closeBtn.onClick.AddListener(CloseInventory);
         }
 
+        private void OnEnable()
+        {
+            EventManager.Instance.StartListening<EventData.OnPlayerInventoryChanged>(OnPlayerInventoryChanged);
+        }
+
+        private void OnDisable()
+        {
+            EventManager.Instance.StopListening<EventData.OnPlayerInventoryChanged>(OnPlayerInventoryChanged);
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -59,6 +69,16 @@ namespace Inventory.UI
             gameObject.SetActive(false);
         }
 
+        private void OnPlayerInventoryChanged(EventData.OnPlayerInventoryChanged data)
+        {
+            if (!data.HasChange)
+            {
+                return;
+            }
+            
+            playerInventoryView.OpenPlayerInventory(PlayerManager.Instance.Inventory);
+        }
+        
         private void OnSpawnMinion(MinionConfig config)
         {
             if (!minionInventoryView.TryToGetInventoryItemsForSpawnMinion(out var equipmentData))

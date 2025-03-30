@@ -53,6 +53,15 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuickMove"",
+                    ""type"": ""Button"",
+                    ""id"": ""320af345-1b42-4d49-add9-8ddc3ec1268d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleFollow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1c776cc-bcd2-4bb8-9a78-9f9a6f555def"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Hold(duration=0.2,pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         m_CameraControl_Move = m_CameraControl.FindAction("Move", throwIfNotFound: true);
         m_CameraControl_Zoom = m_CameraControl.FindAction("Zoom", throwIfNotFound: true);
         m_CameraControl_ToggleFollow = m_CameraControl.FindAction("ToggleFollow", throwIfNotFound: true);
+        m_CameraControl_QuickMove = m_CameraControl.FindAction("QuickMove", throwIfNotFound: true);
     }
 
     ~@Controller()
@@ -212,6 +233,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
     private readonly InputAction m_CameraControl_Move;
     private readonly InputAction m_CameraControl_Zoom;
     private readonly InputAction m_CameraControl_ToggleFollow;
+    private readonly InputAction m_CameraControl_QuickMove;
     public struct CameraControlActions
     {
         private @Controller m_Wrapper;
@@ -219,6 +241,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_CameraControl_Move;
         public InputAction @Zoom => m_Wrapper.m_CameraControl_Zoom;
         public InputAction @ToggleFollow => m_Wrapper.m_CameraControl_ToggleFollow;
+        public InputAction @QuickMove => m_Wrapper.m_CameraControl_QuickMove;
         public InputActionMap Get() { return m_Wrapper.m_CameraControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -237,6 +260,9 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             @ToggleFollow.started += instance.OnToggleFollow;
             @ToggleFollow.performed += instance.OnToggleFollow;
             @ToggleFollow.canceled += instance.OnToggleFollow;
+            @QuickMove.started += instance.OnQuickMove;
+            @QuickMove.performed += instance.OnQuickMove;
+            @QuickMove.canceled += instance.OnQuickMove;
         }
 
         private void UnregisterCallbacks(ICameraControlActions instance)
@@ -250,6 +276,9 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             @ToggleFollow.started -= instance.OnToggleFollow;
             @ToggleFollow.performed -= instance.OnToggleFollow;
             @ToggleFollow.canceled -= instance.OnToggleFollow;
+            @QuickMove.started -= instance.OnQuickMove;
+            @QuickMove.performed -= instance.OnQuickMove;
+            @QuickMove.canceled -= instance.OnQuickMove;
         }
 
         public void RemoveCallbacks(ICameraControlActions instance)
@@ -272,5 +301,6 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnToggleFollow(InputAction.CallbackContext context);
+        void OnQuickMove(InputAction.CallbackContext context);
     }
 }

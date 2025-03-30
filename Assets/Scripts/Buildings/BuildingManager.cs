@@ -79,7 +79,7 @@ namespace Building
             var nearestBuilding = buildingSpawner.GetBuildings(0, amountBuildingActiveInFirstWave, mapCenter.position);
             for (var i = 0; i < amountBuildingActiveInFirstWave; i++)
             {
-                nearestBuilding[i].SetActiveBuildingByTime(true, delayTimeActiveTheFirstWave);
+                nearestBuilding[i].SetActiveBuilding(true, delayTimeActiveTheFirstWave);
             }
         }
 
