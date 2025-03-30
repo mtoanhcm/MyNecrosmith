@@ -5,6 +5,7 @@ using Minion.Inventory.UI;
 using Observer;
 using Player.Inventory.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Inventory.UI
@@ -17,28 +18,33 @@ namespace Inventory.UI
         [SerializeField] private Button spawnBtn;
         [SerializeField] private Button closeBtn;
 
+        private Controller controller;
+        
         private void Awake()
         {
             closeBtn.onClick.RemoveAllListeners();
             closeBtn.onClick.AddListener(CloseInventory);
+            
+            controller = new Controller();
         }
 
         private void OnEnable()
         {
             EventManager.Instance.StartListening<EventData.OnPlayerInventoryChanged>(OnPlayerInventoryChanged);
+            controller.Enable();
+            controller.InventoryControl.CloseInventory.performed += OnInputCloseInventory;
         }
 
         private void OnDisable()
         {
             EventManager.Instance.StopListening<EventData.OnPlayerInventoryChanged>(OnPlayerInventoryChanged);
+            controller.InventoryControl.CloseInventory.performed -= OnInputCloseInventory;
+            controller.Disable();
         }
 
-        private void Update()
+        private void OnInputCloseInventory(InputAction.CallbackContext ctx)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                CloseInventory();
-            }
+            CloseInventory();
         }
 
         public void ShowMinionInventory(Minion.Inventory.Inventory minionInventory)

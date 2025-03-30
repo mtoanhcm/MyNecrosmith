@@ -154,6 +154,54 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""InventoryControl"",
+            ""id"": ""bac166f1-25c1-4f03-b4a9-690fa33b10ab"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d2ea21c-bdf0-4669-a66b-1634afd736fa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd8405a9-5155-45b3-b872-5ccaa4e50fbd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""85af32ec-a079-4926-b847-4cf7cea06175"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64cba951-eded-4432-bf84-1700b58fb00f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -164,11 +212,16 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         m_CameraControl_Zoom = m_CameraControl.FindAction("Zoom", throwIfNotFound: true);
         m_CameraControl_ToggleFollow = m_CameraControl.FindAction("ToggleFollow", throwIfNotFound: true);
         m_CameraControl_QuickMove = m_CameraControl.FindAction("QuickMove", throwIfNotFound: true);
+        // InventoryControl
+        m_InventoryControl = asset.FindActionMap("InventoryControl", throwIfNotFound: true);
+        m_InventoryControl_OpenInventory = m_InventoryControl.FindAction("OpenInventory", throwIfNotFound: true);
+        m_InventoryControl_CloseInventory = m_InventoryControl.FindAction("CloseInventory", throwIfNotFound: true);
     }
 
     ~@Controller()
     {
         UnityEngine.Debug.Assert(!m_CameraControl.enabled, "This will cause a leak and performance issues, Controller.CameraControl.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_InventoryControl.enabled, "This will cause a leak and performance issues, Controller.InventoryControl.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -296,11 +349,70 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         }
     }
     public CameraControlActions @CameraControl => new CameraControlActions(this);
+
+    // InventoryControl
+    private readonly InputActionMap m_InventoryControl;
+    private List<IInventoryControlActions> m_InventoryControlActionsCallbackInterfaces = new List<IInventoryControlActions>();
+    private readonly InputAction m_InventoryControl_OpenInventory;
+    private readonly InputAction m_InventoryControl_CloseInventory;
+    public struct InventoryControlActions
+    {
+        private @Controller m_Wrapper;
+        public InventoryControlActions(@Controller wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenInventory => m_Wrapper.m_InventoryControl_OpenInventory;
+        public InputAction @CloseInventory => m_Wrapper.m_InventoryControl_CloseInventory;
+        public InputActionMap Get() { return m_Wrapper.m_InventoryControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InventoryControlActions set) { return set.Get(); }
+        public void AddCallbacks(IInventoryControlActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InventoryControlActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InventoryControlActionsCallbackInterfaces.Add(instance);
+            @OpenInventory.started += instance.OnOpenInventory;
+            @OpenInventory.performed += instance.OnOpenInventory;
+            @OpenInventory.canceled += instance.OnOpenInventory;
+            @CloseInventory.started += instance.OnCloseInventory;
+            @CloseInventory.performed += instance.OnCloseInventory;
+            @CloseInventory.canceled += instance.OnCloseInventory;
+        }
+
+        private void UnregisterCallbacks(IInventoryControlActions instance)
+        {
+            @OpenInventory.started -= instance.OnOpenInventory;
+            @OpenInventory.performed -= instance.OnOpenInventory;
+            @OpenInventory.canceled -= instance.OnOpenInventory;
+            @CloseInventory.started -= instance.OnCloseInventory;
+            @CloseInventory.performed -= instance.OnCloseInventory;
+            @CloseInventory.canceled -= instance.OnCloseInventory;
+        }
+
+        public void RemoveCallbacks(IInventoryControlActions instance)
+        {
+            if (m_Wrapper.m_InventoryControlActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInventoryControlActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InventoryControlActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InventoryControlActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InventoryControlActions @InventoryControl => new InventoryControlActions(this);
     public interface ICameraControlActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnToggleFollow(InputAction.CallbackContext context);
         void OnQuickMove(InputAction.CallbackContext context);
+    }
+    public interface IInventoryControlActions
+    {
+        void OnOpenInventory(InputAction.CallbackContext context);
+        void OnCloseInventory(InputAction.CallbackContext context);
     }
 }
