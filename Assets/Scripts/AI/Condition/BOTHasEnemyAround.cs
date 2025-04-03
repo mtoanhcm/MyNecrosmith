@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using GameUtility;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace BOT
         [Header("--------- Output ----------")]
         [SerializeField] private SharedCharacterBase enemy;
 
+        [SerializeField] private SharedTransform enemyTransform;
+
         public override TaskStatus OnUpdate()
         {
             return HasEnemyAround() ? TaskStatus.Success : TaskStatus.Failure;
@@ -24,10 +27,12 @@ namespace BOT
             if (enemyAround.Length == 0)
             {
                 enemy.Value = null;
+                enemyTransform.Value = null;
                 return false;
             }
 
             enemy.Value = enemyAround.FindNearest(character.Value.transform.position);
+            enemyTransform.Value = enemy.Value.transform;
             return true;
         }
     }   

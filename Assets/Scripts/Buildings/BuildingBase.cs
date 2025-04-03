@@ -17,6 +17,8 @@ namespace Building {
         public BuildingID ID => data.ID;
         public int AreaIndex => data.AreaIndex;
         public int Level => data.Level;
+        public BuildingHealth Health => buildingHealth;
+        public bool IsActive => isActive;
         
         public virtual void Spawn(Vector3 pos, BuildingData initData)
         {
@@ -26,7 +28,7 @@ namespace Building {
              InitHealth();
         }
 
-        public void SetActiveBuildingByTime(bool hasActive, int delayActiveTime)
+        public void SetActiveBuilding(bool hasActive, int delayActiveTime)
         {
             StopAllCoroutines();
             
@@ -36,6 +38,12 @@ namespace Building {
                 return;
             }
             
+            isActive = hasActive;
+        }
+
+        public void SetActiveBuilding(bool hasActive)
+        {
+            StopAllCoroutines();
             isActive = hasActive;
         }
 

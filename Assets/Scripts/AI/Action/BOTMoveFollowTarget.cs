@@ -11,7 +11,7 @@ namespace BOT
     public class BOTMoveFollowTarget : Action
     {
         [SerializeField] private SharedCharacterBase character;
-        [SerializeField] private SharedCharacterBase target;
+        [SerializeField] private SharedTransform target;
 
         private CharacterBrain brain;
         private TaskStatus status;
@@ -20,7 +20,7 @@ namespace BOT
         {
             status = TaskStatus.Running;
             
-            if (target.Value == null || !target.Value.CharacterHealth.IsAlive)
+            if (target.Value == null)
             {
                 status = TaskStatus.Failure;
                 return;
@@ -35,11 +35,6 @@ namespace BOT
 
         public override TaskStatus OnUpdate()
         {
-            if (status == TaskStatus.Running && !target.Value.CharacterHealth.IsAlive)
-            {
-                status = TaskStatus.Failure;
-            }
-            
             return status;
         }
 
@@ -60,7 +55,7 @@ namespace BOT
         private IEnumerator MoveFollowTarget()
         {
             var waitingUpdate = new WaitForSeconds(0.5f);
-            while (target.Value.CharacterHealth.IsAlive)
+            while (target.Value != null)
             {
                 brain.LocalCharacter.CharacterMovement.MoveToTarget(target.Value.transform.position);
                 yield return waitingUpdate;

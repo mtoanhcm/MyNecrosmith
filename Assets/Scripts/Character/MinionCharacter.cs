@@ -11,8 +11,16 @@ namespace Character
         public MinionData MinionData => Data as MinionData;
 
         [SerializeField] private EquipmentController equipmentController;
-        
-        public void InitEquipment(List<EquipmentData> equipmentData)
+        [SerializeField] private CharacterAutoActiveBuilding characterAutoActiveBuilding;
+
+        public override void Spawn(CharacterData data)
+        {
+            base.Spawn(data);
+            
+            characterAutoActiveBuilding.Init(this);
+        }
+
+        public void InitEquipment(EquipmentData[] equipmentData)
         {
             equipmentController.AddEquipment(equipmentData, this);
             MinionData?.SetAttackRange(GetFarthestAttackRangeFromEquipment(equipmentData));
@@ -36,7 +44,7 @@ namespace Character
             equipmentController.Attack(target);
         }
 
-        private float GetFarthestAttackRangeFromEquipment(List<EquipmentData> equipmentData)
+        private float GetFarthestAttackRangeFromEquipment(EquipmentData[] equipmentData)
         {
             float farthestRange = 0;
             foreach (var data in equipmentData)

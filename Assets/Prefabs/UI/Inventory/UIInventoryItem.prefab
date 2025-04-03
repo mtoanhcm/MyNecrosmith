@@ -52,10 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e3a6e5ef5f9d44cb09826cbf6b77d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentIcon: {fileID: 7586811922629550325}
-  isInInventory: 0
-  layoutGroup: {fileID: 3001738245941590946}
-  dragCellPrefab: {fileID: 285790450517351556, guid: aaa48bc2b38dbf54e8afb1c68a08d904, type: 3}
+  iconImg: {fileID: 7586811922629550325}
+  cellParent: {fileID: 3001738245941590946}
+  cellPrefab: {fileID: 1699430970649624388, guid: aaa48bc2b38dbf54e8afb1c68a08d904, type: 3}
 --- !u!222 &-5840665830272067380
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,15 +1,15 @@
 using System;
-using System.Collections.Generic;
+using Building;
 using Config;
 using Equipment;
 using GameUtility;
 using Observer;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class PlayerManager : MonoBehaviour
+    [RequireComponent(typeof(PlayerInventory))]
+    public class PlayerManager : SingletonForScene<PlayerManager>
     {
         [Serializable]
         public struct EquipmentInitData
@@ -19,20 +19,19 @@ namespace Gameplay
             public int Amount;
         }
 
+        public PlayerInventory Inventory => inventory;
+        
         [SerializeField] 
         private EquipmentInitData[] initEquipment;
+
+        [SerializeField] private BuildingBase minionCastle;
         
-        private GameRuntimeData runtimeData;
+        private PlayerInventory inventory;
         
         private void Awake()
         {
-            runtimeData = Resources.Load<GameRuntimeData>("GameRuntimeData");
-            #if UNITY_EDITOR
-            if (runtimeData != null)
-            {
-                runtimeData.Reset();
-            }
-            #endif
+            TryGetComponent(out inventory);
+            inventory.Init();
             
             EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
             EventManager.Instance.StartListening<EventData.OnRemoveEquipmentFromPlayerStorage>(OnRemoveEquipment);
@@ -41,36 +40,48 @@ namespace Gameplay
         private void Start()
         {
             InitStartupEquipment();
+            InitCastleBase();
         }
 
+        private async void InitCastleBase()
+        {
+            var config = await AddressableUtility.LoadAssetAsync<MinionBuildingConfig>("Config/Building/MinionCastleConfig.asset");
+            if (config == null)
+            {
+                Debug.LogError($"Cannot get minion castle config");
+                return;
+            }
+
+            minionCastle.Spawn(Vector3.zero, new BuildingData(config, 0, 1));
+            minionCastle.SetActiveBuilding(true);
+        }
+        
         private void OnObtainedEquipment(EventData.OnObtainedEquipment data)
         {
-            runtimeData.AddEquipmentToStorage(data.EquipmentData);
+            inventory.AddEquipmentToStorage(data.EquipmentData);
             SendEventEquipmentStorageChanged();
         }
 
         private void OnRemoveEquipment(EventData.OnRemoveEquipmentFromPlayerStorage data)
         {
-            runtimeData.RemoveEquipmentFromStorage(data.EquipmentID);
+            inventory.RemoveEquipment(data.EquipmentData);
             SendEventEquipmentStorageChanged();
         }
 
         private void SendEventEquipmentStorageChanged()
         {
-            EventManager.Instance.TriggerEvent(new EventData.OnEquipmentStorageChanged()
-            {
-                Equipment = runtimeData.EquipmentStorage
-            });
+            EventManager.Instance.TriggerEvent(new EventData.OnPlayerInventoryChanged { HasChange = true});
         }
 
-        private void InitStartupEquipment()
+        private async void InitStartupEquipment()
         {
             for (var i = 0; i < initEquipment.Length; i++)
             {
                 var equipment = initEquipment[i];
                 for (var j = 0; j < equipment.Amount; j++)
                 {
-                    var config = Resources.Load($"Equipment/{equipment.Category}/{equipment.EquipmentID}") as EquipmentConfig;
+                    var path = $"Config/Equipment/{equipment.Category}/{equipment.EquipmentID}.asset";
+                    var config = await AddressableUtility.LoadAssetAsync<EquipmentConfig>(path);
                     if (config == null)
                     {
                         Debug.LogError($"Could not load equipment {equipment.EquipmentID} from Resources");
@@ -89,7 +100,7 @@ namespace Gameplay
         {
             if (config.CategoryID.IsWeaponType())
             {
-                runtimeData.AddEquipmentToStorage(new WeaponData(config));
+                inventory.AddEquipmentToStorage(new WeaponData(config));
                 return true;
             }
 

@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Character;
-using Equipment;
-using Inventory;
+using Minion.Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -12,13 +8,14 @@ namespace Config
     {
         public EquipmentID EquipmentID;
         public EquipmentCategoryID CategoryID;
+        public Rarity Rarity;
         public string EquipmentName;
         public int LoadPoint;
         public Sprite Icon; // Sprite representing the weapon
         
-        [MinValue(1) ,MaxValue(InventoryConstants.MAX_EQUIPMENT_WIDTH)]
+        [MinValue(1) ,MaxValue(MinionInventoryParam.MAX_EQUIPMENT_WIDTH)]
         public int Width;
-        [MinValue(1) ,MaxValue(InventoryConstants.MAX_EQUIPMENT_HEIGHT)]
+        [MinValue(1) ,MaxValue(MinionInventoryParam.MAX_EQUIPMENT_HEIGHT)]
         public int Height;
     }
 }

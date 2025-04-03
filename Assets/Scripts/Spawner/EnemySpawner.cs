@@ -10,6 +10,17 @@ namespace Spawner{
         private EnemyConfig enemyNeedSpawnConfig;
         private bool isInit;
 
+        [Button]
+        private void TestSpawnEnemy(EnemyConfig config)
+        {
+            if (!isInit)
+            {
+                Init(config);
+            }
+            
+            SpawnEnemy();
+        }
+        
         public void Init(EnemyConfig config)
         {
             enemyNeedSpawnConfig = config;

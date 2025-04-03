@@ -13,11 +13,11 @@ TagManager:
   - UI
   - Minion
   - Enemy
-  - Building
+  - MinionBuilding
   - Terrain
   - Obstacle
   - Projectile
-  - 
+  - EnemyBuilding
   - 
   - 
   - 

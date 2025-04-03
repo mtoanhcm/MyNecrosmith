@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Observer;
-using Character;
 using Config;
-using Inventory;
-using UnityEngine.Serialization;
+using GameUtility;
+using Minion.Inventory;
 
 namespace UI
 {
@@ -16,23 +15,26 @@ namespace UI
         private void Start()
         {
             myBtn.onClick.RemoveAllListeners();
-            myBtn.onClick.AddListener(() =>
+            myBtn.onClick.AddListener(LoadCharacterAsync);
+        }
+
+        private async void LoadCharacterAsync()
+        {
+            var path = $"Config/Character/Minion/{characterID}.asset";
+            var config = await AddressableUtility.LoadAssetAsync<MinionConfig>(path);
+            if (config == null)
             {
-                var config = Resources.Load<MinionConfig>($"Character/Minion/{characterID}");
-                if (config == null)
-                {
-                    Debug.LogError($"Cannot find character {characterID} config");
-                    return;
-                }
+                Debug.LogError($"Cannot find character {characterID} config");
+                return;
+            }
                 
-                EventManager.Instance.TriggerEvent(new EventData.OpenCharacterInventory()
-                {
-                    InventoryData = new InventoryData(
-                        Mathf.Clamp(config.InventorySize.y ,InventoryConstants.MIN_ROW, InventoryConstants.MAX_ROW), 
-                        Mathf.Clamp(config.InventorySize.x, InventoryConstants.MIN_COLUMN, InventoryConstants.MAX_COLUMN),
-                        config.ID
-                        )
-                });
+            EventManager.Instance.TriggerEvent(new EventData.OpenMinionInventory()
+            {
+                InventoryData = new Minion.Inventory.Inventory(
+                    Mathf.Clamp(config.InventorySize.y ,MinionInventoryParam.MIN_ROW, MinionInventoryParam.MAX_ROW), 
+                    Mathf.Clamp(config.InventorySize.x, MinionInventoryParam.MIN_COLUMN, MinionInventoryParam.MAX_COLUMN),
+                    config
+                )
             });
         }
     }   
