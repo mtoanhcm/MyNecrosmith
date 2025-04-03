@@ -13,11 +13,7 @@ GameObject:
   - component: {fileID: 2731342605189510236}
   - component: {fileID: -7424091108572753500}
   m_Layer: 5
-<<<<<<<< HEAD:Assets/Prefabs/UI/Inventory/UIInventoryCell.prefab
-  m_Name: UIInventoryCell
-========
   m_Name: UIMinionInventoryCell
->>>>>>>> release/Prototype:Assets/Prefabs/UI/Inventory/UIMinionInventoryCell.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
