@@ -5851,11 +5851,11 @@ MonoBehaviour:
   initialSpawnDelay: 2
   spawnDelayBetweenAreas: 0.5
   activeBuildingDelay: 1
-  amountBuildingActiveInFirstWave: 5
+  amountBuildingActiveInFirstWave: 3
   delayTimeActiveTheFirstWave: 5
   buildingLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4352
   drawGizmos: 1
   verboseLogging: 0
   debugSphereRadius: 1

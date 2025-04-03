@@ -18,6 +18,7 @@ namespace Building {
         public int AreaIndex => data.AreaIndex;
         public int Level => data.Level;
         public BuildingHealth Health => buildingHealth;
+        public bool IsActive => isActive;
         
         public virtual void Spawn(Vector3 pos, BuildingData initData)
         {

@@ -11,7 +11,15 @@ namespace Character
         public MinionData MinionData => Data as MinionData;
 
         [SerializeField] private EquipmentController equipmentController;
-        
+        [SerializeField] private CharacterAutoActiveBuilding characterAutoActiveBuilding;
+
+        public override void Spawn(CharacterData data)
+        {
+            base.Spawn(data);
+            
+            characterAutoActiveBuilding.Init(this);
+        }
+
         public void InitEquipment(EquipmentData[] equipmentData)
         {
             equipmentController.AddEquipment(equipmentData, this);
