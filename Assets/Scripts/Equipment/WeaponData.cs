@@ -11,7 +11,7 @@ namespace Equipment
         public override string EffectType => $"Damage Type: {DamageType}";
         public override string EffectValue => $"Damage: {Damage.ToString(CultureInfo.InvariantCulture)}";
 
-        public EquipmentID EquipmentID => baseConfig.EquipmentID;
+        public EquipmentID ID => baseConfig.EquipmentID;
         public DamageType DamageType => weaponConfig.DamageType;
         public  ProjectileDataSO ProjectileSO => weaponConfig.ProjectileSO;
         public int Damage => weaponConfig.Damage;

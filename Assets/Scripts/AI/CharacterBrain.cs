@@ -1,10 +1,10 @@
 using BehaviorDesigner.Runtime;
-using BOT;
 using Building;
 using GameUtility;
 using UnityEngine;
+using Character;
 
-namespace Character
+namespace BOT
 {
     public class CharacterBrain : MonoBehaviour
     {
@@ -54,8 +54,8 @@ namespace Character
         public void ActiveBrain()
         {
             behaviorTree.EnableBehavior();
-            enemyScanner.StartScanning();
-            enemyBuildingScanner.StartScanning();
+            _ = enemyScanner.StartScanning();
+            _ = enemyBuildingScanner.StartScanning();
         }
 
         public void DeActiveBrain()

@@ -27,7 +27,6 @@ public class FPSShooterTut : MonoBehaviour
     void ShootProjectile()
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
         destination = ray.GetPoint(1000);
         InstantiateProjectile(firePoint);        
     }

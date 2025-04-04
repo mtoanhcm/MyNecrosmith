@@ -27,9 +27,11 @@ namespace Gameplay
         [SerializeField] private BuildingBase minionCastle;
         
         private PlayerInventory inventory;
-        
-        private void Awake()
+
+        protected override void Awake()
         {
+            base.Awake();
+            
             TryGetComponent(out inventory);
             inventory.Init();
             

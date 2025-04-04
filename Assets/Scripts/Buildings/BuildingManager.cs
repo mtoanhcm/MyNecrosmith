@@ -18,14 +18,12 @@ namespace Building
         [Header("Spawn Settings")]
         [SerializeField] private float initialSpawnDelay = 2f;
         [SerializeField] private float spawnDelayBetweenAreas = 1f;
-        [SerializeField] private float activeBuildingDelay = 1f;
         [SerializeField] private int amountBuildingActiveInFirstWave = 5;
         [SerializeField] private int delayTimeActiveTheFirstWave = 20;
         [SerializeField] private LayerMask buildingLayer;
         
         [Header("Debug")]
         [SerializeField] private bool drawGizmos = false;
-        [SerializeField] private bool verboseLogging = true;
         [SerializeField] private float debugSphereRadius = 1f;
         [SerializeField] private float navMeshSampleDistance = 5f;
 
