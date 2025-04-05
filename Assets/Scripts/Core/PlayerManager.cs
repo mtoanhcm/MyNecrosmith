@@ -47,6 +47,11 @@ namespace Gameplay
 
         private async void InitCastleBase()
         {
+            if (minionCastle == null)
+            {
+                return;
+            }
+            
             var config = await AddressableUtility.LoadAssetAsync<MinionBuildingConfig>("Config/Building/MinionCastleConfig.asset");
             if (config == null)
             {

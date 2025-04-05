@@ -26,11 +26,6 @@ namespace Character
             MinionData?.SetAttackRange(GetFarthestAttackRangeFromEquipment(equipmentData));
         }
 
-        protected override string GetBrainType()
-        {
-            return "BehaviourGraph/MinionBrain";
-        }
-
         protected override void OnCharacterDeath()
         {
             base.OnCharacterDeath();

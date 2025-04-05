@@ -7,27 +7,14 @@ using UnityEngine;
 namespace Spawner{
     public class EnemySpawner : MonoBehaviour
     {
-        private EnemyConfig enemyNeedSpawnConfig;
         private bool isInit;
-
-        [Button]
-        private void TestSpawnEnemy(EnemyConfig config)
-        {
-            if (!isInit)
-            {
-                Init(config);
-            }
-            
-            SpawnEnemy();
-        }
         
-        public void Init(EnemyConfig config)
+        public void Init()
         {
-            enemyNeedSpawnConfig = config;
             isInit = true;
         }
 
-        public void SpawnEnemy()
+        public void SpawnEnemy(EnemyConfig config)
         {
             if (!isInit)
             {
@@ -36,7 +23,7 @@ namespace Spawner{
 
             var data = new EventData.OnSpawnEnemy()
             {
-                EnemyID = enemyNeedSpawnConfig.ID.ToString(),
+                EnemyID = config.ID.ToString(),
                 OnSpawnSuccess = OnSpawnEnemy
             };
 
@@ -53,7 +40,7 @@ namespace Spawner{
                     return;
                 }
 
-                enemy.Spawn(new EnemyData(enemyNeedSpawnConfig));
+                enemy.Spawn(new EnemyData(config));
                 enemy.transform.position = transform.position;
             }
         }

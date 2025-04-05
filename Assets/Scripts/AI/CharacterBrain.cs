@@ -3,6 +3,7 @@ using Building;
 using GameUtility;
 using UnityEngine;
 using Character;
+using UnityEngine.SceneManagement;
 
 namespace BOT
 {
@@ -15,10 +16,11 @@ namespace BOT
         private CharacterBase localCharacter;
         private Scanner<CharacterBase> enemyScanner;
         private Scanner<BuildingBase> enemyBuildingScanner;
-        
+
+        [SerializeField] private BrainType brainType;
         [SerializeField] private bool isDebug;
         
-        public void Init(CharacterBase character, string brainPath)
+        public void Init(CharacterBase character)
         {
             localCharacter = character;
             
@@ -47,7 +49,7 @@ namespace BOT
             behaviorTree = gameObject.AddComponent<BehaviorTree>();
             behaviorTree.StartWhenEnabled = false;
             behaviorTree.RestartWhenComplete = true;
-            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>(brainPath);
+            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>($"BehaviourGraph/{GetBrainType()}");
             behaviorTree.SetVariableValue("MainCharacter", localCharacter);
         }
 
@@ -73,6 +75,16 @@ namespace BOT
         public BuildingBase[] GetTargetBuildingAround()
         {
             return enemyBuildingScanner.ObjectAround.ToArray();
+        }
+
+        private BrainType GetBrainType()
+        {
+            if (SceneManager.GetActiveScene().name.Contains("Training"))
+            {
+                return BrainType.TrainingBrain;
+            }
+
+            return brainType;
         }
 
         private LayerMask GetEnemyLayer(LayerMask myLayer)

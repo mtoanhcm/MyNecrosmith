@@ -20,11 +20,6 @@ namespace Character
             EventManager.Instance.TriggerEvent(new EventData.OnEnemyDeath(){ Enemy = this});
         }
 
-        protected override string GetBrainType()
-        {
-            return "BehaviourGraph/EnemyBrain";
-        }
-
         public override void Attack(Transform target)
         {
             if (cooldownTime > Time.time)

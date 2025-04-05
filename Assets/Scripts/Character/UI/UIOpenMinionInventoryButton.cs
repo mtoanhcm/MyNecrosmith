@@ -7,10 +7,17 @@ using Minion.Inventory;
 
 namespace UI
 {
-    public class UICharacterSelectButton : MonoBehaviour
+    [RequireComponent(typeof(Button))]
+    public class UIOpenMinionInventoryButton : MonoBehaviour
     {
         [SerializeField] private CharacterID characterID;
-        [SerializeField] private Button myBtn;
+        
+        private Button myBtn;
+
+        private void Awake()
+        {
+            TryGetComponent(out myBtn);
+        }
         
         private void Start()
         {
@@ -24,7 +31,7 @@ namespace UI
             var config = await AddressableUtility.LoadAssetAsync<MinionConfig>(path);
             if (config == null)
             {
-                Debug.LogError($"Cannot find character {characterID} config");
+                Debug.LogError($"Cannot find minion {characterID} config");
                 return;
             }
                 

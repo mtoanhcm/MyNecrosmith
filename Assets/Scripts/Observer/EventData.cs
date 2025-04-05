@@ -54,7 +54,7 @@ namespace Observer {
             public MinionConfig MinionConfig;
             public EquipmentData[] Equipment;
         }
-
+        
         /// <summary>
         /// Call event when the game want to spawn an enemy
         /// </summary>

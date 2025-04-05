@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccf19d1088d741c1b8857269b11cf1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localCharacter: {fileID: 0}
 --- !u!114 &4742108550382462562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea6e1d7377586b459f649123c1ef335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brainType: 2
+  isDebug: 0
 --- !u!114 &1346818024001189598
 MonoBehaviour:
   m_ObjectHideFlags: 0

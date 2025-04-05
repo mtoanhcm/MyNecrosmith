@@ -25,7 +25,7 @@ namespace Building
 
         protected override void PlayActivation()
         {
-            enemySpawner.SpawnEnemy();
+            enemySpawner.SpawnEnemy(enemyBuildingData.EnemySpawnConfig);
         }
 
         protected override void OnBuildingClaimed()
@@ -41,7 +41,7 @@ namespace Building
                 return;
             }
             
-            enemySpawner.Init(enemyBuildingData.EnemySpawnConfig);
+            enemySpawner.Init();
         }
     }
 }

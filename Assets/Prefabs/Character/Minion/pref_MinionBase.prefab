@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea6e1d7377586b459f649123c1ef335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brainType: 3
   isDebug: 0
 --- !u!136 &5973000464814954614
 CapsuleCollider:

@@ -8,7 +8,6 @@ namespace Character
     {
         public bool IsAlive => localCharacter != null && localCharacter.Data.CurrentHP > 0;
 
-        [SerializeField]
         private CharacterBase localCharacter;
         private UnityAction onDeath;
 
@@ -22,7 +21,8 @@ namespace Character
         {
             if (localCharacter == null)
             {
-                Debug.Log($"Null local character {gameObject.name}");
+                Debug.LogError($"Null local character {gameObject.name}");
+                return;
             }
 
             localCharacter.Data.TakeDamage(damage, Die);
@@ -30,6 +30,12 @@ namespace Character
 
         public void RestoreHealth(int health)
         {
+            if (localCharacter == null)
+            {
+                Debug.LogError($"Null local character {gameObject.name}");
+                return;
+            }
+            
             localCharacter.Data.RestoreHealth(health);
         }
 

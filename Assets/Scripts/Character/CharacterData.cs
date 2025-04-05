@@ -65,6 +65,12 @@ namespace Character
         public void TakeDamage(int damage, Action onDeathCallback)
         {
             CurrentHP -= damage;
+
+            if (Cheat.DeveloperMode.IsImmortal)
+            {
+                CurrentHP += damage;
+            }
+            
             CurrentHP = Mathf.Clamp(CurrentHP, 0, baseConfig.HP);
             if (CurrentHP <= 0)
             {
