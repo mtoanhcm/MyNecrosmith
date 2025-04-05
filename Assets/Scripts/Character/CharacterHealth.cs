@@ -1,3 +1,4 @@
+using CodeMonkey.Utils;
 using UnityEngine;
 using InterfaceComp;
 using UnityEngine.Events;
@@ -25,7 +26,11 @@ namespace Character
                 return;
             }
 
-            localCharacter.Data.TakeDamage(damage, Die);
+            UtilsClass.CreateWorldTextPopup(damage.ToString(), transform.position, 1f);
+            if (!Cheat.DeveloperMode.IsImmortal)
+            {
+                localCharacter.Data.TakeDamage(damage, Die);
+            }
         }
 
         public void RestoreHealth(int health)
