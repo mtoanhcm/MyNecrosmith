@@ -10,14 +10,14 @@ namespace Projectile
         
         private ProjectileData data;
 
-        public void Initialize(AttackData attackData)
+        public void Initialize(HitData hitData)
         {
-            data = new ProjectileData(attackData);
+            data = new ProjectileData(hitData);
             
-            var rotation = Quaternion.LookRotation(attackData.Direction, Vector3.up);
+            var rotation = Quaternion.LookRotation(hitData.Direction, Vector3.up);
             rotation *= Quaternion.Euler(90f, 0f, 0f);
             
-            transform.SetPositionAndRotation(attackData.SpawnPos, rotation);
+            transform.SetPositionAndRotation(hitData.SpawnPos, rotation);
             data.Fire(this);
         }
 

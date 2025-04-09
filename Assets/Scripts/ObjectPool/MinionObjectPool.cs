@@ -23,8 +23,11 @@ namespace Spawner
 
         private void OnDestroy()
         {
-            EventManager.Instance?.StopListening<EventData.OnSpawnMinion>(OnSpawnMinion);
-            EventManager.Instance?.StopListening<EventData.OnMinionDeath>(OnMinionDeath);
+            if (EventManager.HasInstance)
+            {
+                EventManager.Instance.StopListening<EventData.OnSpawnMinion>(OnSpawnMinion);
+                EventManager.Instance.StopListening<EventData.OnMinionDeath>(OnMinionDeath);
+            }
             
             pool.Dispose();
         }

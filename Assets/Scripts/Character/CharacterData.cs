@@ -1,6 +1,7 @@
 using Config;
 using UnityEngine;
 using System;
+using Combat;
 
 namespace Character
 {
@@ -65,6 +66,7 @@ namespace Character
         public void TakeDamage(int damage, Action onDeathCallback)
         {
             CurrentHP -= damage;
+            
             CurrentHP = Mathf.Clamp(CurrentHP, 0, baseConfig.HP);
             if (CurrentHP <= 0)
             {
@@ -72,9 +74,9 @@ namespace Character
             }
         }
 
-        public void RestoreHealth(int health)
+        public void RestoreHealth(HitData healData)
         {
-            CurrentHP += health;
+            CurrentHP += healData.Amount;
             CurrentHP = Mathf.Clamp(CurrentHP, 0, baseConfig.HP);
         }
     }   

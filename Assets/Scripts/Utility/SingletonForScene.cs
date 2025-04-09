@@ -33,7 +33,7 @@ namespace GameUtility
                     if (instance == null)
                     {
                         // Find all instances in the scene
-                        T[] instances = FindObjectsOfType<T>();
+                        T[] instances = FindObjectsByType<T>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
                         // If there's more than one instance
                         if (instances.Length > 1)

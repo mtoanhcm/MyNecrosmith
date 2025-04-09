@@ -19,7 +19,7 @@ namespace CameraControl
         [SerializeField]private float maxZoom; // Maximum zoom distance
         [SerializeField]private float fov; // Field of view for the camera
 
-        private Camera camera;
+        private Camera myCamera;
         private Vector2 moveInput;
         private float zoomInput;
         private bool isFollowing;
@@ -32,7 +32,7 @@ namespace CameraControl
 
         private void Awake()
         {
-            camera = GetComponent<Camera>();
+            myCamera = GetComponent<Camera>();
             cameraControls = new Controller();
 
             // Bind the move action
@@ -69,7 +69,7 @@ namespace CameraControl
         private void Start()
         {
             // Set the camera's field of view
-            camera.fieldOfView = fov;
+            myCamera.fieldOfView = fov;
 
             // Initialize the camera's rotation
             transform.rotation = Quaternion.Euler(rotationX, rotationY, 0f);
@@ -83,9 +83,9 @@ namespace CameraControl
             // Adjust orthographic size based on zoom input
             if (zoomInput != 0)
             {
-                float oldSize = camera.orthographicSize;
-                camera.orthographicSize -= zoomInput * zoomSpeed;
-                camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minZoom, maxZoom);
+                float oldSize = myCamera.orthographicSize;
+                myCamera.orthographicSize -= zoomInput * zoomSpeed;
+                myCamera.orthographicSize = Mathf.Clamp(myCamera.orthographicSize, minZoom, maxZoom);
 
                 // If not following, calculate zoom adjustment towards mouse position
                 // if (!isFollowing)
@@ -111,7 +111,7 @@ namespace CameraControl
             Vector2 mousePosition = Mouse.current.position.ReadValue();
 
             // Convert mouse position to a ray
-            Ray mouseRay = camera.ScreenPointToRay(mousePosition);
+            Ray mouseRay = myCamera.ScreenPointToRay(mousePosition);
 
             // Plane at y = 0 (assuming your ground plane is at y = 0)
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);

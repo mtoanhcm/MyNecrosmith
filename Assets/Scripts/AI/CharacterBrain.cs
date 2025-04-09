@@ -1,10 +1,11 @@
 using BehaviorDesigner.Runtime;
-using BOT;
 using Building;
 using GameUtility;
 using UnityEngine;
+using Character;
+using UnityEngine.SceneManagement;
 
-namespace Character
+namespace BOT
 {
     public class CharacterBrain : MonoBehaviour
     {
@@ -15,10 +16,11 @@ namespace Character
         private CharacterBase localCharacter;
         private Scanner<CharacterBase> enemyScanner;
         private Scanner<BuildingBase> enemyBuildingScanner;
-        
+
+        [SerializeField] private BrainType brainType;
         [SerializeField] private bool isDebug;
         
-        public void Init(CharacterBase character, string brainPath)
+        public void Init(CharacterBase character)
         {
             localCharacter = character;
             
@@ -47,15 +49,15 @@ namespace Character
             behaviorTree = gameObject.AddComponent<BehaviorTree>();
             behaviorTree.StartWhenEnabled = false;
             behaviorTree.RestartWhenComplete = true;
-            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>(brainPath);
+            behaviorTree.ExternalBehavior = Resources.Load<ExternalBehaviorTree>($"BehaviourGraph/{GetBrainType()}");
             behaviorTree.SetVariableValue("MainCharacter", localCharacter);
         }
 
         public void ActiveBrain()
         {
             behaviorTree.EnableBehavior();
-            enemyScanner.StartScanning();
-            enemyBuildingScanner.StartScanning();
+            _ = enemyScanner.StartScanning();
+            _ = enemyBuildingScanner.StartScanning();
         }
 
         public void DeActiveBrain()
@@ -73,6 +75,16 @@ namespace Character
         public BuildingBase[] GetTargetBuildingAround()
         {
             return enemyBuildingScanner.ObjectAround.ToArray();
+        }
+
+        private BrainType GetBrainType()
+        {
+            if (SceneManager.GetActiveScene().name.Contains("Training"))
+            {
+                return BrainType.TrainingBrain;
+            }
+
+            return brainType;
         }
 
         private LayerMask GetEnemyLayer(LayerMask myLayer)

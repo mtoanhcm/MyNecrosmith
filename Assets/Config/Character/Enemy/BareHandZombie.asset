@@ -21,5 +21,5 @@ MonoBehaviour:
   AttackRange: 10
   Cooldown: 1.5
   DamageType: 0
-  ArmorType: 0
+  ArmorType: 1
   ProjectileSO: {fileID: 11400000, guid: 029e637dbc82fc6418cfee06400a4254, type: 2}

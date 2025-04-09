@@ -8,19 +8,20 @@ namespace Projectile
     {
         public ProjectileID ID => Config.ProjectileID;
         public ProjectileDataSO Config { get; private set; }
-        public int Damage => attackData.Damage;
-        public float MoveSpeed => attackData.AttackSpeed;
-        public float AttackRange => attackData.AttackRange;
-        public Vector3 SpawnPosition => attackData.SpawnPos;
-        public Vector3 Direction => attackData.Direction;
-        public GameObject Attacker => attackData.Attacker;
+        public HitData HitData => hitData;
+        public int Damage => hitData.Amount;
+        public float MoveSpeed => hitData.AttackSpeed;
+        public float AttackRange => hitData.AttackRange;
+        public Vector3 SpawnPosition => hitData.SpawnPos;
+        public Vector3 Direction => hitData.Direction;
+        public GameObject Attacker => hitData.Attacker;
 
-        private readonly AttackData attackData;
+        private readonly HitData hitData;
 
-        public ProjectileData(AttackData data)
+        public ProjectileData(HitData data)
         {
             Config = data.ProjectileConfig;
-            attackData = data;
+            hitData = data;
         }
 
         public void Fire(ProjectileBase projectile)

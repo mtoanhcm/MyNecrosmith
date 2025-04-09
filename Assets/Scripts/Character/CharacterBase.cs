@@ -1,4 +1,5 @@
 using UnityEngine;
+using BOT;
 
 namespace Character
 {
@@ -36,7 +37,7 @@ namespace Character
                 CharacterBrain = gameObject.GetComponent<CharacterBrain>();
             }
             
-            CharacterBrain.Init(this, GetBrainType());
+            CharacterBrain.Init(this);
         }
 
         protected virtual void SetupHealth()
@@ -77,8 +78,6 @@ namespace Character
             
             CharacterMovement.OnStartMoveToTarget -= CharacterAnimationController.PlayMoveAnimation;
         }
-        
-        protected abstract string GetBrainType();
         
     }   
 }
