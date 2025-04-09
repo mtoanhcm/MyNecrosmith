@@ -27,10 +27,11 @@ namespace Character
                 return;
             }
             
-            var attackData = new AttackData()
+            var attackData = new HitData()
             {
                 Attacker = gameObject,
-                Damage = EnemyData.Damage,
+                Amount = EnemyData.Damage,
+                DamageType = EnemyData.DamageType,
                 AttackSpeed = EnemyData.AttackSpeed,
                 AttackRange = EnemyData.AttackRange,
                 Target = target != null ? target.gameObject : null,

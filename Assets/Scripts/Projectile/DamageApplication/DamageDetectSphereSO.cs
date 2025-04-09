@@ -21,7 +21,7 @@ namespace Projectile.DamageApply
         
             if (hits[0].TryGetComponent<IHealth>(out var hitObj))
             {
-                hitObj.TakeDamage(projectile.Data.Damage);
+                hitObj.TakeDamage(projectile.Data.HitData);
             }
             
             return true;

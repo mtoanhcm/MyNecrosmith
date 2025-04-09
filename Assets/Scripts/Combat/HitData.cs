@@ -5,10 +5,11 @@ using UnityEngine.Events;
 
 namespace Combat
 {
-    public class AttackData
+    public class HitData
     {
         public ProjectileDataSO ProjectileConfig { get; set; }
-        public int Damage { get; set; }
+        public DamageType DamageType { get; set; }
+        public int Amount { get; set; }
         public GameObject Attacker { get; set; }
         public GameObject Target { get; set; }
         public Vector3 SpawnPos { get; set; }

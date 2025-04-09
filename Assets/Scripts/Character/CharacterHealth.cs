@@ -1,7 +1,8 @@
 using CodeMonkey.Utils;
+using Combat;
 using UnityEngine;
 using InterfaceComp;
-using UnityEngine.Events;
+using System;
 
 namespace Character
 {
@@ -10,30 +11,15 @@ namespace Character
         public bool IsAlive => localCharacter != null && localCharacter.Data.CurrentHP > 0;
 
         private CharacterBase localCharacter;
-        private UnityAction onDeath;
+        private Action onDeath;
 
-        public void Init(CharacterBase character, UnityAction deathHandler)
+        public void Init(CharacterBase character, Action deathHandler)
         {
             localCharacter = character;
             onDeath = deathHandler;
         }
         
-        public void TakeDamage(int damage)
-        {
-            if (localCharacter == null)
-            {
-                Debug.LogError($"Null local character {gameObject.name}");
-                return;
-            }
-
-            UtilsClass.CreateWorldTextPopup(damage.ToString(), transform.position, 1f);
-            if (!Cheat.DeveloperMode.IsImmortal)
-            {
-                localCharacter.Data.TakeDamage(damage, Die);
-            }
-        }
-
-        public void RestoreHealth(int health)
+        public void TakeDamage(HitData hitData)
         {
             if (localCharacter == null)
             {
@@ -41,12 +27,33 @@ namespace Character
                 return;
             }
             
-            localCharacter.Data.RestoreHealth(health);
+            var damage = ReCalculateDamageWithBonus(hitData);
+            
+            UtilsClass.CreateWorldTextPopup(damage.ToString(), transform.position, 1f);
+            if (!Cheat.DeveloperMode.IsImmortal)
+            {
+                localCharacter.Data.TakeDamage(damage, onDeath);
+            }
         }
 
-        private void Die()
+        public int ReCalculateDamageWithBonus(HitData hitData)
         {
-            onDeath?.Invoke();
+            var damageType = hitData.DamageType;
+            var armorType = localCharacter.Data.ArmorType;
+            var finalDamage = hitData.Amount + (hitData.Amount * DamageReduction.GetDamageBonus(damageType, armorType));
+
+            return Mathf.RoundToInt(finalDamage);
+        }
+
+        public void RestoreHealth(HitData healData)
+        {
+            if (localCharacter == null)
+            {
+                Debug.LogError($"Null local character {gameObject.name}");
+                return;
+            }
+            
+            localCharacter.Data.RestoreHealth(healData);
         }
     }
 }

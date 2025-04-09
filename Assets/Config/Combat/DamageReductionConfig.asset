@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a39c56778da6a4983ec9c4cabb18cc, type: 3}
+  m_Name: DamageReductionConfig
+  m_EditorClassIdentifier: 
+  damageEffectInfos:
+  - DamageType: 0
+    EffectArmors:
+    - ArmorType: 2
+      Addition: 0.05
+      Reduction: 0
+  - DamageType: 1
+    EffectArmors:
+    - ArmorType: 1
+      Addition: 0.05
+      Reduction: 0
+  - DamageType: 2
+    EffectArmors:
+    - ArmorType: 4
+      Addition: 0.05
+      Reduction: 0
+  - DamageType: 3
+    EffectArmors:
+    - ArmorType: 0
+      Addition: 0.03
+      Reduction: 0
+    - ArmorType: 1
+      Addition: 0.03
+      Reduction: 0
+    - ArmorType: 2
+      Addition: 0.03
+      Reduction: 0
+    - ArmorType: 4
+      Addition: 0.03
+      Reduction: 0
+  - DamageType: 4
+    EffectArmors:
+    - ArmorType: 3
+      Addition: 0.1
+      Reduction: 0
+    - ArmorType: 0
+      Addition: 0
+      Reduction: 0.05
+    - ArmorType: 1
+      Addition: 0
+      Reduction: 0.05
+    - ArmorType: 2
+      Addition: 0
+      Reduction: 0.05
+    - ArmorType: 4
+      Addition: 0
+      Reduction: 0.05

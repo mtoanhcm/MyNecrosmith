@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Character;
+using Combat;
 using Config;
 using Cysharp.Threading.Tasks;
 using Observer;
@@ -12,6 +13,8 @@ namespace Gameplay
     {
         private async void Start()
         {
+            DamageReduction.Init();
+            
             await UniTask.Delay(2 * 1000);
             
             StartGame();

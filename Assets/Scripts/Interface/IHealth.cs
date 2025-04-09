@@ -1,3 +1,4 @@
+using Combat;
 using UnityEngine;
 
 namespace InterfaceComp
@@ -7,7 +8,8 @@ namespace InterfaceComp
     /// </summary>
     public interface IHealth
     {
-        public void TakeDamage(int damage);
-        public void RestoreHealth(int health);
+        public void TakeDamage(HitData hitData);
+        public int ReCalculateDamageWithBonus(HitData hitData);
+        public void RestoreHealth(HitData healData);
     }
 }
