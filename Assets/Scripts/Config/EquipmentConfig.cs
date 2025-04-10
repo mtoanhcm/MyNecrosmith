@@ -1,3 +1,4 @@
+using Gameplay;
 using Minion.Inventory;
 using Sirenix.OdinInspector;
 using UnityEngine;

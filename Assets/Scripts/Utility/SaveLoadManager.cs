@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace SaveLoad
 {
@@ -24,20 +25,45 @@ namespace SaveLoad
         private static readonly string SaveDirectory = "SaveData";
 
         /// <summary>
-        /// Save content to file with encryption
+        /// Save object data to file with encryption
         /// </summary>
+        /// <typeparam name="T">Type of object to save. Must be marked with [Serializable] attribute and contain only serializable fields.</typeparam>
         /// <param name="fileType">File type from FileType enum</param>
-        /// <param name="content">Content to save</param>
+        /// <param name="data">Data object to save</param>
         /// <returns>True if saved successfully, False if failed</returns>
-        public static bool Save(FileType fileType, string content)
+        /// <remarks>
+        /// The type T must:
+        /// - Be marked with the [Serializable] attribute
+        /// - Contain only fields that NewtonJson can serialize
+        /// - Public fields will be serialized by default
+        /// - Private fields need [SerializeField] attribute to be included
+        /// - Dictionaries and certain complex types are not supported by NewtonJson
+        /// </remarks>
+        public static bool Save<T>(FileType fileType, T data)
         {
             try
             {
+                // Verify the type is serializable
+                if (!typeof(T).IsSerializable && typeof(T) != typeof(string))
+                {
+                    Debug.LogError($"Type {typeof(T).Name} is not marked as [Serializable]. Data cannot be saved.");
+                    return false;
+                }
+
+                // Convert data to JSON string
+                string jsonData = JsonConvert.SerializeObject(data);
+
+                // Check if serialization produced empty result for non-primitive type
+                if (jsonData == "{}" && !IsPrimitiveOrString(typeof(T)))
+                {
+                    Debug.LogWarning($"Serialization of {typeof(T).Name} resulted in empty JSON. Check if the type can be properly serialized by NewtonJson.");
+                }
+
                 // Create filename from enum
                 string fileName = fileType.ToString();
 
                 // Encrypt the content
-                string encryptedContent = EncryptData(content);
+                string encryptedContent = EncryptData(jsonData);
 
                 // Ensure directory exists
                 string directoryPath = Path.Combine(Application.persistentDataPath, SaveDirectory);
@@ -63,11 +89,105 @@ namespace SaveLoad
         }
 
         /// <summary>
-        /// Load content from file and decrypt it
+        /// Load and deserialize object from file
+        /// </summary>
+        /// <typeparam name="T">Type of object to load. Must be marked with [Serializable] attribute and have a parameterless constructor.</typeparam>
+        /// <param name="fileType">File type from FileType enum</param>
+        /// <returns>Loaded object or default if error</returns>
+        /// <remarks>
+        /// The type T must:
+        /// - Be marked with the [Serializable] attribute
+        /// - Have a parameterless constructor
+        /// - Contain only fields that NewtonJson can deserialize
+        /// </remarks>
+        public static T Load<T>(FileType fileType) where T : new()
+        {
+            try
+            {
+                // Verify the type is serializable
+                if (!typeof(T).IsSerializable && typeof(T) != typeof(string))
+                {
+                    Debug.LogError($"Type {typeof(T).Name} is not marked as [Serializable]. Data cannot be loaded properly.");
+                    return new T();
+                }
+
+                // Create filename from enum
+                string fileName = fileType.ToString();
+
+                // Create full path to the file
+                string filePath = Path.Combine(Application.persistentDataPath, SaveDirectory, fileName);
+
+                // Check if file exists
+                if (!File.Exists(filePath))
+                {
+                    Debug.LogWarning($"Save file {fileName} does not exist.");
+                    return new T();
+                }
+
+                // Read encrypted content from file
+                string encryptedContent = File.ReadAllText(filePath);
+
+                // Decrypt the content
+                string jsonData = DecryptData(encryptedContent);
+
+                // Deserialize JSON to object
+                T loadedData = JsonConvert.DeserializeObject<T>(jsonData);
+
+                Debug.Log($"Loaded data from {fileName} successfully.");
+                return loadedData;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error loading data: {ex.Message}");
+                return new T();
+            }
+        }
+
+        /// <summary>
+        /// Save raw string content to file with encryption
+        /// </summary>
+        /// <param name="fileType">File type from FileType enum</param>
+        /// <param name="content">String content to save</param>
+        /// <returns>True if saved successfully, False if failed</returns>
+        public static bool SaveRaw(FileType fileType, string content)
+        {
+            try
+            {
+                // Create filename from enum
+                string fileName = fileType.ToString();
+
+                // Encrypt the content
+                string encryptedContent = EncryptData(content);
+
+                // Ensure directory exists
+                string directoryPath = Path.Combine(Application.persistentDataPath, SaveDirectory);
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                // Create full path to the file
+                string filePath = Path.Combine(directoryPath, fileName);
+
+                // Write encrypted content to file
+                File.WriteAllText(filePath, encryptedContent);
+
+                Debug.Log($"Saved raw data to {fileName} successfully.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error saving raw data: {ex.Message}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Load raw string content from file
         /// </summary>
         /// <param name="fileType">File type from FileType enum</param>
         /// <returns>Decrypted content or null if error</returns>
-        public static string Load(FileType fileType)
+        public static string LoadRaw(FileType fileType)
         {
             try
             {
@@ -90,12 +210,12 @@ namespace SaveLoad
                 // Decrypt the content
                 string decryptedContent = DecryptData(encryptedContent);
 
-                Debug.Log($"Loaded data from {fileName} successfully.");
+                Debug.Log($"Loaded raw data from {fileName} successfully.");
                 return decryptedContent;
             }
             catch (Exception ex)
             {
-                Debug.LogError($"Error loading data: {ex.Message}");
+                Debug.LogError($"Error loading raw data: {ex.Message}");
                 return null;
             }
         }
@@ -134,6 +254,14 @@ namespace SaveLoad
                 Debug.LogError($"Error deleting save file: {ex.Message}");
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Checks if a type is a primitive or string
+        /// </summary>
+        private static bool IsPrimitiveOrString(Type type)
+        {
+            return type.IsPrimitive || type == typeof(string) || type == typeof(decimal);
         }
 
         /// <summary>
@@ -191,34 +319,6 @@ namespace SaveLoad
                     return Encoding.Unicode.GetString(ms.ToArray());
                 }
             }
-        }
-    }
-
-    // Example of using with JSON
-    public static class GameDataHandler
-    {
-        /// <summary>
-        /// Save game object as JSON
-        /// </summary>
-        public static bool SaveObject<T>(FileType fileType, T data)
-        {
-            string jsonData = JsonUtility.ToJson(data, true);
-            return SaveLoadManager.Save(fileType, jsonData);
-        }
-
-        /// <summary>
-        /// Load game object from JSON
-        /// </summary>
-        public static T LoadObject<T>(FileType fileType) where T : new()
-        {
-            string jsonData = SaveLoadManager.Load(fileType);
-
-            if (string.IsNullOrEmpty(jsonData))
-            {
-                return new T();
-            }
-
-            return JsonUtility.FromJson<T>(jsonData);
         }
     }
 }
