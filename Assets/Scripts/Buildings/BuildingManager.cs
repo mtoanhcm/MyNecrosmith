@@ -179,13 +179,13 @@ namespace Building
         /// <summary>
         /// Gets a random position within the area's range
         /// </summary>
-        private Vector3 GetRandomPositionInArea(AreaBuildingConfig areaConfig, int areaIndex)
+        private Vector3 GetRandomPositionInArea(BuildingSpawnConfig.AreaBuildingData areaDataConfig, int areaIndex)
         {
             // Get random direction
             Vector2 randomDirection = Random.insideUnitCircle.normalized;
             
             // Get random distance within range
-            float distance = Random.Range(areaConfig.SpawnRangeMin, areaConfig.SpawnRangeMax);
+            float distance = Random.Range(areaDataConfig.SpawnRangeMin, areaDataConfig.SpawnRangeMax);
             
             // Calculate position
             Vector3 randomPosition = mapCenter.position + new Vector3(randomDirection.x, 0, randomDirection.y) * distance;
@@ -248,15 +248,15 @@ namespace Building
         /// <summary>
         /// Gets a random enemy building config from available options
         /// </summary>
-        private EnemyBuildingConfig GetRandomEnemyBuildingConfig(AreaBuildingConfig areaConfig, int areaIndex)
+        private EnemyBuildingConfig GetRandomEnemyBuildingConfig(BuildingSpawnConfig.AreaBuildingData areaDataConfig, int areaIndex)
         {
-            if (areaConfig.EnemyBuildingConfigs == null || areaConfig.EnemyBuildingConfigs.Length == 0)
+            if (areaDataConfig.EnemyBuildingConfigs == null || areaDataConfig.EnemyBuildingConfigs.Length == 0)
             {
                 return null;
             }
             
-            int randomIndex = Random.Range(0, areaConfig.EnemyBuildingConfigs.Length);
-            var config = areaConfig.EnemyBuildingConfigs[randomIndex];
+            int randomIndex = Random.Range(0, areaDataConfig.EnemyBuildingConfigs.Length);
+            var config = areaDataConfig.EnemyBuildingConfigs[randomIndex];
             
             if (config == null)
             {

@@ -85,11 +85,8 @@ namespace MyCustomEditor
                     // Hiển thị index
                     EditorGUILayout.LabelField($"[{i}]", GUILayout.Width(30));
 
-                    // Hiển thị shortPath (đường dẫn ngắn gọn trong thư mục Scenes)
-                    string shortPath = scenePath.Replace(SCENES_FOLDER_PATH + "/", "");
-
                     // Hiển thị tên scene dưới dạng button
-                    if (GUILayout.Button(shortPath, sceneButtonStyle))
+                    if (GUILayout.Button(sceneName, sceneButtonStyle))
                     {
                         if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
                         {
@@ -148,6 +145,7 @@ namespace MyCustomEditor
                 sceneButtonStyle.alignment = TextAnchor.MiddleLeft;
                 sceneButtonStyle.fontStyle = FontStyle.Normal;
                 sceneButtonStyle.padding = new RectOffset(10, 10, 5, 5);
+                sceneButtonStyle.normal.textColor = Color.white;
             }
 
             if (headerStyle == null)
@@ -156,6 +154,7 @@ namespace MyCustomEditor
                 headerStyle.alignment = TextAnchor.MiddleCenter;
                 headerStyle.fontStyle = FontStyle.Bold;
                 headerStyle.fontSize = 16;
+                headerStyle.normal.textColor = Color.white;
             }
         }
     }
