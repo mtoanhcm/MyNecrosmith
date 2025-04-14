@@ -8,27 +8,43 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 namespace Building.Tools
 {
 
-    public class BuildingPositionData : MonoBehaviour
+    public class BuildingPositionDataBehaviour : MonoBehaviour
     {
-        public int AreaIndex;
-        public Vector3 Position;
-        public Rarity Rarity;
+        public BuildingPositionDataConfig.BuildingPositionData BuildingPositionData => buildingPositionData;
 
+        [SerializeField]
+        private BuildingPositionDataConfig.BuildingPositionData buildingPositionData;
         private Vector3 columnSize = new Vector3(1f, 10f, 1f);
-        private Vector3 position;
-        private void Awake()
+
+        public void SetBuildingPositionData(int areaIndex, Vector3 position, Rarity rarity)
         {
-            position = transform.position;
-            position.y += 5f;
+            buildingPositionData = new BuildingPositionDataConfig.BuildingPositionData() {
+                AreaIndex = areaIndex,
+                PosX = position.x,
+                PosY = position.y,
+                PosZ = position.z,
+                Rarity = rarity 
+            };
         }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
+            if(buildingPositionData != null)
+            {
+                buildingPositionData.PosX = transform.position.x;
+                buildingPositionData.PosY = transform.position.y;
+                buildingPositionData.PosZ = transform.position.z;
+            }
+            
+            var position = transform.position;
+            position.y += 5f;
+
             Gizmos.color = Color.blue;
             Gizmos.DrawCube(position, columnSize);
             Gizmos.DrawWireCube(position, columnSize);
@@ -54,23 +70,28 @@ namespace Building.Tools
         [SerializeField] private float navMeshSampleDistance = 5f;
 
         // Dictionary to track spawned buildings by area
-        private Dictionary<int, List<Transform>> spawnedBuildingPositions = new Dictionary<int, List<Transform>>();
+        private Dictionary<int, List<BuildingPositionDataBehaviour>> spawnedBuildingPositions = new Dictionary<int, List<BuildingPositionDataBehaviour>>();
         // Dictionary to track failed positions for debugging
         private Dictionary<int, List<(Vector3 position, string reason)>> failedPositions = new Dictionary<int, List<(Vector3, string)>>();
         // Track area spawn stats
         private Dictionary<int, (int attempted, int succeeded)> areaStats = new Dictionary<int, (int, int)>();
-        private List<BuildingPositionData> buildingPositionData = new List<BuildingPositionData>();
+        private List<BuildingPositionDataConfig.BuildingPositionData> spawnedBuildingDatas = new List<BuildingPositionDataConfig.BuildingPositionData>();
+        private void OnDestroy()
+        {
+            ClearAllPositionObject();
+        }
 
         [Button]
         public void GenerateNewBuildingPosition()
         {
+            ClearAllPositionObject();
             SpawnInitialBuildings();
         }
 
         [Button]
-        public void SaveBuildingPositions()
+        public void ExtractBuildingPositionsToConfig()
         {
-
+            buildingPositionDataConfig.SetBuildingPositionData(spawnedBuildingDatas);
         }
 
         [Button]
@@ -82,15 +103,26 @@ namespace Building.Tools
         [Button]
         public void ClearAllPositionObject()
         {
-            foreach(var item in spawnedBuildingPositions)
+            if(spawnedBuildingPositions.Count > 0)
             {
-                for(var i =0; i < item.Value.Count; i++)
+                foreach (var item in spawnedBuildingPositions)
                 {
-                    DestroyImmediate(item.Value[i].gameObject);
+                    for (var i = 0; i < item.Value.Count; i++)
+                    {
+                        DestroyImmediate(item.Value[i].gameObject);
+                    }
+                }
+            } else
+            {
+                var childObject = transform.GetComponentsInParent<BuildingPositionDataBehaviour>();
+                for(var i = 0; i < childObject.Length; i++)
+                {
+                    DestroyImmediate(childObject[i].gameObject);
                 }
             }
 
             spawnedBuildingPositions.Clear();
+            spawnedBuildingDatas.Clear();
             failedPositions.Clear();
             areaStats.Clear();
         }
@@ -127,7 +159,7 @@ namespace Building.Tools
             // Initialize positions tracker for this area if needed
             if (!spawnedBuildingPositions.ContainsKey(areaIndex))
             {
-                spawnedBuildingPositions[areaIndex] = new List<Transform>();
+                spawnedBuildingPositions[areaIndex] = new List<BuildingPositionDataBehaviour>();
             }
 
             // Initialize failed positions tracker
@@ -164,13 +196,11 @@ namespace Building.Tools
                         tempObj.transform.position = spawnPosition;
                         tempObj.transform.SetParent(transform);
 
-                        var buildingPositionData = tempObj.AddComponent<BuildingPositionData>();
-                        buildingPositionData.AreaIndex = areaIndex;
-                        buildingPositionData.Position = spawnPosition;
-                        buildingPositionData.Rarity = Rarity.Common;
-
+                        var buildingPositionData = tempObj.AddComponent<BuildingPositionDataBehaviour>();
+                        buildingPositionData.SetBuildingPositionData(areaIndex, spawnPosition, Rarity.Common);
+                        spawnedBuildingDatas.Add(buildingPositionData.BuildingPositionData);
                         // Track the position
-                        spawnedBuildingPositions[areaIndex].Add(tempObj.transform);
+                        spawnedBuildingPositions[areaIndex].Add(buildingPositionData);
 
                         successfullySpawned++;
                     }
@@ -245,9 +275,9 @@ namespace Building.Tools
             // Check against existing buildings in the same area
             if (spawnedBuildingPositions.TryGetValue(areaIndex, out var positions))
             {
-                foreach (var existingPosition in positions)
+                foreach (var existingPosData in positions)
                 {
-                    float distance = Vector3.Distance(position, existingPosition.position);
+                    float distance = Vector3.Distance(position, existingPosData.BuildingPositionData.Position);
                     if (distance < minDistance)
                     {
                         failReason = $"Too close to existing building ({distance:F2} < {minDistance})";
@@ -314,9 +344,9 @@ namespace Building.Tools
             Gizmos.color = Color.blue;
             foreach (var kvp in spawnedBuildingPositions)
             {
-                foreach (var trans in kvp.Value)
+                foreach (var posData in kvp.Value)
                 {
-                    Gizmos.DrawSphere(trans.position, debugSphereRadius);
+                    Gizmos.DrawSphere(posData.BuildingPositionData.Position, debugSphereRadius);
                 }
             }
 

@@ -1,7 +1,11 @@
 using Gameplay;
+using Newtonsoft.Json;
+using SaveLoad;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 namespace Config
@@ -9,32 +13,29 @@ namespace Config
     [CreateAssetMenu(fileName = "BuildingPositionDataConfig", menuName = "baseConfig/Building/BuildingPositionDataConfig")]
     public class BuildingPositionDataConfig : ScriptableObject
     {
-        public class BuildingPositionData : MonoBehaviour
+        [Serializable]
+        public class BuildingPositionData
         {
             public int AreaIndex;
-            public Vector3 Position;
             public Rarity Rarity;
+            public float PosX;
+            public float PosY;
+            public float PosZ;
+
+            [JsonIgnore]
+            public Vector3 Position => new Vector3(PosX, PosY, PosZ);
         }
 
         [SerializeField]
         private BuildingPositionData[] buildingPositionData;
 
-        public void SetBuildingPositionData(Dictionary<int, List<Transform>> data)
+        public void SetBuildingPositionData(List<BuildingPositionData> dataPos)
         {
-            List<BuildingPositionData> buildingPositionDataList = new List<BuildingPositionData>();
-            foreach (var key in data) { 
-                for(var i =0; i < key.Value.Count; i++)
-                {
-                    var posData = key.Value[i].GetOrAddComponent<BuildingPositionData>();
-                    posData.AreaIndex = key.Key;
-                    posData.Position = key.Value[i].position;
-                    posData.Rarity = Rarity.Common;
-
-                    buildingPositionDataList.Add(posData);
-                }
-            }
-
-            buildingPositionData = buildingPositionDataList.ToArray();
+            buildingPositionData = dataPos.ToArray();
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(this);
+            AssetDatabase.SaveAssets();
+#endif
         }
     }
 }
