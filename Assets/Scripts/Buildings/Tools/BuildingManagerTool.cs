@@ -89,15 +89,30 @@ namespace Building.Tools
         }
 
         [Button]
-        public void ExtractBuildingPositionsToConfig()
+        public void AddBuildingPositionsToConfig()
         {
             buildingPositionDataConfig.SetBuildingPositionData(spawnedBuildingDatas);
         }
 
         [Button]
-        public void LoadBuildingPositionData()
+        public void LoadBuildingPositionFromConfig()
         {
-
+            var allBuildingPos = buildingPositionDataConfig.GetBuildingPositionData();
+            for(var i =0; i < allBuildingPos.Length; i++)
+            {
+                var tempObj = new GameObject(allBuildingPos[i].Position.ToString());
+                tempObj.transform.position = allBuildingPos[i].Position;
+                tempObj.transform.SetParent(transform);
+                var buildingPositionData = tempObj.AddComponent<BuildingPositionDataBehaviour>();
+                buildingPositionData.SetBuildingPositionData(allBuildingPos[i].AreaIndex, allBuildingPos[i].Position, allBuildingPos[i].Rarity);
+                spawnedBuildingDatas.Add(buildingPositionData.BuildingPositionData);
+                // Track the position
+                if (!spawnedBuildingPositions.ContainsKey(allBuildingPos[i].AreaIndex))
+                {
+                    spawnedBuildingPositions[allBuildingPos[i].AreaIndex] = new List<BuildingPositionDataBehaviour>();
+                }
+                spawnedBuildingPositions[allBuildingPos[i].AreaIndex].Add(buildingPositionData);
+            }
         }
 
         [Button]
@@ -114,7 +129,7 @@ namespace Building.Tools
                 }
             } else
             {
-                var childObject = transform.GetComponentsInParent<BuildingPositionDataBehaviour>();
+                var childObject = transform.GetComponentsInChildren<BuildingPositionDataBehaviour>();
                 for(var i = 0; i < childObject.Length; i++)
                 {
                     DestroyImmediate(childObject[i].gameObject);

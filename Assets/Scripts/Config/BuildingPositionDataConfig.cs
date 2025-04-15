@@ -37,5 +37,10 @@ namespace Config
             AssetDatabase.SaveAssets();
 #endif
         }
+
+        public BuildingPositionData[] GetBuildingPositionData()
+        {
+            return buildingPositionData;
+        }
     }
 }
