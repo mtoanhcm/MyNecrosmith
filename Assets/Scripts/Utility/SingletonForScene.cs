@@ -13,7 +13,6 @@ namespace GameUtility
 
         // Event triggered when instance is destroyed so other objects can unsubscribe
         public static event Action OnInstanceDestroyed;
-
         // Property to access the instance
         public static T Instance
         {
@@ -87,6 +86,7 @@ namespace GameUtility
             
                 // Reset instance
                 instance = null;
+                applicationIsQuitting = true;
             }
         }
 
