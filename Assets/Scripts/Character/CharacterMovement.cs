@@ -1,3 +1,4 @@
+using Pathfinding;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -6,63 +7,42 @@ using UnityEngine.Events;
 
 namespace Character
 {
+    [RequireComponent(typeof(FollowerEntity))]
     public class CharacterMovement : MonoBehaviour
     {
         public UnityAction OnCompleteMoveToTarget;
         public UnityAction OnFailMoveToTarget;
         public UnityAction<float> OnStartMoveToTarget;
-        
-        private const float REACHTHRESHOLD = 0.5f;
-        private NavMeshAgent navAgent;
+
+        private FollowerEntity followPath;
         
         public void Init(CharacterBase character)
         {
-            if (navAgent == null)
-            {
-                navAgent = gameObject.AddComponent<NavMeshAgent>();
-            }
+            followPath = GetComponent<FollowerEntity>();
 
-            navAgent.speed = character.Data.RealMoveSpeed;
+            followPath.maxSpeed = character.Data.RealMoveSpeed;
         }
 
         public void MoveToTarget(Vector3 target)
         {
-            if (navAgent.SetDestination(target))
-            {
-                OnStartMoveToTarget?.Invoke(navAgent.speed);
-                StartCoroutine(CheckReachDestination());
-            }
-            else
-            {
-                OnFailMoveToTarget?.Invoke();
-            }
+            followPath.SetDestination(target);
+            OnStartMoveToTarget?.Invoke(followPath.maxSpeed);
+            StartCoroutine(CheckReachDestination());
         }
 
         public void StopMove()
         {
-            navAgent.ResetPath();
             OnCompleteMoveToTarget?.Invoke();
         }
 
         private IEnumerator CheckReachDestination()
         {
-            while (!IsAgentAtDestination())
+            while (!followPath.reachedEndOfPath)
             {
                 yield return null;
             }
 
             StopMove();
-        }
-        
-        bool IsAgentAtDestination()
-        {   
-            // Ensure the agent has a path and is not stopped
-            if (!navAgent.pathPending && navAgent.remainingDistance <= REACHTHRESHOLD)
-            {
-                return true;
-            }
-            
-            return false;
         }
     }   
 }
