@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 2190714252872618938}
   - component: {fileID: 7590154408034218045}
   - component: {fileID: 4375775963515891510}
-  - component: {fileID: 5973000464814954614}
   - component: {fileID: 8140816104426464936}
+  - component: {fileID: 5973000464814954614}
+  - component: {fileID: 3916960099458860196}
+  - component: {fileID: 4666272846067901426}
   m_Layer: 6
   m_Name: pref_MinionBase
   m_TagString: Untagged
@@ -69,7 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccf19d1088d741c1b8857269b11cf1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localCharacter: {fileID: 0}
 --- !u!114 &7590154408034218045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +97,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brainType: 3
   isDebug: 0
+--- !u!114 &8140816104426464936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618993535442272966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a8280c212cf784db59221497c245f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!136 &5973000464814954614
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -111,7 +125,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -119,7 +133,34 @@ CapsuleCollider:
   m_Height: 3.086239
   m_Direction: 1
   m_Center: {x: 0, y: 1.4587454, z: 0}
---- !u!114 &8140816104426464936
+--- !u!54 &3916960099458860196
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618993535442272966}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!114 &4666272846067901426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,10 +169,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 2618993535442272966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a8280c212cf784db59221497c245f9, type: 3}
+  m_Script: {fileID: 11500000, guid: cfe9431ea8ad072f2aecd3041b1524dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  version: 1073741831
+  shape:
+    radius: 0.6
+    height: 2.5
+  movement:
+    follower:
+      rotationSpeed: 600
+      speed: 1
+      maxRotationSpeed: 720
+      maxOnSpotRotationSpeed: 720
+      slowdownTime: 0.5
+      slowdownTimeWhenTurningOnSpot: 0
+      desiredWallDistance: 0.5
+      leadInRadiusWhenApproachingDestination: 1
+      allowRotatingOnSpotBacking: 1
+    debugFlags: 0
+    stopDistance: 0.2
+    rotationSmoothing: 0
+    positionSmoothing: 0
+    groundMask:
+      serializedVersion: 2
+      m_Bits: 512
+    isStopped: 0
+  managedState:
+    rvoSettings:
+      agentTimeHorizon: 1
+      obstacleTimeHorizon: 0.5
+      maxNeighbours: 10
+      layer: 1
+      collidesWith: -1
+      priority: 0.5
+      debug: 0
+      locked: 0
+    pathfindingSettings:
+      graphMask:
+        value: -1
+      tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      traversableTags: -1
+    enableLocalAvoidance: 1
+    enableGravity: 0
+  autoRepathBacking:
+    mode: 2
+    period: 2
+  orientationBacking: 0
+  movementPlaneSourceBacking: 0
+  syncPosition: 1
+  syncRotation: 1
 --- !u!1 &4386090929749109195
 GameObject:
   m_ObjectHideFlags: 0

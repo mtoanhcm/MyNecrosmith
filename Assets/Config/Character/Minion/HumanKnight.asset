@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   HP: 20
-  MoveSpeed: 75
+  MoveSpeed: 100
   AttackSpeed: 50
-  ViewRadius: 20
+  ViewRadius: 50
   Race: 0
   InventorySize: {x: 4, y: 4}

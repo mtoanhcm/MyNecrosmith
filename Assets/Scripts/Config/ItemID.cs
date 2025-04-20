@@ -43,12 +43,4 @@ namespace Config
         SwordStrike,
         PowerSphere
     }
-
-    public enum Rarity
-    {
-        Common,
-        Rare,
-        Epic,
-        Legendary
-    }
 }

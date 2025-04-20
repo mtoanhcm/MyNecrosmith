@@ -1,0 +1,3165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d0958df737a8e47ad31a5b4de0c302, type: 3}
+  m_Name: BuildingPositionDataConfig
+  m_EditorClassIdentifier: 
+  buildingPositionData:
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -173.83463
+    PosY: 0
+    PosZ: 133.15977
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -115.204506
+    PosY: 0
+    PosZ: -34.94582
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -27.5
+    PosY: 0
+    PosZ: -237.4
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -286.7
+    PosY: 0
+    PosZ: -43.5
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 85.49454
+    PosY: 0
+    PosZ: -169.06752
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -57.417076
+    PosY: 0
+    PosZ: -109.71823
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 131.4
+    PosY: 0
+    PosZ: -99.9
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 158.74875
+    PosY: 0
+    PosZ: 82.110634
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 134.63358
+    PosY: 0
+    PosZ: 52.20633
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -29.2
+    PosY: 0
+    PosZ: 223.2
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -166.65065
+    PosY: 0
+    PosZ: -226.56725
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -136.6
+    PosY: 0
+    PosZ: 9.3
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 95.2
+    PosY: 0
+    PosZ: 258
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 263.73495
+    PosY: 0
+    PosZ: 62.665718
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -255.8
+    PosY: 0
+    PosZ: 69.2
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -212.3
+    PosY: 0
+    PosZ: -180.6
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -126.68331
+    PosY: 0
+    PosZ: -84.87284
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 161.6
+    PosY: 0
+    PosZ: -13.8
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -250.49539
+    PosY: 0
+    PosZ: -146.58122
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 88.56867
+    PosY: 0
+    PosZ: 191.3755
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 33.1
+    PosY: 0
+    PosZ: -129.2
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 218.4
+    PosY: 0
+    PosZ: -127.7
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 48.154076
+    PosY: 0
+    PosZ: -207.84543
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 205.71346
+    PosY: 0
+    PosZ: 212.18866
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 282.03027
+    PosY: 0
+    PosZ: 9.904261
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -9
+    PosY: 0
+    PosZ: -187.1
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -88.09101
+    PosY: 0
+    PosZ: -257.6711
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: -106.8
+    PosY: 0
+    PosZ: -136.9
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 56.403088
+    PosY: 0
+    PosZ: -269.2916
+  - AreaIndex: 0
+    Rarity: 0
+    PosX: 18.4
+    PosY: 0
+    PosZ: 100.9
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 305.2
+    PosY: 0
+    PosZ: 415.5
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -118.7
+    PosY: 0
+    PosZ: 370.3
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -400.6
+    PosY: 0
+    PosZ: -196.9
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 369.9
+    PosY: 0
+    PosZ: 147.2
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 444.2
+    PosY: 0
+    PosZ: -243.9
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -550.9345
+    PosY: 0
+    PosZ: -186.49815
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -262.02493
+    PosY: 0
+    PosZ: 286.25858
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -286.98712
+    PosY: 0
+    PosZ: -346.9804
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 587.7424
+    PosY: 0
+    PosZ: -380.001
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -1.7497262
+    PosY: 0
+    PosZ: 523.82294
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 567.1487
+    PosY: 0
+    PosZ: -193.10155
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -332.7
+    PosY: 0
+    PosZ: -471.1
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 453.7
+    PosY: 0
+    PosZ: 279.4
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 411.4836
+    PosY: 0
+    PosZ: 439.03094
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -320.08417
+    PosY: 0
+    PosZ: -411.06583
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -593.49005
+    PosY: 0
+    PosZ: -291.44962
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 144.43568
+    PosY: 0
+    PosZ: -604.30695
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 183.22766
+    PosY: 0
+    PosZ: -488.84006
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 302.48608
+    PosY: 0
+    PosZ: -385.5143
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -159.4905
+    PosY: 0
+    PosZ: -649.8139
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 56.4
+    PosY: 0
+    PosZ: 355
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -430.3
+    PosY: 0
+    PosZ: -404.3
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -189.4
+    PosY: 0
+    PosZ: -449.1
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 45.83487
+    PosY: 0
+    PosZ: -584.8076
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -51.137966
+    PosY: 0
+    PosZ: -506.89554
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 383.72546
+    PosY: 0
+    PosZ: -155.16309
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 518.18134
+    PosY: 0
+    PosZ: 26.370993
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -523.7724
+    PosY: 0
+    PosZ: 74.43605
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -585.5904
+    PosY: 0
+    PosZ: 125.576836
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -545.3301
+    PosY: 0
+    PosZ: 233.84547
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 300.92447
+    PosY: 0
+    PosZ: 602.4733
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -476.42236
+    PosY: 0
+    PosZ: -324.32065
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 23.75886
+    PosY: 0
+    PosZ: 641.27136
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -133.32756
+    PosY: 0
+    PosZ: -377.5682
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -380.7
+    PosY: 0
+    PosZ: 466
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -220.54587
+    PosY: 0
+    PosZ: -367.76474
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 590.91516
+    PosY: 0
+    PosZ: -22.906044
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 451.5288
+    PosY: 0
+    PosZ: -60.95058
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -352.27783
+    PosY: 0
+    PosZ: -130.1221
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 473.0002
+    PosY: 0
+    PosZ: -135.15901
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 180.6
+    PosY: 0
+    PosZ: 318.3
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -390.4868
+    PosY: 0
+    PosZ: -323.8993
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 230.6
+    PosY: 0
+    PosZ: 263.6
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 670.1169
+    PosY: 0
+    PosZ: -37.70658
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -310.6
+    PosY: 0
+    PosZ: 238.2
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 302.04623
+    PosY: 0
+    PosZ: 264.13806
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -195.36139
+    PosY: 0
+    PosZ: 297.78717
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -566.9822
+    PosY: 0
+    PosZ: -382.48947
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -375.9
+    PosY: 0
+    PosZ: 42
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 334.82556
+    PosY: 0
+    PosZ: -497.54022
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -353.6962
+    PosY: 0
+    PosZ: 314.18304
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -250.32797
+    PosY: 0
+    PosZ: -477.83
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 349.2
+    PosY: 0
+    PosZ: 305.9
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -418
+    PosY: 0
+    PosZ: 240.4
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 63.14564
+    PosY: 0
+    PosZ: -386.249
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -640.0607
+    PosY: 0
+    PosZ: -86.91684
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -557.42914
+    PosY: 0
+    PosZ: -106.84703
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 24.536203
+    PosY: 0
+    PosZ: -631.3171
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 33.582638
+    PosY: 0
+    PosZ: -446.73297
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -44.421177
+    PosY: 0
+    PosZ: 478.62146
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 204.7534
+    PosY: 0
+    PosZ: 523.7218
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 145.3
+    PosY: 0
+    PosZ: -329.2
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 338.4809
+    PosY: 0
+    PosZ: -430.51816
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -110.034294
+    PosY: 0
+    PosZ: -587.3008
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 375.5556
+    PosY: 0
+    PosZ: 536.9695
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -6.9415407
+    PosY: 0
+    PosZ: 586.35614
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -178.34227
+    PosY: 0
+    PosZ: -555.58154
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 617.72095
+    PosY: 0
+    PosZ: 47.08173
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -269.81036
+    PosY: 0
+    PosZ: 387.70172
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 363.4
+    PosY: 0
+    PosZ: 220.5
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 449.31375
+    PosY: 0
+    PosZ: -517.8298
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 257.7
+    PosY: 0
+    PosZ: -336.8
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 436.7
+    PosY: 0
+    PosZ: -338.5
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 248.74387
+    PosY: 0
+    PosZ: -576.55444
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -420.27097
+    PosY: 0
+    PosZ: 86.55951
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -403.7485
+    PosY: 0
+    PosZ: -461.99118
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -194.8839
+    PosY: 0
+    PosZ: 627.12366
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 87.97929
+    PosY: 0
+    PosZ: 653.9738
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -396.76315
+    PosY: 0
+    PosZ: -531.60846
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 420.3
+    PosY: 0
+    PosZ: 350.8
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 498.2316
+    PosY: 0
+    PosZ: 434.48834
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -145.5
+    PosY: 0
+    PosZ: 456.4
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -576.51306
+    PosY: 0
+    PosZ: 328.33
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 390.46368
+    PosY: 0
+    PosZ: 44.369225
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 294.87216
+    PosY: 0
+    PosZ: -288.06647
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 295.5
+    PosY: 0
+    PosZ: 344.1
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -634.26276
+    PosY: 0
+    PosZ: -184.37973
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -263.1
+    PosY: 0
+    PosZ: -224.1
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 133.71576
+    PosY: 0
+    PosZ: -554.76874
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -299.2913
+    PosY: 0
+    PosZ: 611.1676
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 70.65277
+    PosY: 0
+    PosZ: -535.27155
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 564.475
+    PosY: 0
+    PosZ: 405.14136
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 286.19388
+    PosY: 0
+    PosZ: -632.50464
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 249.28862
+    PosY: 0
+    PosZ: -457.8769
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 390.10403
+    PosY: 0
+    PosZ: -209.29613
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 502.59033
+    PosY: 0
+    PosZ: -434.20364
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 363.86615
+    PosY: 0
+    PosZ: -588.7306
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -463.5901
+    PosY: 0
+    PosZ: -104.1601
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: -402.93073
+    PosY: 0
+    PosZ: 144.63116
+  - AreaIndex: 1
+    Rarity: 0
+    PosX: 336.70816
+    PosY: 0
+    PosZ: -102.44943
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -121.69887
+    PosY: 0
+    PosZ: -867.405
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 982.6336
+    PosY: 0
+    PosZ: -366.7367
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 752.5526
+    PosY: 0
+    PosZ: 202.06317
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -953.13025
+    PosY: 0
+    PosZ: -233.52109
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -767.6485
+    PosY: 0
+    PosZ: 99.65677
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 867.8457
+    PosY: 0
+    PosZ: 62.45433
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 166.71294
+    PosY: 0
+    PosZ: 927.2901
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 766.18854
+    PosY: 0
+    PosZ: 317.2346
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 925.58325
+    PosY: 0
+    PosZ: -805.6029
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -835.7069
+    PosY: 0
+    PosZ: 208.22606
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -914.9493
+    PosY: 0
+    PosZ: -860.4252
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -712.2412
+    PosY: 0
+    PosZ: -1118.0203
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1179.774
+    PosY: 0
+    PosZ: 287.70547
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 569.90826
+    PosY: 0
+    PosZ: 1061.474
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -755.00586
+    PosY: 0
+    PosZ: 386.44073
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -732.095
+    PosY: 0
+    PosZ: -403.05908
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 736.57886
+    PosY: 0
+    PosZ: -942.7723
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -917.19214
+    PosY: 0
+    PosZ: 262.32083
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -903.7244
+    PosY: 0
+    PosZ: -961.891
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 687.7395
+    PosY: 0
+    PosZ: -607.88025
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -436.68088
+    PosY: 0
+    PosZ: -958.1447
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 642.7898
+    PosY: 0
+    PosZ: -468.33
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 8.099354
+    PosY: 0
+    PosZ: -819.5417
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -768.93787
+    PosY: 0
+    PosZ: -179.2924
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 193.13739
+    PosY: 0
+    PosZ: -1010.8166
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -880.52185
+    PosY: 0
+    PosZ: -466.0565
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 539.22003
+    PosY: 0
+    PosZ: -673.80853
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -799.0321
+    PosY: 0
+    PosZ: -1079.3223
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 544.7108
+    PosY: 0
+    PosZ: 732.4937
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -754.54755
+    PosY: 0
+    PosZ: 26.314943
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1155.684
+    PosY: 0
+    PosZ: 202.19916
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 769.7357
+    PosY: 0
+    PosZ: -746.42584
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1100.5559
+    PosY: 0
+    PosZ: 673.3163
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 529.33716
+    PosY: 0
+    PosZ: 541.9549
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -686.29407
+    PosY: 0
+    PosZ: -713.22516
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 525.458
+    PosY: 0
+    PosZ: 840.7643
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1238.5302
+    PosY: 0
+    PosZ: 110.092094
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -161.76984
+    PosY: 0
+    PosZ: -1367.518
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -222.94208
+    PosY: 0
+    PosZ: -1120.819
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 757.1309
+    PosY: 0
+    PosZ: -536.7139
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 912.62335
+    PosY: 0
+    PosZ: -681.2059
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -588.7743
+    PosY: 0
+    PosZ: -1089.5382
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 317.28714
+    PosY: 0
+    PosZ: -1062.8293
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -526.3069
+    PosY: 0
+    PosZ: 712.36816
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -867.5114
+    PosY: 0
+    PosZ: -689.40247
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1113.5508
+    PosY: 0
+    PosZ: -20.989664
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 184.90582
+    PosY: 0
+    PosZ: -1096.6956
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 647.1721
+    PosY: 0
+    PosZ: -1090.2032
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1020.31274
+    PosY: 0
+    PosZ: -275.54022
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -117.40388
+    PosY: 0
+    PosZ: -990.45105
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -545.48566
+    PosY: 0
+    PosZ: 1149.3773
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -745.8008
+    PosY: 0
+    PosZ: -263.42737
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -126.23592
+    PosY: 0
+    PosZ: 1210.8127
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1267.2417
+    PosY: 0
+    PosZ: 41.74996
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1033.0782
+    PosY: 0
+    PosZ: -128.80524
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -516.50775
+    PosY: 0
+    PosZ: -826.22614
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -424.35474
+    PosY: 0
+    PosZ: -1125.3971
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 138.48146
+    PosY: 0
+    PosZ: 844.6
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -710.51917
+    PosY: 0
+    PosZ: 723.3479
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1280.8864
+    PosY: 0
+    PosZ: 521.29865
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 247.48662
+    PosY: 0
+    PosZ: -814.2063
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -111.81608
+    PosY: 0
+    PosZ: 1024.7654
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1016.07587
+    PosY: 0
+    PosZ: -857.1816
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1086.8977
+    PosY: 0
+    PosZ: 519.85956
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 802.7477
+    PosY: 0
+    PosZ: 494.9655
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1104.1886
+    PosY: 0
+    PosZ: 364.3243
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1196.7157
+    PosY: 0
+    PosZ: -203.62067
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 608.9189
+    PosY: 0
+    PosZ: 476.3751
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -702.1643
+    PosY: 0
+    PosZ: -520.71124
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 885.4247
+    PosY: 0
+    PosZ: 153.91792
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 327.2679
+    PosY: 0
+    PosZ: 702.9529
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1365.4349
+    PosY: 0
+    PosZ: 252.25371
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1131.7748
+    PosY: 0
+    PosZ: -122.06775
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 676.63214
+    PosY: 0
+    PosZ: -1188.9424
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -439.1616
+    PosY: 0
+    PosZ: 778.61566
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -398.27426
+    PosY: 0
+    PosZ: -1309.9211
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -325.06943
+    PosY: 0
+    PosZ: 1043.5557
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -315.27988
+    PosY: 0
+    PosZ: -1030.4283
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 404.52988
+    PosY: 0
+    PosZ: 1128.464
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -755.97473
+    PosY: 0
+    PosZ: -50.271637
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -370.2557
+    PosY: 0
+    PosZ: -709.4099
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 292.38882
+    PosY: 0
+    PosZ: 955.1473
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1237.9176
+    PosY: 0
+    PosZ: -68.125946
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -495.02197
+    PosY: 0
+    PosZ: 639.62396
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -973.1826
+    PosY: 0
+    PosZ: -573.6756
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -577.0237
+    PosY: 0
+    PosZ: -873.1368
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 751.7733
+    PosY: 0
+    PosZ: 435.3946
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 959.6045
+    PosY: 0
+    PosZ: -509.02573
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 900.54974
+    PosY: 0
+    PosZ: 545.11786
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 706.7504
+    PosY: 0
+    PosZ: -292.6244
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -386.48105
+    PosY: 0
+    PosZ: 684.20154
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1003.3073
+    PosY: 0
+    PosZ: 683.00287
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -315.25403
+    PosY: 0
+    PosZ: -1145.6299
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1156.9536
+    PosY: 0
+    PosZ: -493.55377
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -832.8638
+    PosY: 0
+    PosZ: 997.7099
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 536.8326
+    PosY: 0
+    PosZ: -840.4155
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -662.8237
+    PosY: 0
+    PosZ: 991.2455
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 360.74188
+    PosY: 0
+    PosZ: -971.7953
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -972.14716
+    PosY: 0
+    PosZ: 411.0738
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1254.1218
+    PosY: 0
+    PosZ: -383.48117
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -111.800835
+    PosY: 0
+    PosZ: -1125.5061
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -74.05443
+    PosY: 0
+    PosZ: -1378.0336
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 831.8794
+    PosY: 0
+    PosZ: 1063.4631
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -838.01276
+    PosY: 0
+    PosZ: 499.477
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -920.7386
+    PosY: 0
+    PosZ: 507.40295
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 947.2398
+    PosY: 0
+    PosZ: 97.21017
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -987.8486
+    PosY: 0
+    PosZ: -750.2293
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 427.19446
+    PosY: 0
+    PosZ: -1024.3667
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 292.7703
+    PosY: 0
+    PosZ: 1199.6417
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -874.9883
+    PosY: 0
+    PosZ: 29.765306
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 777.01306
+    PosY: 0
+    PosZ: 31.387682
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 363.2841
+    PosY: 0
+    PosZ: -1247.3738
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1116.9221
+    PosY: 0
+    PosZ: -378.74176
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 486.7979
+    PosY: 0
+    PosZ: 1038.0876
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -918.2301
+    PosY: 0
+    PosZ: 645.09564
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1115.9016
+    PosY: 0
+    PosZ: -569.289
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 433.1263
+    PosY: 0
+    PosZ: -734.16565
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -243.71501
+    PosY: 0
+    PosZ: 1283.268
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1281.1554
+    PosY: 0
+    PosZ: 409.8274
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1335.6665
+    PosY: 0
+    PosZ: 266.08832
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 893.72815
+    PosY: 0
+    PosZ: -906.2166
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -18.890871
+    PosY: 0
+    PosZ: -1125.7948
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -301.86633
+    PosY: 0
+    PosZ: -896.6256
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 155.4865
+    PosY: 0
+    PosZ: -914.14825
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1096.0369
+    PosY: 0
+    PosZ: -226.44576
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1140.856
+    PosY: 0
+    PosZ: 767.09204
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -132.63458
+    PosY: 0
+    PosZ: 917.1949
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 797.0519
+    PosY: 0
+    PosZ: -823.0679
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 849.5554
+    PosY: 0
+    PosZ: -206.48972
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 389.21182
+    PosY: 0
+    PosZ: 1058.7771
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -161.65503
+    PosY: 0
+    PosZ: 841.3827
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1045.3156
+    PosY: 0
+    PosZ: 823.77954
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 266.63034
+    PosY: 0
+    PosZ: -1314.1135
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -362.67297
+    PosY: 0
+    PosZ: 1300.0269
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -661.0727
+    PosY: 0
+    PosZ: 849.5126
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -454.40665
+    PosY: 0
+    PosZ: -739.09467
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 61.023727
+    PosY: 0
+    PosZ: 1092.9049
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1078.0879
+    PosY: 0
+    PosZ: -674.5712
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -246.41681
+    PosY: 0
+    PosZ: 845.8727
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -389.6961
+    PosY: 0
+    PosZ: -1198.0311
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1044.6521
+    PosY: 0
+    PosZ: 611.9713
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 614.3841
+    PosY: 0
+    PosZ: 664.2678
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1037.3627
+    PosY: 0
+    PosZ: 335.22702
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 716.82385
+    PosY: 0
+    PosZ: 671.32605
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -948.44226
+    PosY: 0
+    PosZ: -1021.3212
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 133.45969
+    PosY: 0
+    PosZ: 1130.9297
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -214.17352
+    PosY: 0
+    PosZ: 1080.9557
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 764.0329
+    PosY: 0
+    PosZ: 757.9238
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1369.7406
+    PosY: 0
+    PosZ: -283.63635
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -846.10376
+    PosY: 0
+    PosZ: 587.1374
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -394.387
+    PosY: 0
+    PosZ: 1009.6066
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -833.5722
+    PosY: 0
+    PosZ: -330.13574
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 467.56155
+    PosY: 0
+    PosZ: 630.051
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -735.9194
+    PosY: 0
+    PosZ: 588.09
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1062.229
+    PosY: 0
+    PosZ: 245.71461
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1361.6024
+    PosY: 0
+    PosZ: -73.63062
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1088.2836
+    PosY: 0
+    PosZ: -238.50542
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1027.9958
+    PosY: 0
+    PosZ: -135.08597
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1293.2855
+    PosY: 0
+    PosZ: 397.90805
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 802.0029
+    PosY: 0
+    PosZ: 613.0908
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 506.24774
+    PosY: 0
+    PosZ: -579.8105
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -47.098763
+    PosY: 0
+    PosZ: -1259.7429
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -583.54016
+    PosY: 0
+    PosZ: -705.3251
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1043.6022
+    PosY: 0
+    PosZ: -588.39386
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -43.099354
+    PosY: 0
+    PosZ: 849.7518
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -550.93756
+    PosY: 0
+    PosZ: 1020.96075
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 212.91061
+    PosY: 0
+    PosZ: -1189.6876
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 798.0502
+    PosY: 0
+    PosZ: 101.75731
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1182.8099
+    PosY: 0
+    PosZ: -317.00638
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -704.1448
+    PosY: 0
+    PosZ: -890.04645
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 879.7383
+    PosY: 0
+    PosZ: 622.59607
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -210.2402
+    PosY: 0
+    PosZ: -860.9559
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -515.2858
+    PosY: 0
+    PosZ: -1065.422
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -800.8054
+    PosY: 0
+    PosZ: 834.11176
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 171.31784
+    PosY: 0
+    PosZ: 1230.9263
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -351.99146
+    PosY: 0
+    PosZ: 944.3821
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 864.34503
+    PosY: 0
+    PosZ: 725.40234
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 429.26093
+    PosY: 0
+    PosZ: 920.6058
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -958.51996
+    PosY: 0
+    PosZ: -372.76685
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 44.627384
+    PosY: 0
+    PosZ: 878.6131
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 422.4328
+    PosY: 0
+    PosZ: -1166.954
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -871.8586
+    PosY: 0
+    PosZ: -774.42645
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 647.17145
+    PosY: 0
+    PosZ: -1014.4543
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 275.30783
+    PosY: 0
+    PosZ: -710.1844
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -631.7941
+    PosY: 0
+    PosZ: -624.88306
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1045.2826
+    PosY: 0
+    PosZ: -328.33917
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1088.9631
+    PosY: 0
+    PosZ: -323.2995
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -756.4803
+    PosY: 0
+    PosZ: -616.00336
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 142.8732
+    PosY: 0
+    PosZ: -844.2376
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 346.63132
+    PosY: 0
+    PosZ: -785.15216
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1097.9225
+    PosY: 0
+    PosZ: 256.0962
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 233.26526
+    PosY: 0
+    PosZ: 1086.84
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 849.61865
+    PosY: 0
+    PosZ: 232.94872
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 833.4751
+    PosY: 0
+    PosZ: -81.26445
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 768.7697
+    PosY: 0
+    PosZ: -422.21286
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -984.53827
+    PosY: 0
+    PosZ: -936.9421
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1065.3997
+    PosY: 0
+    PosZ: -799.9868
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -770.3887
+    PosY: 0
+    PosZ: -781.37384
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 683.01056
+    PosY: 0
+    PosZ: 396.0396
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1213.9907
+    PosY: 0
+    PosZ: -6.3764834
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 644.5012
+    PosY: 0
+    PosZ: -802.3792
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -572.47754
+    PosY: 0
+    PosZ: 926.99146
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -51.693737
+    PosY: 0
+    PosZ: -776.3575
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 855.39166
+    PosY: 0
+    PosZ: -313.27417
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -253.00804
+    PosY: 0
+    PosZ: -805.41583
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 16.244196
+    PosY: 0
+    PosZ: 1021.5632
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1130.8391
+    PosY: 0
+    PosZ: -642.9178
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 99.16476
+    PosY: 0
+    PosZ: 962.1849
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -794.52435
+    PosY: 0
+    PosZ: 1062.2695
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -834.71423
+    PosY: 0
+    PosZ: -246.26846
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -843.7659
+    PosY: 0
+    PosZ: 119.786415
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 263.15826
+    PosY: 0
+    PosZ: -918.79407
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 396.56885
+    PosY: 0
+    PosZ: -660.3262
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -636.07837
+    PosY: 0
+    PosZ: -790.4931
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 877.53455
+    PosY: 0
+    PosZ: 935.08124
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -483.69186
+    PosY: 0
+    PosZ: 861.956
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -653.3295
+    PosY: 0
+    PosZ: -433.43216
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 944.2179
+    PosY: 0
+    PosZ: -222.25035
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1038.0657
+    PosY: 0
+    PosZ: -533.74207
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1036.1106
+    PosY: 0
+    PosZ: 777.0236
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1133.4746
+    PosY: 0
+    PosZ: 406.98108
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 963.2088
+    PosY: 0
+    PosZ: -61.02728
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 984.39417
+    PosY: 0
+    PosZ: 673.57166
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1086.8815
+    PosY: 0
+    PosZ: -475.83496
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 418.38458
+    PosY: 0
+    PosZ: 833.3577
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 818.84
+    PosY: 0
+    PosZ: -973.44476
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 863.7433
+    PosY: 0
+    PosZ: -626.69275
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 627.56964
+    PosY: 0
+    PosZ: 943.54486
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1183.7168
+    PosY: 0
+    PosZ: 63.331337
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1173.4135
+    PosY: 0
+    PosZ: 189.23663
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1161.0256
+    PosY: 0
+    PosZ: 491.7762
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 951.5041
+    PosY: 0
+    PosZ: 414.3482
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1042.9236
+    PosY: 0
+    PosZ: 926.7513
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 744.3847
+    PosY: 0
+    PosZ: -1063.0486
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1165.6637
+    PosY: 0
+    PosZ: -394.89636
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1208.3014
+    PosY: 0
+    PosZ: 419.891
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1024.8906
+    PosY: 0
+    PosZ: -208.5389
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -61.181896
+    PosY: 0
+    PosZ: 1324.2352
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -581.09033
+    PosY: 0
+    PosZ: -1196.9568
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 572.6065
+    PosY: 0
+    PosZ: -548.062
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 820.31305
+    PosY: 0
+    PosZ: -1055.2767
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 607.37
+    PosY: 0
+    PosZ: 1242.2383
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -802.30035
+    PosY: 0
+    PosZ: -483.2092
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -641.55194
+    PosY: 0
+    PosZ: 688.378
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 484.33698
+    PosY: 0
+    PosZ: 1199.9409
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -48.254116
+    PosY: 0
+    PosZ: -888.77246
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1155.6211
+    PosY: 0
+    PosZ: 473.4597
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 269.06076
+    PosY: 0
+    PosZ: 1267.7844
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -385.22348
+    PosY: 0
+    PosZ: -832.6517
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 910.08655
+    PosY: 0
+    PosZ: -133.28511
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1223.9569
+    PosY: 0
+    PosZ: 457.15247
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -6.129976
+    PosY: 0
+    PosZ: 1116.1259
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1263.2113
+    PosY: 0
+    PosZ: 2.7911854
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -460.91003
+    PosY: 0
+    PosZ: 1124.2372
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1352.8182
+    PosY: 0
+    PosZ: 117.98368
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 709.9724
+    PosY: 0
+    PosZ: 911.563
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 499.1173
+    PosY: 0
+    PosZ: 948.07465
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -310.34586
+    PosY: 0
+    PosZ: 1189.7483
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -903.07733
+    PosY: 0
+    PosZ: 344.61548
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1094.831
+    PosY: 0
+    PosZ: -706.88885
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 630.47955
+    PosY: 0
+    PosZ: -652.1647
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1015.3326
+    PosY: 0
+    PosZ: 611.706
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1229.3883
+    PosY: 0
+    PosZ: 663.207
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 447.75317
+    PosY: 0
+    PosZ: 747.97235
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -155.0557
+    PosY: 0
+    PosZ: 1279.5355
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 224.1524
+    PosY: 0
+    PosZ: 822.12274
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 538.38605
+    PosY: 0
+    PosZ: 656.51245
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1007.00665
+    PosY: 0
+    PosZ: 226.46056
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 141.31015
+    PosY: 0
+    PosZ: 754.84625
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -827.0655
+    PosY: 0
+    PosZ: 921.86194
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 770.56635
+    PosY: 0
+    PosZ: -245.50523
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 580.2735
+    PosY: 0
+    PosZ: -993.5551
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -913.0779
+    PosY: 0
+    PosZ: -166.14441
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1065.9055
+    PosY: 0
+    PosZ: 350.1138
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 842.0497
+    PosY: 0
+    PosZ: -9.474934
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -996.23895
+    PosY: 0
+    PosZ: 139.2102
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -153.98488
+    PosY: 0
+    PosZ: 1360.2524
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1226.716
+    PosY: 0
+    PosZ: -263.3553
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 336.0135
+    PosY: 0
+    PosZ: 862.6185
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -735.9479
+    PosY: 0
+    PosZ: 862.6388
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 179.0803
+    PosY: 0
+    PosZ: -1275.1874
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 93.01477
+    PosY: 0
+    PosZ: -1191.8322
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 988.00555
+    PosY: 0
+    PosZ: -935.875
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -937.97644
+    PosY: 0
+    PosZ: -49.686752
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 33.36758
+    PosY: 0
+    PosZ: 1184.4323
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1342.5199
+    PosY: 0
+    PosZ: -334.67664
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 417.3714
+    PosY: 0
+    PosZ: 1223.1212
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 504.97174
+    PosY: 0
+    PosZ: 1303.0897
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -561.7497
+    PosY: 0
+    PosZ: 553.41797
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -838.8233
+    PosY: 0
+    PosZ: 297.68756
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -422.17288
+    PosY: 0
+    PosZ: 1232.4042
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 50.92149
+    PosY: 0
+    PosZ: -909.42847
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -919.70966
+    PosY: 0
+    PosZ: -314.35498
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 813.60693
+    PosY: 0
+    PosZ: -478.2339
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1020.4002
+    PosY: 0
+    PosZ: -58.16732
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1029.2333
+    PosY: 0
+    PosZ: 24.477928
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1143.4639
+    PosY: 0
+    PosZ: -723.00104
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 545.8714
+    PosY: 0
+    PosZ: -924.9261
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1162.0947
+    PosY: 0
+    PosZ: -43.15697
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -734.2062
+    PosY: 0
+    PosZ: 491.5228
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -57.77528
+    PosY: 0
+    PosZ: 1248.8774
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -695.69244
+    PosY: 0
+    PosZ: -1014.8056
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1042.6484
+    PosY: 0
+    PosZ: -503.05936
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -237.72694
+    PosY: 0
+    PosZ: 1014.20233
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 756.1233
+    PosY: 0
+    PosZ: -137.02205
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1062.103
+    PosY: 0
+    PosZ: 46.159714
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 654.8444
+    PosY: 0
+    PosZ: 1087.2719
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 349.6288
+    PosY: 0
+    PosZ: -861.9064
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -906.26855
+    PosY: 0
+    PosZ: 960.0544
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -405.2332
+    PosY: 0
+    PosZ: 844.4645
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -61.11074
+    PosY: 0
+    PosZ: 951.74255
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -946.0411
+    PosY: 0
+    PosZ: 61.4795
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -692.4686
+    PosY: 0
+    PosZ: 302.72882
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -658.89886
+    PosY: 0
+    PosZ: -947.0874
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 692.8966
+    PosY: 0
+    PosZ: 579.8143
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 714.7389
+    PosY: 0
+    PosZ: -684.30975
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -856.91943
+    PosY: 0
+    PosZ: -53.8649
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1300.47
+    PosY: 0
+    PosZ: -316.78354
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 660.053
+    PosY: 0
+    PosZ: -872.9886
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1254.4299
+    PosY: 0
+    PosZ: 331.07227
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 721.54626
+    PosY: 0
+    PosZ: 1045.7991
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 11.7755575
+    PosY: 0
+    PosZ: -986.416
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1330.4788
+    PosY: 0
+    PosZ: 61.16227
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1071.3743
+    PosY: 0
+    PosZ: 142.58282
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 470.80164
+    PosY: 0
+    PosZ: -901.0825
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -491.7166
+    PosY: 0
+    PosZ: 1289.4629
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -978.5671
+    PosY: 0
+    PosZ: 301.82773
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -315.3104
+    PosY: 0
+    PosZ: 824.6053
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 313.49585
+    PosY: 0
+    PosZ: -1147.8547
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1231.1147
+    PosY: 0
+    PosZ: -481.77252
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 516.3131
+    PosY: 0
+    PosZ: -1081.958
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -703.2729
+    PosY: 0
+    PosZ: 1156.3027
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1261.534
+    PosY: 0
+    PosZ: -523.04285
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 756.9222
+    PosY: 0
+    PosZ: 855.77484
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1145.5236
+    PosY: 0
+    PosZ: -762.95026
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1105.4313
+    PosY: 0
+    PosZ: 749.2907
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 865.7661
+    PosY: 0
+    PosZ: 815.8651
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -262.22076
+    PosY: 0
+    PosZ: 751.1198
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 344.39008
+    PosY: 0
+    PosZ: 1267.5049
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 238.67764
+    PosY: 0
+    PosZ: 1015.7401
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -993.15845
+    PosY: 0
+    PosZ: 937.2461
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 682.4249
+    PosY: 0
+    PosZ: -377.5594
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1144.4741
+    PosY: 0
+    PosZ: 318.65707
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 941.3668
+    PosY: 0
+    PosZ: -609.77203
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1255.1063
+    PosY: 0
+    PosZ: 140.63377
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -606.1759
+    PosY: 0
+    PosZ: -527.23517
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -618.39905
+    PosY: 0
+    PosZ: 771.98975
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -267.78394
+    PosY: 0
+    PosZ: -702.54736
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -520.73285
+    PosY: 0
+    PosZ: -552.2759
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -86.08016
+    PosY: 0
+    PosZ: 761.026
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1033.3173
+    PosY: 0
+    PosZ: 505.66895
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 486.49722
+    PosY: 0
+    PosZ: -1294.748
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -636.4128
+    PosY: 0
+    PosZ: 497.66492
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 252.66425
+    PosY: 0
+    PosZ: 732.87744
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 93.43087
+    PosY: 0
+    PosZ: -993.4863
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1368.9777
+    PosY: 0
+    PosZ: -159.17615
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1119.3744
+    PosY: 0
+    PosZ: 611.80554
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -168.17776
+    PosY: 0
+    PosZ: -770.7841
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 100.22319
+    PosY: 0
+    PosZ: -1086.63
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -733.1467
+    PosY: 0
+    PosZ: 1026.4076
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -940.9822
+    PosY: 0
+    PosZ: -504.81335
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -919.59204
+    PosY: 0
+    PosZ: 1050.2385
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 951.956
+    PosY: 0
+    PosZ: 13.017147
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -840.36865
+    PosY: 0
+    PosZ: -133.22614
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -802.18024
+    PosY: 0
+    PosZ: 670.0503
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 876.5697
+    PosY: 0
+    PosZ: 301.4937
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 65.85122
+    PosY: 0
+    PosZ: 1301.3867
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -746.82904
+    PosY: 0
+    PosZ: 196.02777
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -448.61642
+    PosY: 0
+    PosZ: 951.1734
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1191.3652
+    PosY: 0
+    PosZ: 723.7451
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1059.4226
+    PosY: 0
+    PosZ: 422.85925
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 979.3474
+    PosY: 0
+    PosZ: -717.0901
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 159.28835
+    PosY: 0
+    PosZ: 1015.86536
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -223.32753
+    PosY: 0
+    PosZ: -1044.7744
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 39.23326
+    PosY: 0
+    PosZ: 1381.1387
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -876.62
+    PosY: 0
+    PosZ: -545.60657
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -547.3331
+    PosY: 0
+    PosZ: 799.4659
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1366.0286
+    PosY: 0
+    PosZ: -208.1562
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -60.734615
+    PosY: 0
+    PosZ: -1044.4751
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 953.7947
+    PosY: 0
+    PosZ: 288.3095
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 397.37582
+    PosY: 0
+    PosZ: -1323.8387
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -192.8895
+    PosY: 0
+    PosZ: -1218.5742
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -345.9678
+    PosY: 0
+    PosZ: 741.9981
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 883.0521
+    PosY: 0
+    PosZ: 443.93005
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -408.1515
+    PosY: 0
+    PosZ: -1027.707
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -342.25455
+    PosY: 0
+    PosZ: -775.5427
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -270.24866
+    PosY: 0
+    PosZ: 922.1061
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1037.4987
+    PosY: 0
+    PosZ: -861.66394
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -505.32077
+    PosY: 0
+    PosZ: -632.73035
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -294.84433
+    PosY: 0
+    PosZ: -1266.3394
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 826.82745
+    PosY: 0
+    PosZ: -701.22144
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 777.00964
+    PosY: 0
+    PosZ: -326.25922
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1155.5845
+    PosY: 0
+    PosZ: -144.01958
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -647.6564
+    PosY: 0
+    PosZ: 1101.5938
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -804.4223
+    PosY: 0
+    PosZ: -867.7819
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1189.317
+    PosY: 0
+    PosZ: 682.2013
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 604.7277
+    PosY: 0
+    PosZ: -1182.4836
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1275.9016
+    PosY: 0
+    PosZ: 238.64432
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1120.7496
+    PosY: 0
+    PosZ: -557.93317
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 332.61075
+    PosY: 0
+    PosZ: 784.8742
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1203.2445
+    PosY: 0
+    PosZ: -618.30255
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1162.9576
+    PosY: 0
+    PosZ: -473.20505
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -579.875
+    PosY: 0
+    PosZ: 1219.1635
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1280.6152
+    PosY: 0
+    PosZ: 313.21387
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -691.7277
+    PosY: 0
+    PosZ: -1209.6802
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1131.1106
+    PosY: 0
+    PosZ: -301.1924
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -480.67377
+    PosY: 0
+    PosZ: -1241.9761
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 734.0154
+    PosY: 0
+    PosZ: 1154.097
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 161.8049
+    PosY: 0
+    PosZ: 1323.0459
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -665.8897
+    PosY: 0
+    PosZ: 606.8626
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1185.9247
+    PosY: 0
+    PosZ: -362.3297
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -907.5335
+    PosY: 0
+    PosZ: 831.8135
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1243.5709
+    PosY: 0
+    PosZ: -101.078964
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 532.75476
+    PosY: 0
+    PosZ: -1179.421
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1059.7247
+    PosY: 0
+    PosZ: -427.20822
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 386.4977
+    PosY: 0
+    PosZ: -1104.1512
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1373.7048
+    PosY: 0
+    PosZ: 45.829258
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 5.4218698
+    PosY: 0
+    PosZ: 780.10175
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -753.53296
+    PosY: 0
+    PosZ: -955.9264
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -857.6577
+    PosY: 0
+    PosZ: 773.5521
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 779.8922
+    PosY: 0
+    PosZ: -624.45514
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 76.36712
+    PosY: 0
+    PosZ: -1262.928
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 658.28235
+    PosY: 0
+    PosZ: -540.28864
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1269.6622
+    PosY: 0
+    PosZ: 176.77988
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -182.91031
+    PosY: 0
+    PosZ: 1169.6136
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1005.26434
+    PosY: 0
+    PosZ: 475.53696
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 457.40082
+    PosY: 0
+    PosZ: -819.52814
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1326.1663
+    PosY: 0
+    PosZ: -71.58273
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1112.4789
+    PosY: 0
+    PosZ: -798.57526
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -208.43504
+    PosY: 0
+    PosZ: -950.05664
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 953.3809
+    PosY: 0
+    PosZ: 811.66754
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1110.1001
+    PosY: 0
+    PosZ: 58.706448
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1314.6074
+    PosY: 0
+    PosZ: -265.2335
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 915.29895
+    PosY: 0
+    PosZ: 871.8582
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1015.11066
+    PosY: 0
+    PosZ: -460.76398
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 956.31946
+    PosY: 0
+    PosZ: 493.99872
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 638.762
+    PosY: 0
+    PosZ: 813.09247
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1185.2528
+    PosY: 0
+    PosZ: 553.396
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 620.4634
+    PosY: 0
+    PosZ: 587.12585
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -829.3538
+    PosY: 0
+    PosZ: -625.6821
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 686.51605
+    PosY: 0
+    PosZ: 467.5294
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -382.88272
+    PosY: 0
+    PosZ: 1102.5326
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1362.6152
+    PosY: 0
+    PosZ: 153.10863
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -781.1523
+    PosY: 0
+    PosZ: 1136.7164
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -548.2483
+    PosY: 0
+    PosZ: -994.90173
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -885.95294
+    PosY: 0
+    PosZ: 415.25662
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -11.165417
+    PosY: 0
+    PosZ: -1329.4192
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -570.2291
+    PosY: 0
+    PosZ: 644.5963
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1183.1417
+    PosY: 0
+    PosZ: 80.35399
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 906.0014
+    PosY: 0
+    PosZ: -435.1306
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -681.073
+    PosY: 0
+    PosZ: 378.5976
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 974.36957
+    PosY: 0
+    PosZ: 989.20233
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1182.41
+    PosY: 0
+    PosZ: -197.92915
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1305.436
+    PosY: 0
+    PosZ: -225.73605
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -688.8947
+    PosY: 0
+    PosZ: -325.36313
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 505.4646
+    PosY: 0
+    PosZ: -744.107
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1091.2081
+    PosY: 0
+    PosZ: -83.47658
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 671.3866
+    PosY: 0
+    PosZ: 1206.8673
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -105.246254
+    PosY: 0
+    PosZ: 1130.3994
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1056.3268
+    PosY: 0
+    PosZ: -915.3138
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1235.823
+    PosY: 0
+    PosZ: -625.6026
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 154.60738
+    PosY: 0
+    PosZ: -1379.0331
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1261.1478
+    PosY: 0
+    PosZ: 562.15344
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1186.8188
+    PosY: 0
+    PosZ: -689.8407
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 705.3743
+    PosY: 0
+    PosZ: 256.87665
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -421.71338
+    PosY: 0
+    PosZ: -622.8516
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1304.109
+    PosY: 0
+    PosZ: -472.8665
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -124.65473
+    PosY: 0
+    PosZ: -1282.6586
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -952.8612
+    PosY: 0
+    PosZ: -687.9677
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 98.88235
+    PosY: 0
+    PosZ: 1230.9615
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 37.24483
+    PosY: 0
+    PosZ: -1392.6884
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1096.0709
+    PosY: 0
+    PosZ: -403.6323
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1299.7227
+    PosY: 0
+    PosZ: -462.34845
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 392.18094
+    PosY: 0
+    PosZ: 647.4416
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -291.12347
+    PosY: 0
+    PosZ: 1343.5862
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1213.432
+    PosY: 0
+    PosZ: -693.428
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 726.17633
+    PosY: 0
+    PosZ: -815.46826
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1327.938
+    PosY: 0
+    PosZ: -406.07184
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 910.1781
+    PosY: 0
+    PosZ: -361.49908
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1329.7257
+    PosY: 0
+    PosZ: -141.2094
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 84.878975
+    PosY: 0
+    PosZ: -768.6524
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -976.0508
+    PosY: 0
+    PosZ: 813.0851
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -531.92017
+    PosY: 0
+    PosZ: -756.1203
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1179.467
+    PosY: 0
+    PosZ: 559.5548
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1397.8806
+    PosY: 0
+    PosZ: 3.4562604
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1351.586
+    PosY: 0
+    PosZ: 341.2085
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 901.0955
+    PosY: 0
+    PosZ: -1035.2097
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 1014.4514
+    PosY: 0
+    PosZ: 848.6918
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -777.1106
+    PosY: 0
+    PosZ: -709.91455
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -179.6724
+    PosY: 0
+    PosZ: 764.29816
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -299.48557
+    PosY: 0
+    PosZ: -1364.1368
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -843.5188
+    PosY: 0
+    PosZ: -404.26874
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -222.44505
+    PosY: 0
+    PosZ: -1328.1548
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -498.34415
+    PosY: 0
+    PosZ: -1165.3492
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 220.00417
+    PosY: 0
+    PosZ: 1166.1638
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -1256.498
+    PosY: 0
+    PosZ: -174.47365
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 268.89957
+    PosY: 0
+    PosZ: 1338.8942
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: -784.484
+    PosY: 0
+    PosZ: 737.9649
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 883.073
+    PosY: 0
+    PosZ: -544.9659
+  - AreaIndex: 2
+    Rarity: 0
+    PosX: 177.72618
+    PosY: 0
+    PosZ: -754.50073

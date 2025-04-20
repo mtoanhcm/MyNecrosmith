@@ -72,24 +72,29 @@ namespace GameUtility {
             return nearest;
         }
 
-        public static Vector3 GetRandomNavmeshPositionAround(this Vector3 center, float minRadius, float maxRadius)
+        public static Vector3 GetRandomPositionAround(this Vector3 center, float minRadius, float maxRadius)
         {
-            // Generate a random direction on the horizontal plane
-            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+            // Get a random point in the unit circle
+            Vector2 randomDir = Random.insideUnitCircle;
 
-            // Random distance constrained between minimum and maximum radius
-            float randomDistance = Random.Range(minRadius, maxRadius);
-
-            // Calculate the target point in 3D space
-            Vector3 targetPoint = center + new Vector3(randomDirection.x, 0, randomDirection.y) * randomDistance;
-
-            // Validate the point on the NavMesh within a tight margin
-            if (NavMesh.SamplePosition(targetPoint, out var hit, 1.0f, NavMesh.AllAreas)) // 1.0f margin ensures precision
+            // Normalize the direction without using .normalized
+            float sqrMag = randomDir.x * randomDir.x + randomDir.y * randomDir.y;
+            if (sqrMag > 0.0001f)
             {
-                return hit.position;
+                float mag = Mathf.Sqrt(sqrMag); // We need one sqrt for normalizing
+                randomDir.x /= mag;
+                randomDir.y /= mag;
             }
 
-            return Vector3.zero; // Return zero if no valid point is found
+            // Get a random radius between min and max
+            float radius = Random.Range(minRadius, maxRadius);
+
+            // Return the position
+            return new Vector3(
+                center.x + randomDir.x * radius,
+                center.y,
+                center.z + randomDir.y * radius
+            );
         }
         
         public static List<Vector3> GetEquipmentPositionAroundCharacter(this Transform characterTrans, int totalEqupiment, 
