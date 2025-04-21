@@ -36,6 +36,15 @@ namespace Config
         None,
         Sword,
         Armor,
+        Dagger,
+        BigSword,
+        Axe,
+        BigAxe,
+        Bow,
+        Crossbow,
+        Whip,
+        Spear,
+        Hammer,
     }
 
     public enum ProjectileID
