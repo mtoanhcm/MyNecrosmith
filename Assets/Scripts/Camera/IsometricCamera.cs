@@ -8,16 +8,21 @@ namespace CameraControl
     public class IsometricCamera : MonoBehaviour
     {
         public Transform TargetFollow; // The object the camera will follow
-        
-        [SerializeField]private float distance; // Default distance from the focus point
-        [SerializeField]private float rotationX; // Camera rotation around the X-axis
-        [SerializeField]private float rotationY; // Camera rotation around the Y-axis
-        [SerializeField]private float followSpeed; // Speed at which the camera follows the target
-        [SerializeField]private float moveSpeed; // Speed of W, A, S, D movement
-        [SerializeField]private float zoomSpeed; // Speed of zooming in/out
-        [SerializeField]private float minZoom; // Minimum zoom distance
-        [SerializeField]private float maxZoom; // Maximum zoom distance
-        [SerializeField]private float fov; // Field of view for the camera
+
+        [SerializeField] private float distance; // Default distance from the focus point
+        [SerializeField] private float rotationX; // Camera rotation around the X-axis
+        [SerializeField] private float rotationY; // Camera rotation around the Y-axis
+        [SerializeField] private float followSpeed; // Speed at which the camera follows the target
+        [SerializeField] private float moveSpeed; // Speed of W, A, S, D movement
+        [SerializeField] private float zoomSpeed; // Speed of zooming in/out
+        [SerializeField] private float minZoom; // Minimum zoom distance
+        [SerializeField] private float maxZoom; // Maximum zoom distance
+        [SerializeField] private float fov; // Field of view for the camera
+
+        // Edge scrolling parameters
+        [Header("Edge Scrolling")]
+        [SerializeField] private bool enableEdgeScrolling = true;
+        [SerializeField] private float edgeScrollThreshold = 20f; // Distance from screen edge that triggers scrolling
 
         private Camera myCamera;
         private Vector2 moveInput;
@@ -26,6 +31,7 @@ namespace CameraControl
 
         // Variables to store camera adjustments
         private Vector3 zoomAdjustment = Vector3.zero;
+        private Vector2 edgeScrolling = Vector2.zero;
 
         // Reference to the generated input actions
         private Controller cameraControls;
@@ -80,6 +86,12 @@ namespace CameraControl
 
         private void Update()
         {
+            // Check for edge scrolling
+            if (enableEdgeScrolling)
+            {
+                CheckEdgeScrolling();
+            }
+
             // Adjust orthographic size based on zoom input
             if (zoomInput != 0)
             {
@@ -103,6 +115,134 @@ namespace CameraControl
             {
                 zoomAdjustment = Vector3.zero;
             }
+        }
+
+        private void CheckEdgeScrolling()
+        {
+            // Get the current mouse position
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+
+            // Get screen dimensions
+            float screenWidth = Screen.width;
+            float screenHeight = Screen.height;
+
+            // Reset edge scrolling input
+            edgeScrolling = Vector2.zero;
+
+            // If mouse is not in game view, don't apply edge scrolling
+            if (!IsMouseInGameView())
+            {
+                return;
+            }
+
+            // Calculate horizontal position factor (-1 to 1) where 0 is center,
+            // -1 is leftmost edge, and 1 is rightmost edge
+            float horizontalFactor = (mousePosition.x / screenWidth) * 2 - 1;
+
+            // Calculate vertical position factor (-1 to 1) where 0 is center,
+            // -1 is bottom edge, and 1 is top edge
+            float verticalFactor = (mousePosition.y / screenHeight) * 2 - 1;
+
+            // Check if mouse is at screen edges
+            bool isAtLeftEdge = mousePosition.x <= edgeScrollThreshold;
+            bool isAtRightEdge = mousePosition.x >= screenWidth - edgeScrollThreshold;
+            bool isAtBottomEdge = mousePosition.y <= edgeScrollThreshold;
+            bool isAtTopEdge = mousePosition.y >= screenHeight - edgeScrollThreshold;
+
+            // Only apply directional movement when at an edge
+            if (isAtLeftEdge)
+            {
+                edgeScrolling.x = -1;
+
+                // If also near top or bottom, add some vertical movement
+                if (verticalFactor > 0.5f) // Upper half of the screen
+                {
+                    edgeScrolling.y = 0.5f; // Some upward movement
+                }
+                else if (verticalFactor < -0.5f) // Lower half of the screen
+                {
+                    edgeScrolling.y = -0.5f; // Some downward movement
+                }
+            }
+            else if (isAtRightEdge)
+            {
+                edgeScrolling.x = 1;
+
+                // If also near top or bottom, add some vertical movement
+                if (verticalFactor > 0.5f) // Upper half of the screen
+                {
+                    edgeScrolling.y = 0.5f; // Some upward movement
+                }
+                else if (verticalFactor < -0.5f) // Lower half of the screen
+                {
+                    edgeScrolling.y = -0.5f; // Some downward movement
+                }
+            }
+
+            if (isAtTopEdge)
+            {
+                edgeScrolling.y = 1;
+
+                // If also near left or right, add some horizontal movement
+                if (horizontalFactor < -0.5f) // Left half of the screen
+                {
+                    edgeScrolling.x = -0.5f; // Some leftward movement
+                }
+                else if (horizontalFactor > 0.5f) // Right half of the screen
+                {
+                    edgeScrolling.x = 0.5f; // Some rightward movement
+                }
+            }
+            else if (isAtBottomEdge)
+            {
+                edgeScrolling.y = -1;
+
+                // If also near left or right, add some horizontal movement
+                if (horizontalFactor < -0.5f) // Left half of the screen
+                {
+                    edgeScrolling.x = -0.5f; // Some leftward movement
+                }
+                else if (horizontalFactor > 0.5f) // Right half of the screen
+                {
+                    edgeScrolling.x = 0.5f; // Some rightward movement
+                }
+            }
+
+            // Normalize if vector length exceeds 1
+            if (edgeScrolling.magnitude > 1)
+            {
+                edgeScrolling.Normalize();
+            }
+        }
+
+        // Check if the mouse is within the game view bounds
+        private bool IsMouseInGameView()
+        {
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+
+            // Simple bounds check
+            bool withinScreenBounds = mousePosition.x >= 0 &&
+                                     mousePosition.x <= Screen.width &&
+                                     mousePosition.y >= 0 &&
+                                     mousePosition.y <= Screen.height;
+
+            // When running in editor, we need additional checks
+#if UNITY_EDITOR
+            if (Application.isEditor && !Application.isPlaying)
+            {
+                // In editor, we need to check if game view has focus
+                // This is a bit more complex and requires some additional checks
+                // that vary based on Unity version
+
+                // A simple approximation would be to check mouse position against
+                // the game view rect, but that's not directly accessible
+
+                // For now, we'll just use Screen bounds, but be aware that
+                // this might not work perfectly in all editor layouts
+            }
+#endif
+
+            return withinScreenBounds;
         }
 
         private Vector3 CalculateZoomAdjustment(float oldDistance, float newDistance)
@@ -142,8 +282,27 @@ namespace CameraControl
             Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
             Vector3 direction = rotation * Vector3.forward;
 
+            // Calculate the combined movement input (keyboard + edge scrolling)
+            Vector2 combinedMovement = moveInput;
+
+            // If edge scrolling is active and no keyboard input, use edge scrolling
+            if (edgeScrolling != Vector2.zero)
+            {
+                // If the camera is following, stop following when edge scrolling is detected
+                if (isFollowing)
+                {
+                    isFollowing = false;
+                }
+
+                // If no keyboard input is happening, use edge scrolling
+                if (moveInput == Vector2.zero)
+                {
+                    combinedMovement = edgeScrolling;
+                }
+            }
+
             // Handle movement input
-            if (moveInput != Vector2.zero)
+            if (combinedMovement != Vector2.zero)
             {
                 // If the camera is following, stop following when a move input is detected
                 if (isFollowing)
@@ -151,8 +310,14 @@ namespace CameraControl
                     isFollowing = false;
                 }
 
-                // Calculate movement
-                Vector3 movement = new Vector3(moveInput.x, 0, moveInput.y) * (moveSpeed * Time.deltaTime);
+                // Calculate movement - use edge scroll speed for edge scrolling
+                float currentSpeed = moveSpeed;
+                if (combinedMovement == moveInput)
+                {
+                    currentSpeed = moveSpeed;
+                }
+
+                Vector3 movement = new Vector3(combinedMovement.x, 0, combinedMovement.y) * (currentSpeed * Time.deltaTime);
                 movement = rotation * movement; // Rotate movement to match camera orientation
 
                 // Update the camera's position
