@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   EquipmentID: 6
-  CategoryID: 5
+  CategoryID: 4
   Rarity: 0
   EquipmentName: Axe
   LoadPoint: 15

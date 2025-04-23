@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Club
   m_EditorClassIdentifier: 
   EquipmentID: 2
-  CategoryID: 11
+  CategoryID: 9
   Rarity: 0
   EquipmentName: Club
   LoadPoint: 13

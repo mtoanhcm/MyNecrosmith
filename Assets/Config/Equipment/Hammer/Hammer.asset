@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   EquipmentID: 15
-  CategoryID: 11
+  CategoryID: 9
   Rarity: 0
   EquipmentName: Hammer
   LoadPoint: 13

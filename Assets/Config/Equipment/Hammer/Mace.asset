@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mace
   m_EditorClassIdentifier: 
   EquipmentID: 3
-  CategoryID: 11
+  CategoryID: 9
   Rarity: 0
   EquipmentName: Mace
   LoadPoint: 13

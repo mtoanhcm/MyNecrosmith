@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   EquipmentID: 9
-  CategoryID: 7
+  CategoryID: 5
   Rarity: 0
   EquipmentName: Bow
   LoadPoint: 11
