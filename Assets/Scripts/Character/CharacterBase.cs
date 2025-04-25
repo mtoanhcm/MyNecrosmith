@@ -69,14 +69,14 @@ namespace Character
             
             CharacterAnimationController.Reset();
 
-            CharacterMovement.OnStartMoveToTarget += CharacterAnimationController.PlayMoveAnimation;
+            CharacterMovement.OnMoving += CharacterAnimationController.PlayMoveAnimation;
         }
 
         protected virtual void OnCharacterDeath()
         {
             CharacterBrain.DeActiveBrain();
             
-            CharacterMovement.OnStartMoveToTarget -= CharacterAnimationController.PlayMoveAnimation;
+            CharacterMovement.OnMoving -= CharacterAnimationController.PlayMoveAnimation;
         }
         
     }   

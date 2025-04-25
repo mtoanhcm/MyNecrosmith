@@ -98,7 +98,7 @@ namespace GameUtility {
         }
         
         public static List<Vector3> GetEquipmentPositionAroundCharacter(this Transform characterTrans, int totalEqupiment, 
-            float initialRadius = 1f, float radiusIncrement = 1f, float minAngle = 40)
+            float initialRadius = 0.5f, float radiusIncrement = 0.5f, float minAngle = 30)
         {
             var positions = new List<Vector3>();
             var currentRadius = initialRadius;
