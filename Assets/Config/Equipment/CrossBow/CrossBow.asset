@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentID: 10
   CategoryID: 5
+  Group: 1
   Rarity: 0
   EquipmentName: Cross Bow
   LoadPoint: 11

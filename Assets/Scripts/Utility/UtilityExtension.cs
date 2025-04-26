@@ -7,10 +7,6 @@ using UnityEngine.AI;
 namespace GameUtility {
     public static class UtilityExtension
     {
-        public static bool IsWeaponType(this EquipmentCategoryID categoryID)
-        {
-            return categoryID == EquipmentCategoryID.Sword;
-        }
         
         /// <summary>
         /// Determines if the target Transform is within the specified radius of the source Transform

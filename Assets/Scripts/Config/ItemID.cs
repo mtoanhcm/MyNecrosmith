@@ -23,7 +23,7 @@ namespace Config
         Spear,
         Hammer,
         BareBody,
-        LeatherBody,
+        LeatherCloth,
         LightArmor,
         ChainArmor,
         HeavyArmor,
@@ -43,6 +43,13 @@ namespace Config
         Whip,
         Polearms,
         Blunt,
+    }
+
+    public enum EquipmentGroup
+    {
+        None,
+        Weapon,
+        Armor
     }
 
     public enum ProjectileID

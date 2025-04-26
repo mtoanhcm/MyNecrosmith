@@ -14,6 +14,7 @@ namespace Equipment
         public int Level => level;
         public EquipmentID EquipmentID => baseConfig.EquipmentID;
         public EquipmentCategoryID CategoryID => baseConfig.CategoryID;
+        public EquipmentGroup Group => baseConfig.Group;
         public Rarity Rarity => baseConfig.Rarity;
         public virtual string EffectType => string.Empty;
         public virtual string EffectValue => string.Empty;

@@ -10,10 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 384cabfca5d82274fb54c03f7901495b, type: 3}
-  m_Name: HeavyArmor
+  m_Name: BareBody
   m_EditorClassIdentifier: 
-  ID: 4
-  Name: Heavy Armor
-  HP: 6
-  Type: 2
-  LoadPoint: 20
+  EquipmentID: 16
+  CategoryID: 2
+  Group: 2
+  Rarity: 0
+  EquipmentName: Bare Body
+  LoadPoint: 0
+  Icon: {fileID: 21300000, guid: 676b2deedd411cd44abc613f36bdf752, type: 3}
+  Width: 0
+  Height: 0
+  Type: 1
+  HP: 0

@@ -12,12 +12,14 @@ namespace Character
         
         public CharacterID ID => baseConfig.ID;
         public float ViewRadius => baseConfig.ViewRadius;
-        public int MaxHP => baseConfig.HP;
+        public int MaxHP => baseConfig.HP + BonusHP;
         public string MoveSpeedStat => baseConfig.MoveSpeed.ToString();
         public string AttackSpeedStat => baseConfig.AttackSpeed.ToString();
         
         [field: SerializeField]
         public int CurrentHP { get; private set; }
+
+        public int BonusHP { get; private set; }
 
         /// <summary>
         /// Delay between 2 attacks, calculated based on AttackSpeedStat.
@@ -78,6 +80,16 @@ namespace Character
         {
             CurrentHP += healData.Amount;
             CurrentHP = Mathf.Clamp(CurrentHP, 0, baseConfig.HP);
+        }
+
+        public void UpdateMaxHealth(int value)
+        {
+            BonusHP += value;
+
+            if(value > 0)
+            {
+                CurrentHP += value;
+            }
         }
     }   
 }

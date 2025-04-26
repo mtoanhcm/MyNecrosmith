@@ -27,10 +27,5 @@ namespace Equipment
             
             transform.position = spawnPosition;
         }
-        
-        protected virtual void OnKillTargetSuccess()
-        {
-            
-        }
     }   
 }

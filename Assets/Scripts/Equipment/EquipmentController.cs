@@ -32,6 +32,13 @@ namespace Equipment
         {
             for (var i = 0; i < equipments.Count; i++)
             {
+                var equipment = equipments[i];
+
+                if(equipment.Data.Group != Config.EquipmentGroup.Weapon)
+                {
+                    continue;
+                }
+
                 equipments[i].PerformAction(target);
             }
         }
@@ -42,20 +49,48 @@ namespace Equipment
             for (var i = 0; i < equipmentData.Length; i++)
             {
                 var equipment = equipmentData[i];
-                var equipmentPosition = equipmentPositions[i];
                 
+                if(equipment is WeaponData)
+                {
+                    SpawnWeaponEquipment(equipment, equipmentPositions[i]);
+                    continue;
+                }
+                
+                if(equipment is ArmorData armorData)
+                {
+                    AddArmorEquipmentEffect(armorData);
+                    continue;
+                }
+            }
+
+            return;
+
+            void AddArmorEquipmentEffect(ArmorData armorData)
+            {
+                owner.CharacterHealth.UpdateMaxHealth(armorData.HP);
+                
+                if(owner is MinionCharacter minion)
+                {
+                    minion.MinionData.SetArmorType(armorData.ArmorType);
+                }
+            }
+
+            void SpawnWeaponEquipment(EquipmentData equipment, Vector3 spawnPos)
+            {
                 var data = new EventData.OnSpawnEquipment()
                 {
                     EquipmentID = equipment.EquipmentID.ToString(),
                     EquipmentCategoryID = equipment.CategoryID.ToString(),
                     OnSpawnEquipmentSuccessHandle = OnSpawnEquipmentSuccess
                 };
-                
+
                 EventManager.Instance.TriggerEvent(data);
+
+                return;
 
                 void OnSpawnEquipmentSuccess(EquipmentBase equipmentBase)
                 {
-                    equipmentBase.Init(owner, equipment, equipmentPosition);
+                    equipmentBase.Init(owner, equipment, spawnPos);
                     equipments.Add(equipmentBase);
                 }
             }

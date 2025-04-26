@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentID: 12
   CategoryID: 7
+  Group: 1
   Rarity: 0
   EquipmentName: Whip
   LoadPoint: 7

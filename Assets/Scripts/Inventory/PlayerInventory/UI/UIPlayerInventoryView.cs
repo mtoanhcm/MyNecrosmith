@@ -55,7 +55,7 @@ namespace Player.Inventory.UI
                 playerInventoryComp = new PlayerInventoryViewComponent(playerInventory, cells.Count);
             }
 
-            var equipmentList = playerInventoryComp.GetEquipmentPage(currentPage, EquipmentCategoryID.Sword);
+            var equipmentList = playerInventoryComp.GetEquipmentPage(currentPage, EquipmentCategoryID.None);
             for (var i = 0; i < equipmentList.Length; i++)
             {
                 var equipment = equipmentList[i];

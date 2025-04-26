@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentID: 5
   CategoryID: 1
+  Group: 1
   Rarity: 0
   EquipmentName: Great Sword
   LoadPoint: 17

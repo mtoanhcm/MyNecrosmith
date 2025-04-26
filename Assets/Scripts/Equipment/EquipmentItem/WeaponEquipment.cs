@@ -45,5 +45,10 @@ namespace Equipment.Weapon
             projectileSpawner.SpawnProjectile(attackData);
             cooldown = Time.time + weaponData.Cooldown;
         }
+
+        private void OnKillTargetSuccess()
+        {
+
+        }
     }
 }

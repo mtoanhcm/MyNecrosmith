@@ -23,10 +23,10 @@ namespace Building
         protected override void PlayActivation()
         {
             //Create equipment runtime
-            EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment()
-            {
-                EquipmentData = new WeaponData(swordConfig)
-            });
+            //EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment()
+            //{
+            //    EquipmentData = new WeaponData(swordConfig)
+            //});
         }
 
         protected override void OnBuildingClaimed()
