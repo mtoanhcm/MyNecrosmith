@@ -47,9 +47,9 @@ namespace Character
                     return 0; // Prevent invalid movement speed (e.g., negative or zero).
 
                 // Calculate movement speed in units per second:
-                // - At MoveSpeedStat = 100, the agent moves 3 units per second.
+                // - At MoveSpeedStat = 100, the agent moves 4 units per second.
                 // - MoveSpeedStat scales linearly: higher stat = faster movement.
-                return (baseConfig.MoveSpeed / 100f) * 3f; 
+                return (baseConfig.MoveSpeed / 100f) * 4f; 
             }
         }
         

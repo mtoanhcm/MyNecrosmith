@@ -36,11 +36,31 @@ namespace Config
         None,
         Sword,
         Armor,
+        Dagger,
+        Axe,
+        Bow,
+        Crossbow,
+        Whip,
+        Polearms,
+        Blunt,
     }
 
     public enum ProjectileID
     {
-        SwordStrike,
-        PowerSphere
+        SwordProjectile,
+        PowerSphere,
+        GreatSwordProjectile,
+        AxeProjectile,
+        GreatAxeProjectile,
+        TwinSwordProjectile,
+        ArrowProjectile,
+        BoltProjectile,
+        WhipProjectile,
+        MacheteProjectile,
+        SpearProjectile,
+        HammerProjectile,
+        KnifeProjectile,
+        ClubProjectile,
+        MaceProjectile,
     }
 }

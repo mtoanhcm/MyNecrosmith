@@ -34,7 +34,7 @@ namespace Spawner
 
         private async void OnSpawnMinion(EventData.OnSpawnMinion data)
         {
-            var minion = await pool.Get($"Character/Minion/{data.MinionID}.prefab");
+            var minion = await pool.Get($"Character/Minion/pref_{data.MinionID}.prefab");
             if (minion == null)
             {
                 Debug.LogWarning($"Cannot spawn minion {data.MinionID}");
@@ -46,7 +46,7 @@ namespace Spawner
 
         private void OnMinionDeath(EventData.OnMinionDeath data)
         {
-            pool.Return($"Character/Minion/{data.Minion.Data.ID}.prefab", data.Minion);
+            pool.Return($"Character/Minion/pref_{data.Minion.Data.ID}.prefab", data.Minion);
         }
     }
 }

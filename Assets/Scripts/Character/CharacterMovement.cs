@@ -12,7 +12,7 @@ namespace Character
     {
         public UnityAction OnCompleteMoveToTarget;
         public UnityAction OnFailMoveToTarget;
-        public UnityAction<float> OnStartMoveToTarget;
+        public UnityAction<float> OnMoving;
 
         private FollowerEntity followPath;
         
@@ -26,19 +26,24 @@ namespace Character
         public void MoveToTarget(Vector3 target)
         {
             followPath.SetDestination(target);
-            OnStartMoveToTarget?.Invoke(followPath.maxSpeed);
             StartCoroutine(CheckReachDestination());
         }
 
         public void StopMove()
         {
+            OnMoving?.Invoke(0);
             OnCompleteMoveToTarget?.Invoke();
         }
 
         private IEnumerator CheckReachDestination()
         {
+            var realVelocity = Vector3.zero;
             while (!followPath.reachedEndOfPath)
             {
+                realVelocity = transform.InverseTransformDirection(followPath.velocity);
+                realVelocity.y = 0;
+
+                OnMoving?.Invoke(realVelocity.magnitude);
                 yield return null;
             }
 
