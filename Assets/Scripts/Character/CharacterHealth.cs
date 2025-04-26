@@ -55,5 +55,10 @@ namespace Character
             
             localCharacter.Data.RestoreHealth(healData);
         }
+
+        public void UpdateMaxHealth(int value)
+        {
+            localCharacter.Data.UpdateMaxHealth(value);
+        }
     }
 }

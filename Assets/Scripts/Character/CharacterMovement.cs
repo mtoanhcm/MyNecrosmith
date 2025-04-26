@@ -43,7 +43,7 @@ namespace Character
                 realVelocity = transform.InverseTransformDirection(followPath.velocity);
                 realVelocity.y = 0;
 
-                OnMoving?.Invoke(realVelocity.magnitude);
+                OnMoving?.Invoke(realVelocity.normalized.magnitude);
                 yield return null;
             }
 

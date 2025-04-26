@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384cabfca5d82274fb54c03f7901495b, type: 3}
   m_Name: LightArmor
   m_EditorClassIdentifier: 
-  ID: 2
-  Name: Light Armor
-  HP: 4
-  Type: 2
+  EquipmentID: 18
+  CategoryID: 2
+  Group: 2
+  Rarity: 0
+  EquipmentName: Light Armor
   LoadPoint: 14
+  Icon: {fileID: 21300000, guid: 676b2deedd411cd44abc613f36bdf752, type: 3}
+  Width: 2
+  Height: 3
+  Type: 2
+  HP: 4

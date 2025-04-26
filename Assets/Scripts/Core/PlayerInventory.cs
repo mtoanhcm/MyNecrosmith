@@ -138,29 +138,12 @@ namespace Gameplay
     
             foreach (var equipment in playerEquipments)
             {
-                if (equipment.Key.Category != category)
+                if (category != EquipmentCategoryID.None && equipment.Key.Category != category)
                 {
                     continue;
                 }
                 
                 filteredEquipments[equipment.Key] = equipment.Value;
-                // Filter only equipment data with the matching category
-                // List<EquipmentData> categoryEquipments = equipment.Value
-                //     .Where(data => data.CategoryID == category)
-                //     .ToList();
-                //
-                // // Add to the result dictionary only if there are matching equipments
-                // if (categoryEquipments.Count > 0)
-                // {
-                //     // Create a new equipment key that includes the category
-                //     EquipmentKey key = new EquipmentKey(
-                //         equipment.Key.Level,
-                //         equipment.Key.Rarity, 
-                //         equipment.Key.ID,
-                //         equipment.Key.Category);
-                //
-                //     filteredEquipments[key] = new List<EquipmentData>(categoryEquipments);
-                // }
             }
     
             return filteredEquipments;

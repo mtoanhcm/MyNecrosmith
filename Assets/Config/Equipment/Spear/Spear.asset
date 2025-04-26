@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentID: 14
   CategoryID: 8
+  Group: 1
   Rarity: 0
   EquipmentName: Spear
   LoadPoint: 15

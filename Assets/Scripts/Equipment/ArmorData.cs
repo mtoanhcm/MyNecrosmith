@@ -10,9 +10,9 @@ namespace Equipment
         public override string EffectType => $"Armor Type: {ArmorType}";
         public override string EffectValue => $"MaxHPStat: {HP.ToString(CultureInfo.InvariantCulture)}";
         public ArmorType ArmorType => armorConfig.Type;
-        public float HP => armorConfig.HP;
+        public int HP => armorConfig.HP;
         
-        public ArmorData(ArmorConfig config) : base(config)
+        public ArmorData(EquipmentConfig config) : base(config)
         {
             
         }

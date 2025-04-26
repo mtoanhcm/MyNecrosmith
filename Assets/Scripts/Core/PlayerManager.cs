@@ -1,8 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using Building;
 using Config;
 using Equipment;
 using GameUtility;
+using NUnit.Framework.Constraints;
 using Observer;
 using UnityEngine;
 
@@ -45,7 +47,7 @@ namespace Gameplay
             InitCastleBase();
         }
 
-        private async void InitCastleBase()
+        private async Task InitCastleBase()
         {
             if (minionCastle == null)
             {
@@ -80,7 +82,7 @@ namespace Gameplay
             EventManager.Instance.TriggerEvent(new EventData.OnPlayerInventoryChanged { HasChange = true});
         }
 
-        private async void InitStartupEquipment()
+        private async Task InitStartupEquipment()
         {
             for (var i = 0; i < initEquipment.Length; i++)
             {
@@ -95,23 +97,14 @@ namespace Gameplay
                         continue;
                     }
 
-                    if (AddWeaponEquipment(config))
+                    inventory.AddEquipmentToStorage(config.Group switch
                     {
-                        continue;
-                    }
+                        EquipmentGroup.Weapon => new WeaponData(config),
+                        EquipmentGroup.Armor => new ArmorData(config),
+                        _ => null
+                    });
                 }
             }
-        }
-
-        private bool AddWeaponEquipment(EquipmentConfig config)
-        {
-            if (config.CategoryID.IsWeaponType())
-            {
-                inventory.AddEquipmentToStorage(new WeaponData(config));
-                return true;
-            }
-
-            return false;
         }
     }   
 }

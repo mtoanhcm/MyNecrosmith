@@ -44,6 +44,11 @@ namespace Inventory.UI
                 CreateDraggingItem(data.Equipment);
                 return;
             }
+
+            if(currentDraggedItem == null)
+            {
+                return;
+            }
             
             currentDraggedItem.SetHoldingItem(false);
             currentDraggedItem.OnReleaseItemAction?.Invoke(currentDraggedItem);

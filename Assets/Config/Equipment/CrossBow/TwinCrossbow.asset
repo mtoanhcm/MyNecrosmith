@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentID: 11
   CategoryID: 5
+  Group: 1
   Rarity: 0
   EquipmentName: Twin Crossbow
   LoadPoint: 10

@@ -10,10 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 384cabfca5d82274fb54c03f7901495b, type: 3}
-  m_Name: ChainArmor
+  m_Name: HeavyArmor
   m_EditorClassIdentifier: 
-  ID: 3
-  Name: Chain Armor
-  HP: 5
+  EquipmentID: 20
+  CategoryID: 2
+  Group: 2
+  Rarity: 0
+  EquipmentName: Heavy Armor
+  LoadPoint: 20
+  Icon: {fileID: 0}
+  Width: 3
+  Height: 4
   Type: 2
-  LoadPoint: 16
+  HP: 6
