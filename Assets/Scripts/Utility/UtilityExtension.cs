@@ -56,7 +56,7 @@ namespace GameUtility {
                     continue; // Skip null objects
                 }
 
-                float distanceSqr = (obj.transform.position - basePosition).sqrMagnitude;
+                float distanceSqr = (obj.transform.position - basePosition).magnitude;
                 if (distanceSqr < minDistanceSqr)
                 {
                     minDistanceSqr = distanceSqr;

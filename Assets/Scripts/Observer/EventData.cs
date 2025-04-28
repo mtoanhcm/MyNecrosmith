@@ -5,6 +5,7 @@ using Character;
 using Config;
 using Equipment;
 using Inventory.UI;
+using MiniMap;
 using Projectile;
 using UI;
 using UnityEngine;
@@ -158,6 +159,16 @@ namespace Observer {
         public class OnDespawnBuilding
         {
             public BuildingBase Building;
+        }
+
+        public class OnAddMiniMapMarker
+        {
+            public MiniMapMarker Marker;
+        }
+
+        public class OnRemoveMiniMapMarker
+        {
+            public MiniMapMarker Marker;
         }
     }
 }
