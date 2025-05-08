@@ -14,7 +14,8 @@ namespace  Config
     
     public enum CharacterID
     {
-        HumanKnight = 0,
+        None = 0,
+        HumanKnight = 1,
 
         Skeleton = 100,
         KnifeZombie = 101
