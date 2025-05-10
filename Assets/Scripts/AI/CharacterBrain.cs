@@ -4,6 +4,7 @@ using GameUtility;
 using UnityEngine;
 using Character;
 using UnityEngine.SceneManagement;
+using Pathfinding;
 
 namespace BOT
 {
@@ -11,11 +12,13 @@ namespace BOT
     {
         public bool IsCharacterAlive => localCharacter.CharacterHealth.IsAlive;
         public CharacterBase LocalCharacter => localCharacter;
-        
+        public IAstarAI AI => ai;
+
         private BehaviorTree behaviorTree;
         private CharacterBase localCharacter;
         private Scanner<CharacterBase> enemyScanner;
         private Scanner<BuildingBase> enemyBuildingScanner;
+        private IAstarAI ai;
 
         [SerializeField] private BrainType brainType;
         [SerializeField] private bool isDebug;
@@ -23,7 +26,8 @@ namespace BOT
         public void Init(CharacterBase character)
         {
             localCharacter = character;
-            
+            ai = GetComponent<IAstarAI>();
+
             enemyScanner = new Scanner<CharacterBase>(
                 100,
                 () => localCharacter.transform.position,

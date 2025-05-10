@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Combat;
 using Config;
+using Equipment;
 using GameUtility;
 using Spawner;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Training
     public struct MinionInfo
     {
         public CharacterID minionID;
-        public List<EquipmentID> equipmentIDs;
+        public EquipmentConfig[] equipmentConfigs;
     }
 
     public class TrainingController : MonoBehaviour
@@ -21,6 +22,7 @@ namespace Training
         [SerializeField] private bool autoSpawn;
         [SerializeField] private MinionInfo autoSpawnMinionInfo;
         [SerializeField] private CharacterID autoSpawnEnemyID;
+        [SerializeField] private float delayAutoSpawnTime;
         private float tempDelayTimeAutoSpawn;
 
         [Header("Spawner")]
@@ -52,8 +54,9 @@ namespace Training
                 return;
             }
 
-            tempDelayTimeAutoSpawn = Time.time + 0.5f;
+            tempDelayTimeAutoSpawn = Time.time + delayAutoSpawnTime;
 
+            SendRequestAutoSpawnMinion();
             SendRequestAutoSpawnEnemy();
         }
 
@@ -68,6 +71,33 @@ namespace Training
             }
 
             enemySpawner.SpawnEnemy(tempConfig);
+        }
+
+        private async void SendRequestAutoSpawnMinion()
+        {
+            var path = $"Config/Character/Minion/{autoSpawnMinionInfo.minionID}.asset";
+            var tempConfig = await AddressableUtility.LoadAssetAsync<MinionConfig>(path);
+            if (tempConfig == null)
+            {
+                Debug.LogError($"Cannot find minion {autoSpawnMinionInfo.minionID} config");
+                return;
+            }
+
+            var equipmentConfigs = autoSpawnMinionInfo.equipmentConfigs;
+            var euipmentDatas = new EquipmentData[equipmentConfigs.Length];
+            for(var i =0; i < equipmentConfigs.Length; i++)
+            {
+                var config = equipmentConfigs[i];
+                euipmentDatas[i] = config.Group switch
+                {
+                    EquipmentGroup.Weapon => new WeaponData(config),
+                    EquipmentGroup.Armor => new ArmorData(config),
+                    _ => null
+                };
+            }
+
+
+            minionSpawner.SpawnMinion(tempConfig, euipmentDatas);
         }
     }
 }

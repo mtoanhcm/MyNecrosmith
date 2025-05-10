@@ -15,6 +15,7 @@ namespace BOT
         
         private CharacterBrain brain;
         private TaskStatus status;
+        private float combatRadius;
 
         public override void OnStart()
         {
@@ -38,13 +39,35 @@ namespace BOT
             return status;
         }
 
+        public override void OnEnd()
+        {
+            StopAllCoroutines();
+
+            if (brain == null)
+            {
+                return;
+            }
+
+            brain.LocalCharacter.CharacterMovement.StopMove();
+            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget -= OnCompleteMoveToTarget;
+            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget -= OnFailMoveToTarget;
+        }
+
         private IEnumerator MoveAroundTarget()
         {
             var waitingUpdate = new WaitForSeconds(0.5f);
+            float desiredDistance = 5.0f; // Desired distance to maintain from the target
+            while (target.Value != null && target.Value.CharacterHealth.IsAlive)
+            {
+                Vector3 directionToTarget = (target.Value.transform.position - brain.LocalCharacter.transform.position).normalized;
+                Vector3 targetPosition = target.Value.transform.position - directionToTarget * desiredDistance;
 
-            yield return waitingUpdate;
-            
+                brain.LocalCharacter.CharacterMovement.MoveToTarget(targetPosition);
+                yield return waitingUpdate;
+            }
+
             brain.LocalCharacter.CharacterMovement.StopMove();
+            status = TaskStatus.Failure;
         }
         
         private void OnFailMoveToTarget()
@@ -55,6 +78,15 @@ namespace BOT
         private void OnCompleteMoveToTarget()
         {
             status = TaskStatus.Success;
+        }
+
+        Vector3 PickRandomPoint()
+        {
+            var point = Random.insideUnitSphere * combatRadius ;
+
+            point.y = 0;
+            point += brain.AI.position;
+            return point;
         }
     }   
 }
