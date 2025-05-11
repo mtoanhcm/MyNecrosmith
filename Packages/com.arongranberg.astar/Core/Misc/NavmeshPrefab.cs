@@ -369,7 +369,9 @@ namespace Pathfinding {
 			tileLayout.graphSpaceSize.x = float.PositiveInfinity;
 			tileLayout.graphSpaceSize.z = float.PositiveInfinity;
 			var buildSettings = RecastBuilder.BuildTileMeshes(graph, tileLayout, new IntRect(0, 0, tileLayout.tileCount.x - 1, tileLayout.tileCount.y - 1));
-			buildSettings.scene = this.gameObject.scene;
+			var scene = this.gameObject.scene;
+			buildSettings.collectionSettings.physicsScene = scene.GetPhysicsScene();
+			buildSettings.collectionSettings.physicsScene2D = scene.GetPhysicsScene2D();
 
 			// Schedule the jobs asynchronously
 			var tileMeshesPromise = buildSettings.Schedule(arena);

@@ -4,6 +4,7 @@ using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using System;
+using System.Threading;
 
 namespace Pool
 {
@@ -124,13 +125,13 @@ namespace Pool
 
             // Check if pool needs and can expand
             int currentTotal = data.UsedItems.Count + data.AvailableItems.Count;
-            
+
             // If pool is at capacity, expand it
             if (currentTotal >= data.MaxSize)
             {
                 // Increase the maximum size of the pool
                 data.MaxSize += maxSizeIncrement;
-                
+
                 // Expand the pool and get an instance
                 return await ExpandPoolAndGetInstance(data, itemId);
             }
@@ -140,7 +141,7 @@ namespace Pool
             int expandAmount = Mathf.Min(expansionSize, remainingSpace);
 
             List<T> newInstances = new List<T>(expandAmount);
-            
+
             // Create new instances
             for (int i = 0; i < expandAmount - 1; i++)
             {
@@ -158,7 +159,7 @@ namespace Pool
                     Debug.LogError($"Error creating instance during expansion: {ex.Message}");
                 }
             }
-            
+
             // Push all successfully created instances to the pool
             foreach (var instance in newInstances)
             {
@@ -182,7 +183,7 @@ namespace Pool
             catch (Exception ex)
             {
                 Debug.LogError($"Error creating final instance: {ex.Message}");
-                
+
                 // If we have any available items now (from successful expansion), use one of those
                 if (data.AvailableItems.Count > 0)
                 {
@@ -191,12 +192,11 @@ namespace Pool
                     instance.gameObject.SetActive(true);
                     return instance;
                 }
-                
+
                 // Otherwise wait for an instance
                 return await WaitForAvailableInstance(data);
             }
         }
-
         /// <summary>
         /// Expands the pool beyond its current max size and returns a new instance.
         /// Creates multiple instances at once to improve efficiency.

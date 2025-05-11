@@ -104,6 +104,7 @@ namespace Observer {
         /// </summary>
         public class OnDespawnProjectile
         {
+            public ProjectileID ID;
             public ProjectileBase Projectile;
         }
 

@@ -16,33 +16,36 @@ namespace Projectile.Movement
             
             // Calculate duration based on distance and speed
             var duration = projectile.Data.AttackRange / projectile.Data.MoveSpeed;
-
+            bool hasDealDamage = false;
             // Setup the movement with DOTween
-            bool hasTakeDamage = false;
             currentTween = projectile.transform
                 .DOMove(targetPosition, duration)
                 .SetEase(Ease.Linear)
                 .OnUpdate(() =>
                 {
-                    if (!hasTakeDamage && checkApplyDamage(projectile))
+                    if (hasDealDamage)
                     {
-                        currentTween.Complete();
+                        return;
+                    }
+
+                    if (checkApplyDamage(projectile))
+                    {
+                        //currentTween.Complete();
+                        hasDealDamage = true; ;
+                        CompleteMovement(projectile);
+                        currentTween.Kill();
                     }
                 })
                 .OnComplete(() =>
                 {
-                    if (!hasTakeDamage)
-                    {
-                        hasTakeDamage = true;
-                        CompleteMovement(projectile);
-                    }
+                    CompleteMovement(projectile);
                 });
         }
 
         protected override void CompleteMovement(ProjectileBase projectile)
         {
             base.CompleteMovement(projectile);
-            currentTween?.Kill();
+            currentTween.Kill();
             projectile.Despawn();
         }
     }

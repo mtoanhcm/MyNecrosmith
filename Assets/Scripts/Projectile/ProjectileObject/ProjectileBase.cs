@@ -28,7 +28,7 @@ namespace Projectile
 
         public virtual void Despawn()
         {
-            EventManager.Instance.TriggerEvent(new EventData.OnDespawnProjectile(){ Projectile = this});
+            EventManager.Instance.TriggerEvent(new EventData.OnDespawnProjectile(){ ID = data.ID, Projectile = this});
         }
         
         // Method to get damage area info for DamageApplicationSO

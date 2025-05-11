@@ -31,6 +31,7 @@ namespace Projectile
 
         private bool ApplyDamage(ProjectileBase projectile)
         {
+            Debug.Log($"Apply damage projecti {projectile.GetInstanceID()} -- {projectile.Data}");
             return Config.DamageApplication.DetectAndApplyDamage(projectile);
         }
     }

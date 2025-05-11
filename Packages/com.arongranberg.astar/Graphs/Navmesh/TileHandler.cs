@@ -671,23 +671,26 @@ namespace Pathfinding.Graphs.Navmesh {
 								// Clip the cuts against its vertical bounds.
 								// This prevents the cut from extending further down or up than it should.
 								// In most cases, cuts go through the whole triangle, and this is not necessary.
+								var triangleIsFlat = triBounds.min.y == triBounds.max.y-1;
 								for (int ci = 0; ci < interestingCuts.Length; ci++) {
 									var bounds = tileCutBounds[interestingCuts[ci]];
-
-									var hmin = bounds.min.y;
 
 									var cut = contoursSpan[interestingCuts[ci]];
 									var cutVertices = contourVerticesP64.AsUnsafeSpan().Slice(cut.startIndex, cut.endIndex - cut.startIndex);
 
-									if (triBounds.min.y <= hmin && triBounds.max.y-1 >= hmin) {
-										if (hmin == triBounds.max.y-1) cutVertices = default; // The cut only touches the triangle along a single line or point
-										else ClipAgainstHorizontalHalfPlane(ref cutVertices, contourScratchVertices, hmin, a, b, c, false);
-									}
+									if (!triangleIsFlat) {
+										var hmin = bounds.min.y;
+										if (triBounds.min.y <= hmin && triBounds.max.y-1 >= hmin) {
+											var touchesOnlyTopOfTriangle = hmin == triBounds.max.y-1;
+											if (touchesOnlyTopOfTriangle) cutVertices = default; // The cut only touches the triangle along a single line or point
+											ClipAgainstHorizontalHalfPlane(ref cutVertices, contourScratchVertices, hmin, a, b, c, false);
+										}
 
-									var hmax = bounds.max.y;
-									if (triBounds.min.y <= hmax && triBounds.max.y-1 >= hmax) {
-										if (hmax == triBounds.min.y) cutVertices = default; // The cut only touches the triangle along a single line or point
-										else ClipAgainstHorizontalHalfPlane(ref cutVertices, contourScratchVertices, hmax, a, b, c, true);
+										var hmax = bounds.max.y;
+										if (triBounds.min.y <= hmax && triBounds.max.y-1 >= hmax) {
+											if (hmax == triBounds.min.y) cutVertices = default; // The cut only touches the triangle along a single line or point
+											ClipAgainstHorizontalHalfPlane(ref cutVertices, contourScratchVertices, hmax, a, b, c, true);
+										}
 									}
 
 									if (cutVertices.length > 0) {
@@ -699,7 +702,7 @@ namespace Pathfinding.Graphs.Navmesh {
 
 							// Insert extra vertices on the edges of the triangle, if necessary
 							MarkerEdgeSnapping.Begin();
-							SnapEdges(ref triBuffer, ref vertexCount, contoursSpan, ref interestingCuts, contourVerticesP64.AsUnsafeSpan(), tileSize);
+							SnapEdges(ref triBuffer, ref vertexCount, finalContourVertices.AsUnsafeSpan(), tileSize);
 							MarkerEdgeSnapping.End();
 
 							// First iteration: Cut the triangle using normal navmesh cuts
@@ -980,7 +983,7 @@ namespace Pathfinding.Graphs.Navmesh {
 		/// navmesh cuts exactly touch the edges of the triangles.
 		/// The overhead seems to be roughly 1% of the total cutting time.
 		/// </summary>
-		static void SnapEdges (ref NativeArray<Point64Wrapper> triBuffer, ref int vertexCount, UnsafeSpan<NavmeshCut.ContourBurst> contours, ref NativeList<int> interestingCuts, UnsafeSpan<Point64Wrapper> contourVerticesP64, Vector2Int tileSize) {
+		static void SnapEdges (ref NativeArray<Point64Wrapper> triBuffer, ref int vertexCount, UnsafeSpan<UnsafeSpan<Point64Wrapper> > contours, Vector2Int tileSize) {
 			for (int next = 0, prev = vertexCount - 1; next < vertexCount; prev = next, next++) {
 				var c1 = new int2((int)triBuffer[prev].x, (int)triBuffer[prev].y);
 				var c2 = new int2((int)triBuffer[next].x, (int)triBuffer[next].y);
@@ -989,10 +992,10 @@ namespace Pathfinding.Graphs.Navmesh {
 				var baseLength = (long)math.sqrt((double)lengthSq);
 				var threshold = baseLength * EdgeSnappingMaxDistance * 2;
 
-				for (int i = 0; i < interestingCuts.Length; i++) {
-					var cut = contours[interestingCuts[i]];
-					for (int pi = cut.startIndex; pi < cut.endIndex; pi++) {
-						var p = new int2((int)contourVerticesP64[pi].x, (int)contourVerticesP64[pi].y);
+				for (int i = 0; i < contours.Length; i++) {
+					var cut = contours[i];
+					for (uint pi = 0; pi < cut.length; pi++) {
+						var p = new int2((int)cut[pi].x, (int)cut[pi].y);
 						// Check if the point is close enough to the (infinite) line
 						// Use the fact that the a triangle's area is base * height / 2
 						if (math.abs(VectorMath.SignedTriangleAreaTimes2(c1, c2, p)) <= threshold) {
@@ -1188,6 +1191,8 @@ namespace Pathfinding.Graphs.Navmesh {
 			static long SignedDistanceToHalfPlane (Point64Wrapper a, Point64Wrapper b, Point64Wrapper p) {
 				return (b.x - a.x) * (p.y - a.y) - (p.x - a.x) * (b.y - a.y);
 			}
+
+			if (clipIn.length == 0) return false;
 
 			bool clipHappened = false;
 			var prev = SignedDistanceToHalfPlane(a, b, clipIn[clipIn.length-1]);

@@ -45,8 +45,8 @@ namespace Spawner
         
         private void OnDespawnProjectile(EventData.OnDespawnProjectile data)
         {
-            pool.Return($"Projectiles/pref_{data.Projectile.Data.ID}.prefab", data.Projectile);
-            data.Projectile.ResetData();
+            pool.Return($"Projectiles/pref_{data.ID}.prefab", data.Projectile);
+            //data.Projectile.ResetData();
         }
     }   
 }

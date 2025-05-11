@@ -16,6 +16,7 @@ namespace GameUtility
         
         public static LayerMask GetTargetLayer(this ProjectileBase projectile)
         {
+            Debug.Log($"{projectile.GetInstanceID()} -- {projectile.Data}");
             if (IsInLayer(projectile.Data.Attacker, ENEMY_LAYER))
             {
                 return LayerMask.GetMask(MINION_LAYER) | GetBlockingLayer();

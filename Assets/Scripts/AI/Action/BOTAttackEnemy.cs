@@ -52,12 +52,13 @@ namespace BOT
                     yield return null;
                     continue;
                 }
-                
+
                 // Calculate the desired rotation towards the target
                 var targetRotation = Quaternion.LookRotation(direction);
 
-                characterTrans.rotation = Quaternion.Slerp(characterTrans.rotation, targetRotation,
-                    ROTATE_SPEED * Time.deltaTime);
+                characterTrans.rotation = Quaternion.Slerp(characterTrans.rotation, targetRotation, ROTATE_SPEED * Time.deltaTime);
+                //var b = Quaternion.Slerp(characterTrans.rotation, targetRotation, ROTATE_SPEED * Time.deltaTime);
+                //Debug.Log(b);
                 
                 yield return null;
             }
