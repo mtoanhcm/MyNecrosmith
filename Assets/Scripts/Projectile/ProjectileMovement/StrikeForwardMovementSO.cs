@@ -8,12 +8,12 @@ namespace Projectile.Movement
     public class StrikeForwardMovementSO : ProjectileMovementSO
     {
         private Tween currentTween;
-        
+
         public override void StartMovement(ProjectileBase projectile, Func<ProjectileBase, bool> checkApplyDamage)
         {
             // Calculate the target position based on spawn position, direction and range
             var targetPosition = projectile.Data.SpawnPosition + (projectile.Data.Direction * projectile.Data.AttackRange);
-            
+
             // Calculate duration based on distance and speed
             var duration = projectile.Data.AttackRange / projectile.Data.MoveSpeed;
             bool hasDealDamage = false;
@@ -32,12 +32,15 @@ namespace Projectile.Movement
                     {
                         //currentTween.Complete();
                         hasDealDamage = true; ;
-                        CompleteMovement(projectile);
-                        currentTween.Kill();
+                        //CompleteMovement(projectile);
+                        currentTween.Complete();
                     }
                 })
                 .OnComplete(() =>
                 {
+                    CompleteMovement(projectile);
+                })
+                .OnKill(() => {
                     CompleteMovement(projectile);
                 });
         }

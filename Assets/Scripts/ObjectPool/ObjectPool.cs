@@ -39,6 +39,7 @@ namespace Pool
             public bool IsLoading;
             public int MaxSize; // Dynamic max size that can grow
 
+
             public PoolData(int initialCapacity, int maxSize)
             {
                 AvailableItems = new Stack<T>(initialCapacity);
