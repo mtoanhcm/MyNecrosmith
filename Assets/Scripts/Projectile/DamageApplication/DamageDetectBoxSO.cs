@@ -11,7 +11,6 @@ namespace Projectile.DamageApply
         
         public override bool DetectAndApplyDamage(ProjectileBase projectile)
         {
-            Debug.Log($"Check apppy damage {projectile.GetInstanceID()} --- {projectile.Data}");
             var (center, size, rotation) = projectile.GetDamageArea();
         
             var hitCount = Physics.OverlapBoxNonAlloc(center, size / 2, hits, rotation, projectile.GetTargetLayer());

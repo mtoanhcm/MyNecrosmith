@@ -30,9 +30,7 @@ namespace Projectile.Movement
 
                     if (checkApplyDamage(projectile))
                     {
-                        //currentTween.Complete();
                         hasDealDamage = true; ;
-                        //CompleteMovement(projectile);
                         currentTween.Complete();
                     }
                 })
@@ -48,7 +46,7 @@ namespace Projectile.Movement
         protected override void CompleteMovement(ProjectileBase projectile)
         {
             base.CompleteMovement(projectile);
-            currentTween.Kill();
+            //currentTween.Kill();
             projectile.Despawn();
         }
     }

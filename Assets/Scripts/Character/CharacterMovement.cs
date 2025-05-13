@@ -18,7 +18,10 @@ namespace Character
         
         public void Init(CharacterBase character)
         {
-            ai = GetComponent<IAstarAI>();
+            if(ai == null)
+            {
+                ai = GetComponent<IAstarAI>();
+            }
 
             ai.maxSpeed = character.Data.RealMoveSpeed;
         }
@@ -38,6 +41,7 @@ namespace Character
 
         public void StopMove()
         {
+            StopAllCoroutines();
             OnMoving?.Invoke(0);
             OnCompleteMoveToTarget?.Invoke();
         }
