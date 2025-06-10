@@ -32,6 +32,7 @@ namespace Training
         private void Start()
         {
             DamageReduction.Init();
+            enemySpawner.Init();
         }
 
         private void Update()
