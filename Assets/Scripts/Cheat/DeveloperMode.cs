@@ -4,6 +4,6 @@ namespace Cheat
 {
     public static class DeveloperMode
     {
-        public static bool IsImmortal = true;
+        public static bool IsImmortal = false;
     }   
 }

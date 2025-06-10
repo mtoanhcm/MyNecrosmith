@@ -23,15 +23,5 @@ namespace Projectile
             Config = data.ProjectileConfig;
             hitData = data;
         }
-
-        public void Fire(ProjectileBase projectile)
-        {
-            Config.ProjectileMovement.StartMovement(projectile, ApplyDamage);
-        }
-
-        private bool ApplyDamage(ProjectileBase projectile)
-        {
-            return Config.DamageApplication.DetectAndApplyDamage(projectile);
-        }
     }
 }

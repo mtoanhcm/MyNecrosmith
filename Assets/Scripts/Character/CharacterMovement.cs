@@ -14,23 +14,34 @@ namespace Character
         public UnityAction OnFailMoveToTarget;
         public UnityAction<float> OnMoving;
 
-        private FollowerEntity followPath;
+        private IAstarAI ai;
         
         public void Init(CharacterBase character)
         {
-            followPath = GetComponent<FollowerEntity>();
+            if(ai == null)
+            {
+                ai = GetComponent<IAstarAI>();
+            }
 
-            followPath.maxSpeed = character.Data.RealMoveSpeed;
+            ai.maxSpeed = character.Data.RealMoveSpeed;
+        }
+
+        public void ToggleAutoRotation(bool isRotate)
+        {
+            ai.updateRotation = isRotate;
         }
 
         public void MoveToTarget(Vector3 target)
         {
-            followPath.SetDestination(target);
+            StopAllCoroutines();
+            ai.destination = target;
+            ai.SearchPath();
             StartCoroutine(CheckReachDestination());
         }
 
         public void StopMove()
         {
+            StopAllCoroutines();
             OnMoving?.Invoke(0);
             OnCompleteMoveToTarget?.Invoke();
         }
@@ -38,9 +49,9 @@ namespace Character
         private IEnumerator CheckReachDestination()
         {
             var realVelocity = Vector3.zero;
-            while (!followPath.reachedEndOfPath)
+            while (ai.pathPending || !ai.reachedEndOfPath)
             {
-                realVelocity = transform.InverseTransformDirection(followPath.velocity);
+                realVelocity = transform.InverseTransformDirection(ai.velocity);
                 realVelocity.y = 0;
 
                 OnMoving?.Invoke(realVelocity.normalized.magnitude);

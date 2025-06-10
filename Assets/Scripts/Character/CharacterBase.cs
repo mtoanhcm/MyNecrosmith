@@ -75,7 +75,8 @@ namespace Character
         protected virtual void OnCharacterDeath()
         {
             CharacterBrain.DeActiveBrain();
-            
+            CharacterMovement.StopMove();
+
             CharacterMovement.OnMoving -= CharacterAnimationController.PlayMoveAnimation;
         }
         

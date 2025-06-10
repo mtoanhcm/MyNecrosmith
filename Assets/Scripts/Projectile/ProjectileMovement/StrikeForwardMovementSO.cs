@@ -8,41 +8,45 @@ namespace Projectile.Movement
     public class StrikeForwardMovementSO : ProjectileMovementSO
     {
         private Tween currentTween;
-        
+
         public override void StartMovement(ProjectileBase projectile, Func<ProjectileBase, bool> checkApplyDamage)
         {
             // Calculate the target position based on spawn position, direction and range
             var targetPosition = projectile.Data.SpawnPosition + (projectile.Data.Direction * projectile.Data.AttackRange);
-            
+
             // Calculate duration based on distance and speed
             var duration = projectile.Data.AttackRange / projectile.Data.MoveSpeed;
-
+            bool hasDealDamage = false;
             // Setup the movement with DOTween
-            bool hasTakeDamage = false;
             currentTween = projectile.transform
                 .DOMove(targetPosition, duration)
                 .SetEase(Ease.Linear)
                 .OnUpdate(() =>
                 {
-                    if (!hasTakeDamage && checkApplyDamage(projectile))
+                    if (hasDealDamage)
                     {
+                        return;
+                    }
+
+                    if (checkApplyDamage(projectile))
+                    {
+                        hasDealDamage = true; ;
                         currentTween.Complete();
                     }
                 })
                 .OnComplete(() =>
                 {
-                    if (!hasTakeDamage)
-                    {
-                        hasTakeDamage = true;
-                        CompleteMovement(projectile);
-                    }
+                    CompleteMovement(projectile);
+                })
+                .OnKill(() => {
+                    CompleteMovement(projectile);
                 });
         }
 
         protected override void CompleteMovement(ProjectileBase projectile)
         {
             base.CompleteMovement(projectile);
-            currentTween?.Kill();
+            //currentTween.Kill();
             projectile.Despawn();
         }
     }

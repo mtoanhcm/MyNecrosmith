@@ -33,7 +33,7 @@ namespace Spawner
 
         private async void OnSpawnEnemy(EventData.OnSpawnEnemy data)
         {
-            var enemy = await pool.Get($"Character/Enemy/{data.EnemyID}.prefab");
+            var enemy = await pool.Get($"Character/Enemy/pref_{data.EnemyID}.prefab");
             if (enemy == null)
             {
                 Debug.LogWarning($"Cannot spawn enemy {data.EnemyID}");
@@ -45,7 +45,7 @@ namespace Spawner
         
         private void OnDespawnEnemy(EventData.OnEnemyDeath data)
         {
-            pool.Return($"Character/Enemy/{data.Enemy.Data.ID}.prefab", data.Enemy);
+            pool.Return($"Character/Enemy/pref_{data.Enemy.Data.ID}.prefab", data.Enemy);
         }
     }   
 }

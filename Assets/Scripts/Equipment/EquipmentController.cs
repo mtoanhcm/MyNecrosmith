@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using Character;
 using GameUtility;
 using Observer;
@@ -18,13 +19,13 @@ namespace Equipment
             equipments = new List<EquipmentBase>();
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             if (equipments.Count == 0)
             {
                 return;
             }
-            
+
             StickEquipmentToPlayer();
         }
 
@@ -117,7 +118,7 @@ namespace Equipment
         {
             for (var i = 0; i < equipments.Count; i++)
             {
-                equipments[i].transform.position = transform.position + equipmentPositions[i];
+                equipments[i].transform.position = transform.position + transform.rotation * equipmentPositions[i];
             }
         }
     }   

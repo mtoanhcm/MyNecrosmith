@@ -50,7 +50,7 @@ namespace Character
                 return;
             }
             
-            animator.SetInteger(ATTACK, weaponType);
+            //animator.SetInteger(ATTACK, weaponType);
         }
 
         public void Reset()

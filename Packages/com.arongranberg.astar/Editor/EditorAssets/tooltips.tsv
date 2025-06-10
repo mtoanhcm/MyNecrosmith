@@ -1454,6 +1454,7 @@ Pathfinding.FollowerEntity.pathfindingSettings	followerentity.html#pathfindingSe
 Pathfinding.FollowerEntity.position	followerentity.html#position	Position of the agent. \n\nIn world space. \n\n[more in online documentation]\nIf you want to move the agent you may use Teleport or Move.
 Pathfinding.FollowerEntity.positionSmoothing	followerentity.html#positionSmoothing	How much to smooth the visual position of the agent. \n\nThis does not affect movement, but smoothes out the position of the agent visually.\n\nRecommended values are between 0.0 and 0.5. A value of zero will disable smoothing completely.\n\nThis will make the agent seem to lag slightly behind the internal position of the agent. It may also cut corners slightly.\n\nThe unit for this field is seconds.
 Pathfinding.FollowerEntity.radius	followerentity.html#radius	Radius of the agent in world units. \n\nThis is visualized in the scene view as a yellow cylinder around the character.\n\nNote that this does not affect pathfinding in any way. The graph used completely determines where the agent can move.\n\n[more in online documentation]
+Pathfinding.FollowerEntity.reachedCrowdedEndOfPath	followerentity.html#reachedCrowdedEndOfPath	Like reachedEndOfPath, but will also return true if the end of the path is crowded, and this agent has stopped because it cannot get closer. \n\nThis is only relevant if the agent is using local avoidance. Otherwise, this will be identical to reachedEndOfPath.\n\nIf the agent has a stale path (e.g. because the destination changed significantly, or a graph update happened near the agent), false will be returned until the path has been recalculated (typically in the next one or two frames).\n\nYou can see a visualization of this state by enabling "Reached State" in the Local Avoidance Debug Rendering field.\n\n[more in online documentation]\nIn the video below, the agents will get a red ring around them when this property is true.\n\n <b>[video in online documentation]</b>\n\n[more in online documentation]
 Pathfinding.FollowerEntity.reachedDestination	followerentity.html#reachedDestination	True if the ai has reached the destination. \n\nThe agent considers the destination reached when it is within stopDistance world units from the destination. Additionally, the destination must not be above the agent's head, and it must not be more than half the agent's height below its feet.\n\nIf a facing direction was specified when setting the destination, this will only return true once the agent is approximately facing the correct orientation.\n\nThis value will be updated immediately when the destination is changed.\n\n<b>[code in online documentation]</b>\n\n[more in online documentation]
 Pathfinding.FollowerEntity.reachedEndOfPath	followerentity.html#reachedEndOfPath	True if the agent has reached the end of the current path. \n\nThe agent considers the end of the path reached when it is within stopDistance world units from the end of the path. Additionally, the end of the path must not be above the agent's head, and it must not be more than half the agent's height below its feet.\n\nIf a facing direction was specified when setting the destination, this will only return true once the agent is approximately facing the correct orientation.\n\nThis value will be updated immediately when the destination is changed.\n\n[more in online documentation]
 Pathfinding.FollowerEntity.readyToTraverseOffMeshLinkRW	followerentity.html#readyToTraverseOffMeshLinkRW	
@@ -1795,6 +1796,14 @@ Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycast.raycastCommands	jobpreparegri
 Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycast.raycastDirection	jobpreparegridraycast.html#raycastDirection	
 Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycast.raycastMask	jobpreparegridraycast.html#raycastMask	
 Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycast.raycastOffset	jobpreparegridraycast.html#raycastOffset	
+Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycastThick.bounds	jobpreparegridraycastthick.html#bounds	
+Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycastThick.graphToWorld	jobpreparegridraycastthick.html#graphToWorld	
+Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycastThick.physicsScene	jobpreparegridraycastthick.html#physicsScene	
+Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycastThick.radius	jobpreparegridraycastthick.html#radius	
+Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycastThick.raycastCommands	jobpreparegridraycastthick.html#raycastCommands	
+Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycastThick.raycastDirection	jobpreparegridraycastthick.html#raycastDirection	
+Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycastThick.raycastMask	jobpreparegridraycastthick.html#raycastMask	
+Pathfinding.Graphs.Grid.Jobs.JobPrepareGridRaycastThick.raycastOffset	jobpreparegridraycastthick.html#raycastOffset	
 Pathfinding.Graphs.Grid.Jobs.JobPrepareRaycasts.direction	jobprepareraycasts.html#direction	
 Pathfinding.Graphs.Grid.Jobs.JobPrepareRaycasts.distance	jobprepareraycasts.html#distance	
 Pathfinding.Graphs.Grid.Jobs.JobPrepareRaycasts.mask	jobprepareraycasts.html#mask	
@@ -2066,7 +2075,8 @@ Pathfinding.Graphs.Navmesh.RecastMeshGatherer.meshes	recastmeshgatherer.html#mes
 Pathfinding.Graphs.Navmesh.RecastMeshGatherer.meshesUnreadableAtRuntime	recastmeshgatherer.html#meshesUnreadableAtRuntime	
 Pathfinding.Graphs.Navmesh.RecastMeshGatherer.modificationsByLayer	recastmeshgatherer.html#modificationsByLayer	
 Pathfinding.Graphs.Navmesh.RecastMeshGatherer.modificationsByLayer2D	recastmeshgatherer.html#modificationsByLayer2D	
-Pathfinding.Graphs.Navmesh.RecastMeshGatherer.scene	recastmeshgatherer.html#scene	
+Pathfinding.Graphs.Navmesh.RecastMeshGatherer.physicsScene	recastmeshgatherer.html#physicsScene	
+Pathfinding.Graphs.Navmesh.RecastMeshGatherer.physicsScene2D	recastmeshgatherer.html#physicsScene2D	
 Pathfinding.Graphs.Navmesh.RecastMeshGatherer.tagMask	recastmeshgatherer.html#tagMask	
 Pathfinding.Graphs.Navmesh.RecastMeshGatherer.terrainDownsamplingFactor	recastmeshgatherer.html#terrainDownsamplingFactor	
 Pathfinding.Graphs.Navmesh.RecastMeshGatherer.triangleBuffers	recastmeshgatherer.html#triangleBuffers	
@@ -2099,7 +2109,6 @@ Pathfinding.Graphs.Navmesh.TileBuilder.maxSlope	tilebuilder.html#maxSlope
 Pathfinding.Graphs.Navmesh.TileBuilder.minRegionSize	tilebuilder.html#minRegionSize	
 Pathfinding.Graphs.Navmesh.TileBuilder.perLayerModifications	tilebuilder.html#perLayerModifications	
 Pathfinding.Graphs.Navmesh.TileBuilder.relevantGraphSurfaceMode	tilebuilder.html#relevantGraphSurfaceMode	
-Pathfinding.Graphs.Navmesh.TileBuilder.scene	tilebuilder.html#scene	
 Pathfinding.Graphs.Navmesh.TileBuilder.tileBorderSizeInVoxels	tilebuilder.html#tileBorderSizeInVoxels	
 Pathfinding.Graphs.Navmesh.TileBuilder.tileLayout	tilebuilder.html#tileLayout	
 Pathfinding.Graphs.Navmesh.TileBuilder.tileRect	tilebuilder.html#tileRect	
@@ -2586,6 +2595,8 @@ Pathfinding.Jobs.IndexActionJob.action	indexactionjob.html#action
 Pathfinding.Jobs.IndexActionJob.length	indexactionjob.html#length	
 Pathfinding.Jobs.JobAND.data	joband.html#data	
 Pathfinding.Jobs.JobAND.result	joband.html#result	
+Pathfinding.Jobs.JobClampHitToRay.commands	jobclamphittoray.html#commands	
+Pathfinding.Jobs.JobClampHitToRay.hits	jobclamphittoray.html#hits	
 Pathfinding.Jobs.JobCopy.from	jobcopy.html#from	
 Pathfinding.Jobs.JobCopy.to	jobcopy.html#to	
 Pathfinding.Jobs.JobCopyHits.hits	jobcopyhits.html#hits	
@@ -2614,6 +2625,8 @@ Pathfinding.Jobs.JobDependencyTracker.JobOverlapSphereCommandDummy.commands	jobo
 Pathfinding.Jobs.JobDependencyTracker.JobOverlapSphereCommandDummy.results	joboverlapspherecommanddummy.html#results	
 Pathfinding.Jobs.JobDependencyTracker.JobRaycastCommandDummy.commands	jobraycastcommanddummy.html#commands	
 Pathfinding.Jobs.JobDependencyTracker.JobRaycastCommandDummy.results	jobraycastcommanddummy.html#results	
+Pathfinding.Jobs.JobDependencyTracker.JobSpherecastCommandDummy.commands	jobspherecastcommanddummy.html#commands	
+Pathfinding.Jobs.JobDependencyTracker.JobSpherecastCommandDummy.results	jobspherecastcommanddummy.html#results	
 Pathfinding.Jobs.JobDependencyTracker.NativeArraySlot.hasWrite	nativearrayslot.html#hasWrite	
 Pathfinding.Jobs.JobDependencyTracker.NativeArraySlot.hash	nativearrayslot.html#hash	
 Pathfinding.Jobs.JobDependencyTracker.NativeArraySlot.initialized	nativearrayslot.html#initialized	
@@ -3311,7 +3324,6 @@ Pathfinding.RVO.JobDestinationReached.TempAgentData.distToEndSq	tempagentdata.ht
 Pathfinding.RVO.JobDestinationReached.agentData	jobdestinationreached.html#agentData	
 Pathfinding.RVO.JobDestinationReached.draw	jobdestinationreached.html#draw	
 Pathfinding.RVO.JobDestinationReached.numAgents	jobdestinationreached.html#numAgents	
-Pathfinding.RVO.JobDestinationReached.obstacleData	jobdestinationreached.html#obstacleData	
 Pathfinding.RVO.JobDestinationReached.output	jobdestinationreached.html#output	
 Pathfinding.RVO.JobDestinationReached.temporaryAgentData	jobdestinationreached.html#temporaryAgentData	
 Pathfinding.RVO.JobHardCollisions.CollisionStrength	jobhardcollisions.html#CollisionStrength	How aggressively hard collisions are resolved. \n\nShould be a value between 0 and 1.
@@ -3509,7 +3521,7 @@ Pathfinding.RVO.RVOSquareObstacle.StaticObstacle	rvosquareobstacle.html#StaticOb
 Pathfinding.RVO.RVOSquareObstacle.center	rvosquareobstacle.html#center	Center of the square.
 Pathfinding.RVO.RVOSquareObstacle.height	rvosquareobstacle.html#height	Height of the obstacle.
 Pathfinding.RVO.RVOSquareObstacle.size	rvosquareobstacle.html#size	Size of the square.
-Pathfinding.RVO.ReachedEndOfPath	rvo.html#ReachedEndOfPath	
+Pathfinding.RVO.ReachedEndOfPath	rvo.html#ReachedEndOfPath	Indicates if the agent has reached the end of its path, or been blocked by other agents. \n\nIn the video below, the agents will get a red ring around them for the Reached state, and a brown ring for the ReachedSoon state.\n\n <b>[video in online documentation]</b>\n\n[more in online documentation]
 Pathfinding.RVO.SimulatorBurst.Agent.AgentIndex	agent.html#AgentIndex	Internal index of the agent. \n\n[more in online documentation]
 Pathfinding.RVO.SimulatorBurst.Agent.AgentTimeHorizon	agent.html#AgentTimeHorizon	Max number of estimated seconds to look into the future for collisions with agents. \n\nAs it turns out, this variable is also very good for controling agent avoidance priorities. Agents with lower values will avoid other agents less and thus you can make 'high priority agents' by giving them a lower value.
 Pathfinding.RVO.SimulatorBurst.Agent.AvoidingAnyAgents	agent.html#AvoidingAnyAgents	True if the agent's movement is affected by any other agents or obstacles. \n\nIf the agent is all alone, and can just move in a straight line to its target, this will be false. If it has to adjust its velocity, even slightly, to avoid collisions, this will be true.
@@ -3587,6 +3599,7 @@ Pathfinding.RVO.SimulatorBurst.TemporaryAgentData.neighbours	temporaryagentdata.
 Pathfinding.RVO.SimulatorBurst.UseNavmeshAsObstacle	simulatorburst.html#UseNavmeshAsObstacle	
 Pathfinding.RVO.SimulatorBurst.agentDestroyCallbacks	simulatorburst.html#agentDestroyCallbacks	
 Pathfinding.RVO.SimulatorBurst.agentPreCalculationCallbacks	simulatorburst.html#agentPreCalculationCallbacks	
+Pathfinding.RVO.SimulatorBurst.anyAgentsInSimulation	simulatorburst.html#anyAgentsInSimulation	
 Pathfinding.RVO.SimulatorBurst.debugDrawingScope	simulatorburst.html#debugDrawingScope	Scope for drawing gizmos even on frames during which the simulation is not running. \n\nThis is used to draw the obstacles, quadtree and agent debug lines.
 Pathfinding.RVO.SimulatorBurst.desiredDeltaTime	simulatorburst.html#desiredDeltaTime	Inverse desired simulation fps. \n\n[more in online documentation]
 Pathfinding.RVO.SimulatorBurst.drawQuadtree	simulatorburst.html#drawQuadtree	
@@ -3594,7 +3607,6 @@ Pathfinding.RVO.SimulatorBurst.freeAgentIndices	simulatorburst.html#freeAgentInd
 Pathfinding.RVO.SimulatorBurst.horizonAgentData	simulatorburst.html#horizonAgentData	
 Pathfinding.RVO.SimulatorBurst.movementPlane	simulatorburst.html#movementPlane	Determines if the XY (2D) or XZ (3D) plane is used for movement.
 Pathfinding.RVO.SimulatorBurst.numAgents	simulatorburst.html#numAgents	Number of agents in this simulation.
-Pathfinding.RVO.SimulatorBurst.obstacleData	simulatorburst.html#obstacleData	Internal obstacle data. \n\nNormally you will never need to access this directly.\n\n[more in online documentation]
 Pathfinding.RVO.SimulatorBurst.outputData	simulatorburst.html#outputData	Internal simulation data. \n\nCan be used if you need very high performance access to the agent data. Normally you would use the SimulatorBurst.Agent class instead (implements the IAgent interface).\n\n[more in online documentation]
 Pathfinding.RVO.SimulatorBurst.quadtree	simulatorburst.html#quadtree	Quadtree for this simulation. \n\nUsed internally by the simulation to perform fast neighbour lookups for each agent. Please only read from this tree, do not rebuild it since that can interfere with the simulation. It is rebuilt when necessary.\n\n[more in online documentation]
 Pathfinding.RVO.SimulatorBurst.rwLock	simulatorburst.html#rwLock	Used to synchronize access to the simulation data.
@@ -3650,6 +3662,8 @@ Pathfinding.RecastGraph.CollectionSettings.collectionMode	collectionsettings.htm
 Pathfinding.RecastGraph.CollectionSettings.colliderRasterizeDetail	collectionsettings.html#colliderRasterizeDetail	Controls detail on rasterization of sphere and capsule colliders. \n\nThe colliders will be approximated with polygons so that the max distance to the theoretical surface is less than 1/(this number of voxels).\n\nA higher value does not necessarily increase quality of the mesh, but a lower value will often speed it up.\n\nYou should try to keep this value as low as possible without affecting the mesh quality since that will yield the fastest scan times.\n\nThe default value is 1, which corresponds to a maximum error of 1 voxel. In most cases, increasing this to a value higher than 2 (corresponding to a maximum error of 0.5 voxels) is not useful.\n\n[more in online documentation]
 Pathfinding.RecastGraph.CollectionSettings.layerMask	collectionsettings.html#layerMask	Objects in all of these layers will be rasterized. \n\nWill only be used if collectionMode is set to Layers.\n\n[more in online documentation]
 Pathfinding.RecastGraph.CollectionSettings.onCollectMeshes	collectionsettings.html#onCollectMeshes	Callback for collecting custom scene meshes. \n\nThis callback will be called once when scanning the graph, to allow you to add custom meshes to the graph, and once every time a graph update happens. Use the RecastMeshGatherer class to add meshes that are to be rasterized.\n\n[more in online documentation]\n<b>[code in online documentation]</b>
+Pathfinding.RecastGraph.CollectionSettings.physicsScene	collectionsettings.html#physicsScene	The physics scene for collecting colliders when scanning the graph. \n\nIf null (the default), the physics scene that the AstarPath component is part of will be used.\n\nYou typically don't have to set this, but it can be useful in some rare situations.\n\n[more in online documentation]\nOnly used if rasterizeColliders is enabled.\n\n[more in online documentation]
+Pathfinding.RecastGraph.CollectionSettings.physicsScene2D	collectionsettings.html#physicsScene2D	The physics scene for collecting 2D colliders when scanning the graph. \n\nIf null (the default), the physics scene that the AstarPath component is part of will be used.\n\nYou typically don't have to set this, but it can be useful in some rare situations.\n\n[more in online documentation]\nOnly used if rasterizeColliders is enabled.\n\n[more in online documentation]
 Pathfinding.RecastGraph.CollectionSettings.rasterizeColliders	collectionsettings.html#rasterizeColliders	Use colliders to calculate the navmesh. \n\nDepending on the dimensionMode, either 3D or 2D colliders will be rasterized.\n\nSphere/Capsule/Circle colliders will be approximated using polygons, with the precision specified in colliderRasterizeDetail.\n\n[more in online documentation]
 Pathfinding.RecastGraph.CollectionSettings.rasterizeMeshes	collectionsettings.html#rasterizeMeshes	Use scene meshes to calculate the navmesh. \n\nThis can get you higher precision than colliders, since colliders are typically very simplified versions of the mesh. However, it is often slower to scan, and graph updates can be particularly slow.\n\nThe reason that graph updates are slower is that there's no efficient way to find all meshes that intersect a given tile, so the graph has to iterate over all meshes in the scene just to find the ones relevant for the tiles that you want to update. Colliders, on the other hand, can be efficiently queried using the physics system.\n\nYou can disable this and attach a RecastNavmeshModifier component (with dynamic=false) to all meshes that you want to be included in the navmesh instead. That way they will be able to be efficiently queried for, without having to iterate through all meshes in the scene.\n\nIn 2D mode, this setting has no effect.
 Pathfinding.RecastGraph.CollectionSettings.rasterizeTerrain	collectionsettings.html#rasterizeTerrain	Use terrains to calculate the navmesh. \n\nIn 2D mode, this setting has no effect.
@@ -3865,7 +3879,6 @@ Pathfinding.Serialization.AstarSerializer.contextRoot	astarserializer.html#conte
 Pathfinding.Serialization.AstarSerializer.data	astarserializer.html#data	
 Pathfinding.Serialization.AstarSerializer.encoding	astarserializer.html#encoding	
 Pathfinding.Serialization.AstarSerializer.graphIndexInZip	astarserializer.html#graphIndexInZip	Index used for the graph in the file. \n\nIf some graphs were null in the file then graphIndexInZip[graphs[i]] may not equal i. Used for deserialization.
-Pathfinding.Serialization.AstarSerializer.graphIndexOffset	astarserializer.html#graphIndexOffset	
 Pathfinding.Serialization.AstarSerializer.graphs	astarserializer.html#graphs	Graphs that are being serialized or deserialized.
 Pathfinding.Serialization.AstarSerializer.jsonExt	astarserializer.html#jsonExt	Extension to use for json files.
 Pathfinding.Serialization.AstarSerializer.meta	astarserializer.html#meta	Graph metadata.

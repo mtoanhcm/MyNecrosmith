@@ -116,7 +116,7 @@ namespace GameUtility {
                         Mathf.Sin(angle * Mathf.Deg2Rad) * currentRadius
                     );
 
-                    positions.Add(characterTrans.position + position);
+                    positions.Add(position);
                     currentIndex++;
                 }
 

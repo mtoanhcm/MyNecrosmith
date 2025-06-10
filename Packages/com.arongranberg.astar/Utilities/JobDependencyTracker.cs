@@ -233,6 +233,15 @@ namespace Pathfinding.Jobs {
 			public void Execute () {}
 		}
 
+		struct JobSpherecastCommandDummy : IJob {
+			[ReadOnly]
+			public NativeArray<UnityEngine.SpherecastCommand> commands;
+			[WriteOnly]
+			public NativeArray<UnityEngine.RaycastHit> results;
+
+			public void Execute () {}
+		}
+
 #if UNITY_2022_2_OR_NEWER
 		struct JobOverlapCapsuleCommandDummy : IJob {
 			[ReadOnly]
@@ -339,6 +348,25 @@ namespace Pathfinding.Jobs {
 			var job = UnityEngine.RaycastCommand.ScheduleBatch(commands, results, minCommandsPerJob, dependencies);
 
 			JobDependencyAnalyzer<JobRaycastCommandDummy>.Scheduled(ref dummy, this, job);
+			return job;
+		}
+
+		/// <summary>
+		/// Schedules a spherecast batch command.
+		/// Like RaycastCommand.ScheduleBatch, but dependencies are tracked automatically.
+		/// </summary>
+		public JobHandle ScheduleBatch (NativeArray<UnityEngine.SpherecastCommand> commands, NativeArray<UnityEngine.RaycastHit> results, int minCommandsPerJob) {
+			if (forceLinearDependencies) {
+				UnityEngine.SpherecastCommand.ScheduleBatch(commands, results, minCommandsPerJob).Complete();
+				return default;
+			}
+
+			// Create a dummy structure to allow the analyzer to determine how the job reads/writes data
+			var dummy = new JobSpherecastCommandDummy { commands = commands, results = results };
+			var dependencies = JobDependencyAnalyzer<JobSpherecastCommandDummy>.GetDependencies(ref dummy, this);
+			var job = UnityEngine.SpherecastCommand.ScheduleBatch(commands, results, minCommandsPerJob, dependencies);
+
+			JobDependencyAnalyzer<JobSpherecastCommandDummy>.Scheduled(ref dummy, this, job);
 			return job;
 		}
 

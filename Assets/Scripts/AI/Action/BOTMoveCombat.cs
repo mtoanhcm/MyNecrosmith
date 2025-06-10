@@ -1,6 +1,7 @@
 using System.Collections;
 using BehaviorDesigner.Runtime.Tasks;
 using Character;
+using GameUtility;
 using UnityEngine;
 using Action = BehaviorDesigner.Runtime.Tasks.Action;
 
@@ -12,9 +13,10 @@ namespace BOT
     {
         [SerializeField] private SharedCharacterBase character;
         [SerializeField] private SharedCharacterBase target;
-        
+
         private CharacterBrain brain;
         private TaskStatus status;
+        private float combatRadius;
 
         public override void OnStart()
         {
@@ -30,7 +32,11 @@ namespace BOT
             brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget += OnCompleteMoveToTarget;
             brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget += OnFailMoveToTarget;
 
-            StartCoroutine(MoveAroundTarget());
+            combatRadius = character.Value.Data.AttackRange;
+
+            brain.LocalCharacter.CharacterMovement.ToggleAutoRotation(false);
+
+            MoveAroundTarget();
         }
 
         public override TaskStatus OnUpdate()
@@ -38,23 +44,35 @@ namespace BOT
             return status;
         }
 
-        private IEnumerator MoveAroundTarget()
+        public override void OnEnd()
         {
-            var waitingUpdate = new WaitForSeconds(0.5f);
+            StopAllCoroutines();
 
-            yield return waitingUpdate;
-            
+            if (brain == null)
+            {
+                return;
+            }
+
+            brain.LocalCharacter.CharacterMovement.ToggleAutoRotation(true);
+
             brain.LocalCharacter.CharacterMovement.StopMove();
+            brain.LocalCharacter.CharacterMovement.OnCompleteMoveToTarget -= OnCompleteMoveToTarget;
+            brain.LocalCharacter.CharacterMovement.OnFailMoveToTarget -= OnFailMoveToTarget;
+        }
+
+        private void MoveAroundTarget()
+        {
+            brain.LocalCharacter.CharacterMovement.MoveToTarget(target.Value.transform.position.GetRandomPositionAround(2, combatRadius));
         }
         
         private void OnFailMoveToTarget()
         {
-            status = TaskStatus.Failure;
+            MoveAroundTarget();
         }
 
         private void OnCompleteMoveToTarget()
         {
-            status = TaskStatus.Success;
+            MoveAroundTarget();
         }
     }   
 }

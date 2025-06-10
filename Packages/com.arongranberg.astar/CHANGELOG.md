@@ -1,3 +1,32 @@
+## 5.3.7 (2025-05-06)
+- Significantly improved performance when scanning grid graphs when using Unity 6000.1+.
+		This optimization has been tried multiple times before, but due to Unity bugs it has had to be rolled back.
+		I think Unity has fixed the final physx bug relating to this now, so this optimization is back.
+		Please report in the forum if you notice any hard crashes of the unity editor, when scanning grid graphs, after this update.
+- Fixed using local avoidance on rotated graphs and isometric/hexagonal grid graphs could result in agents taking curved instead of straight paths.
+- Fixed enabling thick raycasts on grid graphs did not do anything.
+
+## 5.3.6 (2025-04-25)
+- Fixed a tiny native memory leak accidentally introduced in 5.3.5.
+- Fixed using the 'Duplicate Graph' button in the A* inspector would log a warning about duplicate guids.
+- Reduced overhead of the RVO system when there are no agents using local avoidance in the scene.
+
+## 5.3.5 (2025-04-22)
+- Added \reflink{RecastGraph.collectionSettings.physicsScene} and \reflink{RecastGraph.collectionSettings.physicsScene2D} to allow specifying which physics scene to use when scanning a recast graph.
+- Added \reflink{FollowerEntity.reachedCrowdedEndOfPath} which is like \reflink{FollowerEntity.reachedEndOfPath}, but will also return true if the end of the path is crowded, and this agent has stopped because it cannot get closer.
+		\video{generated/scenes/Recast3D/crowdeddestination.webm}
+- Fixed an edge case which could cause navmesh cutting to throw an exception (regression in 5.3.4).
+- Fixed \reflink{FollowerEntity} would not take tags or penalties into account when simplifying its path on recast/navmesh graphs. This could cause it to move over high penalty areas that it should have avoided.
+- Fixed \reflink{FollowerEntity} would behave strangely on isometric grid graphs.
+- \reflink{FollowerEntity} now behaves better (though not perfectly) on hexagonal graphs.
+- Fixed \reflink{FunnelModifier} would not take \reflink{ITraversalProvider}s into account when simplifying its path on recast/navmesh graphs.
+- Fixed a minor GC allocation happening every frame when using URP.
+- Fixed debug drawing would cause a minor overhead even in standalone builds, where it wasn't used.
+- Fixed a significant memory leak when starting unity in batch mode.
+- Fixed modifiers attached to a Seeker would not run when pathfinding is done outside of play-mode.
+- When using \reflink{AstarData.DeserializeGraphsAdditive}, the new graphs will fill any empty slots in the array of graphs (if any graphs have been removed), instead of always being appended to the end of the array.
+		This fixes the graphs array growing indefinitely when repeatedly removing and adding graphs in some cases.
+
 ## 5.3.4 (2025-03-18)
 - Navmesh cuts now work much better in slopes.
 		Previously, whenever the navmesh cut bounds touched a triangle bounds, the triangle would be cut by the full navmesh cut.
