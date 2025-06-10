@@ -16,6 +16,7 @@ namespace BOT
         public override void OnStart()
         {
             StartCoroutine(FaceToTargetBuilding());
+            character.Value.CharacterMovement.StopMove();
         }
         
         public override void OnEnd()

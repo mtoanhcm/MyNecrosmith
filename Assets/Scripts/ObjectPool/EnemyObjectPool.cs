@@ -1,4 +1,5 @@
 using Character;
+using GameUtility;
 using Observer;
 using Pool;
 using UnityEngine;
@@ -39,7 +40,8 @@ namespace Spawner
                 Debug.LogWarning($"Cannot spawn enemy {data.EnemyID}");
                 return;
             }
-            
+
+            enemy.SetActive(false);
             data.OnSpawnSuccess?.Invoke(enemy);
         }
         

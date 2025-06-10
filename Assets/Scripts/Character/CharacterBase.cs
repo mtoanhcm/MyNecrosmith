@@ -17,8 +17,10 @@ namespace Character
 
         public bool IsDebug;
 
-        public virtual void Spawn(CharacterData data)
+        public virtual void Spawn(CharacterData data, Vector3 spawnPos)
         {
+            transform.position = spawnPos;
+
             Data = data;
             SetupHealth();
             SetupMovement();
@@ -26,6 +28,8 @@ namespace Character
             SetupAnimation();
             
             CharacterBrain.ActiveBrain();
+
+            gameObject.SetActive(true);
         }
 
         public abstract void Attack(Transform target);

@@ -73,8 +73,6 @@ namespace Building
                 
                 yield return new WaitForSeconds(spawnDelayBetweenAreas);
             }
-
-            yield break;
             
             //Check start active building
             var nearestBuilding = buildingSpawner.GetBuildings(0, amountBuildingActiveInFirstWave, mapCenter.position);

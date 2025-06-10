@@ -1939,7 +1939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &701831810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1974,7 +1974,7 @@ MonoBehaviour:
   buildingLayer:
     serializedVersion: 2
     m_Bits: 4352
-  drawGizmos: 1
+  drawGizmos: 0
   debugSphereRadius: 1
   navMeshSampleDistance: 5
 --- !u!4 &701831812
@@ -2143,7 +2143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &721924786
 Transform:
   m_ObjectHideFlags: 0
@@ -2599,7 +2599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1073741824
   data:
-    dataString: UEsDBBQAAAgIAAA4IeybBWhvPgIAAI8EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGVU01v2zAM/SuBz1uRxM2a7rgk6w5NMyQBVnTYgZYYW4gsZZKcjxb97yNlO3GwXXYS/MhH8pHPb4kowIEI6JYgVeWTz73+zehDLxHWBFu5ORxnzllH+JBR1HqlXjGmDTnvAHoLmcZvqPIiED646cITrcrsXLSE40rbHdPTfv09kzk+oslDwS0iqMwSc2VN0yglDKUK1q2VxgYcDMcEhwZ4/gt5OSOVR+axsuAqJGSH7hFO6OZWqo0SEKgXh3/+oqBUJRpPCEW5UTJtgXSaUDwDsc2drYxcO9ij85AprcKJU380ojnPocY9mPDgYFesKrcBgeeS9smGJf6ulIu5wmqNgsdYYQjK5DzNWwduiXFszxQdBYDfcmYv2YOuOGM0Ho9777wHyJtoVOXA04lpLxOqqSQXOa/jHJujL+KeNqD9VWSNzoEy/+CsHXZXG+rE2gwl7Kb2YDyUO02ivpLNopHSRjLPsWwLTTGA0nw1ilozqbWfRzKV1qzL2RDvVcs+srMIPTXvK79R/8Y6gfIL38lP0FCP/2E0JmvyB/1+S7ltOYxFmi/sgadcVIFE4mUVHHiiu02sMfUV/XWQWY0xLgGD4NCHFT2iWBh9en7pHAQN2+sJ9iVxJ1X0yoWbV0pe2yFJh+N0cydHaSbwFu/Ex7tR9imT2UjejzMYpPdJFKGMCgr0d6qvQ7sa+k87FzdQxopLFHSyXrQ1G1E6ODyo19J21CmzsStBzjCLukY7v6dTg6blyln8oTt2T97ek/c/UEsDBBQAAAgIAAA4Iew6o4ZBbgAAAHkAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNUz1jPRUVBKL0osyCgGChiCOKWZKSB2tJKxkYVxmnmKqXFScqpJqnmyrrlpkllSSpJpiqVFUqKhsaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66XlBqcmJxiTvIcKXYWgBQSwECLQAUAAAICAAAOCHsmwVobz4CAACPBAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAOCHsOqOGQW4AAAB5AAAACQAkAAAAAAAAAAAAAACLAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAEQDAAAAAA==
+    dataString: UEsDBBQAAAgIAAA4IezgclSDTQIAALkEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGVU01z2jAQ/SuMz20GcGhIj4U0PYSkg5lpJp0e1tJia5AlKskQwuS/Z1e2wWl76cnj9/bt59MxESU4EAHdEqSqffJ5MLyYfBgkwppga7eA5xvnrCN8zChqnakXjGFjjtuD3kCu8RuqogyEjy768EyrKj8lreA503bL8nTY/N/IAu/QFKHkEhFUZomFsqYtlBKGUgXrVkpjC47GU4JDCzz+hTydkNoj63iy4GokZIvuDg7oFlaqtRIQqBbTP38RKVWFxhNCLBdK5h2QzhPicxCbwtnayJWDHToPudIqHDj0Rzs0xznUuAMTbh1sy6x2axB4SmnvbVji71q5GCus1ii4jQxDUKbgbo49uBPGtj1LtuXBK+EzgYaZ4+sf2HjeoTqOCn7DwCDZga5ZMZlOpwPmAxQtG+d34MkMtMEZVVeSy50Wd+IW6Mu40TVo/45ZoXOgzD80K4f9I4QmsLFNBdu53RsP1VbT+F/JkNFyabsc7mPZJZpjAKX5vsRaM2u2dGrJ1FrzXM6GeNlm7Gf2IKGH9vvC3zj/2jqB8gtf1M/QUI3/UbR2bONHw2Enuew0jEWZL+2eu3yoAw2J51UwcU8Xnlljmnv79ySrWgudCYPg0IeMPqJ8MPrw+NQ7CBo24j3sKtLO6uiqs7aolXxvhyQdT9P1lZykucBLvBIfryb5p1zmE3k9zWGUXidxCGVUUKC/U34dutXQi+5d3EAVMy5R0MkG8QGwZaWD/a16qWxvOmXWNhPkDPPQ5Oj693Rq0LRceROffu9hJMfX5PUNUEsDBBQAAAgIAAA4Iex0xS75bgAAAHkAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNUz1jPXUVBKL0osyCgGChiCOKWZKSB2tJKxkYVxmnmKqXFScqpJqnmyrrlpkllSSpJpiqVFUqKhsaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66XlBqcmJxiTvIcKXYWgBQSwECLQAUAAAICAAAOCHs4HJUg00CAAC5BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAOCHsdMUu+W4AAAB5AAAACQAkAAAAAAAAAAAAAACaAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFMDAAAAAA==
     file_cachedStartup: {fileID: 0}
     cacheStartup: 0
   showNavGraphs: 1
@@ -2610,7 +2610,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -4220,7 +4220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65a142d65608c6438f605b0ed3b50f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterID: 0
+  characterID: 1
 --- !u!1 &1822411246
 GameObject:
   m_ObjectHideFlags: 0
@@ -5621,9 +5621,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4453682145406231520, guid: 3be3e38f0eaeea844a585c64ac8993bf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5110871908569189481, guid: 3be3e38f0eaeea844a585c64ac8993bf, type: 3}
       propertyPath: m_Name
       value: HighTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154457477265752243, guid: 3be3e38f0eaeea844a585c64ac8993bf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666039126797618988, guid: 3be3e38f0eaeea844a585c64ac8993bf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
