@@ -13,9 +13,9 @@ namespace Character
         [SerializeField] private EquipmentController equipmentController;
         [SerializeField] private CharacterAutoActiveBuilding characterAutoActiveBuilding;
 
-        public override void Spawn(CharacterData data)
+        public override void Spawn(CharacterData data, Vector3 spawnPos)
         {
-            base.Spawn(data);
+            base.Spawn(data, spawnPos);
             
             characterAutoActiveBuilding.Init(this);
         }

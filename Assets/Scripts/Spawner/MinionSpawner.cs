@@ -46,8 +46,7 @@ namespace Spawner
                     return;
                 }
                 
-                minion.Spawn(new MinionData(data.MinionConfig));
-                minion.transform.position = transform.position;
+                minion.Spawn(new MinionData(data.MinionConfig), transform.position);
 
                 minion.InitEquipment(data.Equipment);
             }

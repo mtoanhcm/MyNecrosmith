@@ -40,8 +40,7 @@ namespace Spawner{
                     return;
                 }
 
-                enemy.Spawn(new EnemyData(config));
-                enemy.transform.position = transform.position;
+                enemy.Spawn(new EnemyData(config), transform.position);
             }
         }
     }

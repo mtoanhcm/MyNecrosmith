@@ -33,6 +33,8 @@ namespace Character
 
         public void MoveToTarget(Vector3 target)
         {
+            ai.isStopped = false;
+
             StopAllCoroutines();
             ai.destination = target;
             ai.SearchPath();
@@ -43,6 +45,7 @@ namespace Character
         {
             StopAllCoroutines();
             OnMoving?.Invoke(0);
+            ai.isStopped = true;
             OnCompleteMoveToTarget?.Invoke();
         }
 
