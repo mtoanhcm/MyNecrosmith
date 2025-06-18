@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 1
   HP: 20
   MoveSpeed: 100
-  AttackSpeed: 50
+  AttackSpeed: 100
   ViewRadius: 50
   Race: 0
   InventorySize: {x: 4, y: 4}
