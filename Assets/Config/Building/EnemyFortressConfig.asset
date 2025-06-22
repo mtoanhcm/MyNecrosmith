@@ -17,4 +17,4 @@ MonoBehaviour:
   Rarity: 0
   HP: 100
   EnemySpawnConfig: {fileID: 11400000, guid: 70bec8ad60603a540839e1c80f126a14, type: 2}
-  CooldownSpawnTime: 10
+  CooldownSpawnTime: 25

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Skeleton
   m_EditorClassIdentifier: 
   ID: 100
-  HP: 5
-  MoveSpeed: 60
+  HP: 10
+  MoveSpeed: 45
   AttackSpeed: 50
   ViewRadius: 15
-  Damage: 5
+  Damage: 2
   AttackRange: 10
   Cooldown: 1.5
   DamageType: 0
