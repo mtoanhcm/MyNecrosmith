@@ -36,13 +36,13 @@ namespace Gameplay
             
             TryGetComponent(out inventory);
             inventory.Init();
-            
-            EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
-            EventManager.Instance.StartListening<EventData.OnRemoveEquipmentFromPlayerStorage>(OnRemoveEquipment);
         }
 
         private void Start()
         {
+            EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
+            EventManager.Instance.StartListening<EventData.OnRemoveEquipmentFromPlayerStorage>(OnRemoveEquipment);
+
             InitStartupEquipment();
             InitCastleBase();
         }

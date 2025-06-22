@@ -265,7 +265,6 @@ namespace Pool
             if (!data.UsedItems.Remove(instance))
             {
                 //Debug.LogWarning($"Instance {instance} was not acquired from pool {itemId}");
-                return;
             }
             
             instance.gameObject.SetActive(false);

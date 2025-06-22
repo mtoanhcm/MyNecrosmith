@@ -30,7 +30,13 @@ namespace BOT
                 return false;
             }
 
-            targetBuilding.Value = targetBuildingAround.FindNearest(character.Value.transform.position);
+            var building = targetBuildingAround.FindNearest(character.Value.transform.position);
+            if(building == null) 
+            {
+                return false;
+            }
+
+            targetBuilding.Value = building;
             targetTransform.Value = targetBuilding.Value.transform;
             return true;
         }

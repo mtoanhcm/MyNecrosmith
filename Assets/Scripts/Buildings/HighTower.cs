@@ -33,6 +33,7 @@ namespace Building
         {
             //Show gameover
             Destroy(gameObject);
+            EventManager.Instance.TriggerEvent(new EventData.OnGameplayStateChangeEvent() { GameplayState = Gameplay.GameplayEventType.EndGame, ChangeValue = true });
         }
     }   
 }
