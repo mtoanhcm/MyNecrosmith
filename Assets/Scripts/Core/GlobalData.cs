@@ -8,4 +8,11 @@ namespace Gameplay {
         Epic,
         Legendary
     }
+
+    public enum GameplayEventType
+    {
+        StartGame,
+        PauseGame,
+        EndGame
+    }
 }

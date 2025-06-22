@@ -45,17 +45,17 @@ namespace Building
 
         private void Start()
         {
-            EventManager.Instance.StartListening<EventData.OnStartGame>(OnStartGamePlay);
+            EventManager.Instance.StartListening<EventData.OnGameplayStateChangeEvent>(OnGameplayStateChanged);
         }
 
-        private void OnStartGamePlay(EventData.OnStartGame data)
+        private void OnGameplayStateChanged(EventData.OnGameplayStateChangeEvent data)
         {
-            if (!data.IsStart)
+            if (data.GameplayState == Gameplay.GameplayEventType.StartGame && data.ChangeValue)
             {
-                return;
+                StartCoroutine(SpawnInitialBuildings());
             }
             
-            StartCoroutine(SpawnInitialBuildings());
+            
         }
 
         /// <summary>

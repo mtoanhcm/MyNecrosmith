@@ -1,5 +1,6 @@
 using System;
 using Config;
+using Core.UI;
 using Gameplay;
 using Minion.Inventory.UI;
 using Observer;
@@ -10,7 +11,7 @@ using UnityEngine.UI;
 
 namespace Inventory.UI
 {
-    public class UIInventoryPanel : MonoBehaviour
+    public class UIInventoryPanel : UIView
     {
         [SerializeField] private UIMinionInventoryView minionInventoryView;
         [SerializeField] private UIPlayerInventoryView playerInventoryView;

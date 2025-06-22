@@ -47,6 +47,7 @@ namespace Spawner
         
         private void OnDespawnEnemy(EventData.OnEnemyDeath data)
         {
+            Debug.Log($"Despawn enemy {data.Enemy.Data.ID}");
             pool.Return($"Character/Enemy/pref_{data.Enemy.Data.ID}.prefab", data.Enemy);
         }
     }   

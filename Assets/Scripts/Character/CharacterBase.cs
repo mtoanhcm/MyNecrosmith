@@ -1,5 +1,7 @@
 using UnityEngine;
 using BOT;
+using Observer;
+using System;
 
 namespace Character
 {
@@ -16,6 +18,11 @@ namespace Character
         public CharacterAnimationController CharacterAnimationController { get; private set; }
 
         public bool IsDebug;
+
+        private void Start()
+        {
+            EventManager.Instance.StartListening<EventData.OnGameplayStateChangeEvent>(OnGameStageChanged);
+        }
 
         public virtual void Spawn(CharacterData data, Vector3 spawnPos)
         {
@@ -83,6 +90,20 @@ namespace Character
 
             CharacterMovement.OnMoving -= CharacterAnimationController.PlayMoveAnimation;
         }
-        
+
+        private void OnGameStageChanged(EventData.OnGameplayStateChangeEvent data)
+        {
+            if(data.GameplayState == Gameplay.GameplayEventType.EndGame && data.ChangeValue)
+            {
+                //Stop all AI
+                CharacterBrain.DeActiveBrain();
+                
+                //Stop all movement
+                CharacterMovement.StopMove();
+                
+                //Reset animation
+                CharacterAnimationController.Reset();
+            }
+        }
     }   
 }

@@ -14,6 +14,7 @@ namespace Projectile.DamageApply
             var (center, size, rotation) = projectile.GetDamageArea();
         
             var hitCount = Physics.OverlapBoxNonAlloc(center, size / 2, hits, rotation, projectile.GetTargetLayer());
+            Debug.Log($"Hit count: {hitCount} for projectile ID: {projectile.Data.ID}");
             if (hitCount == 0)
             {
                 return false;
