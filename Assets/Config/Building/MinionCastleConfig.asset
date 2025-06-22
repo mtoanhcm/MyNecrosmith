@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   ArmorType: 3
-  HP: 100
+  Rarity: 0
+  HP: 30

@@ -1181,13 +1181,13 @@ MonoBehaviour:
   initEquipment:
   - EquipmentID: 4
     Category: 1
-    Amount: 1
+    Amount: 3
   - EquipmentID: 6
     Category: 4
-    Amount: 1
+    Amount: 3
   - EquipmentID: 1
     Category: 3
-    Amount: 1
+    Amount: 3
   minionCastle: {fileID: 544906598}
 --- !u!114 &379600412
 MonoBehaviour:
@@ -1828,17 +1828,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetFollow: {fileID: 0}
-  distance: 80
+  distance: 60
   rotationX: 45
   rotationY: 45
   followSpeed: 7
   moveSpeed: 70
-  zoomSpeed: 1
+  zoomSpeed: 0.75
   minZoom: 10
-  maxZoom: 50
+  maxZoom: 30
   fov: 60
   enableEdgeScrolling: 1
-  edgeScrollThreshold: 50
+  edgeScrollThreshold: 90
 --- !u!1 &683939756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   initialSpawnDelay: 2
   spawnDelayBetweenAreas: 0.5
   amountBuildingActiveInFirstWave: 3
-  delayTimeActiveTheFirstWave: 5
+  delayTimeActiveTheFirstWave: 2
   buildingLayer:
     serializedVersion: 2
     m_Bits: 4352
@@ -2588,7 +2588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1073741824
   data:
-    dataString: UEsDBBQAAAgIAAA4IezgclSDTQIAALkEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGVU01z2jAQ/SuMz20GcGhIj4U0PYSkg5lpJp0e1tJia5AlKskQwuS/Z1e2wWl76cnj9/bt59MxESU4EAHdEqSqffJ5MLyYfBgkwppga7eA5xvnrCN8zChqnakXjGFjjtuD3kCu8RuqogyEjy768EyrKj8lreA503bL8nTY/N/IAu/QFKHkEhFUZomFsqYtlBKGUgXrVkpjC47GU4JDCzz+hTydkNoj63iy4GokZIvuDg7oFlaqtRIQqBbTP38RKVWFxhNCLBdK5h2QzhPicxCbwtnayJWDHToPudIqHDj0Rzs0xznUuAMTbh1sy6x2axB4SmnvbVji71q5GCus1ii4jQxDUKbgbo49uBPGtj1LtuXBK+EzgYaZ4+sf2HjeoTqOCn7DwCDZga5ZMZlOpwPmAxQtG+d34MkMtMEZVVeSy50Wd+IW6Mu40TVo/45ZoXOgzD80K4f9I4QmsLFNBdu53RsP1VbT+F/JkNFyabsc7mPZJZpjAKX5vsRaM2u2dGrJ1FrzXM6GeNlm7Gf2IKGH9vvC3zj/2jqB8gtf1M/QUI3/UbR2bONHw2Enuew0jEWZL+2eu3yoAw2J51UwcU8Xnlljmnv79ySrWgudCYPg0IeMPqJ8MPrw+NQ7CBo24j3sKtLO6uiqs7aolXxvhyQdT9P1lZykucBLvBIfryb5p1zmE3k9zWGUXidxCGVUUKC/U34dutXQi+5d3EAVMy5R0MkG8QGwZaWD/a16qWxvOmXWNhPkDPPQ5Oj693Rq0LRceROffu9hJMfX5PUNUEsDBBQAAAgIAAA4Iex0xS75bgAAAHkAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNUz1jPXUVBKL0osyCgGChiCOKWZKSB2tJKxkYVxmnmKqXFScqpJqnmyrrlpkllSSpJpiqVFUqKhsaVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66XlBqcmJxiTvIcKXYWgBQSwECLQAUAAAICAAAOCHs4HJUg00CAAC5BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAOCHsdMUu+W4AAAB5AAAACQAkAAAAAAAAAAAAAACaAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFMDAAAAAA==
+    dataString: UEsDBBQAAAgIAABAIezKrAODTwIAAL0EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGVU01z2jAQ/SuMz20GcGhIjwWaHvLRwcw0k04Pa2mxNcgSlWQIyeS/Z1e2wbS99OTxe/v28+k1ESU4EAHdEqSqffJ5MLyYfBgkwppga3cHzwvnrCN8zChqnakXjGFjjtuD3kCu8RuqogyEjy768EyrKj8mreA503bL8nTY/C9kgbdoilByiQgqs8RCWdMWSglDqYJ1K6WxBUfjKcGhBR7/Qp6OSO2RdTxZcDUSskV3Cwd0d1aqtRIQqBbTP38RKVWFxhNCLBdK5h2QzhPicxCbwtnayJWDHToPudIqHDj0Rzs0xznUuAMTbhxsy6x2axB4TGnvbVji71q5GCus1ii4jQxDUKbgbl57cCeMbXuWbMuDV8JnAg0zptb6D3Q8P+E6jgt+w3kHyQ50zarJdDodvPHWoGjZuAMHngxBW5xRB0pyyePyjtwd+jJudQ3anzErdA6U+Ydm5bB/iNAENtapYDu3e+Oh2mpawVcyZbRd2i6I+1h2ieYYQGm+MbHWzJpNHVvisXkuZ0O8bjP2M/uQ0EP7feFvnH9tnUD5ha/qZ2ioxv8oWku28aPhsJNcdhrGosyXds9dPtSBhsTTKpi4pyvPrDHNzf05yarWRifCIDj0IaOPKB+MPjw+9Q6Chs14D7uKtLM6OuukLWolz+2QpONpur6SkzQXeIlX4uPVJP+Uy3wir6c5jNLrJA6hjAoK9HfKr0O3GnrVvYsbqGLGJQo62SA+AratdLC/US+V7U2nzNpmgpxhHpocXf+eTg2alisX8fn3Hkfy+pa8vQNQSwMEFAAACAgAAEAh7HTFLvluAAAAeQAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw1TPWM9dRUEovSizIKAYKGII4pZkpIHa0krGRhXGaeYqpcVJyqkmqebKuuWmSWVJKkmmKpUVSoqGxpVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrpeUGpyYnGJO8hwpdhaAFBLAQItABQAAAgIAABAIezKrAODTwIAAL0EAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAABAIex0xS75bgAAAHkAAAAJACQAAAAAAAAAAAAAAJwCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAVQMAAAAA
     file_cachedStartup: {fileID: 0}
     cacheStartup: 0
   showNavGraphs: 1
@@ -3779,7 +3779,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAMEOVER
+  m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4801,7 +4801,7 @@ RectTransform:
   m_GameObject: {fileID: 1802327294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5657, y: 1.5657, z: 1.5657}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2108572687}
@@ -4809,7 +4809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
+  m_AnchoredPosition: {x: 151, y: 42}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1802327296
@@ -4869,7 +4869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5896226, g: 0.7111408, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6315,7 +6315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Open Inventory
+  m_text: Summon
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6349,7 +6349,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

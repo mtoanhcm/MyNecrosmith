@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HumanKnight
   m_EditorClassIdentifier: 
   ID: 1
-  HP: 20
+  HP: 50
   MoveSpeed: 100
   AttackSpeed: 100
   ViewRadius: 50
