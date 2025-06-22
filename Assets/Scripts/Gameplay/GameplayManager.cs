@@ -45,7 +45,7 @@ namespace Gameplay
 
         private void OnSceneChangeCommandReceive(EventData.OnRequestChangeScene data)
         {
-            sceneManager.LoadSceneAsync(data.SceneType, null);
+            sceneManager.LoadSceneAsync(data.SceneType);
         }
     }   
 }

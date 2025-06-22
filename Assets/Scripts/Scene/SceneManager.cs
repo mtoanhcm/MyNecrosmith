@@ -17,12 +17,11 @@ namespace SceneManage
             { SceneType.Loading, "LoaingScene" }
         };
 
-        public async Task LoadSceneAsync(SceneType sceneType, Action OnloadSceneComplete) { 
+        public async Task LoadSceneAsync(SceneType sceneType) { 
             var handle = Addressables.LoadSceneAsync(scenePaths[sceneType], UnityEngine.SceneManagement.LoadSceneMode.Single);
             await handle.Task;
 
             if (handle.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded) {
-                OnloadSceneComplete?.Invoke();
             }
         }
 
