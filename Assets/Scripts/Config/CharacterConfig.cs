@@ -18,7 +18,8 @@ namespace  Config
         HumanKnight = 1,
 
         Skeleton = 100,
-        KnifeZombie = 101
+        KnifeZombie = 101,
+            Orc = 102
     }
 
     public enum CharacterRace
