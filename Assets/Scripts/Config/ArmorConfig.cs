@@ -11,7 +11,7 @@ namespace Config
         Nature,
     }
     
-    [CreateAssetMenu(fileName = "ArmorConfig", menuName = "baseConfig/Equipment/ArmorConfig")]
+    [CreateAssetMenu(fileName = "ArmorConfig", menuName = "BaseConfig/Equipment/ArmorConfig")]
     public class ArmorConfig : EquipmentConfig
     {
         public ArmorType Type;

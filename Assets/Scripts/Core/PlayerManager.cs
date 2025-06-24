@@ -16,8 +16,7 @@ namespace Gameplay
         [Serializable]
         public struct EquipmentInitData
         {
-            public EquipmentID EquipmentID;
-            public EquipmentCategoryID Category;
+            public EquipmentConfig Config;
             public int Amount;
         }
 
@@ -89,11 +88,10 @@ namespace Gameplay
                 var equipment = initEquipment[i];
                 for (var j = 0; j < equipment.Amount; j++)
                 {
-                    var path = $"Config/Equipment/{equipment.Category}/{equipment.EquipmentID}.asset";
-                    var config = await AddressableUtility.LoadAssetAsync<EquipmentConfig>(path);
+                    var config = equipment.Config;
                     if (config == null)
                     {
-                        Debug.LogError($"Could not load equipment {equipment.EquipmentID} from Resources");
+                        Debug.LogError($"Could not load equipment {equipment.Config.EquipmentID} from Resources");
                         continue;
                     }
 

@@ -22,7 +22,7 @@ MonoBehaviour:
   Width: 1
   Height: 1
   DamageType: 0
-  ProjectileSO: {fileID: 11400000, guid: 6d193e4da9947f34dac09a7832dba8e2, type: 2}
+  ProjectileSO: {fileID: 11400000, guid: 3eb7a4fa24b375c418771a09acba9aab, type: 2}
   Damage: 3
   AttackRange: 5
   AttackSpeed: 30

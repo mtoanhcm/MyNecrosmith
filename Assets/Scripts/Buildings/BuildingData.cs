@@ -7,7 +7,8 @@ namespace Building {
     public enum BuildingID { 
         Treasure,
         EnemyFortress,
-        MainBase
+        MainBase,
+        OrcHouse
     }
     
     [Serializable]

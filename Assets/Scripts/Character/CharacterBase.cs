@@ -93,7 +93,7 @@ namespace Character
 
         private void OnGameStageChanged(EventData.OnGameplayStateChangeEvent data)
         {
-            if(data.GameplayState == Gameplay.GameplayEventType.EndGame && data.ChangeValue)
+            if((data.GameplayState == Gameplay.GameplayEventType.Gameover || data.GameplayState == Gameplay.GameplayEventType.WinGame) && data.ChangeValue)
             {
                 //Stop all AI
                 CharacterBrain.DeActiveBrain();
@@ -103,6 +103,14 @@ namespace Character
                 
                 //Reset animation
                 CharacterAnimationController.Reset();
+
+                return;
+            }
+
+            if (data.GameplayState == Gameplay.GameplayEventType.PauseGame) {
+                CharacterMovement.PauseMove(data.ChangeValue);
+
+                return;
             }
         }
     }   

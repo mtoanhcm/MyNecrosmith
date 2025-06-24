@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Gameplay.UI
 {
-    public class UIGameover : UIView
+    public class UIWin : UIView
     {
         [SerializeField]
         private Button menuBtn;
@@ -15,17 +15,16 @@ namespace Gameplay.UI
         private void Start()
         {
             menuBtn.onClick.RemoveAllListeners();
-            menuBtn.onClick.AddListener(() => 
+            menuBtn.onClick.AddListener(() =>
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnRequestChangeScene() { SceneType = SceneManage.SceneType.Menu });
             });
 
             restartBtn.onClick.RemoveAllListeners();
-            restartBtn.onClick.AddListener(() => 
+            restartBtn.onClick.AddListener(() =>
             {
                 EventManager.Instance.TriggerEvent(new EventData.OnRequestChangeScene() { SceneType = SceneManage.SceneType.Gameplay });
             });
         }
     }
-    
 }

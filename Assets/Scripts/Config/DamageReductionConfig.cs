@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace Config
 {
-    [CreateAssetMenu(fileName = "DamageReductionConfig", menuName = "baseConfig/DamageReductionConfig")]
+    [CreateAssetMenu(fileName = "DamageReductionConfig", menuName = "BaseConfig/DamageReductionConfig")]
     public class DamageReductionConfig : ScriptableObject
     {
         [Serializable]

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Config
 {
-    [CreateAssetMenu(fileName = "BuildingSpawnConfig", menuName = "baseConfig/Building/BuildingSpawnConfig")]
+    [CreateAssetMenu(fileName = "BuildingSpawnConfig", menuName = "BaseConfig/Building/BuildingSpawnConfig")]
     public class BuildingSpawnConfig : ScriptableObject
     {
         [Serializable]

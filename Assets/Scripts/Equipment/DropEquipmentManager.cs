@@ -10,12 +10,8 @@ namespace Equipment.Drop
 {
     public class DropEquipmentManager : MonoBehaviour
     {
-        private Dictionary<string, EquipmentConfig> equipmentConfigs;
-
-        private void Awake()
-        {
-            equipmentConfigs = new Dictionary<string, EquipmentConfig>();
-        }
+        [SerializeField]
+        private EquipmentDropRateConfig config;
 
         private void Start()
         {
@@ -24,29 +20,14 @@ namespace Equipment.Drop
 
         private void OnEnemyDeath(EventData.OnEnemyDeath data)
         {
-            SpawnSword();
-        }
+            if (config == null) {
+                Debug.LogError($"Cannt drop equipment because of nullable config");
+                return;
+            }
 
-        private async void SpawnSword()
-        {
-            EquipmentConfig config = null;
-            if (equipmentConfigs.ContainsKey("Sword"))
+            if(config.GetRandomEquipmentID(out var equipmentConfig))
             {
-                config = equipmentConfigs["Sword"] as WeaponConfig;
-            }
-            else
-            {
-                var path = $"Config/Equipment/Sword/Sword.asset";
-                config = await AddressableUtility.LoadAssetAsync<EquipmentConfig>(path);
-                if (config == null)
-                {
-                    equipmentConfigs["Sword"] = config;   
-                }
-            }
-            
-            if (config != null)
-            {
-                EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment(){ EquipmentData = new WeaponData(config)});
+                EventManager.Instance.TriggerEvent(new EventData.OnObtainedEquipment() { EquipmentData = new WeaponData(equipmentConfig) });
             }
         }
     }   

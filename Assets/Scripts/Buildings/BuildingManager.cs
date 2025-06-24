@@ -255,7 +255,9 @@ namespace Building
             
             int randomIndex = Random.Range(0, areaDataConfig.EnemyBuildingConfigs.Length);
             var config = areaDataConfig.EnemyBuildingConfigs[randomIndex];
-            
+
+            Debug.Log($"Area {areaIndex}: Selected building config {config.ID} for spawn with random {randomIndex}");
+
             if (config == null)
             {
                 return null;
