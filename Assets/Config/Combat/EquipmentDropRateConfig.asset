@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e00c65f70491f943ba23826298fff3c, type: 3}
+  m_Name: EquipmentDropRateConfig
+  m_EditorClassIdentifier: 
+  emptyRate: 0.1
+  dropRates:
+  - equipment: {fileID: 11400000, guid: 1bb9958bb5a1b704f8028bbf45090bf5, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: 45c3653c0349fe84eadde9429b332c2c, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: 93137dc55d94bce43951b7b57953e2cb, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: 497350e8cc70b3540b5b5ac427ac8fa1, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: dd4caa5e74411e5498ef95d321387f08, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: 006fda0c322da4f48b48368fd7a48db6, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: f80a3aced28dcff4bbae8367ba66e80c, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: e9214d94fdba753468690cbd65996009, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: d23e503fdfe3ca147aa95752626f0bfa, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: a3aa83e64190b974c8d758a96226b865, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: cd344c2a939613049a9a7abc8cface72, type: 2}
+    DropRate: 0.075
+  - equipment: {fileID: 11400000, guid: 7953245cd03cbdd4291bbb18102a6980, type: 2}
+    DropRate: 0.075

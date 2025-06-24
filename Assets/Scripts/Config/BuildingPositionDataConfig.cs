@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Config
 {
-    [CreateAssetMenu(fileName = "BuildingPositionDataConfig", menuName = "baseConfig/Building/BuildingPositionDataConfig")]
+    [CreateAssetMenu(fileName = "BuildingPositionDataConfig", menuName = "BaseConfig/Building/BuildingPositionDataConfig")]
     public class BuildingPositionDataConfig : ScriptableObject
     {
         [Serializable]

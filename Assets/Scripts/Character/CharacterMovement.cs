@@ -49,6 +49,10 @@ namespace Character
             OnCompleteMoveToTarget?.Invoke();
         }
 
+        public void PauseMove(bool isPause) {
+            ai.isStopped = isPause;
+        }
+
         private IEnumerator CheckReachDestination()
         {
             var realVelocity = Vector3.zero;

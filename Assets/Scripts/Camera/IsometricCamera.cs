@@ -1,3 +1,5 @@
+using Sirenix.OdinInspector;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -17,7 +19,9 @@ namespace CameraControl
         [SerializeField] private float zoomSpeed; // Speed of zooming in/out
         [SerializeField] private float minZoom; // Minimum zoom distance
         [SerializeField] private float maxZoom; // Maximum zoom distance
-        [SerializeField] private float fov; // Field of view for the camera
+
+        [Header("Move To Position")]
+        [SerializeField] private float moveToPositionSpeed = 5f; // Speed when moving to a specific positio
 
         // Edge scrolling parameters
         [Header("Edge Scrolling")]
@@ -28,6 +32,12 @@ namespace CameraControl
         private Vector2 moveInput;
         private float zoomInput;
         private bool isFollowing;
+
+        // Move to position variables
+        private bool isMovingToPosition = false;
+        private Vector3 targetPosition;
+        private Vector3 startPosition;
+        private float moveToPositionProgress = 0f;
 
         // Variables to store camera adjustments
         private Vector3 zoomAdjustment = Vector3.zero;
@@ -53,12 +63,9 @@ namespace CameraControl
             cameraControls.CameraControl.QuickMove.canceled += ctx => moveSpeed /= 2;
 
             // Bind space bar to toggle following behavior
-            cameraControls.CameraControl.ToggleFollow.performed += ctx =>
+            cameraControls.CameraControl.QuickReturnBase.performed += ctx =>
             {
-                if (TargetFollow != null)
-                {
-                    isFollowing = !isFollowing;
-                }
+                MoveToPosition(Vector3.zero);
             };
         }
 
@@ -75,7 +82,7 @@ namespace CameraControl
         private void Start()
         {
             // Set the camera's field of view
-            myCamera.fieldOfView = fov;
+            myCamera.fieldOfView = (minZoom + maxZoom) / 2;
 
             // Initialize the camera's rotation
             transform.rotation = Quaternion.Euler(rotationX, rotationY, 0f);
@@ -115,6 +122,38 @@ namespace CameraControl
             {
                 zoomAdjustment = Vector3.zero;
             }
+        }
+
+
+        /// <summary>
+        /// Move camera to a specific world position smoothly
+        /// </summary>
+        /// <param name="worldPosition">Target world position to move to</param>
+        [Button]
+        private void MoveToPosition(Vector3 worldPosition)
+        {
+            // Stop following target if currently following
+            isFollowing = false;
+
+            // Calculate the camera position that would look at the world position
+            Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
+            Vector3 direction = rotation * Vector3.forward;
+            Vector3 desiredCameraPosition = worldPosition - direction * distance;
+
+            // Set up move to position
+            isMovingToPosition = true;
+            startPosition = transform.position;
+            targetPosition = desiredCameraPosition;
+            moveToPositionProgress = 0f;
+        }
+
+        /// <summary>
+        /// Stop the current move to position operation
+        /// </summary>
+        private void StopMoveToPosition()
+        {
+            isMovingToPosition = false;
+            moveToPositionProgress = 0f;
         }
 
         private void CheckEdgeScrolling()
@@ -281,6 +320,30 @@ namespace CameraControl
         {
             Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
             Vector3 direction = rotation * Vector3.forward;
+
+            if (isMovingToPosition)
+            {
+                // Update progress
+                moveToPositionProgress += moveToPositionSpeed * Time.deltaTime;
+
+                // Use smooth step for easing
+                float smoothProgress = Mathf.SmoothStep(0f, 1f, moveToPositionProgress);
+
+                // Interpolate position
+                Vector3 currentPos = Vector3.Lerp(startPosition, targetPosition, smoothProgress);
+                transform.position = currentPos;
+
+                // Check if movement is complete
+                if (moveToPositionProgress >= 1f)
+                {
+                    transform.position = targetPosition;
+                    StopMoveToPosition();
+                }
+
+                // Set rotation and return early to skip other movement logic
+                transform.rotation = rotation;
+                return;
+            }
 
             // Calculate the combined movement input (keyboard + edge scrolling)
             Vector2 combinedMovement = moveInput;

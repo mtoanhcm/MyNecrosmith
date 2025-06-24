@@ -13,6 +13,7 @@ namespace Gameplay {
     {
         StartGame,
         PauseGame,
-        EndGame
+        Gameover,
+        WinGame,
     }
 }
