@@ -2546,7 +2546,8 @@ MonoBehaviour:
   zoomSpeed: 0.75
   minZoom: 10
   maxZoom: 30
-  enableEdgeScrolling: 1
+  moveToPositionSpeed: 5
+  enableEdgeScrolling: 0
   edgeScrollThreshold: 90
 --- !u!1 &683939756
 GameObject:
