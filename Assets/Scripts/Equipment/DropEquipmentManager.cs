@@ -13,6 +13,11 @@ namespace Equipment.Drop
         [SerializeField]
         private EquipmentDropRateConfig config;
 
+        private void Awake()
+        {
+            config.Init();
+        }
+
         private void Start()
         {
             EventManager.Instance.StartListening<EventData.OnEnemyDeath>(OnEnemyDeath);

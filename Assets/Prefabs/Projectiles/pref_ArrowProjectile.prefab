@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac96b446846d4ea08450bb59c6c5182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAreaSize: {x: 0.05, y: 0.05, z: 0.1}
-  damageAreaOffset: {x: 0, y: 0, z: 0.35}
+  damageAreaSize: {x: 0.05, y: 0.05, z: -0.6}
+  damageAreaOffset: {x: 0, y: 0, z: 0.11}
 --- !u!1 &8960990060937160971
 GameObject:
   m_ObjectHideFlags: 0
