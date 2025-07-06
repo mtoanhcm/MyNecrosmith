@@ -1,6 +1,8 @@
+using CodeMonkey.Utils;
+using Combat;
 using UnityEngine;
 using InterfaceComp;
-using UnityEngine.Events;
+using System;
 
 namespace Character
 {
@@ -8,34 +10,55 @@ namespace Character
     {
         public bool IsAlive => localCharacter != null && localCharacter.Data.CurrentHP > 0;
 
-        [SerializeField]
         private CharacterBase localCharacter;
-        private UnityAction onDeath;
+        private Action onDeath;
 
-        public void Init(CharacterBase character, UnityAction deathHandler)
+        public void Init(CharacterBase character, Action deathHandler)
         {
             localCharacter = character;
             onDeath = deathHandler;
         }
         
-        public void TakeDamage(int damage)
+        public void TakeDamage(HitData hitData)
         {
             if (localCharacter == null)
             {
-                Debug.Log($"Null local character {gameObject.name}");
+                Debug.LogError($"Null local character {gameObject.name}");
+                return;
             }
-
-            localCharacter.Data.TakeDamage(damage, Die);
+            
+            var damage = ReCalculateDamageWithBonus(hitData);
+            
+            UtilsClass.CreateWorldTextPopup(damage.ToString(), transform.position, 1f);
+            if (!Cheat.DeveloperMode.IsImmortal)
+            {
+                localCharacter.Data.TakeDamage(damage, onDeath);
+            }
         }
 
-        public void RestoreHealth(int health)
+        public int ReCalculateDamageWithBonus(HitData hitData)
         {
-            localCharacter.Data.RestoreHealth(health);
+            var damageType = hitData.DamageType;
+            var armorType = localCharacter.Data.ArmorType;
+            var finalDamage = hitData.Amount + (hitData.Amount * DamageReduction.GetDamageBonus(damageType, armorType));
+
+            return Mathf.RoundToInt(finalDamage);
         }
 
-        private void Die()
+        public void RestoreHealth(HitData healData)
         {
-            onDeath?.Invoke();
+            if (localCharacter == null)
+            {
+                Debug.LogError($"Null local character {gameObject.name}");
+                return;
+            }
+            
+            localCharacter.Data.RestoreHealth(healData);
+        }
+
+        public void UpdateMaxHealth(int value)
+        {
+            localCharacter.Data.UpdateMaxHealth(value);
         }
     }
 }

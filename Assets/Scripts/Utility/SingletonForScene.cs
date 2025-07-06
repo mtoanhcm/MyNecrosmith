@@ -13,7 +13,6 @@ namespace GameUtility
 
         // Event triggered when instance is destroyed so other objects can unsubscribe
         public static event Action OnInstanceDestroyed;
-
         // Property to access the instance
         public static T Instance
         {
@@ -33,7 +32,7 @@ namespace GameUtility
                     if (instance == null)
                     {
                         // Find all instances in the scene
-                        T[] instances = FindObjectsOfType<T>();
+                        T[] instances = FindObjectsByType<T>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
                         // If there's more than one instance
                         if (instances.Length > 1)
@@ -87,6 +86,7 @@ namespace GameUtility
             
                 // Reset instance
                 instance = null;
+                applicationIsQuitting = true;
             }
         }
 

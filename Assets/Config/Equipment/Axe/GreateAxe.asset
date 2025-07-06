@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027ba6065042c794f801fa335a2fbf89, type: 3}
+  m_Name: GreateAxe
+  m_EditorClassIdentifier: 
+  EquipmentID: 7
+  CategoryID: 4
+  Group: 1
+  Rarity: 0
+  EquipmentName: Greate Axe
+  LoadPoint: 20
+  Icon: {fileID: 196851580, guid: d2a468317e7bb44cdb15f857facf7bbf, type: 3}
+  Width: 1
+  Height: 3
+  DamageType: 1
+  ProjectileSO: {fileID: 11400000, guid: b15a8a67c279a694ca8efb852a97f29b, type: 2}
+  Damage: 7
+  AttackRange: 8
+  AttackSpeed: 15
+  Cooldown: 4

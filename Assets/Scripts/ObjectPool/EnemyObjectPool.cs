@@ -1,4 +1,5 @@
 using Character;
+using GameUtility;
 using Observer;
 using Pool;
 using UnityEngine;
@@ -22,27 +23,32 @@ namespace Spawner
 
         private void OnDestroy()
         {
-            EventManager.Instance?.StopListening<EventData.OnSpawnEnemy>(OnSpawnEnemy);
-            EventManager.Instance?.StopListening<EventData.OnEnemyDeath>(OnDespawnEnemy);
+            if (EventManager.HasInstance)
+            {
+                EventManager.Instance?.StopListening<EventData.OnSpawnEnemy>(OnSpawnEnemy);
+                EventManager.Instance?.StopListening<EventData.OnEnemyDeath>(OnDespawnEnemy);
+            }
             
             pool.Dispose();
         }
 
         private async void OnSpawnEnemy(EventData.OnSpawnEnemy data)
         {
-            var enemy = await pool.Get($"Character/Enemy/{data.EnemyID}.prefab");
+            var enemy = await pool.Get($"Character/Enemy/pref_{data.EnemyID}.prefab");
             if (enemy == null)
             {
                 Debug.LogWarning($"Cannot spawn enemy {data.EnemyID}");
                 return;
             }
-            
+
+            enemy.SetActive(false);
             data.OnSpawnSuccess?.Invoke(enemy);
         }
         
         private void OnDespawnEnemy(EventData.OnEnemyDeath data)
         {
-            pool.Return($"Character/Enemy/{data.Enemy.Data.ID}.prefab", data.Enemy);
+            Debug.Log($"Despawn enemy {data.Enemy.Data.ID}");
+            pool.Return($"Character/Enemy/pref_{data.Enemy.Data.ID}.prefab", data.Enemy);
         }
     }   
 }

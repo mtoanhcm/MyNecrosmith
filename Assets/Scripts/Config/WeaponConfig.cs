@@ -13,7 +13,7 @@ namespace Config
         Siege
     }
     
-    [CreateAssetMenu(fileName = "WeaponConfig", menuName = "baseConfig/Equipment/WeaponConfig")]
+    [CreateAssetMenu(fileName = "WeaponConfig", menuName = "BaseConfig/Equipment/WeaponConfig")]
     public class WeaponConfig : EquipmentConfig
     {
         [Header("Stats")]

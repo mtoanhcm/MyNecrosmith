@@ -6,18 +6,31 @@ namespace Character
     {
         [SerializeField]
         private Animator animator;
+
+        private int velocityHash;
+
+        private const string MOVESPEED = "Velocity";
+        private const string ATTACK = "WeaponType_int";
         
-        private static string MOVESPEED = "Speed_f";
-        private static string ATTACK = "WeaponType_int";
-        
-        public void PlayMoveAnimation(float speed)
+        private void Awake()
+        {
+            if(animator == null)
+            {
+                Debug.LogError("Animator not found in children");
+                return;
+            }
+
+            velocityHash = Animator.StringToHash(MOVESPEED);
+        }
+
+        public void PlayMoveAnimation(float velocity)
         {
             if (animator == null)
             {
                 return;
             }
-            
-            animator.SetFloat(MOVESPEED, speed);
+
+            animator.SetFloat(velocityHash, velocity);
         }
 
         public void PlayIdleAnimation()
@@ -37,7 +50,7 @@ namespace Character
                 return;
             }
             
-            animator.SetInteger(ATTACK, weaponType);
+            //animator.SetInteger(ATTACK, weaponType);
         }
 
         public void Reset()

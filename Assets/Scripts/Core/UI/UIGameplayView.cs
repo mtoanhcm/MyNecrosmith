@@ -1,17 +1,11 @@
 using Inventory.UI;
-using Minion.Inventory.UI;
-using UnityEngine;
 using Observer;
-using UI;
-using UnityEngine.Serialization;
+using Core.UI;
 
 namespace Gameplay.UI
 {
-    public class UIGameplayView : MonoBehaviour
-    {
-        [SerializeField] private UICharacterListView characterListView;
-        [SerializeField] private UIInventoryPanel inventoryPanel;
-        
+    public class UIGameplayView : UISceneView
+    {   
         private void OnEnable()
         {
             EventManager.Instance?.StartListening<EventData.OpenMinionInventory>(OnGetCharacterInventoryData);
@@ -24,7 +18,8 @@ namespace Gameplay.UI
 
         private void OnGetCharacterInventoryData(EventData.OpenMinionInventory data)
         {
-            inventoryPanel.ShowMinionInventory(data.InventoryData);
+            var invenToryView = ShowView<UIInventoryPanel>();
+            invenToryView.ShowMinionInventory(data.InventoryData);
         }
     }   
 }

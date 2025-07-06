@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e80700b477d834da63f5a90243fbfa, type: 3}
   m_Name: HumanKnight
   m_EditorClassIdentifier: 
-  ID: 0
-  HP: 20
-  MoveSpeed: 75
-  AttackSpeed: 50
-  ViewRadius: 20
+  ID: 1
+  HP: 50
+  MoveSpeed: 100
+  AttackSpeed: 100
+  ViewRadius: 50
   Race: 0
   InventorySize: {x: 4, y: 4}

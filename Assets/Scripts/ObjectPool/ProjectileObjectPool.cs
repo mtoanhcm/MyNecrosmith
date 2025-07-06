@@ -22,15 +22,18 @@ namespace Spawner
 
         private void OnDestroy()
         {
-            EventManager.Instance?.StopListening<EventData.OnSpawnProjectile>(OnSpawnProjectile);
-            EventManager.Instance?.StopListening<EventData.OnDespawnProjectile>(OnDespawnProjectile);
+            if (EventManager.HasInstance)
+            {
+                EventManager.Instance.StopListening<EventData.OnSpawnProjectile>(OnSpawnProjectile);
+                EventManager.Instance.StopListening<EventData.OnDespawnProjectile>(OnDespawnProjectile);   
+            }
             
             pool.Dispose();
         }
 
         private async void OnSpawnProjectile(EventData.OnSpawnProjectile data)
         {
-            var projectile = await pool.Get($"Projectiles/{data.ProjectileID}.prefab");
+            var projectile = await pool.Get($"Projectiles/pref_{data.ProjectileID}.prefab");
             if (projectile == null)
             {
                 Debug.LogWarning($"Cannot spawn equipment {data.ProjectileID}");
@@ -42,8 +45,8 @@ namespace Spawner
         
         private void OnDespawnProjectile(EventData.OnDespawnProjectile data)
         {
-            pool.Return($"Projectiles/{data.Projectile.Data.ID}.prefab", data.Projectile);
-            data.Projectile.ResetData();
+            pool.Return($"Projectiles/pref_{data.ID}.prefab", data.Projectile);
+            //data.Projectile.ResetData();
         }
     }   
 }

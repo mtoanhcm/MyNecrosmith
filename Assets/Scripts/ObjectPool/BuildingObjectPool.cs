@@ -24,8 +24,11 @@ namespace Spawner
 
         private void OnDestroy()
         {
-            EventManager.Instance?.StopListening<EventData.OnSpawnBuilding>(OnSpawnBuilding);
-            EventManager.Instance?.StopListening<EventData.OnDespawnBuilding>(OnDespawnBuilding);
+            if (EventManager.HasInstance)
+            {
+                EventManager.Instance.StopListening<EventData.OnSpawnBuilding>(OnSpawnBuilding);
+                EventManager.Instance.StopListening<EventData.OnDespawnBuilding>(OnDespawnBuilding);   
+            }
             
             pool.Dispose();
         }

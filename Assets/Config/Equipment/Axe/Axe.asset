@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027ba6065042c794f801fa335a2fbf89, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  EquipmentID: 6
+  CategoryID: 4
+  Group: 1
+  Rarity: 0
+  EquipmentName: Axe
+  LoadPoint: 15
+  Icon: {fileID: -784189078, guid: 031b9b41a243c48fc8af60ac153e388f, type: 3}
+  Width: 1
+  Height: 2
+  DamageType: 1
+  ProjectileSO: {fileID: 11400000, guid: 02f98577385935546a69c3a984529adb, type: 2}
+  Damage: 4
+  AttackRange: 8
+  AttackSpeed: 20
+  Cooldown: 3

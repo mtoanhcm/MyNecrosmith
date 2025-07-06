@@ -7,7 +7,7 @@ namespace Spawner
 {
     public class ProjectileSpawner : MonoBehaviour
     {
-        public void SpawnProjectile(AttackData data)
+        public void SpawnProjectile(HitData data)
         {
             var spawnData = new EventData.OnSpawnProjectile()
             {
@@ -18,9 +18,9 @@ namespace Spawner
             EventManager.Instance.TriggerEvent(spawnData);
         }
 
-        private void OnSpawnedProjectile(ProjectileBase projectile, AttackData attackData)
+        private void OnSpawnedProjectile(ProjectileBase projectile, HitData hitData)
         {
-            projectile.Initialize(attackData);
+            projectile.Initialize(hitData);
         }
     }   
 }

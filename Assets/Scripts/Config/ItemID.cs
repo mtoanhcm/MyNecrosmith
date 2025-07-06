@@ -23,7 +23,7 @@ namespace Config
         Spear,
         Hammer,
         BareBody,
-        LeatherBody,
+        LeatherCloth,
         LightArmor,
         ChainArmor,
         HeavyArmor,
@@ -36,19 +36,38 @@ namespace Config
         None,
         Sword,
         Armor,
+        Dagger,
+        Axe,
+        Bow,
+        Crossbow,
+        Whip,
+        Polearms,
+        Blunt,
+    }
+
+    public enum EquipmentGroup
+    {
+        None,
+        Weapon,
+        Armor
     }
 
     public enum ProjectileID
     {
-        SwordStrike,
-        PowerSphere
-    }
-
-    public enum Rarity
-    {
-        Common,
-        Rare,
-        Epic,
-        Legendary
+        SwordProjectile,
+        PowerSphere,
+        GreatSwordProjectile,
+        AxeProjectile,
+        GreatAxeProjectile,
+        TwinSwordProjectile,
+        ArrowProjectile,
+        BoltProjectile,
+        WhipProjectile,
+        MacheteProjectile,
+        SpearProjectile,
+        HammerProjectile,
+        KnifeProjectile,
+        ClubProjectile,
+        MaceProjectile,
     }
 }

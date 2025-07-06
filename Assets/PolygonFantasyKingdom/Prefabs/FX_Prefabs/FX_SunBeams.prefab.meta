@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 47419241ca5135d4d992dd5216b623cf
+timeCreated: 1527116322
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 164532
+  packageName: POLYGON Fantasy Kingdom - Low Poly 3D Art by Synty
+  packageVersion: 1.11.3
+  assetPath: Assets/PolygonFantasyKingdom/Prefabs/FX_Prefabs/FX_SunBeams.prefab
+  uploadId: 739755

@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ToggleFollow",
+                    "name": "QuickReturnBase",
                     "type": "Button",
                     "id": "c27daa0d-9a65-4a46-9b7a-355bdc4cd9bc",
                     "expectedControlType": "",
@@ -116,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleFollow",
+                    "action": "QuickReturnBase",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

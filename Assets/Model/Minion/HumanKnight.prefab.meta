@@ -1,15 +1,16 @@
 fileFormatVersion: 2
-guid: 73908ff37f8527246b505b44088d5f62
-timeCreated: 1476568541
+guid: 767b276e5b6e4b14bbcd51b5a6e78ca8
+timeCreated: 1583801653
 licenseType: Store
 NativeFormatImporter:
+  mainObjectFileID: 100100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 32906
-  packageName: Simple Fantasy - Cartoon Assets
-  packageVersion: 1.16
-  assetPath: Assets/SimpleFantasy/Prefabs/Characters/SF_Character_Human_Knight_01.prefab
-  uploadId: 648190
+  productId: 164532
+  packageName: POLYGON Fantasy Kingdom - Low Poly 3D Art by Synty
+  packageVersion: 1.11.3
+  assetPath: Assets/PolygonFantasyKingdom/Prefabs/Characters/SM_Chr_Soldier_Male_01.prefab
+  uploadId: 739755

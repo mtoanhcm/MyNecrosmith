@@ -13,9 +13,9 @@ namespace Character
         [SerializeField] private EquipmentController equipmentController;
         [SerializeField] private CharacterAutoActiveBuilding characterAutoActiveBuilding;
 
-        public override void Spawn(CharacterData data)
+        public override void Spawn(CharacterData data, Vector3 spawnPos)
         {
-            base.Spawn(data);
+            base.Spawn(data, spawnPos);
             
             characterAutoActiveBuilding.Init(this);
         }
@@ -24,11 +24,6 @@ namespace Character
         {
             equipmentController.AddEquipment(equipmentData, this);
             MinionData?.SetAttackRange(GetFarthestAttackRangeFromEquipment(equipmentData));
-        }
-
-        protected override string GetBrainType()
-        {
-            return "BehaviourGraph/MinionBrain";
         }
 
         protected override void OnCharacterDeath()

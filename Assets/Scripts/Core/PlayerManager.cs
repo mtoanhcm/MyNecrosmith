@@ -1,8 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using Building;
 using Config;
 using Equipment;
 using GameUtility;
+using NUnit.Framework.Constraints;
 using Observer;
 using UnityEngine;
 
@@ -14,8 +16,7 @@ namespace Gameplay
         [Serializable]
         public struct EquipmentInitData
         {
-            public EquipmentID EquipmentID;
-            public EquipmentCategoryID Category;
+            public EquipmentConfig Config;
             public int Amount;
         }
 
@@ -27,24 +28,31 @@ namespace Gameplay
         [SerializeField] private BuildingBase minionCastle;
         
         private PlayerInventory inventory;
-        
-        private void Awake()
+
+        protected override void Awake()
         {
+            base.Awake();
+            
             TryGetComponent(out inventory);
             inventory.Init();
-            
-            EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
-            EventManager.Instance.StartListening<EventData.OnRemoveEquipmentFromPlayerStorage>(OnRemoveEquipment);
         }
 
         private void Start()
         {
+            EventManager.Instance.StartListening<EventData.OnObtainedEquipment>(OnObtainedEquipment);
+            EventManager.Instance.StartListening<EventData.OnRemoveEquipmentFromPlayerStorage>(OnRemoveEquipment);
+
             InitStartupEquipment();
             InitCastleBase();
         }
 
-        private async void InitCastleBase()
+        private async Task InitCastleBase()
         {
+            if (minionCastle == null)
+            {
+                return;
+            }
+            
             var config = await AddressableUtility.LoadAssetAsync<MinionBuildingConfig>("Config/Building/MinionCastleConfig.asset");
             if (config == null)
             {
@@ -73,38 +81,28 @@ namespace Gameplay
             EventManager.Instance.TriggerEvent(new EventData.OnPlayerInventoryChanged { HasChange = true});
         }
 
-        private async void InitStartupEquipment()
+        private async Task InitStartupEquipment()
         {
             for (var i = 0; i < initEquipment.Length; i++)
             {
                 var equipment = initEquipment[i];
                 for (var j = 0; j < equipment.Amount; j++)
                 {
-                    var path = $"Config/Equipment/{equipment.Category}/{equipment.EquipmentID}.asset";
-                    var config = await AddressableUtility.LoadAssetAsync<EquipmentConfig>(path);
+                    var config = equipment.Config;
                     if (config == null)
                     {
-                        Debug.LogError($"Could not load equipment {equipment.EquipmentID} from Resources");
+                        Debug.LogError($"Could not load equipment {equipment.Config.EquipmentID} from Resources");
                         continue;
                     }
 
-                    if (AddWeaponEquipment(config))
+                    inventory.AddEquipmentToStorage(config.Group switch
                     {
-                        continue;
-                    }
+                        EquipmentGroup.Weapon => new WeaponData(config),
+                        EquipmentGroup.Armor => new ArmorData(config),
+                        _ => null
+                    });
                 }
             }
-        }
-
-        private bool AddWeaponEquipment(EquipmentConfig config)
-        {
-            if (config.CategoryID.IsWeaponType())
-            {
-                inventory.AddEquipmentToStorage(new WeaponData(config));
-                return true;
-            }
-
-            return false;
         }
     }   
 }

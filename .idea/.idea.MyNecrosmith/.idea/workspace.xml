@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Button.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Button/PlayerInventoryTab_Button.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Button/PlayerInventoryTab_Button.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/PlayerInventoryCell.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/PlayerInventoryCell.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/UIMinionInventoryCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Inventory/UIMinionInventoryCell.prefab" afterDir="false" />
-    </list>
+    <list default="true" id="5223a0af-0658-40d3-a006-7ce96fa0f62a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +19,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eed7427f31054735b37e5687df728aa51d400/74/fa9e1908/SharedVariable`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/MyNecrosmith/Assets/Scripts/InventoryMinion/MinionInventory/MinionInventoryViewComp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/BOTExtensionMethod.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/UI/UIOpenMinionInventoryButton.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -235,6 +229,13 @@
       <workItem from="1743250631394" duration="2594000" />
       <workItem from="1743261770695" duration="5668000" />
       <workItem from="1743314638051" duration="4087000" />
+      <workItem from="1743683103618" duration="726000" />
+      <workItem from="1743789112399" duration="2354000" />
+      <workItem from="1743823620983" duration="165000" />
+      <workItem from="1743838805248" duration="14940000" />
+      <workItem from="1743870105748" duration="5369000" />
+      <workItem from="1743928915202" duration="1126000" />
+      <workItem from="1744206371936" duration="9117000" />
     </task>
     <servers />
   </component>

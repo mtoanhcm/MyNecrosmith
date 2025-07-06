@@ -28,10 +28,11 @@ namespace Equipment.Weapon
                 return;
             }
             
-            var attackData = new AttackData()
+            var attackData = new HitData()
             {
                 Attacker = Owner.gameObject,
-                Damage = weaponData.Damage,
+                Amount = weaponData.Damage,
+                DamageType = weaponData.DamageType,
                 AttackSpeed = weaponData.AttackSpeed,
                 AttackRange = weaponData.AttackRadius,
                 Target = target != null ? target.gameObject : null,
@@ -43,6 +44,11 @@ namespace Equipment.Weapon
             
             projectileSpawner.SpawnProjectile(attackData);
             cooldown = Time.time + weaponData.Cooldown;
+        }
+
+        private void OnKillTargetSuccess()
+        {
+
         }
     }
 }

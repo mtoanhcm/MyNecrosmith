@@ -41,7 +41,7 @@ namespace BOT
         
         private void PatrolToNextPoint()
         {
-            brain.LocalCharacter.CharacterMovement.MoveToTarget(brain.LocalCharacter.transform.position.GetRandomNavmeshPositionAround(5f , brain.LocalCharacter.Data.ViewRadius));
+            brain.LocalCharacter.CharacterMovement.MoveToTarget(brain.LocalCharacter.transform.position.GetRandomPositionAround(25 , brain.LocalCharacter.Data.ViewRadius));
         }
         
         private void OnCharacterCanNotMoveToTargetPosition()

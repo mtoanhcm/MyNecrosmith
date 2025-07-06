@@ -22,15 +22,18 @@ namespace Spawner
 
         private void OnDestroy()
         {
-            EventManager.Instance?.StopListening<EventData.OnSpawnEquipment>(OnSpawnEquipment);
-            EventManager.Instance?.StopListening<EventData.OnDestroyEquipment>(OnDespawnEquipment);
+            if (EventManager.HasInstance)
+            {
+                EventManager.Instance.StopListening<EventData.OnSpawnEquipment>(OnSpawnEquipment);
+                EventManager.Instance.StopListening<EventData.OnDestroyEquipment>(OnDespawnEquipment);
+            }
             
             pool.Dispose();
         }
 
         private async void OnSpawnEquipment(EventData.OnSpawnEquipment data)
         {
-            var equipment = await pool.Get($"Equipment/{data.EquipmentCategoryID}/{data.EquipmentID}.prefab");
+            var equipment = await pool.Get($"Equipment/{data.EquipmentCategoryID}/pref_{data.EquipmentID}.prefab");
             if (equipment == null)
             {
                 Debug.LogWarning($"Cannot spawn equipment {data.EquipmentID}");
@@ -42,7 +45,7 @@ namespace Spawner
         
         private void OnDespawnEquipment(EventData.OnDestroyEquipment data)
         {
-            pool.Return($"Equipment/{data.Equipment.Data.CategoryID}/{data.Equipment.Data.EquipmentID}.prefab", data.Equipment);
+            pool.Return($"Equipment/{data.Equipment.Data.CategoryID}/pref_{data.Equipment.Data.EquipmentID}.prefab", data.Equipment);
         }
     }   
 }

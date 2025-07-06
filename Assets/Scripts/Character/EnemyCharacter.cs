@@ -20,11 +20,6 @@ namespace Character
             EventManager.Instance.TriggerEvent(new EventData.OnEnemyDeath(){ Enemy = this});
         }
 
-        protected override string GetBrainType()
-        {
-            return "BehaviourGraph/EnemyBrain";
-        }
-
         public override void Attack(Transform target)
         {
             if (cooldownTime > Time.time)
@@ -32,10 +27,11 @@ namespace Character
                 return;
             }
             
-            var attackData = new AttackData()
+            var attackData = new HitData()
             {
                 Attacker = gameObject,
-                Damage = EnemyData.Damage,
+                Amount = EnemyData.Damage,
+                DamageType = EnemyData.DamageType,
                 AttackSpeed = EnemyData.AttackSpeed,
                 AttackRange = EnemyData.AttackRange,
                 Target = target != null ? target.gameObject : null,

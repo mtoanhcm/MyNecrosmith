@@ -1,3 +1,4 @@
+using Pathfinding;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -6,63 +7,65 @@ using UnityEngine.Events;
 
 namespace Character
 {
+    [RequireComponent(typeof(FollowerEntity))]
     public class CharacterMovement : MonoBehaviour
     {
         public UnityAction OnCompleteMoveToTarget;
         public UnityAction OnFailMoveToTarget;
-        public UnityAction<float> OnStartMoveToTarget;
-        
-        private const float REACHTHRESHOLD = 0.5f;
-        private NavMeshAgent navAgent;
+        public UnityAction<float> OnMoving;
+
+        private IAstarAI ai;
         
         public void Init(CharacterBase character)
         {
-            if (navAgent == null)
+            if(ai == null)
             {
-                navAgent = gameObject.AddComponent<NavMeshAgent>();
+                ai = GetComponent<IAstarAI>();
             }
 
-            navAgent.speed = character.Data.RealMoveSpeed;
+            ai.maxSpeed = character.Data.RealMoveSpeed;
+        }
+
+        public void ToggleAutoRotation(bool isRotate)
+        {
+            ai.updateRotation = isRotate;
         }
 
         public void MoveToTarget(Vector3 target)
         {
-            if (navAgent.SetDestination(target))
-            {
-                OnStartMoveToTarget?.Invoke(navAgent.speed);
-                StartCoroutine(CheckReachDestination());
-            }
-            else
-            {
-                OnFailMoveToTarget?.Invoke();
-            }
+            ai.isStopped = false;
+
+            StopAllCoroutines();
+            ai.destination = target;
+            ai.SearchPath();
+            StartCoroutine(CheckReachDestination());
         }
 
         public void StopMove()
         {
-            navAgent.ResetPath();
+            StopAllCoroutines();
+            OnMoving?.Invoke(0);
+            ai.isStopped = true;
             OnCompleteMoveToTarget?.Invoke();
+        }
+
+        public void PauseMove(bool isPause) {
+            ai.isStopped = isPause;
         }
 
         private IEnumerator CheckReachDestination()
         {
-            while (!IsAgentAtDestination())
+            var realVelocity = Vector3.zero;
+            while (ai.pathPending || !ai.reachedEndOfPath)
             {
+                realVelocity = transform.InverseTransformDirection(ai.velocity);
+                realVelocity.y = 0;
+
+                OnMoving?.Invoke(realVelocity.normalized.magnitude);
                 yield return null;
             }
 
             StopMove();
-        }
-        
-        bool IsAgentAtDestination()
-        {   
-            // Ensure the agent has a path and is not stopped
-            if (!navAgent.pathPending && navAgent.remainingDistance <= REACHTHRESHOLD)
-            {
-                return true;
-            }
-            
-            return false;
         }
     }   
 }

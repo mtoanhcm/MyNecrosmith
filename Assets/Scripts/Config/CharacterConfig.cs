@@ -14,10 +14,12 @@ namespace  Config
     
     public enum CharacterID
     {
-        HumanKnight = 0,
-        
-        BareHandZombie = 100,
-        KnifeZombie = 101
+        None = 0,
+        HumanKnight = 1,
+
+        Skeleton = 100,
+        KnifeZombie = 101,
+            Orc = 102
     }
 
     public enum CharacterRace

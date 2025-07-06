@@ -22,7 +22,7 @@ namespace Inventory.UI
 
         private void OnDisable()
         {
-            EventManager.Instance.StopListening<EventData.OnPickEquipmentInInventoryUI>(PickEquipmentInInventory);
+            EventManager.Instance?.StopListening<EventData.OnPickEquipmentInInventoryUI>(PickEquipmentInInventory);
         }
 
         public void ResetDraggedItem(out EquipmentData currentDraggedEquipmentData)
@@ -42,6 +42,11 @@ namespace Inventory.UI
             if (data.Equipment != null)
             {
                 CreateDraggingItem(data.Equipment);
+                return;
+            }
+
+            if(currentDraggedItem == null)
+            {
                 return;
             }
             

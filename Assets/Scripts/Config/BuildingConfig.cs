@@ -1,4 +1,5 @@
 using Building;
+using Gameplay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Config {
     {
         public BuildingID ID;
         public ArmorType ArmorType;
+        public Rarity Rarity;
         public int HP;
     }
 }

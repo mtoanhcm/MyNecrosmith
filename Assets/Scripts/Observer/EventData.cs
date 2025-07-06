@@ -4,6 +4,7 @@ using Building;
 using Character;
 using Config;
 using Equipment;
+using Gameplay;
 using Inventory.UI;
 using Projectile;
 using UI;
@@ -22,14 +23,14 @@ namespace Observer {
             public Minion.Inventory.Inventory InventoryData;
         }
 
-        public class OnStartGame
+        public class OnGameplayStateChangeEvent
         {
-            public bool IsStart;
+            public GameplayEventType GameplayState;
+            public bool ChangeValue;
         }
 
-        public class OnPauseGame
-        {
-            public bool IsPause;
+        public class OnRequestChangeScene { 
+            public SceneManage.SceneType SceneType;
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Observer {
             public MinionConfig MinionConfig;
             public EquipmentData[] Equipment;
         }
-
+        
         /// <summary>
         /// Call event when the game want to spawn an enemy
         /// </summary>
@@ -104,6 +105,7 @@ namespace Observer {
         /// </summary>
         public class OnDespawnProjectile
         {
+            public ProjectileID ID;
             public ProjectileBase Projectile;
         }
 

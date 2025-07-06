@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Projectile.DamageApply
 {
-    [CreateAssetMenu(fileName = "DamageDetectSphereSO", menuName = "baseConfig/Projectile/DamageDetect/SphereDetect")]
+    [CreateAssetMenu(fileName = "DamageDetectSphereSO", menuName = "BaseConfig/Projectile/DamageDetect/SphereDetect")]
     public class DamageDetectSphereSO : DamageApplicationSO
     {
         private Collider[] hits = new Collider[1];
@@ -21,10 +21,11 @@ namespace Projectile.DamageApply
         
             if (hits[0].TryGetComponent<IHealth>(out var hitObj))
             {
-                hitObj.TakeDamage(projectile.Data.Damage);
+                hitObj.TakeDamage(projectile.Data.HitData);
+                return true;
             }
-            
-            return true;
+
+            return false;
         }
     }   
 }

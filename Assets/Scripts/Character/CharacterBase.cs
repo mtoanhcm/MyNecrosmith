@@ -1,4 +1,7 @@
 using UnityEngine;
+using BOT;
+using Observer;
+using System;
 
 namespace Character
 {
@@ -16,8 +19,15 @@ namespace Character
 
         public bool IsDebug;
 
-        public virtual void Spawn(CharacterData data)
+        private void Start()
         {
+            EventManager.Instance.StartListening<EventData.OnGameplayStateChangeEvent>(OnGameStageChanged);
+        }
+
+        public virtual void Spawn(CharacterData data, Vector3 spawnPos)
+        {
+            transform.position = spawnPos;
+
             Data = data;
             SetupHealth();
             SetupMovement();
@@ -25,6 +35,8 @@ namespace Character
             SetupAnimation();
             
             CharacterBrain.ActiveBrain();
+
+            gameObject.SetActive(true);
         }
 
         public abstract void Attack(Transform target);
@@ -36,7 +48,7 @@ namespace Character
                 CharacterBrain = gameObject.GetComponent<CharacterBrain>();
             }
             
-            CharacterBrain.Init(this, GetBrainType());
+            CharacterBrain.Init(this);
         }
 
         protected virtual void SetupHealth()
@@ -68,17 +80,38 @@ namespace Character
             
             CharacterAnimationController.Reset();
 
-            CharacterMovement.OnStartMoveToTarget += CharacterAnimationController.PlayMoveAnimation;
+            CharacterMovement.OnMoving += CharacterAnimationController.PlayMoveAnimation;
         }
 
         protected virtual void OnCharacterDeath()
         {
             CharacterBrain.DeActiveBrain();
-            
-            CharacterMovement.OnStartMoveToTarget -= CharacterAnimationController.PlayMoveAnimation;
+            CharacterMovement.StopMove();
+
+            CharacterMovement.OnMoving -= CharacterAnimationController.PlayMoveAnimation;
         }
-        
-        protected abstract string GetBrainType();
-        
+
+        private void OnGameStageChanged(EventData.OnGameplayStateChangeEvent data)
+        {
+            if((data.GameplayState == Gameplay.GameplayEventType.Gameover || data.GameplayState == Gameplay.GameplayEventType.WinGame) && data.ChangeValue)
+            {
+                //Stop all AI
+                CharacterBrain.DeActiveBrain();
+                
+                //Stop all movement
+                CharacterMovement.StopMove();
+                
+                //Reset animation
+                CharacterAnimationController.Reset();
+
+                return;
+            }
+
+            if (data.GameplayState == Gameplay.GameplayEventType.PauseGame) {
+                CharacterMovement.PauseMove(data.ChangeValue);
+
+                return;
+            }
+        }
     }   
 }

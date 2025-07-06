@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027ba6065042c794f801fa335a2fbf89, type: 3}
+  m_Name: Knife
+  m_EditorClassIdentifier: 
+  EquipmentID: 1
+  CategoryID: 3
+  Group: 1
+  Rarity: 0
+  EquipmentName: Knife
+  LoadPoint: 7
+  Icon: {fileID: 543172436, guid: b239689f357ed4841be94f2be37a0743, type: 3}
+  Width: 1
+  Height: 1
+  DamageType: 0
+  ProjectileSO: {fileID: 11400000, guid: 3eb7a4fa24b375c418771a09acba9aab, type: 2}
+  Damage: 3
+  AttackRange: 5
+  AttackSpeed: 30
+  Cooldown: 1.5

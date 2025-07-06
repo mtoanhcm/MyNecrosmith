@@ -1,6 +1,7 @@
 using Config;
 using UnityEngine;
 using System;
+using Combat;
 
 namespace Character
 {
@@ -11,12 +12,14 @@ namespace Character
         
         public CharacterID ID => baseConfig.ID;
         public float ViewRadius => baseConfig.ViewRadius;
-        public int MaxHP => baseConfig.HP;
+        public int MaxHP => baseConfig.HP + BonusHP;
         public string MoveSpeedStat => baseConfig.MoveSpeed.ToString();
         public string AttackSpeedStat => baseConfig.AttackSpeed.ToString();
         
         [field: SerializeField]
         public int CurrentHP { get; private set; }
+
+        public int BonusHP { get; private set; }
 
         /// <summary>
         /// Delay between 2 attacks, calculated based on AttackSpeedStat.
@@ -46,9 +49,9 @@ namespace Character
                     return 0; // Prevent invalid movement speed (e.g., negative or zero).
 
                 // Calculate movement speed in units per second:
-                // - At MoveSpeedStat = 100, the agent moves 3 units per second.
+                // - At MoveSpeedStat = 100, the agent moves 4 units per second.
                 // - MoveSpeedStat scales linearly: higher stat = faster movement.
-                return (baseConfig.MoveSpeed / 100f) * 3f; 
+                return (baseConfig.MoveSpeed / 100f) * 4f; 
             }
         }
         
@@ -65,6 +68,7 @@ namespace Character
         public void TakeDamage(int damage, Action onDeathCallback)
         {
             CurrentHP -= damage;
+            
             CurrentHP = Mathf.Clamp(CurrentHP, 0, baseConfig.HP);
             if (CurrentHP <= 0)
             {
@@ -72,10 +76,20 @@ namespace Character
             }
         }
 
-        public void RestoreHealth(int health)
+        public void RestoreHealth(HitData healData)
         {
-            CurrentHP += health;
+            CurrentHP += healData.Amount;
             CurrentHP = Mathf.Clamp(CurrentHP, 0, baseConfig.HP);
+        }
+
+        public void UpdateMaxHealth(int value)
+        {
+            BonusHP += value;
+
+            if(value > 0)
+            {
+                CurrentHP += value;
+            }
         }
     }   
 }

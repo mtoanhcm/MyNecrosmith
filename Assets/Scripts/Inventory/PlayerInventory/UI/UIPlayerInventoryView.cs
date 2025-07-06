@@ -24,12 +24,12 @@ namespace Player.Inventory.UI
 
         private void OnEnable()
         {
-            EventManager.Instance.StartListening<EventData.OnPickEquipmentInInventoryUI>(OnPickEquipment);
+            EventManager.Instance?.StartListening<EventData.OnPickEquipmentInInventoryUI>(OnPickEquipment);
         }
 
         private void OnDisable()
         {
-            EventManager.Instance.StopListening<EventData.OnPickEquipmentInInventoryUI>(OnPickEquipment);
+            EventManager.Instance?.StopListening<EventData.OnPickEquipmentInInventoryUI>(OnPickEquipment);
         }
 
         public void OpenPlayerInventory(PlayerInventory playerInventory)
@@ -55,7 +55,7 @@ namespace Player.Inventory.UI
                 playerInventoryComp = new PlayerInventoryViewComponent(playerInventory, cells.Count);
             }
 
-            var equipmentList = playerInventoryComp.GetEquipmentPage(currentPage, EquipmentCategoryID.Sword);
+            var equipmentList = playerInventoryComp.GetEquipmentPage(currentPage, EquipmentCategoryID.None);
             for (var i = 0; i < equipmentList.Length; i++)
             {
                 var equipment = equipmentList[i];

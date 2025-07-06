@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AreaConfigs:
   - AreaIndex: 0
-    SpawnRangeMin: 100
+    SpawnRangeMin: 50
     SpawnRangeMax: 300
     BuildingLevel: 1
     BuildingAmount: 30
@@ -29,6 +29,7 @@ MonoBehaviour:
     BuildingDistance: 50
     EnemyBuildingConfigs:
     - {fileID: 11400000, guid: 7695f47dcc236407fa9547fea9cf6809, type: 2}
+    - {fileID: 11400000, guid: 78075b29e0d3b46d8be71f8e07c1a442, type: 2}
   - AreaIndex: 2
     SpawnRangeMin: 750
     SpawnRangeMax: 1400
@@ -37,3 +38,4 @@ MonoBehaviour:
     BuildingDistance: 70
     EnemyBuildingConfigs:
     - {fileID: 11400000, guid: 7695f47dcc236407fa9547fea9cf6809, type: 2}
+    - {fileID: 11400000, guid: 78075b29e0d3b46d8be71f8e07c1a442, type: 2}

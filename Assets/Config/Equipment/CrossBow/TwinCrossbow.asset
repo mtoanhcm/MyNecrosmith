@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027ba6065042c794f801fa335a2fbf89, type: 3}
+  m_Name: TwinCrossbow
+  m_EditorClassIdentifier: 
+  EquipmentID: 11
+  CategoryID: 5
+  Group: 1
+  Rarity: 0
+  EquipmentName: Twin Crossbow
+  LoadPoint: 10
+  Icon: {fileID: 1784826269, guid: 579b415e555434ae789acae49978d4be, type: 3}
+  Width: 4
+  Height: 4
+  DamageType: 0
+  ProjectileSO: {fileID: 11400000, guid: e92eabd7d41ebad40ba6429447173fe6, type: 2}
+  Damage: 4
+  AttackRange: 9
+  AttackSpeed: 30
+  Cooldown: 4

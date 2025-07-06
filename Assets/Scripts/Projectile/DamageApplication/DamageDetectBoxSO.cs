@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Projectile.DamageApply
 {
-    [CreateAssetMenu(fileName = "DamageDetectBoxSO", menuName = "baseConfig/Projectile/DamageDetect/BoxDetect")]
+    [CreateAssetMenu(fileName = "DamageDetectBoxSO", menuName = "BaseConfig/Projectile/DamageDetect/BoxDetect")]
     public class DamageDetectBoxSO : DamageApplicationSO
     {
         private Collider[] hits = new Collider[1];
@@ -14,6 +14,7 @@ namespace Projectile.DamageApply
             var (center, size, rotation) = projectile.GetDamageArea();
         
             var hitCount = Physics.OverlapBoxNonAlloc(center, size / 2, hits, rotation, projectile.GetTargetLayer());
+
             if (hitCount == 0)
             {
                 return false;
@@ -21,10 +22,11 @@ namespace Projectile.DamageApply
             
             if (hits[0].TryGetComponent<IHealth>(out var hitObj))
             {
-                hitObj.TakeDamage(projectile.Data.Damage);
+                hitObj.TakeDamage(projectile.Data.HitData);
+                return true;
             }
-                
-            return true;
+
+            return false;
         }
     }
 }
