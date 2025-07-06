@@ -18,7 +18,7 @@ MonoBehaviour:
   Rarity: 0
   EquipmentName: Twin Crossbow
   LoadPoint: 10
-  Icon: {fileID: 1784826269, guid: 579b415e555434ae789acae49978d4be, type: 3}
+  Icon: {fileID: 21300000, guid: 579b415e555434ae789acae49978d4be, type: 3}
   Width: 4
   Height: 4
   DamageType: 0

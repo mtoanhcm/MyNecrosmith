@@ -1,10 +1,11 @@
-using UnityEngine;
-using UnityEditor;
-using UnityEngine.Tilemaps;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TilemapGeneratorEditor : OdinEditorWindow
 {
@@ -12,21 +13,32 @@ public class TilemapGeneratorEditor : OdinEditorWindow
     public static void ShowWindow() => GetWindow<TilemapGeneratorEditor>().Show();
 
     [Title("Tilemap Settings")]
-    [Required] public Tilemap TargetTilemap;
-    [MinValue(2)] public int Width = 64;
-    [MinValue(2)] public int Height = 64;
-    public bool Centered = true;
+    [Required, PropertyOrder(0)]
+    public Tilemap TargetTilemap;
+
+    [ShowIf("TargetTilemap"), PropertyOrder(1), MinValue(2)]
+    [SerializeField] private int width = 64;
+    public int Width { get => width; set => width = value; }
+
+    [ShowIf("TargetTilemap"), PropertyOrder(2), MinValue(2)]
+    [SerializeField] private int height = 64;
+    public int Height { get => height; set => height = value; }
+
+    [ShowIf("TargetTilemap"), PropertyOrder(3)]
+    [SerializeField] private bool centered = true;
+    public bool Centered { get => centered; set => centered = value; }
 
     [Title("Environment Tile Folder")]
-    [ShowIf("TargetTilemap")]
-    [FolderPath(ParentFolder = "Assets/Tiles", RequireExistingPath = true)]
-    public string EnvironmentFolderName;
+    [ShowIf("TargetTilemap"), PropertyOrder(4)]
+    [SerializeField, FolderPath(ParentFolder = "Assets/Tiles", RequireExistingPath = true)]
+    private string folder;
+    public string Folder { get => folder; set => folder = value; }
 
-    [ShowIf("TargetTilemap")]
+    [ShowIf("TargetTilemap"), PropertyOrder(5)]
     [Button("Load Tiles From Folder", ButtonSizes.Medium)]
     private void LoadTilesButton()
     {
-        if (string.IsNullOrEmpty(EnvironmentFolderName))
+        if (string.IsNullOrEmpty(Folder))
         {
             EditorUtility.DisplayDialog("Missing Folder", "Please specify the environment folder name.", "OK");
             return;
@@ -36,21 +48,29 @@ public class TilemapGeneratorEditor : OdinEditorWindow
     }
 
     [Title("Random Terrain Settings")]
-    public int Seed = 12345;
+    [ShowIf("TargetTilemap"), PropertyOrder(6)]
+    [SerializeField] private int seed = 12345;
+    public int Seed { get => seed; set => seed = value; }
 
-    [Range(0.01f, 1f)]
-    public float NoiseScale = 0.05f;
+    [ShowIf("TargetTilemap"), PropertyOrder(7), Range(0.01f, 1f)]
+    [SerializeField] private float noiseScale = 0.05f;
+    public float NoiseScale { get => noiseScale; set => noiseScale = value; }
 
-    [MinValue(1)]
-    public int PatchSize = 4;
+    [ShowIf("TargetTilemap"), PropertyOrder(8), MinValue(1)]
+    [SerializeField] private int patchSize = 4;
+    public int PatchSize { get => patchSize; set => patchSize = value; }
 
     [InfoBox("Biome tiles will be loaded from folder inside Assets/Tiles", InfoMessageType.Info)]
+    [ShowIf("TargetTilemap"), PropertyOrder(9)]
     [TableList(ShowIndexLabels = true)]
     public List<BiomeConfig> BiomeConfigs = new List<BiomeConfig>();
 
+    [ShowIf("TargetTilemap"), PropertyOrder(10)]
+    [Button("Generate Random Map", ButtonSizes.Large), GUIColor(0.2f, 0.8f, 0.2f), EnableIf("CanGenerate")]
+    private void GenerateRandomMap() => Generate();
+
     private BiomeConfig[,] terrainMap;
 
-    [Button(ButtonSizes.Large), GUIColor(0.2f, 0.8f, 0.2f), EnableIf("CanGenerate")]
     private void Generate()
     {
         if (!TargetTilemap)
@@ -74,15 +94,15 @@ public class TilemapGeneratorEditor : OdinEditorWindow
         GenerateTerrainMap();
         ApplyTerrainToTilemap();
 
-        EditorUtility.DisplayDialog("Done", "Tilemap generated successfully.", "OK");
+        EditorUtility.DisplayDialog("Done", "Tilemap generated successfully.\nMap Seed copied to console.", "OK");
     }
 
-    private bool CanGenerate() => BiomeConfigs != null && BiomeConfigs.Count > 0;
+    private bool CanGenerate => BiomeConfigs != null && BiomeConfigs.Count > 0;
 
-    private void LoadTilesFromFolder()
+    public void LoadTilesFromFolder()
     {
         BiomeConfigs.Clear();
-        string fullPath = Path.Combine("Assets/Tiles", EnvironmentFolderName);
+        string fullPath = $"Assets/Tiles/{Folder}".Replace("\\", "/");
 
         if (!Directory.Exists(fullPath))
         {
@@ -113,8 +133,7 @@ public class TilemapGeneratorEditor : OdinEditorWindow
         terrainMap = new BiomeConfig[Width, Height];
         Random.InitState(Seed);
 
-        float totalWeight = 0f;
-        foreach (var b in BiomeConfigs) totalWeight += b.Weight;
+        float totalWeight = BiomeConfigs.Sum(b => b.Weight);
 
         for (int px = 0; px < Width; px += PatchSize)
         {
@@ -149,7 +168,6 @@ public class TilemapGeneratorEditor : OdinEditorWindow
             if (noise <= threshold)
                 return biome;
         }
-
         return BiomeConfigs[0];
     }
 

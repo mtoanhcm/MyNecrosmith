@@ -18,7 +18,7 @@ MonoBehaviour:
   Rarity: 0
   EquipmentName: Club
   LoadPoint: 13
-  Icon: {fileID: 1941327007, guid: 665c7e39678904e5c8b26671c9be8618, type: 3}
+  Icon: {fileID: 21300000, guid: 665c7e39678904e5c8b26671c9be8618, type: 3}
   Width: 1
   Height: 3
   DamageType: 2

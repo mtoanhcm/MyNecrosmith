@@ -7,13 +7,13 @@ using UnityEngine.Serialization;
 namespace CameraControl
 {
     [RequireComponent(typeof(Camera))]
-    public class IsometricCamera : MonoBehaviour
+    public class CameraController : MonoBehaviour
     {
         public Transform TargetFollow; // The object the camera will follow
 
         [SerializeField] private float distance; // Default distance from the focus point
-        [SerializeField] private float rotationX; // Camera rotation around the X-axis
-        [SerializeField] private float rotationY; // Camera rotation around the Y-axis
+        //[SerializeField] private float rotationX; // Camera rotation around the X-axis
+        //[SerializeField] private float rotationY; // Camera rotation around the Y-axis
         [SerializeField] private float followSpeed; // Speed at which the camera follows the target
         [SerializeField] private float moveSpeed; // Speed of W, A, S, D movement
         [SerializeField] private float zoomSpeed; // Speed of zooming in/out
@@ -85,7 +85,7 @@ namespace CameraControl
             myCamera.fieldOfView = (minZoom + maxZoom) / 2;
 
             // Initialize the camera's rotation
-            transform.rotation = Quaternion.Euler(rotationX, rotationY, 0f);
+            //transform.rotation = Quaternion.Euler(rotationX, rotationY, 0f);
 
             // Initialize isFollowing based on the presence of a target
             isFollowing = TargetFollow != null;
@@ -136,14 +136,17 @@ namespace CameraControl
             isFollowing = false;
 
             // Calculate the camera position that would look at the world position
-            Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
-            Vector3 direction = rotation * Vector3.forward;
-            Vector3 desiredCameraPosition = worldPosition - direction * distance;
+            //Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
+            //Vector3 direction = Vector3.right;
+            //Vector3 desiredCameraPosition = worldPosition - direction * distance;
+
+            worldPosition.z = transform.position.z;
 
             // Set up move to position
             isMovingToPosition = true;
             startPosition = transform.position;
-            targetPosition = desiredCameraPosition;
+            //targetPosition = desiredCameraPosition;
+            targetPosition = worldPosition;
             moveToPositionProgress = 0f;
         }
 
@@ -318,8 +321,8 @@ namespace CameraControl
 
         private void LateUpdate()
         {
-            Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
-            Vector3 direction = rotation * Vector3.forward;
+            //Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
+            Vector3 direction = Vector3.right;
 
             if (isMovingToPosition)
             {
@@ -341,7 +344,7 @@ namespace CameraControl
                 }
 
                 // Set rotation and return early to skip other movement logic
-                transform.rotation = rotation;
+                //transform.rotation = rotation;
                 return;
             }
 
@@ -380,14 +383,14 @@ namespace CameraControl
                     currentSpeed = moveSpeed;
                 }
 
-                Vector3 movement = new Vector3(combinedMovement.x, 0, combinedMovement.y) * (currentSpeed * Time.deltaTime);
-                movement = rotation * movement; // Rotate movement to match camera orientation
+                Vector3 movement = new Vector3(combinedMovement.x, combinedMovement.y, 0) * (currentSpeed * Time.deltaTime);
+                //movement = rotation * movement; // Rotate movement to match camera orientation
 
                 // Update the camera's position
                 Vector3 newPosition = transform.position + movement + zoomAdjustment;
 
                 // Adjust the camera's height based on distance and rotationX
-                newPosition.y = Mathf.Sin(Mathf.Deg2Rad * rotationX) * distance;
+                //newPosition.y = Mathf.Sin(Mathf.Deg2Rad * rotationX) * distance;
 
                 // Apply the new position
                 transform.position = newPosition;
@@ -410,7 +413,7 @@ namespace CameraControl
                 Vector3 newPosition = transform.position + zoomAdjustment;
 
                 // Adjust the camera's height based on distance and rotationX
-                newPosition.y = Mathf.Sin(Mathf.Deg2Rad * rotationX) * distance;
+                //newPosition.y = Mathf.Sin(Mathf.Deg2Rad * rotationX) * distance;
 
                 // Apply the new position
                 transform.position = newPosition;
@@ -420,7 +423,7 @@ namespace CameraControl
             zoomAdjustment = Vector3.zero;
 
             // Set the camera's rotation
-            transform.rotation = rotation;
+            //transform.rotation = rotation;
         }
     }
 }

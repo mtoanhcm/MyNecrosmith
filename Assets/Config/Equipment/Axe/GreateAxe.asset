@@ -18,8 +18,8 @@ MonoBehaviour:
   Rarity: 0
   EquipmentName: Greate Axe
   LoadPoint: 20
-  Icon: {fileID: 196851580, guid: d2a468317e7bb44cdb15f857facf7bbf, type: 3}
-  Width: 1
+  Icon: {fileID: 21300000, guid: d2a468317e7bb44cdb15f857facf7bbf, type: 3}
+  Width: 2
   Height: 3
   DamageType: 1
   ProjectileSO: {fileID: 11400000, guid: b15a8a67c279a694ca8efb852a97f29b, type: 2}

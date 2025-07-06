@@ -18,7 +18,7 @@ MonoBehaviour:
   Rarity: 0
   EquipmentName: Cross Bow
   LoadPoint: 11
-  Icon: {fileID: 2028214821, guid: 97bce8f24664d450abb1ce849c6acc2f, type: 3}
+  Icon: {fileID: 21300000, guid: 97bce8f24664d450abb1ce849c6acc2f, type: 3}
   Width: 2
   Height: 2
   DamageType: 0

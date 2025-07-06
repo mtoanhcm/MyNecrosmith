@@ -18,7 +18,7 @@ TagManager:
   - Obstacle
   - Projectile
   - EnemyBuilding
-  - 
+  - Equipment
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Fog
     uniqueID: 1045180257
+    locked: 0
+  - name: Equipment
+    uniqueID: 2905747467
     locked: 0
   m_RenderingLayers:
   - Default
