@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Config;
 using UnityEngine;
@@ -93,37 +93,26 @@ namespace GameUtility {
             );
         }
         
-        public static List<Vector3> GetEquipmentPositionAroundCharacter(this Transform characterTrans, int totalEqupiment, 
-            float initialRadius = 0.5f, float radiusIncrement = 0.5f, float minAngle = 30)
+        public static List<Vector2> GetEquipmentPositionAroundCharacter(int totalEquipment, float radius = 1f)
         {
-            var positions = new List<Vector3>();
-            var currentRadius = initialRadius;
-            var maxEquipmentPerCircle = Mathf.FloorToInt(360f / minAngle); // Maximum number of equipment in one circle
+            List<Vector2> points = new List<Vector2>();
+            if (totalEquipment <= 0 || radius <= 0)
+                return points;
 
-            var currentIndex = 0;
+            float angleRange = Mathf.PI * 0.8f;
+            float angleStep = angleRange / Mathf.Max(1, totalEquipment - 1);
+            float startAngle = (Mathf.PI + angleRange) / 2f;
 
-            while (currentIndex < totalEqupiment)
+            for (int i = 0; i < totalEquipment; i++)
             {
-                var equipmentsInThisCircle = Mathf.Min(totalEqupiment - currentIndex, maxEquipmentPerCircle); // Number of equipment in the current circle
-                var angleStep = 360f / equipmentsInThisCircle;
+                float angle = startAngle - (i * angleStep);
+                float x = radius * Mathf.Cos(angle);
+                float y = radius * Mathf.Sin(angle);
 
-                for (var i = 0; i < equipmentsInThisCircle; i++)
-                {
-                    var angle = i * angleStep;
-                    var position = new Vector3(
-                        Mathf.Cos(angle * Mathf.Deg2Rad) * currentRadius,
-                        0,
-                        Mathf.Sin(angle * Mathf.Deg2Rad) * currentRadius
-                    );
-
-                    positions.Add(position);
-                    currentIndex++;
-                }
-
-                currentRadius += radiusIncrement; // Increase the radius for the next circle
+                points.Add(new Vector2(x, y));
             }
 
-            return positions;
+            return points;
         }
         
         public static void SetActive(this Component component, bool active)

@@ -7,7 +7,7 @@ namespace Equipment.Armor
     {
         private ArmorData armorData;
 
-        public override void Init(CharacterBase owner, EquipmentData data, Vector3 spawnPosition)
+        public override void Init(CharacterBase owner, EquipmentData data, Vector2 spawnPosition)
         {
             base.Init(owner, data, spawnPosition);
 

@@ -12,7 +12,7 @@ namespace Equipment
         public List<EquipmentBase> Equipments => equipments;
         
         private List<EquipmentBase> equipments;
-        private List<Vector3> equipmentPositions;
+        private List<Vector2> equipmentPositions;
         
         private void Awake()
         {
@@ -46,7 +46,7 @@ namespace Equipment
         
         public void AddEquipment(EquipmentData[] equipmentData, CharacterBase owner)
         {
-            equipmentPositions = transform.GetEquipmentPositionAroundCharacter(equipmentData.Length);
+            equipmentPositions = UtilityExtension.GetEquipmentPositionAroundCharacter(equipmentData.Length, 1f);
             for (var i = 0; i < equipmentData.Length; i++)
             {
                 var equipment = equipmentData[i];
@@ -118,7 +118,7 @@ namespace Equipment
         {
             for (var i = 0; i < equipments.Count; i++)
             {
-                equipments[i].transform.position = transform.position + transform.rotation * equipmentPositions[i];
+                equipments[i].transform.position = (Vector2)transform.position +  equipmentPositions[i];
             }
         }
     }   

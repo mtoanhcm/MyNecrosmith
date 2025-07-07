@@ -53,5 +53,11 @@ TagManager:
   - name: Equipment
     uniqueID: 2905747467
     locked: 0
+  - name: Character
+    uniqueID: 2937663743
+    locked: 0
+  - name: Building
+    uniqueID: 2130378545
+    locked: 0
   m_RenderingLayers:
   - Default

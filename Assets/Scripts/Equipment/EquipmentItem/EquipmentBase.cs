@@ -20,7 +20,7 @@ namespace Equipment
             throw new System.NotImplementedException();
         }
 
-        public virtual void Init(CharacterBase owner ,EquipmentData data, Vector3 spawnPosition)
+        public virtual void Init(CharacterBase owner ,EquipmentData data, Vector2 spawnPosition)
         {
             Data = data;   
             Owner = owner;
